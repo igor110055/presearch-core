@@ -116,15 +116,15 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
     public static final int SITE_BANNER_REQUEST_CODE = 33;
     public static final int VERIFY_WALLET_ACTIVITY_REQUEST_CODE = 34;
     public static final int USER_WALLET_ACTIVITY_REQUEST_CODE = 35;
-    public static final String ADD_FUNDS_URL = "chrome://rewards/#add-funds";
+    public static final String ADD_FUNDS_URL = "chrome://rewards/";
     public static final String REWARDS_SETTINGS_URL = "chrome://rewards/";
     public static final String PRESEARCH_REWARDS_SETTINGS_URL = "presearch://rewards/";
-    public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/contribute";
-    public static final String REWARDS_LEARN_MORE_URL = "https://presearch.org/faq-rewards/#unclaimed-funds";
+    public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/";
+    public static final String REWARDS_LEARN_MORE_URL = "https://presearch.io/";
     public static final String PRESEARCH_TERMS_PAGE =
-            "https://basicattentiontoken.org/user-terms-of-service/";
-    public static final String P3A_URL = "https://presearch.org/p3a";
-    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/#rewards";
+            "https://presearch.org/privacy/user-terms-of-service/";
+    public static final String P3A_URL = "https://presearch.org/privacy";
+    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/";
     private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
     public static final String OPEN_URL = "open_url";
 
@@ -218,6 +218,8 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
             CommandLine.getInstance().appendSwitch(ChromeSwitches.NO_RESTORE_STATE);
         }
 
+        setDSEToPresearch();
+
         PresearchSearchEngineUtils.initializePresearchSearchEngineStates(getTabModelSelector());
     }
 
@@ -287,8 +289,8 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         int appOpenCount = SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT);
         SharedPreferencesManager.getInstance().writeInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT, appOpenCount + 1);
 
-        if (PackageUtils.isFirstInstall(this) && appOpenCount == 0) {
-            checkForYandexSE();
+        if (PackageUtils.isFirstInstall(this)) {
+            setDSEToPresearch();
         }
 
         //set bg ads to off for existing and new installations
@@ -367,12 +369,12 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
         if (!OnboardingPrefManager.getInstance().isOneTimeNotificationStarted()
                 && PackageUtils.isFirstInstall(this)) {
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_3);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_24);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_6);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_10);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_30);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_35);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_3);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_24);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_6);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_10);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_30);
+            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_35);
             RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_1);
             RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
             RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
@@ -420,11 +422,11 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
     @Override
     public void OnRewardsParameters(int errorCode) {
-        if (errorCode == PresearchRewardsNativeWorker.LEDGER_OK && mPresearchRewardsNativeWorker != null
-                && mPresearchRewardsNativeWorker.GetWalletBalance() != null
-                && mPresearchRewardsNativeWorker.GetWalletBalance().getTotal() > 0) {
-            checkForDeprecateBAPDialog();
-        }
+        // if (errorCode == PresearchRewardsNativeWorker.LEDGER_OK && mPresearchRewardsNativeWorker != null
+        //         && mPresearchRewardsNativeWorker.GetWalletBalance() != null
+        //         && mPresearchRewardsNativeWorker.GetWalletBalance().getTotal() > 0) {
+        //     checkForDeprecateBAPDialog();
+        // }
     }
 
     @Override
@@ -432,7 +434,7 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         mPresearchRewardsNativeWorker.GetRewardsParameters();
     }
 
-    private void checkForDeprecateBAPDialog() {
+    // private void checkForDeprecateBAPDialog() {
         String countryCode = Locale.getDefault().getCountry();
         if (countryCode.equals(JAPAN_COUNTRY_CODE) && !isRewardsPanelOpened()
                 && System.currentTimeMillis() > PresearchRewardsHelper.getNextBAPModalDate()) {
@@ -461,11 +463,11 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
             boolean shouldSetNextDate = false;
             if (todayDate.compareTo(march6Date) < 0) {
-                showRewardsTooltip();
+                // showRewardsTooltip();
                 shouldSetNextDate = true;
             } else if (todayDate.compareTo(march6Date) > 0
                     && todayDate.compareTo(march13Date) < 0) {
-                showDeprecateBAPDialog();
+                // showDeprecateBAPDialog();
                 shouldSetNextDate = true;
             }
             if (shouldSetNextDate) {
@@ -510,33 +512,44 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         }
     }
 
+    private void setDSEToPresearch() {
+      // Set the default search engine to engine.presearch.org. Added by Mamy
+      TemplateUrl presearchTemplateUrl =
+      PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.QWANT);
+            if (presearchTemplateUrl != null) {
+                PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, false);
+                PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, true);
+            }
+        }
+    }
+
     private void checkForNotificationData() {
         Intent notifIntent = getIntent();
         if (notifIntent != null && notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE) != null) {
             Log.e("NTP", notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE));
             String notificationType = notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE);
-            switch (notificationType) {
-            case RetentionNotificationUtil.HOUR_3:
-            case RetentionNotificationUtil.HOUR_24:
-            case RetentionNotificationUtil.EVERY_SUNDAY:
-                checkForPresearchStats();
-                break;
-            case RetentionNotificationUtil.DAY_6:
-            case RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS:
-            case RetentionNotificationUtil.PRESEARCH_STATS_DATA:
-            case RetentionNotificationUtil.PRESEARCH_STATS_TIME:
-                if (getActivityTab() != null
-                    && getActivityTab().getUrlString() != null
-                    && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
-                    getTabCreator(false).launchUrl(UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
-                }
-                break;
-            case RetentionNotificationUtil.DAY_10:
-            case RetentionNotificationUtil.DAY_30:
-            case RetentionNotificationUtil.DAY_35:
-                openRewardsPanel();
-                break;
-            }
+            // switch (notificationType) {
+            // case RetentionNotificationUtil.HOUR_3:
+            // case RetentionNotificationUtil.HOUR_24:
+            // case RetentionNotificationUtil.EVERY_SUNDAY:
+            //     checkForPresearchStats();
+            //     break;
+            // case RetentionNotificationUtil.DAY_6:
+            // case RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS:
+            // case RetentionNotificationUtil.PRESEARCH_STATS_DATA:
+            // case RetentionNotificationUtil.PRESEARCH_STATS_TIME:
+            //     if (getActivityTab() != null
+            //         && getActivityTab().getUrlString() != null
+            //         && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
+            //         getTabCreator(false).launchUrl(UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
+            //     }
+            //     break;
+            // case RetentionNotificationUtil.DAY_10:
+            // case RetentionNotificationUtil.DAY_30:
+            // case RetentionNotificationUtil.DAY_35:
+            //     openRewardsPanel();
+            //     break;
+            // }
         }
     }
 
@@ -590,10 +603,10 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
     public void showRewardsTooltip() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout) findViewById(R.id.toolbar);
-        assert layout != null;
-        if (layout != null) {
-            layout.showRewardsTooltip();
-        }
+        // assert layout != null;
+        // if (layout != null) {
+        //     layout.showRewardsTooltip();
+        // }
     }
 
     private void createNotificationChannel() {
@@ -761,6 +774,8 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         Tab tab = selectExistingTab(url);
         if (tab != null) {
             return tab;
+        } else if (url == REWARDS_SETTINGS_URL || url == PRESEARCH_REWARDS_SETTINGS_URL){
+          return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
         } else { // Open a new tab
             return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
         }

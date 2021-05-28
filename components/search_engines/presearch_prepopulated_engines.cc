@@ -135,12 +135,12 @@ const PrepopulatedEngine presearch_ecosia =
                        PREPOPULATED_ENGINE_ID_ECOSIA);
 
 const PrepopulatedEngine qwant = {
-    L"Qwant",
-    L":q",
-    "https://www.qwant.com/favicon.ico",
-    "https://www.qwant.com/?q={searchTerms}&client=brz-presearch",
+    L"Presearch",
+    L":p",
+    "https://presearch.org/favicon.ico",
+    "https://engine.presearch.org/search?q={searchTerms}",
     "UTF-8",
-    "https://api.qwant.com/api/suggest/?q={searchTerms}&client=opensearch",
+    // "https://api.qwant.com/api/suggest/?q={searchTerms}&client=opensearch",
     NULL,
     NULL,
     NULL,

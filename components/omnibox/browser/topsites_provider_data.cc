@@ -78,7 +78,7 @@ std::vector<std::string> TopSitesProvider::top_sites_ = {
   "startpage.com",
   "wolframalpha.com",
   "infogalactic.com",
-  "qwant.com",
+  "presearch.org",
   "searx.me",
   "ecosia.org",
   "semanticscholar.org",

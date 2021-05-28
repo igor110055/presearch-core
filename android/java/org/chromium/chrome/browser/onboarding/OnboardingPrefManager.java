@@ -72,7 +72,7 @@ public class OnboardingPrefManager {
 
     private static final String GOOGLE = "Google";
     public static final String DUCKDUCKGO = "DuckDuckGo";
-    private static final String QWANT = "Qwant";
+    private static final String QWANT = "Presearch";
     private static final String BING = "Bing";
     private static final String STARTPAGE = "Startpage";
     public static final String YANDEX = "Yandex";
