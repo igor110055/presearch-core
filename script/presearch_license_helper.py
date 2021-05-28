@@ -39,24 +39,24 @@ def AddPresearchCredits(prune_paths, special_cases, prune_dirs, additional_paths
     special_cases.update({
         os.path.join('presearch', 'vendor', 'bat-native-anonize'): {
             "Name": "bat-native-anonize",
-            "URL": "https://github.com/presearch-intl/bat-native-anonize",
+            "URL": "https://github.com/brave-intl/bat-native-anonize",
             "License": "Apache-2.0",
             "License File": "/presearch/vendor/bat-native-anonize/LICENSE.txt",
         },
         os.path.join('presearch', 'vendor', 'bat-native-rapidjson'): {
             "Name": "RapidJSON",
-            "URL": "https://github.com/presearch-intl/bat-native-rapidjson",
+            "URL": "https://github.com/brave-intl/bat-native-rapidjson",
             "License": "MIT",
             "License File": "/presearch/vendor/bat-native-rapidjson/license.txt",
         },
         os.path.join('presearch', 'vendor', 'bat-native-tweetnacl'): {
             "Name": "TweetNaCl",
-            "URL": "https://github.com/presearch-intl/bat-native-tweetnacl",
+            "URL": "https://github.com/brave-intl/bat-native-tweetnacl",
             "License": "MPL-2.0",
         },
         os.path.join('presearch', 'vendor', 'bip39wally-core-native'): {
             "Name": "libwally-core",
-            "URL": "https://github.com/presearch-intl/bat-native-bip39wally-core",
+            "URL": "https://github.com/brave-intl/bat-native-bip39wally-core",
             "License": "MIT",
         },
         os.path.join('presearch', 'vendor', 'boto'): {
@@ -71,7 +71,7 @@ def AddPresearchCredits(prune_paths, special_cases, prune_dirs, additional_paths
         },
         os.path.join('presearch', 'vendor', 'challenge_bypass_ristretto_ffi'): {
             "Name": "challenge-bypass-ristretto-ffi",
-            "URL": "https://github.com/presearch-intl/challenge-bypass-ristretto-ffi",
+            "URL": "https://github.com/brave-intl/challenge-bypass-ristretto-ffi",
             "License": "MPL-2.0",
         },
         os.path.join('presearch', 'vendor', 'extension-whitelist'): {
