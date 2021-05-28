@@ -86,11 +86,11 @@
                 android:text="@string/learn_more"
                 android:visibility = "gone" />
 
-            <org.chromium.chrome.browser.ntp.PresearchDuckDuckGoOfferView android:id="@+id/presearch_duck_duck_go_offer_view"
+            <!-- <org.chromium.chrome.browser.ntp.PresearchDuckDuckGoOfferView android:id="@+id/presearch_duck_duck_go_offer_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" >
                     <include layout="@layout/presearch_ddg_offer_link" />
-            </org.chromium.chrome.browser.ntp.PresearchDuckDuckGoOfferView>
+            </org.chromium.chrome.browser.ntp.PresearchDuckDuckGoOfferView> -->
 
         </LinearLayout>
 
