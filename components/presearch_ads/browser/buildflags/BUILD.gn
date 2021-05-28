@@ -1,0 +1,7 @@
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import("//build/buildflag_header.gni")
+
+buildflag_header("buildflags") {
+  header = "buildflags.h"
+  flags = [ "PRESEARCH_ADS_ENABLED=$presearch_ads_enabled" ]
+}

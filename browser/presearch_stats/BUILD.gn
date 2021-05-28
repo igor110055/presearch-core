@@ -1,0 +1,46 @@
+import("//presearch/components/presearch_referrals/buildflags/buildflags.gni")
+
+declare_args() {
+  presearch_stats_updater_url = ""
+}
+
+if (is_official_build) {
+  assert(presearch_stats_updater_url != "")
+}
+
+source_set("stats_updater") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10657 is resolved
+  check_includes = false
+  defines = [ "PRESEARCH_USAGE_SERVER=\"$presearch_stats_updater_url\"" ]
+
+  sources = [
+    "presearch_stats_tab_helper.cc",
+    "presearch_stats_tab_helper.h",
+    "presearch_stats_updater.cc",
+    "presearch_stats_updater.h",
+    "presearch_stats_updater_params.cc",
+    "presearch_stats_updater_params.h",
+    "switches.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser:version_info",
+    "//presearch/common",
+    "//presearch/common:pref_names",
+    "//presearch/components/presearch_referrals/buildflags",
+    "//presearch/components/presearch_stats/browser",
+    "//presearch/components/rpill/common",
+    "//presearch/vendor/bat-native-ads",
+    "//chrome/common",
+    "//components/prefs",
+    "//content/public/browser",
+    "//net",
+    "//services/network/public/cpp",
+    "//ui/base",
+  ]
+
+  if (enable_presearch_referrals) {
+    deps += [ "//presearch/components/presearch_referrals/common" ]
+  }
+}

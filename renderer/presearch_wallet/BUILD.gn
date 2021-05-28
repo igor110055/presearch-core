@@ -1,0 +1,27 @@
+import("//build/config/features.gni")
+
+source_set("presearch_wallet") {
+  visibility = [
+    "//presearch:child_dependencies",
+    "//presearch/renderer/*",
+    "//chrome/renderer/*",
+  ]
+
+  sources = [
+    "presearch_wallet_render_frame_observer.cc",
+    "presearch_wallet_render_frame_observer.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/common:common",
+    "//presearch/common:mojo_bindings",
+    "//presearch/components/presearch_wallet/common:mojom",
+    "//presearch/components/presearch_wallet/renderer",
+    "//content/public/renderer",
+    "//mojo/public/cpp/bindings",
+    "//third_party/blink/public:blink",
+    "//third_party/blink/public/common",
+    "//v8",
+  ]
+}

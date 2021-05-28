@@ -1,0 +1,31 @@
+# Copyright (c) 2009 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+#
+# This file provides common configuration information for building
+# chromium-browser packages for various platforms.
+
+# Base name of the package.
+PACKAGE="presearch-browser"
+
+# Filename of the main executable (for generating launcher scripts, etc.)
+PROGNAME=presearch
+
+# Base directory for package installation.
+INSTALLDIR=/opt/presearch.com/presearch
+
+# Display string for desktop menu/icon.
+MENUNAME="Presearch Web Browser"
+
+# Brief package description.
+SHORTDESC="The web browser from Presearch"
+
+# Detailed package description.
+FULLDESC="Browse faster by blocking ads and trackers that violate your privacy and cost you time and money."
+
+# Package maintainer information.
+MAINTNAME="Presearch Software"
+MAINTMAIL="support@presearch.com"
+PRODUCTURL="https://presearch.com/"
+VERSION=$(cat $OUTPUTDIR/version | tr -d 'v,')
+VERSIONFULL=$VERSION

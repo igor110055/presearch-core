@@ -1,0 +1,17 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("presearch_new_tab_ui") {
+  entry_points = [
+    ["presearch_new_tab", rebase_path("presearch_new_tab.tsx")]
+  ]
+
+  resource_name = "presearch_new_tab"
+}
+
+pack_web_resources("generated_resources") {
+  resource_name = "presearch_new_tab"
+  output_dir = "$root_gen_dir/presearch/components/presearch_new_tab/resources"
+  deps = [
+    ":presearch_new_tab_ui"
+  ]
+}

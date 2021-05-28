@@ -1,0 +1,12 @@
+diff --git a/ui/accessibility/platform/ax_platform_node_mac.mm b/ui/accessibility/platform/ax_platform_node_mac.mm
+index 3ef8956d61f62c10b5bf4b4339ba595bb919ad17..1a680287befb53099b27a0d1a16c95197711c94f 100644
+--- a/ui/accessibility/platform/ax_platform_node_mac.mm
++++ b/ui/accessibility/platform/ax_platform_node_mac.mm
+@@ -1169,6 +1169,7 @@ bool IsAXSetter(SEL selector) {
+   if (!_node)
+     return nil;
+ 
++  PRESEARCH_ACCESSIBILITY_ATTRIBUTED_STRING_FOR_RANGE
+   // TODO(https://crbug.com/958811): Implement this for real.
+   base::scoped_nsobject<NSAttributedString> attributedString(
+       [[NSAttributedString alloc]

@@ -1,0 +1,77 @@
+import("//presearch/components/presearch_sync/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wayback_machine/buildflags/buildflags.gni")
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//build/config/features.gni")
+
+source_set("infobars") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10649 is resolved
+  check_includes = false
+  sources = [
+    "presearch_confirm_p3a_infobar_delegate.cc",
+    "presearch_confirm_p3a_infobar_delegate.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/app:presearch_generated_resources_grit",
+    "//presearch/browser/ui",
+    "//presearch/components/p3a",
+    "//chrome/app:chromium_strings",
+    "//chrome/browser/ui",
+    "//components/infobars/core",
+    "//components/prefs",
+    "//components/strings",
+    "//ui/base",
+    "//ui/views",
+    "//url",
+  ]
+
+  if (presearch_wallet_enabled) {
+    sources += [
+      "crypto_wallets_infobar_delegate.cc",
+      "crypto_wallets_infobar_delegate.h",
+    ]
+
+    deps += [
+      "//presearch/browser/presearch_wallet",
+      "//presearch/common:pref_names",
+      "//presearch/components/presearch_wallet/browser",
+      "//presearch/components/presearch_wallet/common",
+      "//components/user_prefs:user_prefs",
+      "//extensions/common:common_constants",
+    ]
+  }
+
+  if (ipfs_enabled) {
+    deps += [
+      "//presearch/components/ipfs",
+      "//components/user_prefs",
+    ]
+  }
+
+  if (enable_presearch_wayback_machine) {
+    sources += [
+      "presearch_wayback_machine_delegate_impl.cc",
+      "presearch_wayback_machine_delegate_impl.h",
+    ]
+
+    deps += [
+      "//presearch/common:switches",
+      "//presearch/components/presearch_wayback_machine",
+    ]
+  }
+
+  if (enable_presearch_sync) {
+    sources += [
+      "sync_v2_migrate_infobar_delegate.cc",
+      "sync_v2_migrate_infobar_delegate.h",
+    ]
+
+    deps += [
+      "//presearch/common:common",
+      "//presearch/components/presearch_sync:features",
+      "//presearch/components/presearch_sync:prefs",
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+presearch_ads_java_sources = [
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/PresearchAdsNativeHelper.java",
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/dialogs/PresearchAdsSignupDialog.java",
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/dialogs/PresearchAdsNotificationDialog.java",
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/notifications/PresearchAds.java",
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/notifications/PresearchAdsNotificationBuilder.java",
+  "../../presearch/browser/presearch_ads/android/java/org/chromium/chrome/browser/onboarding/PresearchAdsOnboardingFragment.java",
+]

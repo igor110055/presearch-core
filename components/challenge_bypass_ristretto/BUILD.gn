@@ -1,0 +1,37 @@
+# Copyright 2014 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//presearch/build/cargo.gni")
+
+config("external_config") {
+  defines = [ "NO_CXXEXCEPTIONS=1" ]
+
+  include_dirs = [ "//presearch/vendor/challenge_bypass_ristretto_ffi/src" ]
+}
+
+rust_ffi("challenge_bypass_ristretto") {
+  shared_library_define = "CHALLENGE_BYPASS_RISTRETTO_SHARED_LIBRARY"
+  implementation_define = "CHALLENGE_BYPASS_RISTRETTO_IMPLEMENTATION"
+
+  public_configs = [ ":external_config" ]
+
+  sources = [
+    "//presearch/vendor/challenge_bypass_ristretto_ffi/src/lib.h",
+    "//presearch/vendor/challenge_bypass_ristretto_ffi/src/wrapper.cpp",
+    "//presearch/vendor/challenge_bypass_ristretto_ffi/src/wrapper.hpp",
+  ]
+
+  deps = [ "//base" ]
+
+  if (is_mac || is_ios) {
+    frameworks = [ "Security.framework" ]
+  }
+}
+
+rust_crate("rust_lib") {
+  inputs = [
+    "//presearch/vendor/challenge_bypass_ristretto_ffi/Cargo.toml",
+    "//presearch/vendor/challenge_bypass_ristretto_ffi/src/lib.rs",
+  ]
+}

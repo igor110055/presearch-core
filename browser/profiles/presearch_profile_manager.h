@@ -1,0 +1,57 @@
+/* Copyright (c) 2019 The Presearch Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef PRESEARCH_BROWSER_PROFILES_PRESEARCH_PROFILE_MANAGER_H_
+#define PRESEARCH_BROWSER_PROFILES_PRESEARCH_PROFILE_MANAGER_H_
+
+#include <string>
+
+#include "base/scoped_observer.h"
+#include "chrome/browser/profiles/profile_manager.h"
+#include "chrome/browser/profiles/profile_manager_observer.h"
+#include "chrome/browser/profiles/profile_observer.h"
+
+class PresearchProfileManager : public ProfileManager,
+                            public ProfileManagerObserver,
+                            public ProfileObserver {
+ public:
+  explicit PresearchProfileManager(const base::FilePath& user_data_dir);
+  ~PresearchProfileManager() override;
+
+  void InitProfileUserPrefs(Profile* profile) override;
+  std::string GetLastUsedProfileName() override;
+  void SetNonPersonalProfilePrefs(Profile* profile) override;
+  bool IsAllowedProfilePath(const base::FilePath& path) const override;
+  bool LoadProfileByPath(const base::FilePath& profile_path,
+                         bool incognito,
+                         ProfileLoadedCallback callback) override;
+
+  // ProfileManagerObserver:
+  void OnProfileAdded(Profile* profile) override;
+
+  // ProfileObserver:
+  void OnOffTheRecordProfileCreated(Profile* off_the_record) override;
+  void OnProfileWillBeDestroyed(Profile* profile) override;
+
+ protected:
+  void DoFinalInitForServices(Profile* profile,
+                              bool go_off_the_record) override;
+
+ private:
+  void MigrateProfileNames();
+  ScopedObserver<Profile, ProfileObserver> observed_profiles_{this};
+
+  DISALLOW_COPY_AND_ASSIGN(PresearchProfileManager);
+};
+
+class PresearchProfileManagerWithoutInit : public PresearchProfileManager {
+ public:
+  explicit PresearchProfileManagerWithoutInit(const base::FilePath& user_data_dir);
+
+ private:
+  DISALLOW_COPY_AND_ASSIGN(PresearchProfileManagerWithoutInit);
+};
+
+#endif  // PRESEARCH_BROWSER_PROFILES_PRESEARCH_PROFILE_MANAGER_H_

@@ -1,0 +1,14 @@
+source_set("sync") {
+  check_includes = false
+
+  sources = [
+    "presearch_profile_sync_service_delegate.cc",
+    "presearch_profile_sync_service_delegate.h",
+  ]
+
+  deps = [
+    "//base",
+    "//components/sync/driver",
+    "//components/sync_device_info",
+  ]
+}

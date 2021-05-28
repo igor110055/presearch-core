@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/ui/webui/bookmarks/bookmarks_ui.cc b/chrome/browser/ui/webui/bookmarks/bookmarks_ui.cc
+index 155e3aa532d9dc1a82b90277fe96e28ba1efd6cd..7e0eb652845fb15c936fccad28956da3e4e25363 100644
+--- a/chrome/browser/ui/webui/bookmarks/bookmarks_ui.cc
++++ b/chrome/browser/ui/webui/bookmarks/bookmarks_ui.cc
+@@ -128,6 +128,7 @@ content::WebUIDataSource* CreateBookmarksUIHTMLSource(Profile* profile) {
+   for (const auto& str : kStrings)
+     AddLocalizedString(source, str.name, str.id);
+ 
++  PRESEARCH_CREATE_BOOKMARKS_UI_HTML_SOURCE
+   return source;
+ }
+ 

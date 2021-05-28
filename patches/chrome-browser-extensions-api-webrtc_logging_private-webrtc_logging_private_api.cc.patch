@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/extensions/api/webrtc_logging_private/webrtc_logging_private_api.cc b/chrome/browser/extensions/api/webrtc_logging_private/webrtc_logging_private_api.cc
+index 3f1decf1d8c49fc4cfb788400b2f1333579a194f..4b113fe7bedf7a7cba8ee9c625a5a13169a574b2 100644
+--- a/chrome/browser/extensions/api/webrtc_logging_private/webrtc_logging_private_api.cc
++++ b/chrome/browser/extensions/api/webrtc_logging_private/webrtc_logging_private_api.cc
+@@ -89,6 +89,7 @@ content::RenderProcessHost* WebrtcLoggingPrivateFunction::RphFromRequest(
+     const api::webrtc_logging_private::RequestInfo& request,
+     const std::string& security_origin,
+     std::string* error) {
++  PRESEARCH_DISABLE_RPH_FROM_REQUEST //feature disabled in Presearch
+   // There are 2 ways these API functions can get called.
+   //
+   //  1. From an allowlisted component extension on behalf of a page with the

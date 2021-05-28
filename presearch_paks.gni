@@ -1,0 +1,212 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_webtorrent/browser/buildflags/buildflags.gni")
+import("//presearch/components/speedreader/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//build/config/locales.gni")
+import("//chrome/common/features.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//tools/grit/repack.gni")
+import("//ui/base/ui_features.gni")
+
+# Generates a rule to repack a set of resources, substituting a given string
+# in for the percentage (e.g. "100", "200"). It generates the repacked files in
+# the "gen" directory, and then introduces a copy rule to copy it to the root
+# build directory.
+#
+# Argument:
+#   percent [required]
+#      String to substitute for the percentage.
+template("presearch_repack_percent") {
+  percent = invoker.percent
+
+  repack(target_name) {
+    forward_variables_from(invoker,
+                           [
+                             "copy_data_to_bundle",
+                             "repack_whitelist",
+                             "visibility",
+                           ])
+
+    # All sources should also have deps for completeness.
+    sources =
+        [ "$root_gen_dir/presearch/presearch_theme_resources_${percent}_percent.pak" ]
+
+    deps = [ "//presearch/app/theme:presearch_theme_resources" ]
+
+    if (defined(invoker.deps)) {
+      deps += invoker.deps
+    }
+
+    output = "${invoker.output_dir}/presearch_${percent}_percent.pak"
+  }
+}
+
+template("presearch_extra_paks") {
+  repack(target_name) {
+    forward_variables_from(invoker,
+                           [
+                             "copy_data_to_bundle",
+                             "repack_whitelist",
+                             "visibility",
+                           ])
+    output = "${invoker.output_dir}/presearch_resources.pak"
+    sources = [
+      "$root_gen_dir/presearch/ui/webui/resources/presearch_webui_resources.pak",
+      "$root_gen_dir/components/presearch_components_resources.pak",
+    ]
+
+    if (!is_android) {
+      sources += [
+        "$root_gen_dir/presearch/presearch_generated_resources.pak",
+        "$root_gen_dir/presearch/presearch_unscaled_resources.pak",
+        "$root_gen_dir/presearch/browser/resources/settings/presearch_settings_resources.pak",
+      ]
+    }
+
+    deps = [
+      "//presearch/components/resources",
+      "//presearch/ui/webui/resources",
+    ]
+
+    if (!is_android) {
+      deps += [
+        "//presearch/app:presearch_generated_resources_grit",
+        "//presearch/app/theme:presearch_unscaled_resources",
+        "//presearch/browser/resources/settings:resources",
+        "//presearch/components/resources:strings",
+      ]
+    }
+
+    if (presearch_ads_enabled) {
+      sources += [ "$root_gen_dir/presearch/components/presearch_ads/resources/presearch_ads_resources.pak" ]
+
+      deps += [ "//presearch/components/presearch_ads/resources" ]
+    }
+
+    if (presearch_rewards_enabled) {
+      sources += [ "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_resources.pak" ]
+
+      deps += [ "//presearch/components/presearch_rewards/resources" ]
+    }
+
+    if (enable_tor) {
+      sources +=
+          [ "$root_gen_dir/presearch/components/tor/resources/tor_resources.pak" ]
+
+      deps += [ "//presearch/components/tor/resources" ]
+    }
+
+    if (enable_presearch_webtorrent) {
+      sources += [ "$root_gen_dir/presearch/components/presearch_webtorrent/presearch_webtorrent_resources.pak" ]
+
+      deps += [ "//presearch/components/presearch_webtorrent:resources" ]
+    }
+
+    if (enable_extensions) {
+      sources += [
+        "$root_gen_dir/presearch/browser/resources/extensions/presearch_extensions_resources.pak",
+        "$root_gen_dir/presearch/components/presearch_extension/presearch_extension_resources.pak",
+      ]
+
+      deps += [
+        "//presearch/browser/resources/extensions:resources",
+        "//presearch/common/extensions/api",
+        "//presearch/components/presearch_extension:resources",
+      ]
+    }
+
+    if (presearch_rewards_enabled) {
+      if (enable_extensions) {
+        sources += [ "$root_gen_dir/presearch/components/presearch_rewards/resources/extension/presearch_rewards_extension_resources.pak" ]
+
+        deps +=
+            [ "//presearch/components/presearch_rewards/resources/extension:resources" ]
+      }
+    }
+
+    if (defined(invoker.deps)) {
+      deps += invoker.deps
+    }
+    if (defined(invoker.additional_paks)) {
+      sources += invoker.additional_paks
+    }
+  }
+}
+
+# Defines repack() targets used by Presearch. Specifically:
+# * presearch_100_percent.pak
+# * presearch_200_percent.pak (optionally)
+# * resources.pak
+#
+# Paramters:
+#   output_dir [required]: Directory to output .pak files.
+#   additional_extra_paks: List of extra .pak sources for resources.pak.
+#   locale_whitelist: if set, override repack_whitelist for locale .pak files.
+#   copy_data_to_bundle:
+#   deps:
+#   output_dir:
+#   public_deps:
+#   repack_whitelist:
+#   visibility:
+#     Normal meanings.
+#
+template("presearch_paks") {
+  presearch_repack_percent("${target_name}_100_percent") {
+    percent = "100"
+    forward_variables_from(invoker,
+                           [
+                             "copy_data_to_bundle",
+                             "deps",
+                             "output_dir",
+                             "repack_whitelist",
+                             "visibility",
+                           ])
+  }
+
+  if (enable_hidpi) {
+    presearch_repack_percent("${target_name}_200_percent") {
+      percent = "200"
+      forward_variables_from(invoker,
+                             [
+                               "copy_data_to_bundle",
+                               "deps",
+                               "output_dir",
+                               "repack_whitelist",
+                               "visibility",
+                             ])
+    }
+  }
+
+  presearch_extra_paks("${target_name}_extra") {
+    forward_variables_from(invoker,
+                           [
+                             "copy_data_to_bundle",
+                             "deps",
+                             "output_dir",
+                             "repack_whitelist",
+                             "visibility",
+                           ])
+    if (defined(invoker.additional_extra_paks)) {
+      additional_paks = invoker.additional_extra_paks
+    }
+  }
+
+  group(target_name) {
+    forward_variables_from(invoker, [ "deps" ])
+    public_deps = [
+      ":${target_name}_100_percent",
+      ":${target_name}_extra",
+    ]
+    if (enable_hidpi) {
+      public_deps += [ ":${target_name}_200_percent" ]
+    }
+    if (defined(invoker.public_deps)) {
+      public_deps += invoker.public_deps
+    }
+  }
+}

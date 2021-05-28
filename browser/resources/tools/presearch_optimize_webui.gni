@@ -1,0 +1,11 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+presearch_webui_deps = [ "//presearch/ui/webui/resources:modulize" ]
+
+presearch_resources_path =
+    rebase_path("$root_gen_dir/presearch/ui/webui/resources/", root_build_dir)
+presearch_webui_external_paths =
+    [ "chrome://presearch-resources/|$presearch_resources_path" ]

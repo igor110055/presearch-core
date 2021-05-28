@@ -1,0 +1,30 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+
+presearch_chrome_renderer_sources = [
+  "//presearch/renderer/presearch_content_renderer_client.cc",
+  "//presearch/renderer/presearch_content_renderer_client.h",
+  "//presearch/renderer/presearch_render_thread_observer.cc",
+  "//presearch/renderer/presearch_render_thread_observer.h",
+]
+
+presearch_chrome_renderer_public_deps = [
+  "//presearch/components/presearch_search/renderer",
+  "//presearch/components/presearch_wallet/common/buildflags",
+  "//presearch/components/content_settings/renderer",
+  "//presearch/components/cosmetic_filters/renderer",
+  "//mojo/public/cpp/bindings",
+  "//third_party/blink/public:blink",
+  "//third_party/blink/public/common",
+]
+
+if (presearch_wallet_enabled) {
+  presearch_chrome_renderer_public_deps += [
+    "//presearch/components/presearch_wallet/renderer",
+    "//presearch/renderer/presearch_wallet",
+  ]
+}

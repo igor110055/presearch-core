@@ -1,0 +1,6 @@
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+
+declare_args() {
+  presearch_ads_enabled =
+      presearch_rewards_enabled && (is_mac || is_linux || is_win || is_android)
+}

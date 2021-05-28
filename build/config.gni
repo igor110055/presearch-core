@@ -1,0 +1,153 @@
+import("//presearch/build/features.gni")
+import("//build/util/branding.gni")
+
+declare_args() {
+  # Release channel support.
+  # "beta" for beta release.
+  # "dev" for dev channel release.
+  # "nightly" for nightly channel release.
+  # "" for stable channel release.
+  presearch_channel = ""
+  is_release_channel = true
+  base_sparkle_update_url = ""
+  enable_sparkle = is_official_build && is_mac
+
+  sparkle_dsa_private_key_file = ""
+  sparkle_eddsa_private_key = ""
+  sparkle_eddsa_public_key = ""
+
+  presearch_product_name = ""
+  presearch_project_name = ""
+  presearch_exe = ""
+  presearch_version_major = ""
+  presearch_version_minor = ""
+  presearch_version_build = ""
+  presearch_version_patch = 0
+  chrome_version_string = ""
+  chrome_version_major = ""
+  build_omaha = false
+  tag_ap = ""
+  target_android_base = ""
+  target_android_output_format = ""
+  presearch_android_keystore_path = "."
+  presearch_android_keystore_name = ""
+  presearch_android_keystore_password = ""
+  presearch_android_key_password = ""
+
+  skip_signing = false
+
+  # Used for generating delta installer on macOS/Windows
+  build_delta_installer = false
+  last_chrome_installer = ""
+}
+
+presearch_version = "$presearch_version_major.$presearch_version_minor.$presearch_version_build"
+
+if (presearch_exe == "") {
+  presearch_exe = presearch_project_name
+}
+
+presearch_dist_dir = "$root_out_dir/dist"
+if (is_win) {
+  presearch_exe = "$presearch_exe.exe"
+  presearch_underline_full_version =
+      "_$chrome_version_major" + "_$presearch_version_major" +
+      "_$presearch_version_minor" + "_$presearch_version_build"
+  _channel = ""
+  presearch_app_guid = "{AFE6A462-C574-4B8A-AF43-4CC60DF4563B}"
+  if (is_official_build) {
+    if (presearch_channel == "beta") {
+      _channel = "Beta"
+      presearch_app_guid = "{103BD053-949B-43A8-9120-2E424887DE11}"
+    } else if (presearch_channel == "dev") {
+      _channel = "Dev"
+      presearch_app_guid = "{CB2150F2-595F-4633-891A-E39720CE0531}"
+    } else if (presearch_channel == "nightly") {
+      _channel = "Nightly"
+      presearch_app_guid = "{C6CB981E-DB30-4876-8639-109F8933582C}"
+    } else {
+      assert(presearch_channel == "", "Unknown channel name")
+    }
+  } else {
+    _channel = "Development"
+  }
+  _arch = ""
+  if (target_cpu == "x86") {
+    _arch = "32"
+  }
+  presearch_installer_exe = "presearch_installer$presearch_underline_full_version.exe"
+  presearch_stub_installer_exe =
+      "PresearchBrowser$_channel" + "Setup$_arch$presearch_underline_full_version.exe"
+  presearch_untagged_stub_installer_exe =
+      "PresearchBrowserUntagged$_channel" +
+      "Setup$_arch$presearch_underline_full_version.exe"
+  presearch_standalone_installer_exe =
+      "PresearchBrowserStandalone$_channel" +
+      "Setup$_arch$presearch_underline_full_version.exe"
+  presearch_silent_installer_exe = "PresearchBrowserStandaloneSilent$_channel" +
+                               "Setup$_arch$presearch_underline_full_version.exe"
+  presearch_untagged_installer_exe = "PresearchBrowserStandaloneUntagged$_channel" +
+                                 "Setup$_arch$presearch_underline_full_version.exe"
+} else if (is_mac) {
+  presearch_exe = "$chrome_product_full_name.app"
+  presearch_dmg = "$chrome_product_full_name.dmg"
+  presearch_pkg = "$chrome_product_full_name.pkg"
+  presearch_delta = "$chrome_product_full_name.delta"
+
+  presearch_product_dir_name_suffix = ""
+  if (is_official_build) {
+    if (presearch_channel == "beta") {
+      presearch_product_dir_name_suffix = "-Beta"
+    } else if (presearch_channel == "dev") {
+      presearch_product_dir_name_suffix = "-Dev"
+    } else if (presearch_channel == "nightly") {
+      presearch_product_dir_name_suffix = "-Nightly"
+    } else {
+      assert(presearch_channel == "", "Unknown channel name")
+    }
+  } else {
+    presearch_product_dir_name_suffix = "-Development"
+  }
+  presearch_product_dir_name =
+      "PresearchSoftware/Presearch-Browser$presearch_product_dir_name_suffix"
+
+  if (base_sparkle_update_url == "") {
+    base_sparkle_update_url =
+        "https://updates.presearchsoftware.com/sparkle/Presearch-Browser"
+  }
+  _update_channel = presearch_channel
+  if (_update_channel == "") {
+    _update_channel = "stable"
+  }
+  if (target_cpu == "arm64") {
+    _update_channel += "-arm64"
+  }
+  presearch_feed_url = "$base_sparkle_update_url/$_update_channel/appcast.xml"
+}
+
+presearch_platform = "darwin"
+if (is_win) {
+  presearch_platform = "win32"
+} else if (is_linux) {
+  presearch_platform = "linux"
+}
+
+is_release_channel = presearch_channel == ""
+
+presearch_android_output = ""
+if (is_android) {
+  presearch_android_output += "$root_out_dir/apks/Presearch"
+  if (target_android_base == "modern") {
+    assert(target_cpu != "arm64" && target_cpu != "x64")
+    presearch_android_output += "Modern"
+  } else if (target_cpu == "arm64" || target_cpu == "x64" ||
+             target_android_base == "mono") {
+    presearch_android_output += "Mono"
+  }
+
+  if (target_android_output_format == "aab") {
+    presearch_android_output += "$target_cpu.aab"
+  } else {
+    presearch_android_output += "$target_cpu.apk"
+  }
+}

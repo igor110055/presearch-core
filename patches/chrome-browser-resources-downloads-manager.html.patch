@@ -1,0 +1,10 @@
+diff --git a/chrome/browser/resources/downloads/manager.html b/chrome/browser/resources/downloads/manager.html
+index 9797412714937f11e2c6388b9de56cbd1293e5b2..6016a51912120dfda32af491baafdbcc6e7f1765 100644
+--- a/chrome/browser/resources/downloads/manager.html
++++ b/chrome/browser/resources/downloads/manager.html
+@@ -1,4 +1,4 @@
+-<style include="cr-page-host-style cr-shared-style cr-hidden-style">
++<style include="cr-page-host-style cr-shared-style cr-hidden-style br-shared-style">
+   :host {
+     display: flex;
+     flex: 1 0;

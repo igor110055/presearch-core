@@ -1,0 +1,227 @@
+import("//presearch/components/binance/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_together/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wallet/browser/config.gni")
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wayback_machine/buildflags/buildflags.gni")
+import("//presearch/components/presearch_webtorrent/browser/buildflags/buildflags.gni")
+import("//presearch/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+import("//presearch/components/decentralized_dns/buildflags/buildflags.gni")
+import("//presearch/components/gemini/browser/buildflags/buildflags.gni")
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//presearch/components/sidebar/buildflags/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//build/config/features.gni")
+import("//components/gcm_driver/config.gni")
+
+source_set("extensions") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10661 is resolved
+  check_includes = false
+  sources = [
+    "api/presearch_action_api.cc",
+    "api/presearch_action_api.h",
+    "api/presearch_extensions_api_client.cc",
+    "api/presearch_extensions_api_client.h",
+    "api/presearch_shields_api.cc",
+    "api/presearch_shields_api.h",
+    "api/presearch_theme_api.cc",
+    "api/presearch_theme_api.h",
+    "api/presearch_today_api.cc",
+    "api/presearch_today_api.h",
+    "api/greaselion_api.cc",
+    "api/greaselion_api.h",
+    "api/settings_private/presearch_prefs_util.cc",
+    "api/settings_private/presearch_prefs_util.h",
+    "presearch_component_loader.cc",
+    "presearch_component_loader.h",
+    "presearch_extension_management.cc",
+    "presearch_extension_management.h",
+    "presearch_extension_provider.cc",
+    "presearch_extension_provider.h",
+    "presearch_extension_service.cc",
+    "presearch_extension_service.h",
+    "presearch_extensions_browser_api_provider.cc",
+    "presearch_extensions_browser_api_provider.h",
+    "presearch_extensions_browser_client_impl.cc",
+    "presearch_extensions_browser_client_impl.h",
+    "presearch_theme_event_router.cc",
+    "presearch_theme_event_router.h",
+    "updater/presearch_update_client_config.cc",
+    "updater/presearch_update_client_config.h",
+  ]
+
+  deps = [
+    ":resources",
+    "//base",
+    "//presearch/app:presearch_generated_resources_grit",
+    "//presearch/browser/profiles",
+    "//presearch/browser/webcompat_reporter",
+    "//presearch/common",
+    "//presearch/common:pref_names",
+    "//presearch/common/extensions/api",
+    "//presearch/components/presearch_component_updater/browser",
+    "//presearch/components/presearch_rewards/browser/buildflags",
+    "//presearch/components/presearch_shields/browser",
+    "//presearch/components/presearch_shields/common",
+    "//presearch/components/presearch_today/browser",
+    "//presearch/components/presearch_wayback_machine:buildflags",
+    "//presearch/components/decentralized_dns/buildflags",
+    "//presearch/components/ipfs/buildflags",
+    "//presearch/components/sidebar/buildflags",
+    "//presearch/components/tor/buildflags",
+    "//chrome/browser/extensions",
+    "//chrome/common",
+    "//components/gcm_driver:gcm_buildflags",
+    "//components/gcm_driver:gcm_driver",
+    "//components/omnibox/browser:browser",
+    "//components/prefs",
+    "//components/services/patch/content",
+    "//components/services/unzip/content",
+    "//components/update_client:patch_impl",
+    "//components/update_client:unzip_impl",
+    "//content/public/browser",
+    "//extensions/browser",
+    "//extensions/common",
+    "//third_party/re2",
+    "//ui/base",
+    "//url",
+  ]
+
+  if (enable_sidebar) {
+    deps += [ "//presearch/components/sidebar" ]
+  }
+
+  if (presearch_wallet_enabled) {
+    sources += [
+      "api/presearch_wallet_api.cc",
+      "api/presearch_wallet_api.h",
+      "presearch_wallet_util.cc",
+      "presearch_wallet_util.h",
+    ]
+    configs += [
+      ":infura_config",
+      ":presearch_services_config",
+    ]
+    deps += [
+      "//presearch/components/presearch_wallet/browser",
+      "//presearch/components/presearch_wallet/common",
+    ]
+  }
+
+  if (ipfs_enabled) {
+    sources += [
+      "api/ipfs_api.cc",
+      "api/ipfs_api.h",
+    ]
+    deps += [ "//presearch/components/ipfs" ]
+  }
+
+  if (decentralized_dns_enabled) {
+    deps += [ "//presearch/components/decentralized_dns" ]
+  }
+
+  if (presearch_rewards_enabled) {
+    sources += [
+      "api/presearch_rewards_api.cc",
+      "api/presearch_rewards_api.h",
+      "api/rewards_notifications_api.cc",
+      "api/rewards_notifications_api.h",
+    ]
+
+    deps += [
+      "//presearch/browser/presearch_ads",
+      "//presearch/components/presearch_ads/browser",
+      "//presearch/components/presearch_rewards/browser",
+      "//presearch/vendor/bat-native-ads:headers",
+      "//presearch/vendor/bat-native-ledger:headers",
+    ]
+  }
+  if (enable_presearch_webtorrent) {
+    deps += [ "//presearch/components/presearch_webtorrent/browser" ]
+    sources += [
+      "presearch_webtorrent_navigation_throttle.cc",
+      "presearch_webtorrent_navigation_throttle.h",
+    ]
+  }
+  if (enable_presearch_wayback_machine) {
+    deps += [ "//presearch/components/presearch_wayback_machine" ]
+  }
+  if (gemini_enabled) {
+    sources += [
+      "api/gemini_api.cc",
+      "api/gemini_api.h",
+    ]
+    deps += [
+      "//presearch/components/gemini/browser",
+      "//presearch/components/ntp_widget_utils/browser",
+    ]
+  }
+
+  if (binance_enabled) {
+    sources += [
+      "api/binance_api.cc",
+      "api/binance_api.h",
+    ]
+
+    deps += [
+      "//presearch/components/binance/browser",
+      "//presearch/components/ntp_widget_utils/browser",
+    ]
+  }
+
+  if (presearch_together_enabled) {
+    sources += [
+      "api/presearch_together_api.cc",
+      "api/presearch_together_api.h",
+    ]
+
+    deps += [
+      "//presearch/components/presearch_together/browser",
+      "//presearch/components/ntp_widget_utils/browser",
+    ]
+  }
+  if (crypto_dot_com_enabled) {
+    sources += [
+      "api/crypto_dot_com_api.cc",
+      "api/crypto_dot_com_api.h",
+    ]
+    deps += [
+      "//presearch/browser/profiles",
+      "//presearch/common",
+      "//presearch/components/crypto_dot_com/browser",
+      "//presearch/components/crypto_dot_com/common/",
+      "//presearch/components/ntp_widget_utils/browser",
+      "//chrome/browser/extensions",
+      "//components/prefs",
+      "//extensions/browser",
+      "//extensions/common:common_constants",
+    ]
+  }
+}
+
+group("resources") {
+  deps = [
+    "//presearch/components/presearch_extension:generated_resources",
+    "//presearch/components/presearch_extension:static_resources",
+  ]
+  if (presearch_rewards_enabled) {
+    deps += [
+      "//presearch/components/presearch_rewards/resources/extension:extension_generated_resources",
+      "//presearch/components/presearch_rewards/resources/extension:static_resources",
+    ]
+  }
+  if (enable_presearch_webtorrent) {
+    deps += [
+      "//presearch/components/presearch_webtorrent:generated_resources",
+      "//presearch/components/presearch_webtorrent:static_resources",
+    ]
+  }
+}
+
+config("presearch_services_config") {
+  defines = [ "PRESEARCH_SERVICES_KEY=\"$presearch_services_key\"" ]
+}
+
+config("infura_config") {
+  defines = [ "PRESEARCH_INFURA_PROJECT_ID=\"$presearch_infura_project_id\"" ]
+}

@@ -1,0 +1,130 @@
+import(
+    "//presearch/components/presearch_perf_predictor/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//presearch/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+import("//presearch/components/decentralized_dns/buildflags/buildflags.gni")
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//presearch/components/sidebar/buildflags/buildflags.gni")
+import("//presearch/components/speedreader/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//build/config/locales.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//tools/grit/grit_rule.gni")
+import("//tools/grit/repack.gni")
+
+grit("static_resources") {
+  source = "presearch_components_resources.grd"
+
+  output_name = "presearch_components_resources_new"
+
+  outputs = [
+    "grit/presearch_components_resources.h",
+    "presearch_components_static.pak",
+  ]
+  deps = [ ":strings" ]
+
+  if (enable_extensions) {
+    deps += [ "//presearch/components/presearch_extension/extension/presearch_extension" ]
+  }
+  if (presearch_rewards_enabled) {
+    deps += [ "//presearch/components/presearch_rewards/resources" ]
+    if (enable_extensions) {
+      deps +=
+          [ "//presearch/components/presearch_rewards/resources/extension:resources" ]
+    }
+  }
+  if (enable_tor) {
+    deps += [ "//presearch/components/tor/resources" ]
+  }
+
+  defines = [
+    "enable_presearch_perf_predictor=$enable_presearch_perf_predictor",
+    "enable_speedreader=$enable_speedreader",
+    "ipfs_enabled=$ipfs_enabled",
+    "crypto_dot_com_enabled=$crypto_dot_com_enabled",
+    "decentralized_dns_enabled=$decentralized_dns_enabled",
+  ]
+
+  grit_flags = [
+    "-E",
+    "root_gen_dir=" + rebase_path(root_gen_dir, root_build_dir),
+  ]
+
+  output_dir = "$root_gen_dir/components"
+  resource_ids = "//presearch/browser/resources/resource_ids"
+}
+
+repack("resources") {
+  deps = [
+    ":static_resources",
+    "//presearch/components/presearch_adblock_ui:generated_resources",
+    "//presearch/components/cosmetic_filters/resources/data:generated_resources",
+  ]
+
+  sources = [
+    "$root_gen_dir/presearch/components/presearch_adblock/resources/presearch_adblock_generated.pak",
+    "$root_gen_dir/presearch/components/cosmetic_filters/resources/cosmetic_filters_generated.pak",
+    "$root_gen_dir/components/presearch_components_static.pak",
+  ]
+
+  if (!is_android) {
+    deps += [
+      "//presearch/components/presearch_new_tab_ui:generated_resources",
+      "//presearch/components/presearch_welcome_ui:generated_resources",
+      "//presearch/components/webcompat_reporter/ui:generated_resources",
+    ]
+
+    sources += [
+      "$root_gen_dir/presearch/components/presearch_new_tab/resources/presearch_new_tab_generated.pak",
+      "$root_gen_dir/presearch/components/presearch_welcome/resources/presearch_welcome_generated.pak",
+      "$root_gen_dir/presearch/components/webcompat_reporter/resources/webcompat_reporter_generated.pak",
+    ]
+  }
+
+  if (ipfs_enabled) {
+    deps += [ "//presearch/components/ipfs_ui:generated_resources" ]
+    sources += [
+      "$root_gen_dir/presearch/components/ipfs_ui/resources/ipfs_generated.pak",
+    ]
+  }
+
+  if (presearch_wallet_enabled && !is_android) {
+    deps += [ "//presearch/components/presearch_wallet_ui:generated_resources" ]
+    sources += [ "$root_gen_dir/presearch/components/presearch_wallet/resources/presearch_wallet_generated.pak" ]
+  }
+
+  output = "$root_gen_dir/components/presearch_components_resources.pak"
+}
+
+grit("strings") {
+  source = "presearch_components_strings.grd"
+
+  outputs = [ "grit/presearch_components_strings.h" ]
+
+  defines = [
+    "enable_speedreader=$enable_speedreader",
+    "ipfs_enabled=$ipfs_enabled",
+    "decentralized_dns_enabled=$decentralized_dns_enabled",
+    "crypto_dot_com_enabled=$crypto_dot_com_enabled",
+    "enable_tor=$enable_tor",
+    "enable_sidebar=$enable_sidebar",
+  ]
+
+  foreach(locale, locales_with_fake_bidi) {
+    outputs += [ "presearch_components_strings_$locale.pak" ]
+  }
+
+  output_dir = "$root_gen_dir/components"
+  resource_ids = "//presearch/browser/resources/resource_ids"
+}
+
+action("about_credits") {
+  script = "//presearch/script/check_npm_licenses.py"
+
+  inputs = [ "//presearch/package.json" ]
+
+  outputs = [ "$root_gen_dir/npm_licenses.checked" ]
+
+  args = [ rebase_path("$root_gen_dir/npm_licenses.checked") ]
+}

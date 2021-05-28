@@ -1,0 +1,5 @@
+#loading-toolbar,
+html[dark] #loading-toolbar {
+  background: var(--presearch-toolbar-gradient);
+  color: transparent;
+}

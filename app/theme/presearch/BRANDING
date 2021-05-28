@@ -1,0 +1,10 @@
+COMPANY_FULLNAME=Presearch Software, Inc.
+COMPANY_SHORTNAME=Presearch Software
+PRODUCT_FULLNAME=Presearch Browser
+PRODUCT_SHORTNAME=Presearch
+PRODUCT_INSTALLER_FULLNAME=Presearch Installer
+PRODUCT_INSTALLER_SHORTNAME=Presearch Installer
+COPYRIGHT=Copyright 2016 The Presearch Authors. All rights reserved.
+MAC_BUNDLE_ID=com.presearch.Browser
+MAC_CREATOR_CODE=Cr24
+MAC_TEAM_ID=KL8N8XSYF4

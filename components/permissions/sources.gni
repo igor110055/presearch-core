@@ -1,0 +1,36 @@
+presearch_components_permissions_sources = [
+  "//presearch/components/permissions/permission_expiration_key.cc",
+  "//presearch/components/permissions/permission_expiration_key.h",
+  "//presearch/components/permissions/permission_expirations.cc",
+  "//presearch/components/permissions/permission_expirations.h",
+  "//presearch/components/permissions/permission_lifetime_manager.cc",
+  "//presearch/components/permissions/permission_lifetime_manager.h",
+  "//presearch/components/permissions/permission_lifetime_options.cc",
+  "//presearch/components/permissions/permission_lifetime_options.h",
+  "//presearch/components/permissions/permission_lifetime_pref_names.h",
+  "//presearch/components/permissions/permission_lifetime_utils.cc",
+  "//presearch/components/permissions/permission_lifetime_utils.h",
+  "//presearch/components/permissions/permission_origin_lifetime_monitor.h",
+  "//presearch/components/permissions/permission_origin_lifetime_monitor_impl.cc",
+  "//presearch/components/permissions/permission_origin_lifetime_monitor_impl.h",
+  "//presearch/components/permissions/permission_origins.cc",
+  "//presearch/components/permissions/permission_origins.h",
+]
+
+presearch_components_permissions_deps = [
+  "//base",
+  "//base/util/timer",
+  "//presearch/components/resources:strings_grit",
+  "//components/content_settings/core/browser",
+  "//components/content_settings/core/common",
+  "//components/keyed_service/core",
+  "//components/pref_registry",
+  "//services/preferences/public/cpp",
+  "//ui/base",
+  "//url",
+]
+
+if (is_android) {
+  presearch_components_permissions_deps +=
+      [ "//presearch/components/permissions/android:jni_headers" ]
+}

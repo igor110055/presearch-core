@@ -1,0 +1,19 @@
+source_set("renderer") {
+  sources = [
+    "presearch_search_js_handler.cc",
+    "presearch_search_js_handler.h",
+    "presearch_search_service_worker_holder.cc",
+    "presearch_search_service_worker_holder.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/components/presearch_search/common:mojom",
+    "//content/public/renderer",
+    "//gin",
+    "//mojo/public/cpp/bindings",
+    "//third_party/blink/public:blink",
+    "//third_party/blink/public/common",
+    "//v8",
+  ]
+}

@@ -1,0 +1,75 @@
+import("//presearch/components/common/typescript.gni")
+import("//build/config/locales.gni")
+
+transpile_web_ui("presearch_extension") {
+  # Need this to fire re-pack if changed, nevertheless extension is repacked on each 2nd build
+  # what is the output bundle called and what is the entry point file
+  entry_points = [
+    [
+      "presearch_extension",
+      rebase_path("presearchShieldsPanel.tsx"),
+    ],
+    [
+      "presearch_extension_background",
+      rebase_path("background.ts"),
+    ],
+    [
+      "content_dapps",
+      rebase_path("content_dapps.ts"),
+    ],
+    [
+      "content_cosmetic",
+      rebase_path("content_cosmetic.ts"),
+    ],
+    [
+      "content_element_picker",
+      rebase_path("content_element_picker.ts"),
+    ],
+    [
+      "webstore",
+      rebase_path("webstore.ts"),
+    ],
+  ]
+
+  # what is the directory / pack name
+  resource_name = "presearch_extension"
+
+  # Must match the relative path from the static GRD to the manifest.json
+  # plus any other relative path we want these files to live in the extension
+  extra_relative_path = "/presearch_extension/out"
+
+  public_asset_path = "/out/"
+}
+
+if (is_mac) {
+  group("presearch_extension_framework_bundle_data") {
+    deps = []
+    foreach(locale, locales) {
+      deps += [ ":presearch_extension_framework_bundle_data_${locale}" ]
+    }
+  }
+
+  foreach(locale, locales) {
+    bundle_data("presearch_extension_framework_bundle_data_${locale}") {
+      locale = string_replace(locale, "-", "_")
+      source_locale = string_replace(locale, "nb", "no")
+      sources = [ "//presearch/components/presearch_extension/extension/presearch_extension/_locales/$source_locale/messages.json" ]
+      outputs = [ "{{bundle_resources_dir}}/presearch_extension/_locales/$locale/{{source_file_part}}" ]
+    }
+  }
+} else {
+  group("locales") {
+    deps = []
+    foreach(locale, locales) {
+      deps += [ ":locales_${locale}" ]
+    }
+  }
+  foreach(locale, locales) {
+    copy("locales_${locale}") {
+      locale = string_replace(locale, "-", "_")
+      source_locale = string_replace(locale, "nb", "no")
+      sources = [ "//presearch/components/presearch_extension/extension/presearch_extension/_locales/${source_locale}/messages.json" ]
+      outputs = [ "$root_out_dir/resources/presearch_extension/_locales/${locale}/{{source_file_part}}" ]
+    }
+  }
+}

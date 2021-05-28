@@ -1,0 +1,20 @@
+<style include="settings-shared md-select">
+</style>
+<div class="settings-box first">
+  <div class="start">$i18n{appearanceSettingsPresearchTheme}</div>
+  <select id="presearchThemeType" class="md-select"
+      on-change="onPresearchThemeTypeChange_">
+    <template is="dom-repeat" items="[[presearchThemeList_]]">
+      <option value="[[item.value]]"
+          selected="[[presearchThemeTypeEqual_(item.value, presearchThemeType_)]]">
+        [[item.name]]
+      </option>
+    </template>
+  </select>
+</div>
+<template is="dom-if" if="[[useThemesSubPage_()]]">
+  <cr-link-row class="hr" id="themes-subpage-trigger"
+      label="$i18n{themes}" on-click="onThemeTap_"
+      role-description="$i18n{subpageArrowRoleDescription}">
+  </cr-link-row>
+</template>

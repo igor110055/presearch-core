@@ -1,0 +1,12 @@
+diff --git a/chrome/utility/importer/external_process_importer_bridge.h b/chrome/utility/importer/external_process_importer_bridge.h
+index 29633eb670b7ac36f28f255c65d12c467e65bae9..1bf66a423598b474918109bf67af5dc3ba35ea4c 100644
+--- a/chrome/utility/importer/external_process_importer_bridge.h
++++ b/chrome/utility/importer/external_process_importer_bridge.h
+@@ -68,6 +68,7 @@ class ExternalProcessImporterBridge : public ImporterBridge {
+   base::string16 GetLocalizedString(int message_id) override;
+   // End ImporterBridge implementation.
+ 
++  PRESEARCH_EXTERNAL_PROCESS_IMPORTER_BRIDGE_H_
+  private:
+   ~ExternalProcessImporterBridge() override;
+ 

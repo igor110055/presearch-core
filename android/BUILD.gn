@@ -1,0 +1,23 @@
+import("//presearch/components/presearch_sync/buildflags/buildflags.gni")
+import("//presearch/components/p3a/buildflags.gni")
+import("//build/config/android/rules.gni")
+
+declare_args() {
+  presearch_android_developer_options_code = ""
+}
+
+java_cpp_enum("presearch_android_java_enums_srcjar") {
+  sources = [
+    "//presearch/chromium_src/chrome/browser/notifications/notification_handler.h",
+    "//presearch/components/decentralized_dns/constants.h",
+  ]
+}
+
+java_cpp_template("presearch_config_java") {
+  sources = [ "//presearch/build/android/java/templates/PresearchConfig.template" ]
+  defines = [
+    "PRESEARCH_ANDROID_DEVELOPER_OPTIONS_CODE=\"$presearch_android_developer_options_code\"",
+    "PRESEARCH_ANDROID_SYNC_ENABLED=$enable_presearch_sync",
+    "PRESEARCH_ANDROID_P3A_ENABLED=$presearch_p3a_enabled",
+  ]
+}

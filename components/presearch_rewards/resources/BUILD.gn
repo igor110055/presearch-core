@@ -1,0 +1,76 @@
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/common/typescript.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//tools/grit/grit_rule.gni")
+import("//tools/grit/repack.gni")
+
+pack_web_resources("page_generated_resources") {
+  resource_name = "presearch_rewards_page"
+  output_dir = "$root_gen_dir/presearch/components/presearch_rewards/resources"
+  # need webpack and GRD generation first
+  if (is_android) {
+    deps = [ "android_page" ]
+  } else {
+    deps = [ "page" ]
+  }
+}
+
+pack_web_resources("internals_generated_resources") {
+  resource_name = "presearch_rewards_internals"
+  output_dir = "$root_gen_dir/presearch/components/presearch_rewards/resources"
+  # need webpack and GRD generation first
+  deps = [
+    "internals"
+  ]
+}
+
+pack_web_resources("tip_generated_resources") {
+  resource_name = "presearch_rewards_tip"
+  output_dir = "$root_gen_dir/presearch/components/presearch_rewards/resources"
+  # need webpack and GRD generation first
+  deps = [
+    "tip"
+  ]
+}
+
+grit("static_resources") {
+  source = "presearch_rewards_static_resources.grd"
+
+  outputs = [
+    "grit/presearch_rewards_resources.h",
+    "presearch_rewards_static.pak",
+  ]
+
+  deps = [
+  ]
+
+  grit_flags = [
+    "-E",
+    "root_gen_dir=" + rebase_path(root_gen_dir, root_build_dir),
+  ]
+
+  resource_ids = "//presearch/browser/resources/resource_ids"
+
+  output_dir = "$root_gen_dir/presearch/components/presearch_rewards/resources"
+}
+
+repack("resources") {
+  public_deps = [
+    ":page_generated_resources",
+    ":internals_generated_resources",
+    ":static_resources",
+  ]
+
+  sources = [
+    "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_page_generated.pak",
+    "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_internals_generated.pak",
+    "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_static.pak",
+  ]
+
+  if (!is_android) {
+    sources += [ "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_tip_generated.pak" ]
+    public_deps += [ ":tip_generated_resources" ]
+  }
+
+  output = "$root_gen_dir/presearch/components/presearch_rewards/resources/presearch_rewards_resources.pak"
+}

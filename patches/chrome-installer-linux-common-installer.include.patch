@@ -1,0 +1,37 @@
+diff --git a/chrome/installer/linux/common/installer.include b/chrome/installer/linux/common/installer.include
+index 7c517f3d014890bb120b3bf4509891363990d56b..04f96212719290b3e790490273f0335ccf6ed985 100644
+--- a/chrome/installer/linux/common/installer.include
++++ b/chrome/installer/linux/common/installer.include
+@@ -75,6 +75,7 @@ process_template() (
+     -e "s#@@PACKAGE@@#${PACKAGE}#g" \
+     -e "s#@@PACKAGE_ORIG@@#${PACKAGE_ORIG}#g" \
+     -e "s#@@PACKAGE_FILENAME@@#${PACKAGE_FILENAME}#g" \
++    -e "s#@@PACKAGEANDCHANNEL@@#${PACKAGEANDCHANNEL}#g" \
+     -e "s#@@SNAPNAME@@#${SNAPNAME}#g" \
+     -e "s#@@PROGNAME@@#${PROGNAME}#g" \
+     -e "s#@@CHANNEL@@#${CHANNEL}#g" \
+@@ -162,6 +163,8 @@ stage_install_common() {
+     install -m 644 "${OUTPUTDIR}/ui_resources_100_percent.pak" "${STAGEDIR}/${INSTALLDIR}/"
+   fi
+ 
++  source "${OUTPUTDIR}/installer/common/presearch_installer.include"
++  presearch_stage_install_common
+   # ICU data file; Necessary when the GN icu_use_data_file flag is true.
+   install -m 644 "${OUTPUTDIR}/icudtl.dat" "${STAGEDIR}/${INSTALLDIR}/"
+ 
+@@ -294,11 +297,13 @@ stage_install_common() {
+ 
+   # app icons
+   local icon_regex=".*product_logo_[0-9]\+\."
+-  if [ "$BRANDING" = "google_chrome" ]; then
++  if [ "$BRANDING" = "presearch" ]; then
+     if [ "$CHANNEL" = "beta" ]; then
+       icon_regex=".*product_logo_[0-9]\+_beta\."
+-    elif [ "$CHANNEL" = "unstable" ]; then
++    elif [ "$CHANNEL" = "unstable" -o "$CHANNEL" = "dev" ]; then
+       icon_regex=".*product_logo_[0-9]\+_dev\."
++    elif [ "$CHANNEL" = "nightly" ]; then
++      icon_regex=".*product_logo_[0-9]\+_nightly\."
+     fi
+   fi
+   LOGO_RESOURCES_PNG=$(find "${OUTPUTDIR}/installer/theme/" \

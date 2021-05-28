@@ -1,0 +1,3 @@
+declare_args() {
+  presearch_wallet_enabled = !is_ios
+}

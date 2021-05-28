@@ -1,0 +1,75 @@
+// Copyright (c) 2019 The Presearch Authors. All rights reserved.
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this file,
+// You can obtain one at http://mozilla.org/MPL/2.0/.
+module ads.mojom;
+
+enum PresearchAdsEnvironment {
+  STAGING = 0,
+  PRODUCTION,
+  DEVELOPMENT
+};
+
+struct PresearchAdsSysInfo {
+  bool is_uncertain_future;
+};
+
+struct PresearchAdsBuildChannel {
+  bool is_release;
+  string name;
+};
+
+enum PresearchAdsAdType {
+  kUndefined = 0,
+  kAdNotification,
+  kNewTabPageAd,
+  kPromotedContentAd
+};
+
+// If ad notification event types are added to the 7-day ads history you should
+// update |kMaximumEntries| in |ads_history.h|
+enum PresearchAdsAdNotificationEventType {
+  kViewed = 0,
+  kClicked,
+  kDismissed,
+  kTimedOut
+};
+
+// If new tab page ad event types are added to the 7-day ads history you should
+// update |kMaximumEntries| in |ads_history.h|
+enum PresearchAdsNewTabPageAdEventType {
+  kViewed = 0,
+  kClicked
+};
+
+// If promoted content ad event types are added to the 7-day ads history you
+// should update |kMaximumEntries| in |ads_history.h|
+enum PresearchAdsPromotedContentAdEventType {
+  kViewed = 0,
+  kClicked
+};
+
+enum PresearchAdsUrlRequestMethod {
+  GET = 0,
+  PUT,
+  POST
+};
+
+enum PresearchAdsP2AEventType {
+  kListType = 0
+};
+
+struct PresearchAdsUrlRequest {
+  string url;
+  array<string> headers;
+  string content;
+  string content_type;
+  PresearchAdsUrlRequestMethod method;
+};
+
+struct PresearchAdsUrlResponse {
+  string url;
+  int32 status_code;
+  string body;
+  map<string, string> headers;
+};

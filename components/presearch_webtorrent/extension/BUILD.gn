@@ -1,0 +1,16 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("generate_presearch_webtorrent") {
+  entry_points = [
+    ["presearch_webtorrent", rebase_path("presearch_webtorrent.tsx")],
+    ["presearch_webtorrent_background", rebase_path("background.ts")]
+  ]
+
+  resource_name = "presearch_webtorrent"
+
+  # Must match the relative path from the static GRD to the manifest.json
+  # plus any other relative path we want these files to live in the extension
+  extra_relative_path = "/presearch_webtorrent/extension/out"
+
+  public_asset_path = "/extension/out/"
+}

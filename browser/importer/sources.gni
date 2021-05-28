@@ -1,0 +1,26 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+presearch_browser_importer_sources = []
+presearch_browser_importer_deps = []
+
+if (!is_android) {
+  presearch_browser_importer_sources += [
+    "//presearch/browser/importer/presearch_external_process_importer_client.cc",
+    "//presearch/browser/importer/presearch_external_process_importer_client.h",
+    "//presearch/browser/importer/presearch_external_process_importer_host.cc",
+    "//presearch/browser/importer/presearch_external_process_importer_host.h",
+    "//presearch/browser/importer/presearch_in_process_importer_bridge.cc",
+    "//presearch/browser/importer/presearch_in_process_importer_bridge.h",
+  ]
+
+  presearch_browser_importer_deps += [
+    "//base",
+    "//presearch/common/importer:interfaces",
+    "//content/public/browser",
+    "//extensions/buildflags",
+    "//mojo/public/cpp/bindings:bindings",
+  ]
+}

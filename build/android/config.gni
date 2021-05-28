@@ -1,0 +1,38 @@
+import("//presearch/android/presearch_java_resources.gni")
+import("//presearch/android/presearch_java_sources.gni")
+import("//presearch/build/android/bytecode/bytecode_rewriter.gni")
+
+declare_args() {
+  presearch_android_manifest_includes = []
+}
+
+presearch_android_manifest_includes = [ "//presearch/android/java/AndroidManifest.xml" ]
+
+presearch_chrome_java_deps = [
+  "//presearch/third_party/android_deps:com_airbnb_android_java",
+  "//presearch/third_party/android_deps:com_android_installreferrer_java",
+  "//presearch/third_party/android_deps:google_play_services_safetynet_java",
+  "//presearch/third_party/zxing:zxing_java",
+  "//third_party/android_deps:google_play_services_vision_common_java",
+  "//third_party/android_deps:google_play_services_vision_java",
+]
+
+# To use our overrided enum in java, put the header file of our overrided enum
+# in presearch_android_java_enums_srcjar target and add the chromium header file of
+# the enum we're replacing in presearch_java_cpp_enum_filter.
+presearch_java_cpp_enum_filter =
+    [ "//chrome/browser/notifications/notification_handler.h" ]
+presearch_chrome_java_srcjar_deps = [
+  "//presearch/android:presearch_android_java_enums_srcjar",
+  "//presearch/android:presearch_config_java",
+  "//presearch/browser/android/preferences:java_pref_names_srcjar",
+]
+
+presearch_chrome_app_java_resources_deps =
+    [ "//presearch/build/android:android_presearch_strings_grd" ]
+
+presearch_components_browser_ui_site_settings_android_java_resources_deps =
+    [ "//presearch/build/android:android_presearch_strings_grd" ]
+
+presearch_resources_exclusion_exceptions =
+    [ "*com_google_android_material*design_bottom_*" ]

@@ -1,0 +1,38 @@
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//presearch/components/sidebar/buildflags/buildflags.gni")
+import("//chrome/common/features.gni")
+import("//tools/grit/grit_rule.gni")
+
+grit("presearch_theme_resources") {
+  source = "presearch_theme_resources.grd"
+  defines = chrome_grit_defines
+  defines += [
+    "enable_sidebar=$enable_sidebar",
+    "ipfs_enabled=$ipfs_enabled",
+  ]
+  outputs = [
+    "grit/presearch_theme_resources.h",
+    "grit/presearch_theme_resources_map.cc",
+    "grit/presearch_theme_resources_map.h",
+    "presearch_theme_resources_100_percent.pak",
+    "presearch_theme_resources_200_percent.pak",
+    "presearch_theme_resources_300_percent.pak",
+  ]
+
+  resource_ids = "//presearch/browser/resources/resource_ids"
+
+  output_dir = "$root_gen_dir/presearch"
+}
+
+grit("presearch_unscaled_resources") {
+  source = "presearch_unscaled_resources.grd"
+  defines = chrome_grit_defines
+  outputs = [
+    "grit/presearch_unscaled_resources.h",
+    "presearch_unscaled_resources.pak",
+  ]
+
+  resource_ids = "//presearch/browser/resources/resource_ids"
+
+  output_dir = "$root_gen_dir/presearch"
+}

@@ -1,0 +1,12 @@
+diff --git a/net/cookies/canonical_cookie.cc b/net/cookies/canonical_cookie.cc
+index 9168c32f3c154216af159435b668db5b61114823..602e16a7a5c28a9f1dc3e87e2fff31cfa09ce1a4 100644
+--- a/net/cookies/canonical_cookie.cc
++++ b/net/cookies/canonical_cookie.cc
+@@ -434,6 +434,7 @@ std::unique_ptr<CanonicalCookie> CanonicalCookie::Create(
+   // Get the port, this will get a default value if a port isn't provided.
+   int source_port = url.EffectiveIntPort();
+ 
++  PRESEARCH_CREATE
+   std::unique_ptr<CanonicalCookie> cc = base::WrapUnique(new CanonicalCookie(
+       parsed_cookie.Name(), parsed_cookie.Value(), cookie_domain, cookie_path,
+       creation_time, cookie_expires, creation_time, parsed_cookie.IsSecure(),

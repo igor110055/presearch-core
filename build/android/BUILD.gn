@@ -1,0 +1,193 @@
+import("//presearch/build/config.gni")
+import("//build/config/android/rules.gni")
+import("//tools/grit/grit_rule.gni")
+
+action("sign_app") {
+  script = "//presearch/build/android/sign_apk.py"
+  _apksigner = "$android_sdk_build_tools/apksigner"
+  _jarsigner = "//third_party/jdk/current/bin/jarsigner"
+  _zipalign = "$android_sdk_build_tools/zipalign"
+
+  deps = [ "//presearch/app/android:create_dist_zips" ]
+
+  if (target_cpu == "arm64" || target_cpu == "x64") {
+    if (target_android_output_format == "aab") {
+      target_sign_app_path = "$root_out_dir/apks/MonochromePublic6432.aab"
+    } else {
+      target_sign_app_path = "$root_out_dir/apks/MonochromePublic.apk"
+    }
+  } else {
+    if (target_android_base == "mono") {
+      if (target_android_output_format == "aab") {
+        target_sign_app_path = "$root_out_dir/apks/MonochromePublic.aab"
+      } else {
+        target_sign_app_path = "$root_out_dir/apks/MonochromePublic.apk"
+      }
+    } else {
+      if (target_android_output_format == "aab") {
+        target_sign_app_path = "$root_out_dir/apks/ChromeModernPublic.aab"
+      } else {
+        target_sign_app_path = "$root_out_dir/apks/ChromePublic.apk"
+      }
+    }
+  }
+
+  outputs = [ "$target_sign_app_path-singed" ]
+  args = [
+    rebase_path(_zipalign, root_out_dir),
+    rebase_path(_apksigner, root_out_dir),
+    rebase_path(_jarsigner, root_out_dir),
+  ]
+  args += [
+    rebase_path(target_sign_app_path, root_out_dir),
+    rebase_path("$presearch_android_keystore_path", root_out_dir),
+    "$presearch_android_keystore_password",
+    "$presearch_android_key_password",
+    "$presearch_android_keystore_name",
+  ]
+}
+
+copy("presearch") {
+  visibility = [ "*" ]
+  deps = []
+  sources = []
+  if (target_cpu == "arm64" || target_cpu == "x64") {
+    if (target_android_output_format == "aab") {
+      deps += [ "//chrome/android:monochrome_64_32_public_bundle" ]
+      sources += [ "$root_out_dir/apks/MonochromePublic6432.aab" ]
+    } else {
+      # There is no 64-bit apk target for Mono
+      deps += [ "//chrome/android:monochrome_public_apk" ]
+      sources += [ "$root_out_dir/apks/MonochromePublic.apk" ]
+    }
+  } else {
+    if (target_android_base == "mono") {
+      if (target_android_output_format == "aab") {
+        deps += [ "//chrome/android:monochrome_public_bundle" ]
+        sources += [ "$root_out_dir/apks/MonochromePublic.aab" ]
+      } else {
+        deps += [ "//chrome/android:monochrome_public_apk" ]
+        sources += [ "$root_out_dir/apks/MonochromePublic.apk" ]
+      }
+    } else {
+      if (target_android_output_format == "aab") {
+        deps += [ "//chrome/android:chrome_modern_public_bundle" ]
+        sources += [ "$root_out_dir/apks/ChromeModernPublic.aab" ]
+      } else {
+        deps += [ "//chrome/android:chrome_public_apk" ]
+        sources += [ "$root_out_dir/apks/ChromePublic.apk" ]
+      }
+    }
+  }
+  outputs = [ presearch_android_output ]
+}
+
+java_strings_grd("android_presearch_strings_grd") {
+  grd_file = "//presearch/browser/ui/android/strings/android_presearch_strings.grd"
+  outputs = [
+    "values/android_presearch_strings.xml",
+    "values-af/android_presearch_strings.xml",
+    "values-am/android_presearch_strings.xml",
+    "values-ar/android_presearch_strings.xml",
+    "values-as/android_presearch_strings.xml",
+    "values-az/android_presearch_strings.xml",
+    "values-be/android_presearch_strings.xml",
+    "values-bg/android_presearch_strings.xml",
+    "values-bn/android_presearch_strings.xml",
+    "values-bs/android_presearch_strings.xml",
+    "values-ca/android_presearch_strings.xml",
+    "values-cs/android_presearch_strings.xml",
+    "values-da/android_presearch_strings.xml",
+    "values-de/android_presearch_strings.xml",
+    "values-el/android_presearch_strings.xml",
+    "values-en-rGB/android_presearch_strings.xml",
+    "values-es/android_presearch_strings.xml",
+    "values-es-rUS/android_presearch_strings.xml",
+    "values-et/android_presearch_strings.xml",
+    "values-eu/android_presearch_strings.xml",
+    "values-fa/android_presearch_strings.xml",
+    "values-fi/android_presearch_strings.xml",
+    "values-fr/android_presearch_strings.xml",
+    "values-fr-rCA/android_presearch_strings.xml",
+    "values-gl/android_presearch_strings.xml",
+    "values-gu/android_presearch_strings.xml",
+    "values-hi/android_presearch_strings.xml",
+    "values-hr/android_presearch_strings.xml",
+    "values-hu/android_presearch_strings.xml",
+    "values-hy/android_presearch_strings.xml",
+    "values-in/android_presearch_strings.xml",
+    "values-is/android_presearch_strings.xml",
+    "values-it/android_presearch_strings.xml",
+    "values-iw/android_presearch_strings.xml",
+    "values-ja/android_presearch_strings.xml",
+    "values-ka/android_presearch_strings.xml",
+    "values-kk/android_presearch_strings.xml",
+    "values-km/android_presearch_strings.xml",
+    "values-kn/android_presearch_strings.xml",
+    "values-ko/android_presearch_strings.xml",
+    "values-ky/android_presearch_strings.xml",
+    "values-lo/android_presearch_strings.xml",
+    "values-lt/android_presearch_strings.xml",
+    "values-lv/android_presearch_strings.xml",
+    "values-mk/android_presearch_strings.xml",
+    "values-ml/android_presearch_strings.xml",
+    "values-mn/android_presearch_strings.xml",
+    "values-mr/android_presearch_strings.xml",
+    "values-ms/android_presearch_strings.xml",
+    "values-my/android_presearch_strings.xml",
+    "values-nb/android_presearch_strings.xml",
+    "values-ne/android_presearch_strings.xml",
+    "values-nl/android_presearch_strings.xml",
+    "values-or/android_presearch_strings.xml",
+    "values-pa/android_presearch_strings.xml",
+    "values-pl/android_presearch_strings.xml",
+    "values-pt-rBR/android_presearch_strings.xml",
+    "values-pt-rPT/android_presearch_strings.xml",
+    "values-ro/android_presearch_strings.xml",
+    "values-ru/android_presearch_strings.xml",
+    "values-si/android_presearch_strings.xml",
+    "values-sk/android_presearch_strings.xml",
+    "values-sl/android_presearch_strings.xml",
+    "values-sq/android_presearch_strings.xml",
+    "values-sr/android_presearch_strings.xml",
+    "values-sv/android_presearch_strings.xml",
+    "values-sw/android_presearch_strings.xml",
+    "values-ta/android_presearch_strings.xml",
+    "values-te/android_presearch_strings.xml",
+    "values-th/android_presearch_strings.xml",
+    "values-tl/android_presearch_strings.xml",
+    "values-tr/android_presearch_strings.xml",
+    "values-uk/android_presearch_strings.xml",
+    "values-ur/android_presearch_strings.xml",
+    "values-uz/android_presearch_strings.xml",
+    "values-vi/android_presearch_strings.xml",
+    "values-zh-rCN/android_presearch_strings.xml",
+    "values-zh-rHK/android_presearch_strings.xml",
+    "values-zh-rTW/android_presearch_strings.xml",
+    "values-zu/android_presearch_strings.xml",
+  ]
+}
+
+generate_jni("jni_headers") {
+  sources = [
+    "//presearch/android/java/org/chromium/chrome/browser/PresearchFeatureList.java",
+    "//presearch/android/java/org/chromium/chrome/browser/PresearchRelaunchUtils.java",
+    "//presearch/android/java/org/chromium/chrome/browser/PresearchRewardsNativeWorker.java",
+    "//presearch/android/java/org/chromium/chrome/browser/app/PresearchActivity.java",
+    "//presearch/android/java/org/chromium/chrome/browser/notifications/PresearchNotificationPlatformBridge.java",
+    "//presearch/android/java/org/chromium/chrome/browser/notifications/PresearchNotificationSettingsBridge.java",
+    "//presearch/android/java/org/chromium/chrome/browser/ntp_background_images/NTPBackgroundImagesBridge.java",
+    "//presearch/android/java/org/chromium/chrome/browser/preferences/PresearchPrefServiceBridge.java",
+    "//presearch/android/java/org/chromium/chrome/browser/preferences/website/PresearchShieldsContentSettings.java",
+    "//presearch/android/java/org/chromium/chrome/browser/settings/developer/PresearchQAPreferences.java",
+    "//presearch/android/java/org/chromium/chrome/browser/signin/PresearchSigninManager.java",
+    "//presearch/android/java/org/chromium/chrome/browser/widget/crypto/binance/BinanceNativeWorker.java",
+  ]
+
+  if (enable_presearch_sync) {
+    sources += [
+      "//presearch/android/java/org/chromium/chrome/browser/PresearchSyncWorker.java",
+      "//presearch/android/java/org/chromium/chrome/browser/sync/PresearchSyncDevices.java",
+    ]
+  }
+}

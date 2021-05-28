@@ -1,0 +1,22 @@
+import("//presearch/components/common/typescript.gni")
+
+group("presearch_rewards") {
+  deps = [
+    ":presearch_rewards_panel",
+  ]
+}
+
+transpile_web_ui("presearch_rewards_panel") {
+  entry_points = [
+    ["presearch_rewards_panel", rebase_path("presearch_rewards_panel.tsx")],
+    ["presearch_rewards_panel_background", rebase_path("background.ts")],
+  ]
+
+  resource_name = "presearch_rewards_panel"
+
+  # Must match the relative path from the static GRD to the manifest.json
+  # plus any other relative path we want these files to live in the extension
+  extra_relative_path = "/presearch_rewards/out"
+
+  public_asset_path = "/out/"
+}

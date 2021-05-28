@@ -1,0 +1,33 @@
+import("//presearch/components/presearch_referrals/buildflags/buildflags.gni")
+
+source_set("browser") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10646 is resolved
+  check_includes = false
+  public_deps = [
+    "//presearch/components/presearch_referrals/buildflags",
+  ]
+
+  if (enable_presearch_referrals) {
+    sources = [
+      "presearch_referrals_service.cc",
+      "presearch_referrals_service.h",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/common",
+      "//presearch/components/presearch_referrals/common",
+      "//presearch/components/presearch_stats/browser",
+      "//presearch/vendor/presearch_base",
+      "//chrome/common",
+      "//components/prefs",
+      "//content/public/browser",
+      "//net",
+      "//services/network/public/cpp",
+    ]
+
+    if (is_android) {
+      deps += [ "//presearch/components/safetynet:android" ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//build/config/features.gni")
+
+source_set("renderer") {
+  visibility = [
+    "//presearch:child_dependencies",
+    "//presearch/renderer/*",
+    "//presearch/test:*",
+    "//chrome/renderer/*",
+  ]
+
+  public_deps = [ "//chrome/renderer" ]
+
+  deps = [
+    "//presearch/components/presearch_search/renderer",
+    "//presearch/components/presearch_shields/common",
+    "//presearch/components/presearch_wallet/common/buildflags",
+    "//presearch/components/cosmetic_filters/renderer",
+    "//v8",
+  ]
+
+  if (presearch_wallet_enabled) {
+    deps += [
+      "//presearch/components/presearch_wallet/renderer",
+      "//presearch/renderer/presearch_wallet/",
+    ]
+  }
+}

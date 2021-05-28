@@ -1,0 +1,24 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import("//presearch/components/decentralized_dns/buildflags/buildflags.gni")
+
+presearch_browser_decentralized_dns_sources = []
+presearch_browser_decentralized_dns_deps = []
+
+if (decentralized_dns_enabled) {
+  presearch_browser_decentralized_dns_sources += [
+    "//presearch/browser/decentralized_dns/decentralized_dns_service_delegate_impl.cc",
+    "//presearch/browser/decentralized_dns/decentralized_dns_service_delegate_impl.h",
+    "//presearch/browser/decentralized_dns/decentralized_dns_service_factory.cc",
+    "//presearch/browser/decentralized_dns/decentralized_dns_service_factory.h",
+  ]
+
+  presearch_browser_decentralized_dns_deps += [
+    "//base",
+    "//presearch/components/decentralized_dns",
+    "//components/keyed_service/content",
+  ]
+}

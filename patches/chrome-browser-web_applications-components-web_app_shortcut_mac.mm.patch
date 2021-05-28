@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/web_applications/components/web_app_shortcut_mac.mm b/chrome/browser/web_applications/components/web_app_shortcut_mac.mm
+index 383f32971a20244bdcc43dc3c5b854165f93f7ea..0820262965d59f02b529300d876a7961e65d6648 100644
+--- a/chrome/browser/web_applications/components/web_app_shortcut_mac.mm
++++ b/chrome/browser/web_applications/components/web_app_shortcut_mac.mm
+@@ -763,6 +763,7 @@ base::FilePath GetChromeAppsFolder() {
+   if (path.empty())
+     return path;
+ 
++  return path.Append(GetLocalizablePresearchAppShortcutsSubdirName());
+   return path.Append(GetLocalizableAppShortcutsSubdirName());
+ }
+ 

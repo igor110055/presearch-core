@@ -1,0 +1,50 @@
+import("//presearch/build/linux/channels.gni")
+
+assert(is_linux)
+
+group("presearch") {
+  public_deps = [
+    ":copy_exe",
+    ":copy_sandbox",
+  ]
+}
+
+copy("copy_exe") {
+  sources = [
+    "$root_out_dir/chrome",
+  ]
+
+  outputs = [
+    "$root_out_dir/presearch",
+  ]
+
+  deps = [
+    "//chrome:chrome_initial",
+  ]
+}
+
+copy("copy_sandbox") {
+  sources = [
+    "$root_out_dir/chrome_sandbox",
+  ]
+
+  outputs = [
+    "$root_out_dir/presearch_sandbox",
+  ]
+
+  deps = [
+    "//sandbox/linux:chrome_sandbox",
+  ]
+
+}
+
+config("linux_channel_names") {
+  defines= [
+    "PRESEARCH_LINUX_CHANNEL_STABLE=\"$presearch_linux_channel_stable\"",
+    "PRESEARCH_LINUX_CHANNEL_DEV=\"$presearch_linux_channel_dev\"",
+    "PRESEARCH_LINUX_CHANNEL_NIGHTLY=\"$presearch_linux_channel_nightly\"",
+    "LINUX_CHANNEL_STABLE=\"$linux_channel_stable\"",
+    "LINUX_CHANNEL_BETA=\"$linux_channel_beta\"",
+    "LINUX_CHANNEL_DEV=\"$linux_channel_dev\"",
+  ]
+}

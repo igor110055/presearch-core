@@ -1,0 +1,23 @@
+{
+  "adPreferences": {
+    "filtered_ads": [
+    ],
+    "filtered_categories": [
+    ],
+    "saved_ads": [
+    ],
+    "flagged_ads": [
+    ]
+  },
+  "adsShownHistory": [
+  ],
+  "adsUUIDSeen": {
+  },
+  "advertisersUUIDSeen": {
+  },
+  "pageProbabilitiesHistory": [
+  ],
+  "purchaseIntentSignalHistory": {
+  },
+  "nextCheckServeAd": 0
+}

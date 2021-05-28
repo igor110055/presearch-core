@@ -1,0 +1,4 @@
+presearch_components_permissions_java_sources = [
+  "//presearch/components/permissions/android/java/src/org/chromium/components/permissions/PresearchPermissionDialogDelegate.java",
+  "//presearch/components/permissions/android/java/src/org/chromium/components/permissions/PresearchPermissionDialogModel.java",
+]

@@ -1,0 +1,17 @@
+source_set("tor") {
+  visibility = [
+    "//presearch/test:*",
+    "//chrome/utility:*",
+  ]
+
+  sources = [
+    "tor_launcher_impl.cc",
+    "tor_launcher_impl.h",
+  ]
+
+  deps = [
+    "public/interfaces",
+    "//base",
+    "//mojo/public/cpp/bindings",
+  ]
+}

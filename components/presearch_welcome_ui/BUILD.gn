@@ -1,0 +1,17 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("presearch_welcome_ui") {
+  entry_points = [
+    ["presearch_welcome", rebase_path("presearch_welcome.tsx")]
+  ]
+
+  resource_name = "presearch_welcome"
+}
+
+pack_web_resources("generated_resources") {
+  resource_name = "presearch_welcome"
+  output_dir = "$root_gen_dir/presearch/components/presearch_welcome/resources"
+  deps = [
+    ":presearch_welcome_ui"
+  ]
+}

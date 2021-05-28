@@ -1,0 +1,36 @@
+diff --git a/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java b/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
+index 1500801f399b172ab2ba9e8c8740cfdd81509fc2..d465ac4e916c03591599a736922a70661047f059 100644
+--- a/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
++++ b/chrome/android/java/src/org/chromium/chrome/browser/toolbar/top/ToolbarPhone.java
+@@ -409,6 +409,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+         if (mCurrentLocationBarColor == color) return;
+         mCurrentLocationBarColor = color;
+         mLocationBarBackground.setColorFilter(color, PorterDuff.Mode.SRC_IN);
++        PresearchToolbarLayout.class.cast(this).updateModernLocationBarColorImpl(color);
+     }
+ 
+     /**
+@@ -528,6 +529,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+                         EventConstants.PARTNER_HOME_PAGE_BUTTON_PRESSED);
+             }
+         }
++        PresearchToolbarLayout.class.cast(this).onClickImpl(v);
+     }
+ 
+     @Override
+@@ -697,6 +699,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+      * @return The right bounds of the location bar after accounting for any visible left buttons.
+      */
+     private int getBoundsAfterAccountingForRightButtons() {
++        if (true) return Math.max(mToolbarSidePadding, PresearchToolbarLayout.class.cast(this).getBoundsAfterAccountingForRightButtons(mToolbarButtonsContainer));
+         return Math.max(mToolbarSidePadding, mToolbarButtonsContainer.getMeasuredWidth());
+     }
+ 
+@@ -2114,6 +2117,7 @@ public class ToolbarPhone extends ToolbarLayout implements OnClickListener, TabC
+         } else {
+             populateUrlClearExpansionAnimatorSet(animators);
+         }
++        PresearchToolbarLayout.class.cast(this).populateUrlAnimatorSet(showExpandedState, URL_FOCUS_TOOLBAR_BUTTONS_DURATION_MS, URL_CLEAR_FOCUS_TABSTACK_DELAY_MS, animators);
+         mUrlFocusLayoutAnimator = new AnimatorSet();
+         mUrlFocusLayoutAnimator.playTogether(animators);
+ 

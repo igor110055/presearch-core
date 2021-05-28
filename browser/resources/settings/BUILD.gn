@@ -1,0 +1,186 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# you can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_wayback_machine/buildflags/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//chrome/browser/resources/tools/optimize_webui.gni")
+import("//chrome/common/features.gni")
+import("//third_party/closure_compiler/compile_js.gni")
+import("//tools/grit/grit_rule.gni")
+import("//tools/grit/preprocess_if_expr.gni")
+import("//tools/polymer/html_to_js.gni")
+import("//tools/polymer/polymer.gni")
+import("//ui/webui/resources/tools/generate_grd.gni")
+import("//ui/webui/resources/tools/js_modulizer.gni")
+
+preprocess_folder = "preprocessed"
+preprocess_manifest = "presearch_preprocessed_manifest.json"
+preprocess_gen_manifest = "presearch_preprocessed_gen_manifest.json"
+
+grit("resources") {
+  grit_flags = [
+    "-E",
+    "root_gen_dir=" + rebase_path(root_gen_dir, root_build_dir),
+    "-E",
+    "root_src_dir=" + rebase_path("//", root_build_dir),
+  ]
+
+  defines = chrome_grit_defines
+  defines += [
+    "is_release_channel=$is_release_channel",
+    "enable_tor=$enable_tor",
+    "enable_presearch_wayback_machine=$enable_presearch_wayback_machine",
+  ]
+
+  enable_input_discovery_for_gn_analyze = false
+  defines +=
+      [ "SHARED_INTERMEDIATE_DIR=" + rebase_path(root_gen_dir, root_build_dir) ]
+  settings_gen_dir = "$root_gen_dir/presearch/browser/resources/settings"
+  source = "$settings_gen_dir/presearch_settings_resources.grd"
+  deps = [ ":build_grd" ]
+
+  outputs = [
+    "grit/presearch_settings_resources.h",
+    "grit/presearch_settings_resources_map.cc",
+    "grit/presearch_settings_resources_map.h",
+    "presearch_settings_resources.pak",
+  ]
+
+  output_dir = "$root_gen_dir/presearch/browser/resources/settings"
+  resource_ids = "//presearch/browser/resources/resource_ids"
+}
+
+generate_grd("build_grd") {
+  grd_prefix = "presearch_settings"
+  out_grd = "$target_gen_dir/${grd_prefix}_resources.grd"
+  input_files = [
+    "presearch_sync_page/device_computer.svg",
+    "presearch_sync_page/device_mobile.svg",
+    "presearch_sync_page/qr_scanning.svg",
+    "presearch_sync_page/start_icon.svg",
+    "images/cookies_banner.svg",
+    "images/cookies_banner_dark.svg",
+    "images/permissions_banner.svg",
+    "images/permissions_banner_dark.svg",
+    "images/safe_browsing_banner.svg",
+    "images/safe_browsing_banner_dark.svg",
+  ]
+  input_files_base_dir = rebase_path(".", "//")
+
+  deps = [
+    ":preprocess",
+    ":preprocess_generated",
+  ]
+  manifest_files = [
+    "$root_gen_dir/chrome/browser/resources/settings/$preprocess_manifest",
+    "$root_gen_dir/chrome/browser/resources/settings/$preprocess_gen_manifest",
+  ]
+}
+
+preprocess_if_expr("preprocess") {
+  in_folder = "./"
+  out_folder =
+      "$root_gen_dir/chrome/browser/resources/settings/$preprocess_folder"
+  out_manifest =
+      "$root_gen_dir/chrome/browser/resources/settings/$preprocess_manifest"
+  in_files = [
+    "presearch_appearance_page/presearch_appearance_browser_proxy.js",
+    "presearch_clear_browsing_data_dialog/presearch_clear_browsing_data_dialog_behavior.js",
+    "presearch_overrides/about_page.js",
+    "presearch_overrides/appearance_page.js",
+    "presearch_overrides/basic_page.js",
+    "presearch_overrides/clear_browsing_data_dialog.js",
+    "presearch_overrides/cookies_page.js",
+    "presearch_overrides/default_browser_page.js",
+    "presearch_overrides/icons.js",
+    "presearch_overrides/import_data_dialog.js",
+    "presearch_overrides/index.js",
+    "presearch_overrides/page_visibility.js",
+    "presearch_overrides/passwords_section.js",
+    "presearch_overrides/payments_section.js",
+    "presearch_overrides/people_page.js",
+    "presearch_overrides/printing_page.js",
+    "presearch_overrides/reset_profile_dialog.js",
+    "presearch_overrides/safety_check_passwords_child.js",
+    "presearch_overrides/security_page.js",
+    "presearch_overrides/settings_menu.js",
+    "presearch_overrides/settings_section.js",
+    "presearch_overrides/settings_ui.js",
+    "presearch_overrides/site_settings_page.js",
+    "presearch_overrides/sync_account_control.js",
+    "presearch_overrides/sync_controls.js",
+    "presearch_sync_page/presearch_sync_browser_proxy.js",
+  ]
+}
+
+preprocess_if_expr("preprocess_generated") {
+  deps = [ ":web_modules" ]
+  defines = [
+    "enable_tor=$enable_tor",
+    "enable_presearch_wayback_machine=$enable_presearch_wayback_machine",
+  ]
+  in_folder = target_gen_dir
+  out_folder =
+      "$root_gen_dir/chrome/browser/resources/settings/$preprocess_folder"
+  out_manifest =
+      "$root_gen_dir/chrome/browser/resources/settings/$preprocess_gen_manifest"
+  in_files = [
+    "presearch_appearance_page/presearch_theme.js",
+    "presearch_appearance_page/sidebar.js",
+    "presearch_appearance_page/super_referral.js",
+    "presearch_appearance_page/toolbar.js",
+    "presearch_clear_browsing_data_dialog/presearch_clear_browsing_data_on_exit_page.js",
+    "presearch_ipfs_page/presearch_ipfs_browser_proxy.m.js",
+    "presearch_ipfs_page/presearch_ipfs_page.m.js",
+    "presearch_ipfs_page/change_ipfs_gateway_dialog.js",
+    "presearch_default_extensions_page/presearch_default_extensions_browser_proxy.m.js",
+    "presearch_default_extensions_page/presearch_default_extensions_page.m.js",
+    "presearch_help_tips_page/presearch_help_tips_page.m.js",
+    "presearch_icons.m.js",
+    "presearch_new_tab_page/presearch_new_tab_browser_proxy.m.js",
+    "presearch_new_tab_page/presearch_new_tab_page.m.js",
+    "presearch_privacy_page/presearch_personalization_options.m.js",
+    "presearch_privacy_page/presearch_privacy_page_browser_proxy.m.js",
+    "presearch_sync_page/presearch_sync_code_dialog.js",
+    "presearch_sync_page/presearch_sync_configure.js",
+    "presearch_sync_page/presearch_sync_page.js",
+    "presearch_sync_page/presearch_sync_setup.js",
+    "presearch_sync_page/presearch_sync_subpage.js",
+    "presearch_wallet_page/presearch_wallet_browser_proxy.m.js",
+    "presearch_wallet_page/presearch_wallet_page.m.js",
+    "default_presearch_shields_page/default_presearch_shields_browser_proxy.m.js",
+    "default_presearch_shields_page/default_presearch_shields_page.m.js",
+    "getting_started_page/getting_started.js",
+    "social_blocking_page/social_blocking_page.m.js",
+  ]
+}
+
+group("web_modules") {
+  public_deps = [
+    # local targets
+    ":icons_module",
+
+    # Sub-folder targets
+    "presearch_appearance_page:web_modules",
+    "presearch_clear_browsing_data_dialog:web_modules",
+    "presearch_default_extensions_page:web_modules",
+    "presearch_help_tips_page:web_modules",
+    "presearch_ipfs_page:web_modules",
+    "presearch_new_tab_page:web_modules",
+    "presearch_privacy_page:web_modules",
+    "presearch_sync_page:web_modules",
+    "presearch_wallet_page:web_modules",
+    "default_presearch_shields_page:web_modules",
+    "getting_started_page:web_modules",
+    "social_blocking_page:web_modules",
+  ]
+}
+
+polymer_modulizer("icons") {
+  js_file = "presearch_icons.m.js"
+  html_file = "presearch_icons.html"
+  html_type = "iron-iconset"
+}

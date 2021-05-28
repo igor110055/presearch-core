@@ -1,0 +1,42 @@
+import("//build/buildflag_header.gni")
+import("buildflags/buildflags.gni")
+
+buildflag_header("buildflags") {
+  header = "buildflags.h"
+  flags = [ "ENABLE_PRESEARCH_WAYBACK_MACHINE=$enable_presearch_wayback_machine" ]
+}
+
+source_set("presearch_wayback_machine") {
+  assert_no_deps = [ "//chrome/*" ]
+
+  sources = [
+    "presearch_wayback_machine_delegate.h",
+    "presearch_wayback_machine_infobar_delegate.cc",
+    "presearch_wayback_machine_infobar_delegate.h",
+    "presearch_wayback_machine_tab_helper.cc",
+    "presearch_wayback_machine_tab_helper.h",
+    "presearch_wayback_machine_utils.cc",
+    "presearch_wayback_machine_utils.h",
+    "pref_names.cc",
+    "pref_names.h",
+    "url_constants.cc",
+    "url_constants.h",
+    "wayback_machine_url_fetcher.cc",
+    "wayback_machine_url_fetcher.h",
+  ]
+
+  deps = [
+    "//base",
+    "//components/infobars/core",
+    "//components/prefs",
+    "//components/user_prefs",
+    "//content/public/browser",
+    "//net",
+    "//services/network/public/cpp",
+    "//url",
+  ]
+
+  public_deps = [
+    ":buildflags",
+  ]
+}

@@ -1,0 +1,26 @@
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+
+source_set("presearch_ads") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10639 is resolved
+  check_includes = false
+
+  sources = [
+    "ads_service_factory.cc",
+    "ads_service_factory.h",
+    "ads_tab_helper.cc",
+    "ads_tab_helper.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser/profiles:util",
+    "//presearch/components/presearch_ads/browser",
+    "//presearch/components/presearch_ads/browser/buildflags",
+    "//components/dom_distiller/content/browser",
+    "//components/keyed_service/content",
+    "//components/sessions",
+    "//content/public/browser",
+    "//ui/base",
+  ]
+}

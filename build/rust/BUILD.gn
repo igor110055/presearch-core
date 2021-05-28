@@ -1,0 +1,81 @@
+import("//presearch/build/cargo.gni")
+
+lib_build_path = "$root_build_dir/presearch_rust/out/$current_cpu"
+lib_output_path =
+    "$lib_build_path/${cargo_lib_prefix}presearch_rust${cargo_lib_suffix}"
+
+# TODO(bridiver) - selectively include these libraries based on buildflags, but
+# in order to do that we have to dynamically create the presearch rust lib
+cargo_build("rust_lib") {
+  visibility = [ ":*" ]
+  inputs = [
+    "Cargo.toml",
+    "lib.rs",
+  ]
+
+  build_path = lib_build_path
+  output = lib_output_path
+  manifest_path = "Cargo.toml"
+
+  deps = [
+    "//presearch/components/adblock_rust_ffi:rust_lib",
+    "//presearch/components/challenge_bypass_ristretto:rust_lib",
+    "//presearch/components/speedreader/rust/lib",
+  ]
+}
+
+presearch_ffi_deps = [
+  "//presearch/components/adblock_rust_ffi:rust_ffi",
+  "//presearch/components/challenge_bypass_ristretto:rust_ffi",
+  "//presearch/components/speedreader/rust/ffi:rust_ffi",
+]
+
+presearch_rust_deps = presearch_ffi_deps + [ ":rust_lib" ]
+
+if (is_mac) {
+  shared_library("presearch_rust") {
+    visibility = [ ":*" ]
+    deps = presearch_rust_deps
+
+    public_deps = presearch_ffi_deps
+
+    ldflags =
+        [ "-Wl,-install_name,@loader_path/Libraries/lib$target_name.dylib" ]
+  }
+
+  # This is just a hack so @loader_path/Libraries/lib$target_name.dylib
+  # works for the test executables
+  copy("copy_rust_lib") {
+    visibility = [ ":*" ]
+    sources = [ "$root_out_dir/libpresearch_rust.dylib" ]
+    outputs = [ "$root_out_dir/Libraries/{{source_file_part}}" ]
+
+    public_deps = [ ":presearch_rust" ]
+  }
+
+  bundle_data("bundle_rust_lib") {
+    visibility = [ ":*" ]
+    sources = [ "$root_out_dir/Libraries/libpresearch_rust.dylib" ]
+    outputs = [ "{{bundle_contents_dir}}/Libraries/{{source_file_part}}" ]
+
+    public_deps = [ ":copy_rust_lib" ]
+  }
+} else {
+  config("external_config") {
+    libs = [ lib_output_path ]
+  }
+
+  group("presearch_rust") {
+    public_configs = [ ":external_config" ]
+    visibility = [ ":*" ]
+    deps = presearch_rust_deps
+    public_deps = presearch_ffi_deps
+  }
+}
+
+group("rust") {
+  public_deps = [ ":presearch_rust" ]
+  if (is_mac) {
+    deps = [ ":bundle_rust_lib" ]
+  }
+}

@@ -1,0 +1,38 @@
+// This Source Code Form is subject to the terms of the Mozilla Public
+// License, v. 2.0. If a copy of the MPL was not distributed with this
+// file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+[
+  {
+    "namespace": "presearchTogether",
+    "description": "Use the <code>chrome.presearchTogether</code> API to to receive info pertaining to the Presearch Together feature.",
+    "compiler_options": {
+      "implemented_in": "presearch/browser/extensions/api/presearch_together_api.h"
+    },
+    "events": [
+    ],
+    "functions": [
+      {
+        "name": "isSupported",
+        "type": "function",
+        "description": "Fetches whether or not Presearch Together is supported",
+        "parameters": [
+          {
+            "type": "function",
+            "name": "callback",
+            "parameters": [
+              {
+                "name": "supported",
+                "type": "boolean"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "types": [
+    ],
+    "properties": {
+    }
+  }
+]

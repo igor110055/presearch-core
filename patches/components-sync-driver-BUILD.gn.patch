@@ -1,0 +1,12 @@
+diff --git a/components/sync/driver/BUILD.gn b/components/sync/driver/BUILD.gn
+index 1171a23a85e2e4b1138bccfe5900e76e7c75f95d..86832f953d575ba8ecd54b9d662feea6679b84d5 100644
+--- a/components/sync/driver/BUILD.gn
++++ b/components/sync/driver/BUILD.gn
+@@ -114,6 +114,7 @@ static_library("driver") {
+   }
+ 
+   configs += [ "//build/config/compiler:wexit_time_destructors" ]
++  sources += presearch_components_sync_driver_sources deps += presearch_components_sync_driver_deps defines = presearch_service_key_defines
+ }
+ 
+ grit("resources") {

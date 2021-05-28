@@ -1,0 +1,5 @@
+import("//presearch/build/config.gni")
+
+group("presearch") {
+  deps = [ "//presearch/vendor/presearch-ios" ]
+}

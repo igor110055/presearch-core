@@ -1,0 +1,6 @@
+include_rules = [
+  "+../../../../../chrome/utility/importer",
+  "+presearch/common",
+  "+chrome/common",
+  "+chrome/utility",
+]

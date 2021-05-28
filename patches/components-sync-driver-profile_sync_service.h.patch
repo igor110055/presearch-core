@@ -1,0 +1,12 @@
+diff --git a/components/sync/driver/profile_sync_service.h b/components/sync/driver/profile_sync_service.h
+index 5ba05a7aebc8fb3e1b6e48843e9e44a460e7a780..c3e9c766de71caefd9734778b6ab4fc4772d5566 100644
+--- a/components/sync/driver/profile_sync_service.h
++++ b/components/sync/driver/profile_sync_service.h
+@@ -247,6 +247,7 @@ class ProfileSyncService : public SyncService,
+ 
+   SyncClient* GetSyncClientForTest();
+ 
++ PRESEARCH_PROFILE_SYNC_SERVICE_H_
+  private:
+   // Passed as an argument to StopImpl to control whether or not the sync
+   // engine should clear its data when it shuts down. See StopImpl for more

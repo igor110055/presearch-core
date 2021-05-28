@@ -1,0 +1,5 @@
+import("//presearch/build/config.gni")
+
+declare_args() {
+  enable_presearch_sync = true
+}

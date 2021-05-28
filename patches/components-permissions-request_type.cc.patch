@@ -1,0 +1,20 @@
+diff --git a/components/permissions/request_type.cc b/components/permissions/request_type.cc
+index b0fb39f024edf7204305f7c70e25138eafbe31ee..d313cbdeb80ad9aa7e6f813b4142585de91ee57b 100644
+--- a/components/permissions/request_type.cc
++++ b/components/permissions/request_type.cc
+@@ -103,6 +103,7 @@ const gfx::VectorIcon& GetIconIdDesktop(RequestType type) {
+       return vector_icons::kCookieIcon;
+     case RequestType::kWindowPlacement:
+       return vector_icons::kSelectWindowIcon;
++    PRESEARCH_GET_ICON_ID_DESKTOP
+   }
+   NOTREACHED();
+   return gfx::kNoneIcon;
+@@ -229,6 +230,7 @@ const char* PermissionKeyForRequestType(permissions::RequestType request_type) {
+     case permissions::RequestType::kWindowPlacement:
+       return "window_placement";
+ #endif
++    PRESEARCH_PERMISSION_KEY_FOR_REQUEST_TYPE
+   }
+ 
+   return nullptr;

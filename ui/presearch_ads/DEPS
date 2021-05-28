@@ -1,0 +1,7 @@
+include_rules = [
+  "+presearch/app",
+  "+components/url_formatter",
+  "+skia/ext",
+  "+third_party/skia",
+  "+ui",
+]

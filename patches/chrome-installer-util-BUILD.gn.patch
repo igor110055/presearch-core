@@ -1,0 +1,24 @@
+diff --git a/chrome/installer/util/BUILD.gn b/chrome/installer/util/BUILD.gn
+index 2ea95551d977717045804377090c4e57bb4e0518..c3af7ec8bad26ee56ee5b2a786c1c8ece82f6e7b 100644
+--- a/chrome/installer/util/BUILD.gn
++++ b/chrome/installer/util/BUILD.gn
+@@ -225,7 +225,18 @@ generate_embedded_i18n("generate_strings") {
+ 
+   output_file_name_base = "installer_util_strings"
+ 
+-  branding = branding_path_component
++  brand = "$branding_path_component"
++  # When presearch_strings.grd is modified, outputs should be re-generated.
++  # This is workaround. Need to change the way of using |presearch_strings.grd|
++  # in |create_string_rc.py|.
++  sources = [
++    "//chrome/app/presearch_strings.grd"
++  ]
++  if (!is_official_build) {
++    # TODO(shong): Remove this.
++    brand = brand + "-development"
++  }
++  branding = brand
+ }
+ 
+ # Compile the generated .rc file.

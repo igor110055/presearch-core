@@ -1,0 +1,5 @@
+import("//presearch/build/config.gni")
+
+declare_args() {
+  presearch_together_enabled = presearch_channel == "nightly"
+}

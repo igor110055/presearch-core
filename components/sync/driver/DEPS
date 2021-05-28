@@ -1,0 +1,10 @@
+include_rules = [
+  "+services/network/public",
+]
+
+# Existing exceptions
+specific_include_rules = {
+  "presearch_sync_auth_manager.cc": [
+    "+presearch/common/network_constants.h",
+  ],
+}

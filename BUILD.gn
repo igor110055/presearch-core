@@ -1,0 +1,495 @@
+import("//presearch/build/cargo.gni")
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//build/config/locales.gni")
+import("//build/config/zip.gni")
+import("//build/util/process_version.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//media/cdm/library_cdm/cdm_paths.gni")
+import("//third_party/icu/config.gni")
+import("//tools/grit/repack.gni")
+import("//tools/v8_context_snapshot/v8_context_snapshot.gni")
+import("//ui/base/ui_features.gni")
+
+if (!is_ios) {
+  import("//presearch/presearch_paks.gni")
+}
+
+if (is_mac) {
+  import("//presearch/build/mac/tweak_info_plist.gni")
+  import("//build/config/mac/rules.gni")
+}
+
+if (is_linux) {
+  import("//presearch/build/linux/channels.gni")
+}
+
+declare_args() {
+  audit_dev_deps = false
+}
+
+if (!is_ios) {
+  group("child_dependencies") {
+    deps = [
+      "common",
+      "//presearch/renderer",
+      "//presearch/utility",
+    ]
+  }
+
+  group("browser_dependencies") {
+    deps = [
+      "browser",
+      "chromium_src:browser",
+      "chromium_src/chrome/app",
+      "common",
+      "//components/omnibox/common",
+      "//services/device/public/cpp:device_features",
+    ]
+
+    data_deps = [ ":unpacked_resources" ]
+
+    if (!is_ios) {
+      deps += [ ":packed_resources" ]
+    }
+  }
+}
+
+if (is_win) {
+  # create_installer_archive.py assumes that last_chrome_installer folder has
+  # courgette.exe.
+  if (build_delta_installer) {
+    copy("copy_courgette_binary") {
+      visibility = [ ":mini_installer_dependencies" ]
+      sources = [ "$root_out_dir/courgette.exe" ]
+      outputs = [ "$root_out_dir/$last_chrome_installer/{{source_file_part}}" ]
+      deps = [
+        "//courgette",
+        "//courgette:copy_courgette_binaries",
+      ]
+    }
+  }
+
+  group("mini_installer_dependencies") {
+    deps = [ ":presearch" ]
+
+    if (build_delta_installer) {
+      deps += [ ":copy_courgette_binary" ]
+    }
+  }
+}
+
+group("presearch") {
+  deps = [ "build/$target_os:presearch" ]
+  if (!is_android && !is_ios) {
+    deps += [
+      ":generate_version",
+      "//chrome",
+    ]
+  }
+}
+
+group("resources") {
+  public_deps = [
+    # TODO(bridiver)
+    # "//presearch/browser:resources",
+    # "//presearch/common:resources",
+    # "//presearch/renderer:resources",
+    "//presearch/components/resources",
+  ]
+
+  data_deps = [ "//presearch/components/resources:about_credits" ]
+}
+
+if (is_android) {
+  android_assets("presearch_pak_assets") {
+    sources = [
+      "$root_build_dir/presearch_100_percent.pak",
+      "$root_build_dir/presearch_resources.pak",
+      "//presearch/LICENSE.html",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_ads.json",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_ads_notification.json",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/onboarding_rewards.json",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/privacy_protection.json",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/save_data_and_battery.json",
+      "//presearch/android/java/org/chromium/chrome/browser/onboarding/animations/website_loads_faster.json",
+    ]
+    deps = [ "//presearch:browser_dependencies" ]
+    disable_compression = true
+  }
+}
+
+config("rust_link") {
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1188030#c14
+  if (!is_component_build) {
+    ldflags = [ "-Wl,-no_compact_unwind" ]
+  }
+}
+
+if (is_mac) {
+  group("framework_bundle_data") {
+    # this only seems to work correctly when applied to
+    # the chrome_framework target so we add it here
+    public_configs = [ ":rust_link" ]
+    deps = [ "components/presearch_extension/extension/presearch_extension:presearch_extension_framework_bundle_data" ]
+    if (presearch_rewards_enabled) {
+      deps += [
+        "components/presearch_rewards/resources/extension:framework_bundle_data",
+      ]
+    }
+  }
+}
+
+group("unpacked_resources") {
+  if (!is_mac) {
+    deps = []
+    if (enable_extensions) {
+      deps = [
+        "//presearch/components/presearch_extension/extension/presearch_extension:locales",
+      ]
+      if (presearch_rewards_enabled) {
+        deps +=
+            [ "//presearch/components/presearch_rewards/resources/extension:locales" ]
+      }
+    }
+  }
+}
+
+#TODO(bridiver) - what to do
+if (!is_ios) {
+  group("presearch_tests") {
+    testonly = true
+
+    deps = [ "test:presearch_unit_tests" ]
+
+    if (!is_android) {
+      deps += [ "test:presearch_browser_tests" ]
+    }
+  }
+}
+
+if (!is_ios) {
+  presearch_paks("packed_resources") {
+    if (is_mac) {
+      output_dir = "$root_gen_dir/repack"
+      copy_data_to_bundle = true
+    } else {
+      output_dir = root_out_dir
+    }
+  }
+}
+
+branding_dir = "//chrome/app/theme/$branding_path_component"
+copy("theme_files") {
+  visibility = [ ":*" ]
+  sources = [
+    "$branding_dir/product_logo_128_beta.png",
+    "$branding_dir/product_logo_128_dev.png",
+    "$branding_dir/product_logo_128_development.png",
+    "$branding_dir/product_logo_128_nightly.png",
+  ]
+  outputs = [ "$root_out_dir/installer/theme/{{source_file_part}}" ]
+}
+
+group("create_dist") {
+  deps = []
+  if (is_android) {
+    deps += [ "build/android:sign_app" ]
+  } else if (is_linux) {
+    # zip will be created along with installer
+    deps += [ ":create_symbols_dist" ]
+  } else {
+    deps += [ ":create_dist_zips" ]
+  }
+  if (is_win) {
+    deps += [ "build/win:create_signed_installer" ]
+
+    if (build_omaha) {
+      deps += [ "//presearch/vendor/omaha" ]
+    }
+  }
+  if (is_mac) {
+    if (skip_signing) {
+      deps += [ "build/mac:create_dmg" ]
+    } else {
+      deps += [ "build/mac:finalize_dmg_pkg" ]
+    }
+  }
+  if (is_linux) {
+    deps += [
+      ":theme_files",
+      "//presearch/app/linux:dist_resources",
+      "//chrome/installer/linux:$linux_channel",
+    ]
+  }
+}
+
+if (!is_mac && !is_android && !is_ios) {
+  copy("presearch_locale_dist_resources") {
+    deps = [ "//chrome:packed_resources" ]
+
+    sources = []
+    foreach(locale, locales) {
+      sources += [ "$root_out_dir/locales/$locale.pak" ]
+    }
+    outputs = [ "$presearch_dist_dir/locales/{{source_file_part}}" ]
+  }
+
+  if (enable_extensions) {
+    group("presearch_extensions_locale_dist_resources") {
+      deps = [
+        "//presearch/components/presearch_extension/extension/presearch_extension:locales",
+      ]
+      if (presearch_rewards_enabled) {
+        deps +=
+            [ "//presearch/components/presearch_rewards/resources/extension:locales" ]
+      }
+
+      public_deps = []
+      foreach(locale, locales) {
+        # public_deps is used intentionaly because ":create_dist_zip" needs the all dependency
+        # of all locale files.
+        public_deps += [ ":presearch_shields_locales_${locale}" ]
+        if (presearch_rewards_enabled) {
+          public_deps += [ ":presearch_rewards_locales_${locale}" ]
+        }
+      }
+    }
+
+    foreach(locale, locales) {
+      if (presearch_rewards_enabled) {
+        copy("presearch_rewards_locales_${locale}") {
+          deps = [ "//presearch/components/presearch_rewards/resources/extension:locales_$locale" ]
+
+          locale = string_replace(locale, "-", "_")
+          sources = [ "$root_out_dir/resources/presearch_rewards/_locales/$locale/messages.json" ]
+          outputs = [ "$presearch_dist_dir/resources/presearch_rewards/_locales/$locale/{{source_file_part}}" ]
+        }
+      }
+      copy("presearch_shields_locales_${locale}") {
+        deps = [ "//presearch/components/presearch_extension/extension/presearch_extension:locales_$locale" ]
+
+        locale = string_replace(locale, "-", "_")
+        sources = [ "$root_out_dir/resources/presearch_extension/_locales/$locale/messages.json" ]
+        outputs = [ "$presearch_dist_dir/resources/presearch_extension/_locales/$locale/{{source_file_part}}" ]
+      }
+    }
+  }
+}
+
+copy("presearch_license_dist_resources") {
+  sources = [ "//presearch/LICENSE" ]
+
+  outputs = [ "$presearch_dist_dir/{{source_file_part}}" ]
+}
+
+process_version("generate_version") {
+  template_file = "version.version"
+  extra_args = [
+    "-e",
+    "PRESEARCH_BROWSER_VERSION=\"$presearch_version\"",
+  ]
+  output = "$root_out_dir/version"
+  process_only = true
+}
+
+if (!is_android && !is_ios) {
+  copy("presearch_dist_resources") {
+    sources = [ "$root_out_dir/version" ]
+
+    deps = [
+      ":presearch",
+      ":presearch_license_dist_resources",
+      ":generate_version",
+      ":packed_resources",
+      "build/$target_os:presearch",
+      "//chrome:packed_resources",
+      "//third_party/icu:icudata",
+    ]
+
+    if (!is_mac) {
+      sources += [
+        "$root_out_dir/$presearch_exe",
+        "$root_out_dir/presearch_100_percent.pak",
+        "$root_out_dir/presearch_200_percent.pak",
+        "$root_out_dir/presearch_resources.pak",
+        "$root_out_dir/chrome_100_percent.pak",
+        "$root_out_dir/chrome_200_percent.pak",
+        "$root_out_dir/icudtl.dat",
+        "$root_out_dir/resources.pak",
+      ]
+
+      if (v8_use_external_startup_data) {
+        deps += [ "//v8" ]
+
+        if (use_v8_context_snapshot) {
+          sources += [ "$root_out_dir/v8_context_snapshot.bin" ]
+          deps += [ "//tools/v8_context_snapshot" ]
+        } else {
+          sources += [ "$root_out_dir/snapshot_blob.bin" ]
+        }
+      }
+    }
+
+    outputs = [ "$presearch_dist_dir/{{source_file_part}}" ]
+  }
+}
+
+if (target_cpu == "x86") {
+  target_arch = "ia32"
+} else {
+  target_arch = target_cpu
+}
+
+action("create_symbols_dist") {
+  output = "$presearch_dist_dir/$presearch_project_name-v$presearch_version-$presearch_platform-$target_arch-symbols.zip"
+
+  script = "//presearch/script/create-dist.py"
+
+  inputs = get_target_outputs(":presearch_license_dist_resources")
+  dir_inputs = [ "$presearch_project_name.breakpad.syms" ]
+
+  file_inputs = []
+  foreach(input, inputs) {
+    file_inputs += [ rebase_path(input, presearch_dist_dir) ]
+  }
+
+  rebase_output = rebase_path(output)
+  rebase_base_dir = rebase_path(presearch_dist_dir)
+
+  args = [
+    "--base-dir=$rebase_base_dir",
+    "--inputs=$file_inputs",
+    "--dir-inputs=$dir_inputs",
+    "--output=$rebase_output",
+  ]
+
+  outputs = [ output ]
+
+  deps = [
+    ":presearch_license_dist_resources",
+    "app/$current_os:symbol_dist_resources",
+  ]
+}
+
+action("create_dist_zips") {
+  output = "$presearch_dist_dir/$presearch_project_name-v$presearch_version-$presearch_platform-$target_arch.zip"
+
+  script = "//presearch/script/create-dist.py"
+
+  inputs = get_target_outputs(":presearch_license_dist_resources")
+
+  if (!is_mac && !is_android && !is_ios) {
+    inputs += get_target_outputs(":presearch_dist_resources")
+    inputs += get_target_outputs(":presearch_locale_dist_resources")
+    if (enable_extensions) {
+      foreach(locale, locales) {
+        inputs += get_target_outputs(":presearch_shields_locales_${locale}")
+        if (presearch_rewards_enabled) {
+          inputs += get_target_outputs(":presearch_rewards_locales_${locale}")
+        }
+      }
+    }
+  }
+
+  if (is_win) {
+    inputs += [ "$presearch_dist_dir/chrome_elf.dll" ]
+  }
+
+  file_inputs = []
+  foreach(input, inputs) {
+    file_inputs += [ rebase_path(input, presearch_dist_dir) ]
+  }
+
+  dir_inputs = []
+  if (is_mac) {
+    dir_inputs += [ "$presearch_exe" ]
+  }
+
+  outputs = [ output ]
+
+  deps = [
+    ":presearch_license_dist_resources",
+    ":create_symbols_dist",
+    "app/$current_os:dist_resources",
+  ]
+
+  if (!is_mac && !is_android && !is_ios) {
+    deps += [
+      ":presearch_dist_resources",
+      ":presearch_locale_dist_resources",
+    ]
+
+    if (enable_extensions) {
+      deps += [ ":presearch_extensions_locale_dist_resources" ]
+    }
+  }
+
+  rebase_output = rebase_path(output)
+  if (is_mac) {
+    rebase_base_dir = rebase_path(root_out_dir)
+  } else {
+    rebase_base_dir = rebase_path(presearch_dist_dir, root_out_dir)
+  }
+  args = [
+    "--base-dir=$rebase_base_dir",
+    "--inputs=$file_inputs",
+    "--dir-inputs=$dir_inputs",
+    "--output=$rebase_output",
+  ]
+}
+
+if (is_mac) {
+  group("presearch_app") {
+    deps = [ ":presearch_app_plist" ]
+  }
+
+  presearch_tweak_info_plist("presearch_app_plist") {
+    info_plist = "$root_gen_dir/chrome/chrome_app_plist_tweaked.plist"
+
+    args = [
+      "--presearch_channel=" + presearch_channel,
+      "--presearch_product_dir_name=" + presearch_product_dir_name,
+      "--presearch_feed_url=" + presearch_feed_url,
+      "--presearch_version=" + presearch_version,
+      "--presearch_eddsa_key=" + sparkle_eddsa_public_key,
+    ]
+
+    if (skip_signing) {
+      args += [ "--skip_signing" ]
+    }
+
+    deps = [ "//chrome:chrome_app_plist" ]
+  }
+
+  presearch_tweak_info_plist("presearch_helper_plist") {
+    info_plist = "$root_gen_dir/chrome/chrome_helper_plist_tweaked.plist"
+
+    args = [
+      "--presearch_channel=" + presearch_channel,
+      "--presearch_product_dir_name=" + presearch_product_dir_name,
+      "--presearch_version=" + presearch_version,
+    ]
+
+    deps = [ "//chrome:chrome_helper_plist" ]
+  }
+}
+
+action("audit_deps") {
+  script = "//presearch/script/audit_deps.py"
+
+  outputs = [ "$root_gen_dir/non-existent-audit_deps" ]
+
+  args = [
+    "--source_root=" + rebase_path("//presearch"),
+    "--rustup_path=" + rustup_path,
+    "--cargo_path=" + rustup_path,
+  ]
+
+  if (defined(rustc_toolchain)) {
+    args += [ "--toolchain=$rustc_toolchain" ]
+  }
+  if (audit_dev_deps) {
+    args += [ "--audit_dev_deps" ]
+  }
+}

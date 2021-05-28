@@ -1,0 +1,51 @@
+import("//build/buildflag_header.gni")
+import("//presearch/components/p3a/buildflags.gni")
+
+buildflag_header("buildflags") {
+  header = "buildflags.h"
+  flags = [
+    "PRESEARCH_P3A_ENABLED=$presearch_p3a_enabled",
+  ]
+}
+
+source_set("p3a") {
+  sources = [
+    "presearch_histogram_rewrite.cc",
+    "presearch_histogram_rewrite.h",
+    "presearch_p2a_protocols.cc",
+    "presearch_p2a_protocols.h",
+    "presearch_p3a_log_store.cc",
+    "presearch_p3a_log_store.h",
+    "presearch_p3a_scheduler.cc",
+    "presearch_p3a_scheduler.h",
+    "presearch_p3a_service.cc",
+    "presearch_p3a_service.h",
+    "presearch_p3a_switches.h",
+    "presearch_p3a_uploader.cc",
+    "presearch_p3a_uploader.h",
+    "presearch_p3a_utils.h",
+    "pref_names.cc",
+    "pref_names.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser:version_info",
+    "//presearch/common",
+    "//presearch/common:pref_names",
+    "//presearch/components/presearch_prochlo",
+    "//presearch/components/presearch_prochlo:prochlo_proto",
+    "//presearch/components/presearch_referrals/common",
+    "//presearch/components/presearch_stats/browser",
+    "//presearch/components/p3a:buildflags",
+    "//presearch/vendor/presearch_base",
+    "//components/metrics",
+    "//components/prefs",
+    "//content/public/browser",
+    "//content/public/common",
+    "//services/network/public/cpp",
+    "//services/network/public/mojom",
+    "//url",
+  ]
+}
+

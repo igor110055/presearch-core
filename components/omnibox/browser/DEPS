@@ -1,0 +1,12 @@
+# Existing exceptions
+specific_include_rules = {
+  "topsites_provider.cc": [
+    "+presearch/common/pref_names.h",
+  ],
+  "fake_autocomplete_provider_client.cc": [
+    "+presearch/common/pref_names.h",
+  ],
+  "suggested_sites_provider.cc": [
+    "+presearch/common/pref_names.h",
+  ],
+}

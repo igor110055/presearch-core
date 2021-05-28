@@ -1,0 +1,10 @@
+import("//presearch/components/presearch_referrals/buildflags/buildflags.gni")
+
+assert(enable_presearch_referrals)
+
+source_set("common") {
+  sources = [
+    "pref_names.cc",
+    "pref_names.h"
+  ]
+}

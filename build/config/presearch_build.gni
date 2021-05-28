@@ -1,0 +1,19 @@
+# Add imports here for things that need to be available in chromium code.
+# This file is included in most gn files either directly or through
+# import("//build/config/chrome_build.gni") in compiler.gni
+import("//presearch/presearch_repack_locales.gni")
+import("//presearch/browser/extensions/resources.gni")
+import("//presearch/browser/resources/extensions/sources.gni")
+import("//presearch/browser/resources/settings/sources.gni")
+import("//presearch/build/config/compiler.gni")
+import("//presearch/build/features.gni")
+import("//presearch/build/mac/config.gni")
+import("//presearch/components/omnibox/browser/sources.gni")
+import("//presearch/components/search_engines/sources.gni")
+import("//presearch/components/sync/driver/sources.gni")
+import("//presearch/components/sync_device_info/sources.gni")
+import("//presearch/installer/linux/sources.gni")
+import("//presearch/net/dns/sources.gni")
+import("//presearch/net/sources.gni")
+import("//presearch/renderer/sources.gni")
+import("//presearch/third_party/blink/renderer/includes.gni")

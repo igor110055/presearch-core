@@ -1,0 +1,39 @@
+/* Copyright (c) 2020 The Presearch Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef PRESEARCH_VENDOR_BAT_NATIVE_ADS_INCLUDE_BAT_ADS_TRANSACTION_INFO_H_
+#define PRESEARCH_VENDOR_BAT_NATIVE_ADS_INCLUDE_BAT_ADS_TRANSACTION_INFO_H_
+
+#include <cstdint>
+#include <string>
+#include <vector>
+
+#include "base/values.h"
+#include "bat/ads/export.h"
+
+namespace ads {
+
+struct ADS_EXPORT TransactionInfo {
+  TransactionInfo();
+  TransactionInfo(const TransactionInfo& info);
+  ~TransactionInfo();
+
+  bool operator==(const TransactionInfo& rhs) const;
+  bool operator!=(const TransactionInfo& rhs) const;
+
+  int64_t timestamp = 0;
+  double estimated_redemption_value = 0.0;
+  std::string confirmation_type;
+
+  void ToDictionary(base::Value* dictionary) const;
+
+  void FromDictionary(base::DictionaryValue* dictionary);
+};
+
+using TransactionList = std::vector<TransactionInfo>;
+
+}  // namespace ads
+
+#endif  // PRESEARCH_VENDOR_BAT_NATIVE_ADS_INCLUDE_BAT_ADS_TRANSACTION_INFO_H_

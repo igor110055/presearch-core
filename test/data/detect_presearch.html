@@ -1,0 +1,11 @@
+<script>
+  var presearch_detected = false;
+  navigator.presearch.isPresearch().then((response) => {
+    if (response === true) {
+      presearch_detected = true;
+    }
+  });
+  function getPresearchDetected() {
+    return presearch_detected;
+  }
+</script>

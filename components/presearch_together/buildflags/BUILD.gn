@@ -1,0 +1,10 @@
+import("buildflags.gni")
+import("//build/buildflag_header.gni")
+import("//presearch/components/presearch_together/buildflags/buildflags.gni")
+
+buildflag_header("buildflags") {
+  header = "buildflags.h"
+  flags = [
+    "PRESEARCH_TOGETHER_ENABLED=$presearch_together_enabled",
+  ]
+}

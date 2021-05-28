@@ -1,0 +1,39 @@
+/* Copyright (c) 2019 The Presearch Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#ifndef PRESEARCH_VENDOR_BAT_NATIVE_ADS_SRC_BAT_ADS_INTERNAL_CONVERSIONS_CONVERSION_QUEUE_ITEM_INFO_H_
+#define PRESEARCH_VENDOR_BAT_NATIVE_ADS_SRC_BAT_ADS_INTERNAL_CONVERSIONS_CONVERSION_QUEUE_ITEM_INFO_H_
+
+#include <string>
+#include <vector>
+
+#include "base/time/time.h"
+
+namespace ads {
+
+struct ConversionQueueItemInfo {
+  ConversionQueueItemInfo();
+  ConversionQueueItemInfo(const ConversionQueueItemInfo& info);
+  ~ConversionQueueItemInfo();
+
+  bool operator==(const ConversionQueueItemInfo& rhs) const;
+  bool operator!=(const ConversionQueueItemInfo& rhs) const;
+
+  std::string campaign_id;
+  std::string creative_set_id;
+  std::string creative_instance_id;
+  std::string advertiser_id;
+  std::string conversion_id;
+  std::string advertiser_public_key;
+  base::Time timestamp;
+
+  bool IsValid() const;
+};
+
+using ConversionQueueItemList = std::vector<ConversionQueueItemInfo>;
+
+}  // namespace ads
+
+#endif  // PRESEARCH_VENDOR_BAT_NATIVE_ADS_SRC_BAT_ADS_INTERNAL_CONVERSIONS_CONVERSION_QUEUE_ITEM_INFO_H_

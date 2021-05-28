@@ -1,0 +1,16 @@
+source_set("devtools") {
+  if (!is_android) {
+    sources = [
+      "presearch_devtools_ui_bindings.cc",
+      "presearch_devtools_ui_bindings.h",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/browser/themes",
+      "//chrome/browser/devtools",
+      "//chrome/common",
+      "//components/prefs",
+    ]
+  }
+}

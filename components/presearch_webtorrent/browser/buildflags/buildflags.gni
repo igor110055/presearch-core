@@ -1,0 +1,6 @@
+import("//extensions/buildflags/buildflags.gni")
+
+declare_args() {
+  enable_presearch_webtorrent = enable_extensions
+}
+

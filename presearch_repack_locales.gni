@@ -1,0 +1,14 @@
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+
+presearch_locale_source_patterns = [
+  "${root_gen_dir}/components/presearch_components_strings_",
+  "${root_gen_dir}/presearch/presearch_generated_resources_",
+]
+
+presearch_locale_deps = [
+  "//presearch/app:presearch_generated_resources_grit",
+  "//presearch/components/resources:strings",
+]

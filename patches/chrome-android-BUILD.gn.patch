@@ -1,0 +1,52 @@
+diff --git a/chrome/android/BUILD.gn b/chrome/android/BUILD.gn
+index 38c40cd243dcdd7440f8884f2081e0b01bb56da0..8f6f00c3527091f3a8cea2bde61b95789e96aec8 100644
+--- a/chrome/android/BUILD.gn
++++ b/chrome/android/BUILD.gn
+@@ -236,6 +236,7 @@ android_resources("chrome_app_java_resources") {
+     "//third_party/androidx:androidx_preference_preference_java",
+     "//third_party/androidx:androidx_recyclerview_recyclerview_java",
+   ]
++  deps += presearch_chrome_app_java_resources_deps sources += presearch_java_resources resource_overlay = true
+ }
+ 
+ if (enable_vr) {
+@@ -552,6 +553,7 @@ android_library("chrome_java") {
+   ]
+ 
+   deps += feed_deps
++  deps += presearch_chrome_java_deps
+ 
+   srcjar_deps = [
+     ":chrome_android_java_enums_srcjar",
+@@ -584,6 +586,7 @@ android_library("chrome_java") {
+     "//components/ui_metrics:ui_metrics_enums_java",
+     "//net:effective_connection_type_java",
+   ]
++  srcjar_deps += presearch_chrome_java_srcjar_deps
+ 
+   # From java_sources.gni.
+   sources = chrome_java_sources + [ app_hooks_impl ]
+@@ -713,6 +716,7 @@ group("jni_headers") {
+     "//chrome/browser/webauthn/android:jni_headers",
+     "//components/media_router/browser/android:jni_headers",
+   ]
++  public_deps += ["//presearch/build/android:jni_headers"]
+ }
+ 
+ # TODO(crbug.com/1112471): Get this to run cleanly under Python 3.
+@@ -1902,6 +1906,7 @@ if (current_toolchain == default_toolchain) {
+         ":${_variant}_locale_pak_assets",
+         ":${_variant}_paks",
+       ]
++      deps += [ "//presearch:presearch_pak_assets" ]
+       if (_is_monochrome) {
+         deps += [ "//android_webview:locale_pak_assets" ]
+         if (webview_includes_weblayer && !_is_bundle_module) {
+@@ -2291,6 +2296,7 @@ android_library("base_module_java") {
+     "//components/payments/content/android:service_java",
+     "//third_party/androidx:androidx_browser_browser_java",
+   ]
++  sources += presearch_java_base_module_sources deps += presearch_java_base_module_deps
+ 
+   # More deps for DFMs.
+   if (dfmify_dev_ui) {

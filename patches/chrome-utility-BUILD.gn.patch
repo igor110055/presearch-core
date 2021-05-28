@@ -1,0 +1,13 @@
+diff --git a/chrome/utility/BUILD.gn b/chrome/utility/BUILD.gn
+index 3c1c93059d71ce27125a67d49624cdadaf3078c8..5b74db962a57545280bbeffda999b2723f2d4922 100644
+--- a/chrome/utility/BUILD.gn
++++ b/chrome/utility/BUILD.gn
+@@ -66,6 +66,8 @@ static_library("utility") {
+     "//ui/base:buildflags",
+   ]
+ 
++  import("//presearch/utility/sources.gni") sources += presearch_utility_sources deps += presearch_utility_deps public_deps += presearch_utility_public_deps
++
+   if (is_win) {
+     deps += [
+       "//components/services/quarantine",

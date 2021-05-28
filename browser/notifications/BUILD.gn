@@ -1,0 +1,39 @@
+import("//chrome/common/features.gni")
+
+source_set("notifications") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10657 is resolved
+  check_includes = false
+  if (is_mac) {
+    sources = [
+      "presearch_alert_dispatcher_mac.h",
+      "presearch_alert_dispatcher_mac.mm",
+    ]
+
+    if (enable_system_notifications) {
+      sources += [
+        "presearch_notification_platform_bridge.h",
+        "presearch_notification_platform_bridge_mac.mm",
+      ]
+    }
+
+    deps = [
+      "//base",
+      "//chrome/browser/ui/cocoa/notifications:common",
+      "//chrome/services/mac_notifications/public/cpp",
+      "//skia",
+      "//ui/message_center/public/cpp",
+    ]
+
+    frameworks = [ "Foundation.framework" ]
+  } else if (is_android) {
+    sources = [
+      "presearch_notification_platform_bridge_helper_android.cc",
+      "presearch_notification_platform_bridge_helper_android.h",
+    ]
+
+    deps = [
+      "//base",
+      "//chrome/common",
+    ]
+  }
+}

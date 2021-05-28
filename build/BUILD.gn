@@ -1,0 +1,13 @@
+import("//presearch/build/config.gni")
+
+# Changing these will cause a full rebuild
+presearch_include_dirs_ = [ "//presearch/chromium_src" ]
+
+config("compiler") {
+  include_dirs = presearch_include_dirs_
+}
+
+# do not expose this as a public config anywhere
+config("version") {
+  defines = [ "PRESEARCH_CHROMIUM_VERSION=\"$chrome_version_string\"" ]
+}

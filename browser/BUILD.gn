@@ -1,0 +1,54 @@
+import("//presearch/build/config.gni")
+import("//build/buildflag_header.gni")
+import("//build/config/features.gni")
+import("//chrome/common/features.gni")
+
+buildflag_header("sparkle_buildflags") {
+  header = "sparkle_buildflags.h"
+  flags = [ "ENABLE_SPARKLE=$enable_sparkle" ]
+}
+
+source_set("version_info") {
+  visibility = [
+    ":*",
+    "//presearch/browser/*",
+    "//chrome/browser",
+
+    # these are laying violations and need to be fixed
+    "//presearch/components/greaselion/browser",
+    "//presearch/components/p3a",
+  ]
+
+  # these are only for version_info.cc and should not be exposed as public configs
+  configs += [ "//presearch/build:version" ]
+  defines = [ "PRESEARCH_BROWSER_VERSION=\"$presearch_version\"" ]
+
+  sources = [
+    "version_info.cc",
+    "version_info.h",
+  ]
+}
+
+group("browser") {
+  visibility = [
+    "//presearch:browser_dependencies",
+    "//presearch/browser/*",
+    "//presearch/test:*",
+    "//presearch/vendor/bat-native-ledger:headers",
+
+    # these are layering violation and need to be fixed
+    "//presearch/components/presearch_ads/test:presearch_ads_unit_tests",
+    "//presearch/components/presearch_rewards/browser:testutil",
+    "//presearch/components/presearch_rewards/test:presearch_rewards_unit_tests",
+    "//presearch/components/ipfs/test:*",
+  ]
+
+  if (enable_sparkle) {
+    deps = [ "//presearch/vendor/sparkle:sparkle_framework_bundle_data" ]
+  }
+
+  # Group depending on upstream's counterpart to make it easier to manage
+  # dependencies in presearch/ (//chrome/browser does not depend on this target
+  # so //presearch/browser becomes essentially an alias for //chrome/browser now).
+  public_deps = [ "//chrome/browser" ]
+}

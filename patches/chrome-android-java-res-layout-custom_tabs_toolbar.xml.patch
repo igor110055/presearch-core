@@ -1,0 +1,13 @@
+diff --git a/chrome/android/java/res/layout/custom_tabs_toolbar.xml b/chrome/android/java/res/layout/custom_tabs_toolbar.xml
+index 83c8fb6f9e42f04379e482cbd46b23c662b4a788..26516c25ed6e3db3fe6d9bf7bd78a37e82dddcdf 100644
+--- a/chrome/android/java/res/layout/custom_tabs_toolbar.xml
++++ b/chrome/android/java/res/layout/custom_tabs_toolbar.xml
+@@ -107,7 +107,7 @@
+         android:gravity="center_vertical"
+         android:orientation="horizontal" />
+ 
+-
++    <include layout="@layout/presearch_custom_tabs_toolbar" android:layout_height="wrap_content" android:layout_width="match_parent" />
+     <org.chromium.chrome.browser.toolbar.menu_button.MenuButton
+         android:layout_height="wrap_content"
+         android:layout_gravity="center_vertical|end"

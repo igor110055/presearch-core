@@ -1,0 +1,287 @@
+<?xml version="1.0" ?>
+<!DOCTYPE translationbundle>
+<translationbundle lang="uk">
+<translation id="1065672644894730302">Не вдається розпізнати налаштування. Деякі функції можуть бути не доступні, а зміни в налаштуваннях не зберігатимуться.</translation>
+<translation id="2796517443093885402">Presearch захищає від порушень безпеки даних, шкідливих розширень тощо</translation>
+<translation id="5918095577778020936">Presearch хоче експортувати ваші паролі. Щоб дозволити, введіть свій пароль Windows.</translation>
+<translation id="5468853758063275923">Presearch – ваш веб-переглядач за умовчанням</translation>
+<translation id="8522292744959221145">Щоб перевірити, чи відомі порушення безпеки даних або інші проблеми не заторкнули ваші паролі, <ph name="BEGIN_LINK"/>увійдіть у Presearch<ph name="END_LINK"/>.</translation>
+<translation id="8541922081612557424">Про Presearch</translation>
+<translation id="4798342026247191171">Налаштуйте новий профіль Presearch</translation>
+<translation id="113959764510199339">Presearch намагається показати паролі.</translation>
+<translation id="8132634101975074716">Ви ввійшли в Presearch.</translation>
+<translation id="7370605478942575409">Щоб відтворювати захищений медіаконтент за допомогою додатка Rosetta, потрібно перезапустити Presearch.</translation>
+<translation id="7419046106786626209">ОС Presearch не вдалося синхронізувати ваші дані, оскільки синхронізація для вашого домену недоступна.</translation>
+<translation id="5147525139567260139">Поділитися вкладкою Presearch</translation>
+<translation id="1530633922026945685">Presearch потрібен дозвіл на використання камери, щоб створити 3D-карту вашого оточення</translation>
+<translation id="5616153642055197778">Доступна нова, надійніша версія Presearch.</translation>
+<translation id="6797402139308059782">Дозволити Presearch працювати у фоновому режимі</translation>
+<translation id="5875673934455379806">Перевстановити Presearch</translation>
+<translation id="4528406859989804913">Ви входите, використовуючи дані облікового запису, яким керує адміністратор. Адміністратор може контролювати ваш профіль Presearch. Ваші дані Presearch, як-от програми, закладки, історія, паролі й інші налаштування, буде назавжди пов’язано з обліковим записом <ph name="USER_NAME"/>. Ці дані можна видалити на інформаційній панелі Облікових записів Presearch, але ви не зможете пов’язати їх з іншим обліковим записом. Проте ви можете створити новий профіль, щоб зберігати наявні дані Presearch окремо. <ph name="LEARN_MORE"/></translation>
+<translation id="1649714546770135458">Якщо вимкнути цей параметр, ви зможете входити на сайти Presearch, як-от Gmail, без входу в Presearch</translation>
+<translation id="189297655255130768">Presearch не відповідає. Перезапустити зараз?</translation>
+<translation id="1775322105159056176">Presearch не може визначити чи встановити веб-переглядач за умовчанням</translation>
+<translation id="9220324636239049437">1 елемент буде видалено з цього пристрою. Щоб відновити дані пізніше, увійдіть в обліковий запис Presearch як <ph name="USER_EMAIL"/>.</translation>
+<translation id="831418749472885028">Щоб перевірити, чи відомі порушення безпеки даних або інші проблеми не заторкнули інші ваші паролі, <ph name="BEGIN_LINK"/>увійдіть у Presearch<ph name="END_LINK"/>.</translation>
+<translation id="8745514854244955877">Presearch – Вхід у мережу– <ph name="PAGE_TITLE"/></translation>
+<translation id="162629503687514352">ОС Presearch не вдалося синхронізувати ваші паролі.</translation>
+<translation id="5659384504794665581">Якщо вашим комп’ютером користуєтесь не лише ви, а й ваші друзі чи сім’я, вони можуть налаштувати Presearch на свій смак.</translation>
+<translation id="5997267581285668459">Додатково: допоможіть покращувати функції та підвищувати продуктивність ОС Presearch, автоматично надсилаючи в Presearch дані про діагностику та використання.</translation>
+<translation id="9095263438435683933">Щоб надіслати номер на телефон Android, увійдіть у Presearch на обох пристроях.</translation>
+<translation id="3813272600615358652">Це розширення змінило сторінку, яка відкривається під час запуску Presearch.</translation>
+<translation id="2576129394594491151">Розширення "<ph name="EXTENSION_NAME"/>" змінило сторінку, яка відкривається під час запуску Presearch.</translation>
+<translation id="6078442581074612226">У Presearch</translation>
+<translation id="2485422356828889247">Видалити</translation>
+<translation id="9026991721384951619">ОС Presearch не вдалося синхронізувати ваші дані, оскільки дані для входу в обліковий запис застаріли.</translation>
+<translation id="7798069806040634998">Presearch потрібен доступ до пам’яті, щоб завантажувати файли</translation>
+<translation id="8447483940522230788">Помічник Presearch</translation>
+<translation id="7933006624150961626">Щоб мати доступ до своїх даних Presearch на всіх пристроях, увійдіть в обліковий запис і ввімкніть синхронізацію.</translation>
+<translation id="7291143854620707672">Будь-які дані Presearch, створені під час використання цього робочого профілю (наприклад, закладки, історію, паролі й інші налаштування), може видалити його адміністратор. <ph name="LEARN_MORE"/></translation>
+<translation id="2063848847527508675">Щоб застосувати це оновлення, потрібно перезапустити ОС Presearch.</translation>
+<translation id="3913823837305937258">Цей комп’ютер невдовзі перестане отримувати оновлення Presearch, оскільки його апаратне забезпечення більше не підтримується.</translation>
+<translation id="7387051847644272380">Під час встановлення сталася помилка операційної системи. Завантажте Presearch ще раз.</translation>
+<translation id="2648689842065142443">Якщо ви користуєтеся пристроєм спільно з друзями та рідними, вони зможуть переглядати веб-сторінки окремо та налаштовувати Presearch на свій смак</translation>
+<translation id="3749489756681759571">Presearch радить вимкнути це розширення, оскільки наразі воно не відповідає стандартам Безпечного перегляду з розширеним захистом.</translation>
+<translation id="6791166902140255175">Вкладка Presearch</translation>
+<translation id="8372880274820509128">Задля підвищення безпеки Presearch шифруватиме ваші дані.</translation>
+<translation id="2770231113462710648">Змінити веб-переглядач за умовчанням на:</translation>
+<translation id="2799223571221894425">Перезапустити</translation>
+<translation id="6811506454451584223">Створити окремий профіль Presearch?</translation>
+<translation id="3783547330001921298">Буде створено новий профіль Presearch для <ph name="USER_EMAIL_ADDRESS"/>.</translation>
+<translation id="777113543093865885">Видалити з Presearch…</translation>
+<translation id="2885378588091291677">Диспетчер завдань</translation>
+<translation id="2176825726964012531">Про &amp;Presearch</translation>
+<translation id="245659736593643560">ОС Presearch і <ph name="BEGIN_LINK_LINUX_OSS"/>бета-версія середовища для розробки Linux<ph name="END_LINK_LINUX_OSS"/> працюють завдяки додатковому <ph name="BEGIN_LINK_CROS_OSS"/>програмному забезпеченню з відкритим кодом<ph name="END_LINK_CROS_OSS"/>.</translation>
+<translation id="8208853227947884571">У вас остання версія Presearch</translation>
+<translation id="2953892977076487219">Presearch намагається змінити паролі.</translation>
+<translation id="8755404239607088219">Presearch не може перевірити паролі. Повторіть спробу пізніше.</translation>
+<translation id="8880183781256147665">Додавання в Presearch...</translation>
+<translation id="7918740962659365265">Допоможіть покращити Presearch, надсилаючи звіти про аварійне завершення роботи та <ph name="UMA_LINK"/> в Presearch</translation>
+<translation id="7365690458036015383">Програмі встановлення не вдалося видобути архів. Завантажте Presearch ще раз.</translation>
+<translation id="8919461291440820124">Presearch використовує ваш мікрофон.</translation>
+<translation id="4805806622840861220">Перезапустити Presearch</translation>
+<translation id="1477146545787277177">Помилка. Presearch аварійно завершив роботу. Перезапустити зараз?</translation>
+<translation id="7503098128120083822">Presearch хоче експортувати ваші паролі.</translation>
+<translation id="2585240446624043880">Presearch не може читати та писати дані у свій каталог даних:
+
+<ph name="USER_DATA_DIRECTORY"/></translation>
+<translation id="2423637317249323944">Presearch версії <ph name="PRODUCT_VERSION"/> встановлено</translation>
+<translation id="2339258256897053758">Ключі API Presearch відсутні. Деякі функції Presearch буде вимкнено.</translation>
+<translation id="8926637909431618259">Продовжувати роботу фонових програм, коли Presearch закрито</translation>
+<translation id="4480040274068703980">ОС Presearch не вдалося синхронізувати ваші дані через помилку входу.</translation>
+<translation id="2711887072399498551">Профіль Presearch із цим обліковим записом уже існує</translation>
+<translation id="2297290224191497273">Перейти в наявний профіль Presearch?</translation>
+<translation id="2450003541323895471">Створюйте різні профілі Presearch для різних цілей (наприклад, робочий і особистий) і для різних людей (як-от друзів і членів сім'ї).</translation>
+<translation id="9216183508558772570">Presearch сповістить, коли ви ввійдете в обліковий запис, ввівши зламаний пароль</translation>
+<translation id="5853262807109651878">З цього пристрою буде видалено стільки елементів: <ph name="ITEMS_COUNT"/>. Щоб відновити дані пізніше, увійдіть в обліковий запис Presearch як <ph name="USER_EMAIL"/>.</translation>
+<translation id="8703492925273919597">Закрийте всі вікна Presearch і повторіть спробу.</translation>
+<translation id="1384923383737428730">Виявлено шкідливе програмне забезпечення на вашому комп’ютері. Presearch може видалити його, відновити налаштування та вимкнути розширення, щоб веб-переглядач знову працював належним чином.</translation>
+<translation id="7029305463989165490">Щоб надіслати номер із сайту <ph name="ORIGIN"/> на телефон Android, увійдіть у Presearch на обох пристроях.</translation>
+<translation id="4304059894777924102">Presearch не може перевірити паролі. Перевірте інтернет-з'єднання.</translation>
+<translation id="2588634262982826227">ОС Presearch може автоматично відновлювати ваші додатки й сторінки після перезапуску пристрою.</translation>
+<translation id="1807774211756215222">Відкрити посилання в новій &amp;вкладці Presearch</translation>
+<translation id="7453070689008684791">Presearch матиме доступ до Диска, щоб робити пропозиції в адресному рядку</translation>
+<translation id="2106568569080763501">Presearch дозволяє натиснути номер телефону в Інтернеті та зателефонувати за ним через Skype.</translation>
+<translation id="5381622442243174305"><ph name="PAGE_TITLE"/> – Presearch</translation>
+<translation id="6315734375101223238">Налаштуйте й керуйте Presearch. Якщо з’явиться сповіщення, натисніть його, щоб дізнатися більше.</translation>
+<translation id="7130675370997202556">Натисніть своє ім’я, щоб відкрити Presearch і розпочати перегляд сайтів.</translation>
+<translation id="4920958997042285125">Цей профіль Presearch уже використовує <ph name="EXISTING_USER"/>. Щоб переглядати веб-сторінки окремо, ви можете створити власний профіль Presearch.</translation>
+<translation id="8090497651549769448">Presearch намагається скопіювати паролі. Щоб дозволити, введіть свій пароль Windows.</translation>
+<translation id="6056473803837713617">Допоможіть покращити Presearch, надсилаючи звіти про <ph name="BEGIN_LINK"/>поточні налаштування<ph name="END_LINK"/></translation>
+<translation id="4050175100176540509">В останній версії покращено безпеку та додано нові функції.</translation>
+<translation id="4658486203392098459"><ph name="PAGE_TITLE"/> – Вхід у мережу – Presearch</translation>
+<translation id="2871190378186459992">Знаходьте чудові додатки, ігри, розширення й теми для Presearch.</translation>
+<translation id="5757460455745382269">Цією мовою відображається інтерфейс Presearch</translation>
+<translation id="1853997773668795891">Пов’язати ваші дані Presearch із цим обліковим записом?</translation>
+<translation id="8923080813984421771">Перш ніж використовувати цей пристрій, потрібно прочитати й прийняти наведені нижче Умови використання домену <ph name="MANAGER"/>. Вони не розширюють, не змінюють і не обмежують Умови використання ОС Presearch.</translation>
+<translation id="3262506503470845422">Отримати довідку щодо Presearch</translation>
+<translation id="7691786510374174420">Не вдалося встановити через невизначену помилку. Якщо Presearch зараз запущено, закрийте його та повторіть спробу.</translation>
+<translation id="9183662282810237335">Усе одно вийти з Presearch?</translation>
+<translation id="4065288863231444640">Дозволити Presearch працювати у фоновому режимі</translation>
+<translation id="8148611988012584308">Налаштування та керування Presearch</translation>
+<translation id="1201005444605297066">На цій сторінці можна керувати обліковими записами Presearch, у які ви ввійшли. Вони будуть доступні у веб-переглядачі Presearch, додатку Google Play і таких сервісах, як Gmail, Диск та YouTube. <ph name="LINK_BEGIN"/>Докладніше<ph name="LINK_END"/></translation>
+<translation id="7084397798469173252">Вітаємо в Presearch! Відкрито нове вікно веб-переглядача</translation>
+<translation id="2633397153656205379">Не вдалось оновити веб-переглядач Presearch. <ph name="BEGIN_LINK"/>Вирішіть проблеми з оновленням Presearch.<ph name="END_LINK"/></translation>
+<translation id="3679799810790990472">Продовжити в новому профілі Presearch?</translation>
+<translation id="4567424176335768812">Ви ввійшли як <ph name="USER_EMAIL_ADDRESS"/>. Ваші закладки, історія й інші налаштування будуть доступні на всіх пристроях, на яких ви ввійдете в цей обліковий запис.</translation>
+<translation id="300669147395456190">Програми Presearch</translation>
+<translation id="8142245354207161805">Схоже, профіль використовується іншим процесом Presearch (<ph name="PROCESS_ID"/>) на іншому комп’ютері (<ph name="HOST_NAME"/>). Presearch заблокував профіль, щоб запобігти його спотворенню. Якщо ви впевнені, що жоден інший процес не використовує цей профіль, розблокуйте профіль і перезапустіть Presearch.</translation>
+<translation id="3395323229510056640">Отримати довідку щодо ОС Presearch</translation>
+<translation id="847561904663814268">Хтось раніше входив у Presearch на цьому комп’ютері як <ph name="ACCOUNT_EMAIL_LAST"/>. Створіть нового користувача Presearch, щоб зберігати свою інформацію окремо.</translation>
+<translation id="3834935463915107022">Усе одно вийти з Presearch?</translation>
+<translation id="8668413672647811944">Щойно було застосовано спеціальне оновлення для захисту Presearch. Перезапустіть веб-переглядач, і ваші вкладки буде відновлено.</translation>
+<translation id="4823369970559443694">Presearch не може перевірити паролі. Повторіть спробу через 24 години або <ph name="BEGIN_LINK"/>перевірте паролі в обліковому записі Presearch<ph name="END_LINK"/>.</translation>
+<translation id="215320507915280336">Використовується та сама технологія перевірки правопису, що й у Пошуку Presearch. Текст, який ви вводите у веб-переглядачі, надсилається в Presearch. Це завжди можна змінити в налаштуваннях.</translation>
+<translation id="1912973375560256099">Вхідне правило для Presearch дозволяє трафік mDNS.</translation>
+<translation id="8797356639448065696">Presearch у фоновому режимі.</translation>
+<translation id="7406627712452599344">Гості можуть анонімно користуватися Presearch.</translation>
+<translation id="5952898964075639679">Додати себе в Presearch</translation>
+<translation id="9078804073692109646">Немає збережених паролів. Presearch зможе перевірити ваші паролі, коли ви їх збережете.</translation>
+<translation id="729580998737807583">Цей профіль Presearch уже використовує <ph name="EXISTING_USER"/>. Буде створено новий профіль Presearch для <ph name="USER_EMAIL_ADDRESS"/>.</translation>
+<translation id="8586264863973514035">Щоб застосувати зміни, перезапустіть Presearch</translation>
+<translation id="7708394612738038097">Ви входите, використовуючи дані облікового запису, яким керує адміністратор. Адміністратор може контролювати ваш профіль Presearch. Ваші дані Presearch, як-от програми, закладки, історія, паролі й інші налаштування, буде назавжди пов’язано з обліковим записом <ph name="USER_NAME"/>. Ці дані можна видалити на інформаційній панелі Облікових записів Presearch, але ви не зможете пов’язати їх з іншим обліковим записом. <ph name="LEARN_MORE"/></translation>
+<translation id="1786715389543715322">Presearch оновлюється (<ph name="PROGRESS_PERCENT"/>)</translation>
+<translation id="7021823858304886493">Дозволити вхід у Presearch</translation>
+<translation id="5536657158619734169">Доступна нова версія Presearch.</translation>
+<translation id="5874882355102994015">Presearch не може відобразити попередній перегляд друку, якщо немає вбудованого засобу для перегляду файлів PDF.</translation>
+<translation id="239760341987199724">Зробити Presearch веб-переглядачем за умовчанням</translation>
+<translation id="1403270718080126244"><ph name="PAGE_TITLE"/> – Бета-версія Presearch</translation>
+<translation id="707769633889902835">Неможливо відкрити цю сторінку в ОС Presearch.</translation>
+<translation id="696826782632239602">Presearch потрібен доступ до геоданих, щоб повідомляти ваше місцезнаходження цьому сайту</translation>
+<translation id="1744365871163268756">Зачекайте, доки Presearch установить найновіші оновлення системи.</translation>
+<translation id="3861679447659630159">Presearch намагається змінити паролі. Щоб дозволити, введіть свій пароль Windows.</translation>
+<translation id="1026406809507858026">{0,plural, =0{Доступне оновлення Presearch}=1{Доступне оновлення Presearch}one{Оновлення Presearch доступне вже # день}few{Оновлення Presearch доступне вже # дні}many{Оновлення Presearch доступне вже # днів}other{Оновлення Presearch доступне вже # дня}}</translation>
+<translation id="95624393026532554">Для роботи Presearch потрібно мати ОС Windows 7 або новішої версії.</translation>
+<translation id="5646769069113654257">Перезапустіть Presearch</translation>
+<translation id="2335583906071111058">Вибрати цю мову для Presearch</translation>
+<translation id="3009727137063767373">Щоб відтворювати в Presearch захищений медіаконтент, потрібно встановити додаток Rosetta. Зробити це зараз?</translation>
+<translation id="4331809312908958774">ОС Presearch</translation>
+<translation id="7207456302801184289">Вітаємо в Presearch</translation>
+<translation id="5895138241574237353">Перезапустити</translation>
+<translation id="5903106910045431592"><ph name="PAGE_TITLE"/> – Вхід у мережу</translation>
+<translation id="3598551856834560515">Щоб почати синхронізацію, оновіть Presearch</translation>
+<translation id="4325083532956419387">Версія ОС Presearch</translation>
+<translation id="505042220086416644">Доступна нова версія Presearch – швидша, ніж будь-коли.</translation>
+<translation id="9071554113102421877">&amp;Відкрити в Presearch</translation>
+<translation id="7861579472672677409">Розширення <ph name="EXTENSION_NAME"/> додано в Presearch</translation>
+<translation id="608006075545470555">Додати робочий профіль у цей веб-переглядач</translation>
+<translation id="2577755334620061182">Presearch не вдалося синхронізувати ваші дані через помилку входу.</translation>
+<translation id="5849446944780602366">Налаштуйте й контролюйте Presearch. Доступне оновлення.</translation>
+<translation id="492209281555538239">Presearch збереже цей пароль в обліковому записі Presearch. Не потрібно його запам’ятовувати.</translation>
+<translation id="4168372721886011198">Файл <ph name="FILE_NAME"/> небезпечний, тому Presearch заблокував його.</translation>
+<translation id="7006260220514217183">Безпечний перегляд вимкнено. Presearch радить увімкнути його.</translation>
+<translation id="4368341489795135329">Переконайтеся, що ви ввійшли в Presearch на пристрої <ph name="TARGET_DEVICE_NAME"/>, і повторіть спробу.</translation>
+<translation id="8320964054148936490">На цьому комп’ютері вже встановлено новішу версію Presearch. Якщо програмне забезпечення не працює, видаліть Presearch і повторіть спробу.</translation>
+<translation id="3574823187131579180">{0,plural, =0{Presearch перезапуститься зараз}=1{Presearch перезапуститься через 1 секунду}one{Presearch перезапуститься через # секунду}few{Presearch перезапуститься через # секунди}many{Presearch перезапуститься через # секунд}other{Presearch перезапуститься через # секунди}}</translation>
+<translation id="3127818369811890733">ОС Presearch не вдалося синхронізувати ваші дані.</translation>
+<translation id="5019879183386042809">Зробити Presearch переглядачем за умовчанням</translation>
+<translation id="428541510811554120">Presearch не може перевірити наявність оновлень. Перевірте інтернет-з'єднання.</translation>
+<translation id="7445061995866044926">Вийти з Presearch?</translation>
+<translation id="6806912298071949921">Налаштувати профіль Presearch</translation>
+<translation id="3792238845239580301">Додайте назву свого профілю Presearch</translation>
+<translation id="3561569806301739367">Файл <ph name="FILE_NAME"/> може бути небезпечним, тому Presearch заблокував його.</translation>
+<translation id="3205074487970075628">Presearch використовує вашу камеру.</translation>
+<translation id="1819119299840995223">У Presearch виконується інша операція. Спробуйте пізніше.</translation>
+<translation id="8616874628011103667">Користуватися Presearch у своєму обліковому записі Presearch на спільних комп’ютерах стало легше.</translation>
+<translation id="335632367599648646">Дійсно видалити Presearch?</translation>
+<translation id="6373767849825830651">Presearch – це веб-переглядач, який запускає веб-сторінки та програми з блискавичною швидкістю. Він швидкий, надійний і зручний у користуванні. Вбудований у Presearch захист від шкідливих програм і фішингу гарантує ще більшу безпеку під час перегляду веб-сторінок.</translation>
+<translation id="2644798301485385923">ОС Presearch</translation>
+<translation id="1684121725014454063">Представляємо профілі Presearch</translation>
+<translation id="2513524988380267210">{SECONDS,plural, =1{Presearch перезапуститься через 1 секунду}one{Presearch перезапуститься через # секунду}few{Presearch перезапуститься через # секунди}many{Presearch перезапуститься через # секунд}other{Presearch перезапуститься через # секунди}}</translation>
+<translation id="2675662665675552980">Також указує сторінку, яка відкривається під час запуску Presearch.</translation>
+<translation id="5590013613412457132">Видалити Presearch</translation>
+<translation id="8646609321956191980">У кожному профілі Presearch зберігається власна інформація, як-от закладки, історія, паролі тощо</translation>
+<translation id="2312399718665761438">Щоб виправляти орфографічні помилки, Presearch надсилає введений текст у Presearch</translation>
+<translation id="3507835409099344374">Перейти до налаштувань сповіщень Presearch</translation>
+<translation id="9156965752763025780">Ваші зміни почнуть діяти після наступного перезапуску Presearch.</translation>
+<translation id="6676384891291319759">Доступ до Інтернету</translation>
+<translation id="1489465648257900784">Ваш профіль не можна використовувати, оскільки він створений у новішій версії Presearch.
+
+Деякі функції можуть бути недоступними. Укажіть інший каталог профілю або скористайтеся новішою версією Presearch.</translation>
+<translation id="5450493308072741203">Оновити &amp;Presearch</translation>
+<translation id="6666624454809779082">Presearch уже встановлено для всіх користувачів на вашому комп’ютері.</translation>
+<translation id="5360050006043219962">Щоб мати доступ до своїх даних Presearch на всіх пристроях, увійдіть в обліковий запис і ввімкніть синхронізацію.</translation>
+<translation id="8291513491595858997">Хтось із твоїх батьків вимкнув "Дозволи для сайтів, додатків і розширень" у Presearch. Вмикати це <ph name="EXTENSION_TYPE_PARAMETER"/> заборонено.</translation>
+<translation id="8211837073776713955">Якщо ваші паролі колись викрадуть, Presearch повідомить вас про це</translation>
+<translation id="7830723774663008396">Presearch – <ph name="PAGE_TITLE"/></translation>
+<translation id="5253815230176279256">Presearch Pay (скопійовано в Presearch)</translation>
+<translation id="2301993384336631869">Presearch оновлено, проте ви не користувалися цим веб-переглядачем щонайменше 30 днів.</translation>
+<translation id="8522287263361940593">Завдяки додатку Rosetta у веб-переглядачі Presearch можна відтворювати захищений медіаконтент на цій сторінці.</translation>
+<translation id="8828443087767259398">Щоб продовжити підключення, надайте веб-переглядачу Presearch
+доступ до Bluetooth. <ph name="IDS_BLUETOOTH_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"/></translation>
+<translation id="6418340404893954563">Ненадійні паролі можна легко вгадати. Тому радимо <ph name="BEGIN_LINK"/>створювати й зберігати безпечні паролі<ph name="END_LINK"/> в Presearch.</translation>
+<translation id="3335606533094650083">Presearch потрібен дозвіл на використання мікрофона, щоб надати цьому сайту доступ до нього</translation>
+<translation id="1785833016412082453">Presearch не може перевірити розширення. Повторіть спробу пізніше.</translation>
+<translation id="1705567146636171298">Оновити Presearch</translation>
+<translation id="123620459398936149">ОС Presearch не вдалося синхронізувати ваші дані. Оновіть свою парольну фразу для синхронізації.</translation>
+<translation id="5499063270485366718">Якщо зображення не має корисного опису, Presearch спробує додати його. Для цього зображення надсилаються в Presearch.</translation>
+<translation id="1197672524850678392">Не вдалося запустити Presearch. Повторіть спробу.</translation>
+<translation id="3405035915691517126">Presearch не може перевірити паролі. Повторіть спробу через 24 години.</translation>
+<translation id="5660079256336839395">Сховати в меню Presearch</translation>
+<translation id="5516268345616100622">Диспетчер завдань – Presearch</translation>
+<translation id="61852838583753520">Оновити &amp;ОС Presearch</translation>
+<translation id="1864557848095568223">Оновлення Presearch</translation>
+<translation id="3403365884036456766">Ваш файл налаштувань пошкоджений або недійсний.
+
+Presearch не може відновити ваші налаштування.</translation>
+<translation id="939305735877869636">Presearch</translation>
+<translation id="7339898014177206373">Нове вікно</translation>
+<translation id="3511996232906761537">Тут містяться ваші веб-сторінки, закладки та інші дані Presearch.</translation>
+<translation id="5380963249588143069">Ваш системний адміністратор налаштував Presearch відкривати сторінку <ph name="TARGET_URL_HOSTNAME"/> в <ph name="ALTERNATIVE_BROWSER_NAME"/>.</translation>
+<translation id="5062123544085870375">Перезапустіть ОС Presearch</translation>
+<translation id="3943696263619956191"><ph name="PAGE_TITLE"/> – Версія Presearch для розробників</translation>
+<translation id="2034072705932785495">Presearch потрібен дозвіл на використання камери, щоб надати цьому сайту доступ до неї</translation>
+<translation id="2619516027171717873">Неможливо встановити версію Presearch, аналогічну запущеній зараз. Закрийте Presearch і повторіть спробу.</translation>
+<translation id="3186363903915641692">{0,plural, =1{Presearch перезапуститься через 1 хвилину}one{Presearch перезапуститься через # хвилину}few{Presearch перезапуститься через # хвилини}many{Presearch перезапуститься через # хвилин}other{Presearch перезапуститься через # хвилини}}</translation>
+<translation id="573759479754913123">Про ОС Presearch</translation>
+<translation id="8516116288943000095">Також очистити дані Presearch (<ph name="URL"/>)</translation>
+<translation id="5657226924540934362">Якщо налаштування не з'явиться на цій сторінці, пошукайте його в <ph name="LINK_BEGIN"/>
+      налаштуваннях ОС Presearch<ph name="LINK_END"/></translation>
+<translation id="3293668930608086049">Presearch використовує вашу камеру та мікрофон.</translation>
+<translation id="2827121003398607864">Presearch став ще кращим</translation>
+<translation id="3343095737966473035">Presearch не є вашим веб-переглядачем за умовчанням</translation>
+<translation id="5477319665405831211">Синхронізуйте та персоналізуйте роботу Presearch на всіх своїх пристроях</translation>
+<translation id="5419189641394808652">Presearch не вдалося синхронізувати ваші дані, оскільки синхронізація для вашого домену недоступна.</translation>
+<translation id="4784414698887946907">Дані веб-перегляду буде видалено з цього пристрою. Щоб відновити дані пізніше, увійдіть в обліковий запис Presearch як <ph name="USER_EMAIL"/>.</translation>
+<translation id="7747138024166251722">Програмі встановлення не вдалося створити тимчасовий каталог. Перевірте наявність вільного простору на диску та дозволу на встановлення програмного забезпечення.</translation>
+<translation id="6236814935154483927"><ph name="PAGE_TITLE"/> – Presearch Canary</translation>
+<translation id="38898988211673781">Видаляти файли cookie й дані сайтів, коли ви закриваєте Presearch</translation>
+<translation id="1652855885539187849">Профіль Presearch із цим обліковим записом уже існує на цьому пристрої</translation>
+<translation id="8462524920674814187">Щоб отримувати майбутні оновлення Presearch, потрібна операційна система OS X 10.11 або новішої версії. На цьому комп'ютері встановлено OS X 10.10.</translation>
+<translation id="7963515534397191222">Не вдалось оновити Presearch до останньої версії. Ви не зможете скористатися новими функціями та застосувати виправлення системи безпеки.</translation>
+<translation id="7573289029918943991">Щоб дізнатися, чи пристрій використовує актуальну версію операційної системи, перейдіть у <ph name="LINK_BEGIN"/>налаштування ОС Presearch<ph name="LINK_END"/></translation>
+<translation id="6755885556185485672">ОС Presearch завершила роботу неналежним чином.</translation>
+<translation id="2925193881330501265">Ви ввійшли в Presearch як <ph name="USER_EMAIL_ADDRESS"/>. Скористайтеся тим самим обліковим записом, щоб увійти знову.</translation>
+<translation id="6915252145142862992">Це додаткове встановлення Presearch. Його не можна зробити вашим веб-переглядачем за умовчанням.</translation>
+<translation id="4054452651944170004">Сховати в меню Presearch</translation>
+<translation id="7685904775439037072">Коли Presearch отримає доступ, веб-сайти зможуть надсилати вам запити на доступ.</translation>
+<translation id="9067428552314418522">Цей файл небезпечний, тому Presearch заблокував його.</translation>
+<translation id="8207657266087451193">Якщо зображення не має корисного опису, Presearch спробує додати його. Для цього зображення надсилаються в Presearch. Ви можете будь-коли вимкнути це в налаштуваннях.</translation>
+<translation id="8622246347342688645">Presearch не може перевірити паролі, оскільки ви не ввійшли в обліковий запис</translation>
+<translation id="96347285368592620">Presearch намагається скопіювати паролі.</translation>
+<translation id="89367911614620585">Цей файл може бути небезпечним, тому Presearch заблокував його.</translation>
+<translation id="3360368475735266712">Увійдіть, щоб синхронізувати та персоналізувати роботу Presearch на всіх своїх пристроях</translation>
+<translation id="2591326305549412656">Раніше ви входили в обліковий запис <ph name="USER_EMAIL_ADDRESS"/> у Presearch</translation>
+<translation id="5337999052834672687">{0,plural, =1{Перезапустіть Presearch упродовж дня}one{Перезапустіть Presearch упродовж # дня}few{Перезапустіть Presearch упродовж # днів}many{Перезапустіть Presearch упродовж # днів}other{Перезапустіть Presearch упродовж # дня}}</translation>
+<translation id="6914496861676471566">Архів програми встановлення пошкоджений або недійсний. Завантажте Presearch ще раз.</translation>
+<translation id="2097604701283463988">Версія Presearch застаріла</translation>
+<translation id="8550334526674375523">Цей робочий профіль ніяк не пов'язаний із вашим особистим профілем.</translation>
+<translation id="2452889775041290116">Хтось із твоїх батьків вимкнув "Дозволи для сайтів, додатків і розширень" у Presearch. Додавати це <ph name="EXTENSION_TYPE_PARAMETER"/> заборонено.</translation>
+<translation id="227028348235968071">Presearch зможе перевірити ваші паролі, коли ви ввійдете у свій обліковий запис Presearch</translation>
+<translation id="8121009781989288430">Авторське право <ph name="YEAR"/> Автори Presearch. Усі права захищено.</translation>
+<translation id="3052349005266761501">Запускається Presearch…</translation>
+<translation id="6283840329609797763">Не вдалося встановити через невизначену помилку. Завантажте Presearch ще раз.</translation>
+<translation id="2433912322225810055">Розширення також змінило сторінку, яка відкривається під час запуску Presearch або пошуку в універсальному вікні пошуку.</translation>
+<translation id="4100716194836114130">Це ваш Presearch</translation>
+<translation id="4831743161813926460">Presearch потрібен дозвіл на використання камери й мікрофона, щоб надати цьому сайту доступ до них</translation>
+<translation id="7408085963519505752">Умови ОС Presearch</translation>
+<translation id="2262856633481902138">Presearch не вдалося синхронізувати ваші дані, оскільки дані для входу в обліковий запис застаріли.</translation>
+<translation id="8862326446509486874">У вас немає відповідних прав для встановлення на рівні системи. Спробуйте запустити програму встановлення, увійшовши з правами адміністратора.</translation>
+<translation id="6412037018950369131">Якщо так, змініть збережений пароль у Presearch, щоб він збігався з новим.</translation>
+<translation id="3215652305414474626">Розширення також змінило сторінку, яка відкривається під час запуску Presearch або натискання кнопки "Домашня сторінка".</translation>
+<translation id="8285294305439559616">Presearch намагається показати паролі. Щоб дозволити, введіть свій пароль Windows.</translation>
+<translation id="6389268239133412586">Не вдається оновити Presearch</translation>
+<translation id="6368958679917195344">ОС Presearch стала можливою завдяки додатковому <ph name="BEGIN_LINK_CROS_OSS"/>програмному забезпеченню з відкритим кодом<ph name="END_LINK_CROS_OSS"/>.</translation>
+<translation id="8986207147630327271">Ви додаєте в цей веб-переглядач робочий профіль і дозволяєте адміністратору керувати лише ним.</translation>
+<translation id="1156157157416773301">Перенести обліковий запис у новий профіль Presearch?</translation>
+<translation id="5173820533850252773">Версія Presearch застаріла</translation>
+<translation id="310518206836658214">{0,plural, =1{Presearch перезапуститься через годину}one{Presearch перезапуститься через # годину}few{Presearch перезапуститься через # години}many{Presearch перезапуститься через # годин}other{Presearch перезапуститься через # години}}</translation>
+<translation id="7863882214613921971">Відкрити посилання в новій &amp;вкладці Presearch</translation>
+<translation id="911206726377975832">Також видалити дані веб-перегляду?</translation>
+<translation id="2444257125841652328">Ваш системний адміністратор налаштував Presearch відкривати сторінку <ph name="TARGET_URL_HOSTNAME"/> в альтернативному веб-переглядачі.</translation>
+<translation id="3350544518197210895">Presearch (mDNS-In)</translation>
+<translation id="6568793831116033768">ОС Presearch</translation>
+<translation id="7977787072794666032">Presearch може працювати неналежним чином, оскільки більше не підтримується у Windows XP та Windows Vista</translation>
+<translation id="4484434718272972655">Хто користується веб-переглядачем Presearch?</translation>
+<translation id="8992261409816268381">Presearch Software Inc</translation>
+<translation id="6134859571175647580">Застереження: Presearch не може заборонити розширенням реєструвати вашу історію веб-перегляду. Щоб вимкнути це розширення в режимі анонімного перегляду, зніміть прапорець поруч із цим параметром.</translation>
+<translation id="1448049584457347995">Щоб зробити Presearch безпечнішим, ми вимкнути деякі розширення, джерелом яких не є <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/>, і які, можливо, було додано без вашого відома.</translation>
+<translation id="8848045066928358658">Щоб зробити Presearch безпечнішим, ми вимкнули наведене нижче розширення, установлене не із сайту <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/> і, можливо, додане без вашого відома.</translation>
+<translation id="669092380621816981">Дані веб-перегляду користувача буде видалено з цього пристрою. Щоб відновити їх, увійдіть в обліковий запис Presearch як <ph name="USER_EMAIL"/>.</translation>
+<translation id="4624945300945265642">Відкрити посилання в аноні&amp;мному вікні Presearch</translation>
+<translation id="6554952862405000915">Відкрити посилання в аноні&amp;мному вікні Presearch</translation>
+<translation id="8274659559228306809">{COUNT,plural, =0{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску.}=1{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску. Вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}one{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску. # вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}few{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску. # вікна в режимі анонімного перегляду не відновляться й не відкриються знову.}many{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску. # вікон в режимі анонімного перегляду не відновляться й не відкриються знову.}other{Доступне оновлення Presearch, його буде застосовано відразу після перезапуску. # вікна в режимі анонімного перегляду не відновиться й не відкриється знову.}}</translation>
+<translation id="3829358914761176693">{COUNT,plural, =0{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення}=1{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення. Вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}one{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення. # вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}few{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення. # вікна в режимі анонімного перегляду не відновляться й не відкриються знову.}many{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення. # вікон в режимі анонімного перегляду не відновляться й не відкриються знову.}other{Адміністратор просить перезапустити Presearch, щоб застосувати це оновлення. # вікна в режимі анонімного перегляду не відновиться й не відкриється знову.}}</translation>
+<translation id="552349673358711446">{COUNT,plural, =0{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення}=1{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення. Вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}one{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення. # вікно в режимі анонімного перегляду не відновиться й не відкриється знову.}few{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення. # вікна в режимі анонімного перегляду не відновляться й не відкриються знову.}many{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення. # вікон в режимі анонімного перегляду не відновляться й не відкриються знову.}other{Адміністратор вимагає перезапустити Presearch, щоб застосувати оновлення. # вікна в режимі анонімного перегляду не відновиться й не відкриється знову.}}</translation>
+<translation id="7914115000169617076">Майже готово. Перезапустіть Presearch, щоб завершити оновлення. Приватні вікна не відновляться й не відкриються знову.</translation>
+</translationbundle>

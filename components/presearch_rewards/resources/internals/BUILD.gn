@@ -1,0 +1,9 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("internals") {
+  entry_points = [
+    ["presearch_rewards_internals", rebase_path("presearch_rewards_internals.tsx")]
+  ]
+
+  resource_name = "presearch_rewards_internals"
+}

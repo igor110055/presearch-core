@@ -1,0 +1,37 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/components/binance/browser/buildflags/buildflags.gni")
+
+presearch_browser_binance_sources = []
+presearch_browser_binance_deps = []
+
+if (binance_enabled) {
+  presearch_browser_binance_sources += [
+    "//presearch/browser/binance/binance_protocol_handler.cc",
+    "//presearch/browser/binance/binance_protocol_handler.h",
+    "//presearch/browser/binance/binance_service_factory.cc",
+    "//presearch/browser/binance/binance_service_factory.h",
+  ]
+
+  presearch_browser_binance_deps += [
+    "//base",
+    "//presearch/common",
+    "//presearch/components/binance/browser",
+    "//chrome/browser/profiles:profile",
+    "//components/country_codes",
+    "//components/keyed_service/content",
+    "//components/user_prefs",
+    "//content/public/browser",
+    "//net",
+  ]
+
+  if (is_android) {
+    presearch_browser_binance_sources += [
+      "//presearch/browser/binance/android/binance_native_worker.cc",
+      "//presearch/browser/binance/android/binance_native_worker.h",
+    ]
+  }
+}

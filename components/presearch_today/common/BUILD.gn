@@ -1,0 +1,10 @@
+import("//presearch/build/config.gni")
+
+source_set("common") {
+  sources = [
+    "switches.cc",
+    "switches.h",
+  ]
+
+  deps = [ "//base" ]
+}

@@ -1,0 +1,37 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//build/config/ios/rules.gni")
+import("//ios/build/config.gni")
+
+source_set("sync") {
+  configs += [ "//build/config/compiler:enable_arc" ]
+
+  sources = [
+    "presearch_sync_api.h",
+    "presearch_sync_api.mm",
+    "presearch_sync_worker.h",
+    "presearch_sync_worker.cc"
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/components/presearch_sync",
+    "//presearch/components/presearch_sync:crypto",
+    "//presearch/components/presearch_sync:prefs",
+    "//presearch/components/presearch_sync:profile_sync_service_helper",
+    "//components/sync/driver",
+    "//components/sync_device_info",
+    "//ios/chrome/browser",
+    "//ios/chrome/browser/browser_state",
+    "//ios/chrome/browser/sync",
+    "//ios/web/public/thread",
+  ]
+
+  frameworks = [
+    "Foundation.framework",
+    "UIKit.framework"
+  ]
+}

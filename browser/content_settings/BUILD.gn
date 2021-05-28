@@ -1,0 +1,42 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+source_set("content_settings") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10662 is resolved
+  check_includes = false
+  sources = [
+    "presearch_content_settings_manager_delegate.cc",
+    "presearch_content_settings_manager_delegate.h",
+    "presearch_global_value_map.cc",
+    "presearch_global_value_map.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/components/presearch_shields/browser",
+    "//presearch/components/content_settings/core/browser",
+
+    # "//chrome/browser" # dep cycle
+    "//components/content_settings/common:mojom",
+    "//components/content_settings/core/browser",
+    "//components/content_settings/core/common",
+    "//content/public/browser",
+  ]
+}
+
+source_set("unit_tests") {
+  testonly = true
+
+  sources = [ "presearch_content_settings_default_provider_unittest.cc" ]
+
+  deps = [
+    "//base/test:test_support",
+    "//presearch/components/content_settings/core/browser",
+    "//chrome/test:test_support",
+    "//components/content_settings/core/browser",
+    "//components/prefs",
+    "//content/test:test_support",
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig",
+  "include": [
+    "./components/definitions/*",
+    "./components/presearch_extension/extension/presearch_extension/types/**/*"
+  ]
+}

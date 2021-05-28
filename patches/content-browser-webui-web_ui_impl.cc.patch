@@ -1,0 +1,12 @@
+diff --git a/content/browser/webui/web_ui_impl.cc b/content/browser/webui/web_ui_impl.cc
+index 59d9e46f21cecff772d6c8fa50ed6bca1f2b6ed1..9d98d69a1e3cc41ef5af3ca1fdbb2007b41c4c01 100644
+--- a/content/browser/webui/web_ui_impl.cc
++++ b/content/browser/webui/web_ui_impl.cc
+@@ -69,6 +69,7 @@ WebUIImpl::WebUIImpl(WebContentsImpl* contents, RenderFrameHostImpl* frame_host)
+       web_contents_(contents),
+       web_contents_observer_(new WebUIMainFrameObserver(this, contents)) {
+   DCHECK(contents);
++  PRESEARCH_WEB_UI_IMPL
+ }
+ 
+ WebUIImpl::~WebUIImpl() {

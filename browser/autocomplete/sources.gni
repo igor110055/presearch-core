@@ -1,0 +1,30 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import("//presearch/components/presearch_webtorrent/browser/buildflags/buildflags.gni")
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//extensions/buildflags/buildflags.gni")
+
+presearch_browser_autocomplete_sources = [
+  "//presearch/browser/autocomplete/presearch_autocomplete_scheme_classifier.cc",
+  "//presearch/browser/autocomplete/presearch_autocomplete_scheme_classifier.h",
+]
+
+presearch_browser_autocomplete_deps = [
+  "//base",
+  "//presearch/common",
+  "//presearch/components/presearch_webtorrent/browser/buildflags",
+  "//presearch/components/ipfs/buildflags",
+  "//chrome/browser/profiles:profile",
+]
+
+if (enable_extensions && enable_presearch_webtorrent) {
+  presearch_browser_autocomplete_deps +=
+      [ "//presearch/components/presearch_webtorrent/browser" ]
+}
+
+if (ipfs_enabled) {
+  presearch_browser_autocomplete_deps += [ "//presearch/components/ipfs" ]
+}

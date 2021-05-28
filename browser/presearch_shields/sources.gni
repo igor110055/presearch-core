@@ -1,0 +1,21 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+presearch_browser_presearch_shields_sources = [
+  "//presearch/browser/presearch_shields/ad_block_pref_service_factory.cc",
+  "//presearch/browser/presearch_shields/ad_block_pref_service_factory.h",
+  "//presearch/browser/presearch_shields/cookie_pref_service_factory.cc",
+  "//presearch/browser/presearch_shields/cookie_pref_service_factory.h",
+]
+
+presearch_browser_presearch_shields_deps = [
+  "//base",
+  "//presearch/components/presearch_shields/browser",
+  "//presearch/components/presearch_shields/common",
+  "//chrome/browser:browser_process",
+  "//chrome/browser/profiles:profile",
+  "//components/content_settings/core/browser",
+  "//components/keyed_service/content",
+]

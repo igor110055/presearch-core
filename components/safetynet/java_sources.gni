@@ -1,0 +1,1 @@
+presearch_rewards_java_sources = [ "../../presearch/components/safetynet/java/org/chromium/chrome/browser/util/SafetyNetCheck.java" ]

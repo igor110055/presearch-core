@@ -1,0 +1,78 @@
+<receiver android:name="org.chromium.chrome.browser.notifications.PresearchSetDefaultBrowserNotificationService"
+    android:exported="false">
+    <intent-filter>
+          <action android:name="DEEP_LINK"/>
+    </intent-filter>
+</receiver>
+
+<receiver android:name="org.chromium.chrome.browser.notifications.retention.RetentionNotificationPublisher"
+    android:exported="false">
+</receiver>
+
+<activity android:name="org.chromium.chrome.browser.PresearchRewardsDonationSentActivity"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar"
+    android:configChanges="orientation|keyboardHidden|keyboard|screenSize|mcc|mnc|screenLayout|smallestScreenSize" />
+
+<activity android:name="org.chromium.chrome.browser.PresearchRewardsSiteBannerActivity"
+    android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
+<activity
+    android:name="org.chromium.chrome.browser.PresearchRewardsVerifyWalletActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen"/>
+
+<activity
+    android:name="org.chromium.chrome.browser.PresearchRewardsUserWalletActivity"
+    android:theme="@style/PresearchTranslucent"/>
+
+<!-- Onboarding notification -->
+<receiver android:name="org.chromium.chrome.browser.notifications.PresearchOnboardingNotification"
+    android:exported="false">
+</receiver>
+<activity
+    android:name="org.chromium.chrome.browser.onboarding.OnboardingActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen"
+    android:screenOrientation="sensorPortrait"/>
+<activity
+    android:name="org.chromium.chrome.browser.onboarding.SearchActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen"
+    android:screenOrientation="sensorPortrait"/>
+
+<activity
+    android:name="org.chromium.chrome.browser.onboarding.P3aOnboardingActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen"
+    android:screenOrientation="sensorPortrait"/>
+
+<activity
+    android:name="org.chromium.chrome.browser.SetDefaultBrowserActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen"
+    android:screenOrientation="sensorPortrait"/>
+
+<activity
+    android:name="org.chromium.chrome.browser.ntp.widget.NTPWidgetStackActivity"
+    android:theme="@style/Theme.Chromium.Activity"
+    android:screenOrientation="sensorPortrait">
+
+</activity>
+
+<activity
+    android:name="org.chromium.chrome.browser.widget.crypto.binance.BinanceActivity"
+    android:theme="@style/Theme.Chromium.Activity.Fullscreen">
+    <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <data android:scheme="com.presearch.binance" />
+    </intent-filter>
+</activity>
+
+<!-- Upgrade related -->
+<receiver android:name="org.chromium.chrome.browser.upgrade.PresearchPackageReplacedBroadcastReceiver"
+    android:exported="false">
+    <intent-filter>
+        <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+    </intent-filter>
+</receiver>
+
+<service android:name="org.chromium.chrome.browser.upgrade.PresearchUpgradeJobIntentService"
+    android:permission="android.permission.BIND_JOB_SERVICE"
+    android:exported="false"/>

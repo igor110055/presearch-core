@@ -1,0 +1,35 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+presearch_browser_themes_sources = []
+
+presearch_browser_themes_deps = []
+
+if (!is_android) {
+  presearch_browser_themes_sources += [
+    "//presearch/browser/themes/presearch_dark_mode_utils.cc",
+    "//presearch/browser/themes/presearch_theme_helper.cc",
+    "//presearch/browser/themes/presearch_theme_helper.h",
+    "//presearch/browser/themes/presearch_theme_service.cc",
+    "//presearch/browser/themes/presearch_theme_service.h",
+  ]
+
+  if (is_win) {
+    presearch_browser_themes_sources += [
+      "//presearch/browser/themes/presearch_theme_helper_win.cc",
+      "//presearch/browser/themes/presearch_theme_helper_win.h",
+    ]
+  }
+
+  presearch_browser_themes_deps += [
+    "//base",
+    "//presearch/app:presearch_generated_resources_grit",
+    "//presearch/common:pref_names",
+    "//presearch/common:switches",
+    "//chrome/common",
+    "//components/prefs",
+    "//components/pref_registry",
+  ]
+}

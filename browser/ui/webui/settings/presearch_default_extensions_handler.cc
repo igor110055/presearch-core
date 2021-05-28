@@ -1,0 +1,497 @@
+/* Copyright (c) 2019 The Presearch Authors. All rights reserved.
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this file,
+ * You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+#include "presearch/browser/ui/webui/settings/presearch_default_extensions_handler.h"
+
+#include <string>
+
+#include "base/bind.h"
+#include "base/values.h"
+#include "presearch/browser/extensions/presearch_component_loader.h"
+#include "presearch/browser/ipfs/ipfs_service_factory.h"
+#include "presearch/common/pref_names.h"
+#include "presearch/components/presearch_webtorrent/grit/presearch_webtorrent_resources.h"
+#include "presearch/components/decentralized_dns/buildflags/buildflags.h"
+#include "presearch/components/ipfs/ipfs_service.h"
+#include "presearch/components/ipfs/pref_names.h"
+#include "chrome/browser/about_flags.h"
+#include "chrome/browser/browser_process.h"
+#include "chrome/browser/extensions/component_loader.h"
+#include "chrome/browser/extensions/extension_service.h"
+#include "chrome/browser/extensions/webstore_install_with_prompt.h"
+#include "chrome/browser/lifetime/application_lifetime.h"
+#include "chrome/browser/media/router/media_router_feature.h"
+#include "chrome/browser/profiles/profile.h"
+#include "chrome/browser/ui/browser.h"
+#include "chrome/browser/ui/browser_finder.h"
+#include "chrome/browser/ui/browser_window.h"
+#include "chrome/common/chrome_switches.h"
+#include "chrome/common/pref_names.h"
+#include "components/flags_ui/flags_ui_constants.h"
+#include "components/flags_ui/pref_service_flags_storage.h"
+#include "components/prefs/pref_service.h"
+#include "content/public/browser/web_ui.h"
+#include "extensions/browser/extension_registry.h"
+#include "extensions/browser/extension_system.h"
+#include "extensions/common/constants.h"
+#include "extensions/common/feature_switch.h"
+
+#if BUILDFLAG(ENABLE_TOR)
+#include "presearch/browser/tor/tor_profile_service_factory.h"
+#include "presearch/components/tor/pref_names.h"
+#endif
+
+#if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
+#include "presearch/components/presearch_wallet/browser/presearch_wallet_constants.h"
+#endif
+
+#if BUILDFLAG(ENABLE_WIDEVINE)
+#include "presearch/browser/widevine/widevine_utils.h"
+#endif
+
+#if BUILDFLAG(DECENTRALIZED_DNS_ENABLED)
+#include "presearch/components/decentralized_dns/constants.h"
+#include "presearch/components/decentralized_dns/utils.h"
+#endif
+
+PresearchDefaultExtensionsHandler::PresearchDefaultExtensionsHandler()
+    : weak_ptr_factory_(this) {
+#if BUILDFLAG(ENABLE_WIDEVINE)
+  was_widevine_enabled_ = IsWidevineOptedIn();
+#endif
+}
+
+PresearchDefaultExtensionsHandler::~PresearchDefaultExtensionsHandler() {}
+
+void PresearchDefaultExtensionsHandler::RegisterMessages() {
+  profile_ = Profile::FromWebUI(web_ui());
+  web_ui()->RegisterMessageCallback(
+      "setWebTorrentEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetWebTorrentEnabled,
+                          base::Unretained(this)));
+#if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
+  web_ui()->RegisterMessageCallback(
+      "setPresearchWalletEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetPresearchWalletEnabled,
+                          base::Unretained(this)));
+#endif
+  web_ui()->RegisterMessageCallback(
+      "setHangoutsEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetHangoutsEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setIPFSCompanionEnabled",
+      base::BindRepeating(
+          &PresearchDefaultExtensionsHandler::SetIPFSCompanionEnabled,
+          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setMediaRouterEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetMediaRouterEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setIPFSStorageMax",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetIPFSStorageMax,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "launchIPFSService",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::LaunchIPFSService,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "shutdownIPFSService",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::ShutdownIPFSService,
+                          base::Unretained(this)));
+
+  // TODO(petemill): If anything outside this handler is responsible for causing
+  // restart-neccessary actions, then this should be moved to a generic handler
+  // and the flag should be moved to somewhere more static / singleton-like.
+  web_ui()->RegisterMessageCallback(
+      "getRestartNeeded",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::GetRestartNeeded,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setTorEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetTorEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "isTorEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::IsTorEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "isTorManaged",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::IsTorManaged,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "setWidevineEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::SetWidevineEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "isWidevineEnabled",
+      base::BindRepeating(&PresearchDefaultExtensionsHandler::IsWidevineEnabled,
+                          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "isDecentralizedDnsEnabled",
+      base::BindRepeating(
+          &PresearchDefaultExtensionsHandler::IsDecentralizedDnsEnabled,
+          base::Unretained(this)));
+  web_ui()->RegisterMessageCallback(
+      "getDecentralizedDnsResolveMethodList",
+      base::BindRepeating(
+          &PresearchDefaultExtensionsHandler::GetDecentralizedDnsResolveMethodList,
+          base::Unretained(this)));
+
+  // Can't call this in ctor because it needs to access web_ui().
+  InitializePrefCallbacks();
+}
+
+void PresearchDefaultExtensionsHandler::InitializePrefCallbacks() {
+  PrefService* prefs = Profile::FromWebUI(web_ui())->GetPrefs();
+  pref_change_registrar_.Init(prefs);
+  pref_change_registrar_.Add(
+      kPresearchEnabledMediaRouter,
+      base::Bind(&PresearchDefaultExtensionsHandler::OnMediaRouterEnabledChanged,
+                 base::Unretained(this)));
+  pref_change_registrar_.Add(
+      prefs::kEnableMediaRouter,
+      base::Bind(&PresearchDefaultExtensionsHandler::OnMediaRouterEnabledChanged,
+                 base::Unretained(this)));
+  local_state_change_registrar_.Init(g_browser_process->local_state());
+#if BUILDFLAG(ENABLE_TOR)
+  local_state_change_registrar_.Add(
+      tor::prefs::kTorDisabled,
+      base::Bind(&PresearchDefaultExtensionsHandler::OnTorEnabledChanged,
+                 base::Unretained(this)));
+#endif
+
+#if BUILDFLAG(ENABLE_WIDEVINE)
+  local_state_change_registrar_.Add(
+      kWidevineOptedIn,
+      base::Bind(&PresearchDefaultExtensionsHandler::OnWidevineEnabledChanged,
+                 base::Unretained(this)));
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::OnMediaRouterEnabledChanged() {
+  OnRestartNeededChanged();
+}
+
+bool PresearchDefaultExtensionsHandler::IsRestartNeeded() {
+  bool media_router_current_pref =
+      profile_->GetPrefs()->GetBoolean(prefs::kEnableMediaRouter);
+  bool media_router_new_pref =
+      profile_->GetPrefs()->GetBoolean(kPresearchEnabledMediaRouter);
+
+  if (media_router_current_pref != media_router_new_pref)
+    return true;
+
+#if BUILDFLAG(ENABLE_WIDEVINE)
+  if (was_widevine_enabled_ != IsWidevineOptedIn())
+    return true;
+#endif
+
+  return false;
+}
+
+void PresearchDefaultExtensionsHandler::GetRestartNeeded(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+
+  AllowJavascript();
+  ResolveJavascriptCallback(args->GetList()[0], base::Value(IsRestartNeeded()));
+}
+
+void PresearchDefaultExtensionsHandler::SetWebTorrentEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+
+  extensions::ExtensionService* service =
+      extensions::ExtensionSystem::Get(profile_)->extension_service();
+  extensions::ComponentLoader* loader = service->component_loader();
+
+  if (enabled) {
+    if (!loader->Exists(presearch_webtorrent_extension_id)) {
+      base::FilePath presearch_webtorrent_path(FILE_PATH_LITERAL(""));
+      presearch_webtorrent_path =
+          presearch_webtorrent_path.Append(FILE_PATH_LITERAL("presearch_webtorrent"));
+      loader->Add(IDR_PRESEARCH_WEBTORRENT, presearch_webtorrent_path);
+    }
+    service->EnableExtension(presearch_webtorrent_extension_id);
+  } else {
+    service->DisableExtension(
+        presearch_webtorrent_extension_id,
+        extensions::disable_reason::DisableReason::DISABLE_BLOCKED_BY_POLICY);
+  }
+}
+
+void PresearchDefaultExtensionsHandler::SetHangoutsEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+
+  extensions::ExtensionService* service =
+      extensions::ExtensionSystem::Get(profile_)->extension_service();
+
+  if (enabled) {
+    extensions::ComponentLoader* loader = service->component_loader();
+    if (!loader->Exists(hangouts_extension_id)) {
+      static_cast<extensions::PresearchComponentLoader*>(loader)
+          ->ForceAddHangoutServicesExtension();
+    }
+    service->EnableExtension(hangouts_extension_id);
+  } else {
+    service->DisableExtension(
+        hangouts_extension_id,
+        extensions::disable_reason::DisableReason::DISABLE_BLOCKED_BY_POLICY);
+  }
+}
+
+bool PresearchDefaultExtensionsHandler::IsExtensionInstalled(
+    const std::string& extension_id) const {
+  extensions::ExtensionRegistry* registry = extensions::ExtensionRegistry::Get(
+      static_cast<content::BrowserContext*>(profile_));
+  return registry && registry->GetInstalledExtension(extension_id);
+}
+
+void PresearchDefaultExtensionsHandler::OnInstallResult(
+    const std::string& pref_name,
+    bool success,
+    const std::string& error,
+    extensions::webstore_install::Result result) {
+  if (result != extensions::webstore_install::Result::SUCCESS &&
+      result != extensions::webstore_install::Result::LAUNCH_IN_PROGRESS) {
+    profile_->GetPrefs()->SetBoolean(pref_name, false);
+  }
+}
+
+void PresearchDefaultExtensionsHandler::OnRestartNeededChanged() {
+  if (IsJavascriptAllowed()) {
+    FireWebUIListener("presearch-needs-restart-changed",
+                      base::Value(IsRestartNeeded()));
+  }
+}
+
+void PresearchDefaultExtensionsHandler::SetMediaRouterEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+
+  std::string feature_name(switches::kLoadMediaRouterComponentExtension);
+  enabled ? feature_name += "@1" : feature_name += "@2";
+  flags_ui::PrefServiceFlagsStorage flags_storage(
+      g_browser_process->local_state());
+  about_flags::SetFeatureEntryEnabled(&flags_storage, feature_name, true);
+}
+
+void PresearchDefaultExtensionsHandler::SetTorEnabled(const base::ListValue* args) {
+#if BUILDFLAG(ENABLE_TOR)
+  CHECK_EQ(args->GetSize(), 1U);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+  AllowJavascript();
+  TorProfileServiceFactory::SetTorDisabled(!enabled);
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::IsTorEnabled(const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  AllowJavascript();
+  ResolveJavascriptCallback(
+      args->GetList()[0],
+#if BUILDFLAG(ENABLE_TOR)
+      base::Value(!TorProfileServiceFactory::IsTorDisabled()));
+#else
+      base::Value(false));
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::OnTorEnabledChanged() {
+  if (IsJavascriptAllowed()) {
+    FireWebUIListener("tor-enabled-changed",
+#if BUILDFLAG(ENABLE_TOR)
+                      base::Value(!TorProfileServiceFactory::IsTorDisabled()));
+#else
+                      base::Value(false));
+#endif
+  }
+}
+
+void PresearchDefaultExtensionsHandler::IsTorManaged(const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+
+#if BUILDFLAG(ENABLE_TOR)
+  const bool is_managed = g_browser_process->local_state()
+                              ->FindPreference(tor::prefs::kTorDisabled)
+                              ->IsManaged();
+#else
+  const bool is_managed = false;
+#endif
+
+  AllowJavascript();
+  ResolveJavascriptCallback(args->GetList()[0], base::Value(is_managed));
+}
+
+void PresearchDefaultExtensionsHandler::SetWidevineEnabled(
+    const base::ListValue* args) {
+#if BUILDFLAG(ENABLE_WIDEVINE)
+  CHECK_EQ(args->GetSize(), 1U);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+  enabled ? EnableWidevineCdmComponent() : DisableWidevineCdmComponent();
+  AllowJavascript();
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::IsWidevineEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  AllowJavascript();
+  ResolveJavascriptCallback(args->GetList()[0],
+#if BUILDFLAG(ENABLE_WIDEVINE)
+                            base::Value(IsWidevineOptedIn()));
+#else
+                            base::Value(false));
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::OnWidevineEnabledChanged() {
+  if (IsJavascriptAllowed()) {
+    FireWebUIListener("widevine-enabled-changed",
+#if BUILDFLAG(ENABLE_WIDEVINE)
+                      base::Value(IsWidevineOptedIn()));
+#else
+                      base::Value(false));
+#endif
+    OnRestartNeededChanged();
+  }
+}
+
+void PresearchDefaultExtensionsHandler::ShutdownIPFSService(
+    const base::ListValue* args) {
+  ipfs::IpfsService* service =
+      ipfs::IpfsServiceFactory::GetForContext(profile_);
+  if (!service) {
+    return;
+  }
+  if (service->IsDaemonLaunched())
+    service->ShutdownDaemon(base::NullCallback());
+}
+
+void PresearchDefaultExtensionsHandler::LaunchIPFSService(
+    const base::ListValue* args) {
+  ipfs::IpfsService* service =
+      ipfs::IpfsServiceFactory::GetForContext(profile_);
+  if (!service) {
+    return;
+  }
+  if (!service->IsDaemonLaunched())
+    service->LaunchDaemon(base::NullCallback());
+}
+
+void PresearchDefaultExtensionsHandler::SetIPFSStorageMax(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  int storage_max_gb = 0;
+  args->GetInteger(0, &storage_max_gb);
+  PrefService* prefs = Profile::FromWebUI(web_ui())->GetPrefs();
+  prefs->SetInteger(kIpfsStorageMax, storage_max_gb);
+  ipfs::IpfsService* service =
+      ipfs::IpfsServiceFactory::GetForContext(profile_);
+  if (!service) {
+    return;
+  }
+  if (service->IsDaemonLaunched()) {
+    service->RestartDaemon();
+  }
+}
+
+void PresearchDefaultExtensionsHandler::SetIPFSCompanionEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+
+  extensions::ExtensionService* service =
+      extensions::ExtensionSystem::Get(profile_)->extension_service();
+  if (enabled) {
+    if (!IsExtensionInstalled(ipfs_companion_extension_id)) {
+      // Using FindLastActiveWithProfile() here will be fine. Of course, it can
+      // return NULL but only return NULL when there was no activated window
+      // with |profile_| so far. But, it's impossible at here because user can't
+      // request ipfs install request w/o activating browser.
+      scoped_refptr<extensions::WebstoreInstallWithPrompt> installer =
+          new extensions::WebstoreInstallWithPrompt(
+              ipfs_companion_extension_id, profile_,
+              chrome::FindLastActiveWithProfile(profile_)
+                  ->window()
+                  ->GetNativeWindow(),
+              base::BindOnce(&PresearchDefaultExtensionsHandler::OnInstallResult,
+                             weak_ptr_factory_.GetWeakPtr(),
+                             kIPFSCompanionEnabled));
+      installer->BeginInstall();
+    }
+    service->EnableExtension(ipfs_companion_extension_id);
+  } else {
+    service->DisableExtension(
+        ipfs_companion_extension_id,
+        extensions::disable_reason::DisableReason::DISABLE_USER_ACTION);
+  }
+}
+
+#if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
+void PresearchDefaultExtensionsHandler::SetPresearchWalletEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  CHECK(profile_);
+  bool enabled;
+  args->GetBoolean(0, &enabled);
+
+  extensions::ExtensionService* service =
+      extensions::ExtensionSystem::Get(profile_)->extension_service();
+  if (enabled) {
+    service->EnableExtension(ethereum_remote_client_extension_id);
+  } else {
+    service->DisableExtension(
+        ethereum_remote_client_extension_id,
+        extensions::disable_reason::DisableReason::DISABLE_USER_ACTION);
+  }
+}
+#endif
+
+void PresearchDefaultExtensionsHandler::IsDecentralizedDnsEnabled(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 1U);
+  AllowJavascript();
+  ResolveJavascriptCallback(
+      args->GetList()[0],
+#if BUILDFLAG(DECENTRALIZED_DNS_ENABLED)
+      base::Value(decentralized_dns::IsDecentralizedDnsEnabled()));
+#else
+      base::Value(false));
+#endif
+}
+
+void PresearchDefaultExtensionsHandler::GetDecentralizedDnsResolveMethodList(
+    const base::ListValue* args) {
+  CHECK_EQ(args->GetSize(), 2U);
+  AllowJavascript();
+
+#if BUILDFLAG(DECENTRALIZED_DNS_ENABLED)
+  decentralized_dns::Provider provider =
+      static_cast<decentralized_dns::Provider>(args->GetList()[1].GetInt());
+  ResolveJavascriptCallback(args->GetList()[0],
+                            decentralized_dns::GetResolveMethodList(provider));
+#else
+  ResolveJavascriptCallback(args->GetList()[0],
+                            base::Value(base::Value::Type::LIST));
+#endif
+}

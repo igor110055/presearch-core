@@ -1,0 +1,59 @@
+import("//presearch/build/config.gni")
+import("//build/config/android/rules.gni")
+
+source_set("android_browser_process") {
+  check_includes = false
+
+  sources = [
+    "presearch_feature_list.cc",
+    "presearch_relaunch_utils.cc",
+    "presearch_shields_content_settings.cc",
+    "presearch_shields_content_settings.h",
+    "presearch_stats_updater_android.cc",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser/android/preferences",
+    "//presearch/browser/presearch_stats:stats_updater",
+    "//presearch/build/android:jni_headers",
+    "//presearch/components/presearch_shields/browser",
+    "//chrome/android:jni_headers",
+    "//chrome/common",
+    "//components/content_settings/core/browser",
+    "//components/flags_ui",
+    "//components/ntp_tiles",
+    "//components/translate/core/browser",
+    "//url",
+  ]
+
+  if (presearch_ads_enabled) {
+    sources +=
+        [ "//presearch/browser/presearch_ads/android/presearch_ads_native_helper.cc" ]
+
+    deps += [
+      "//presearch/browser/presearch_ads/android:jni_headers",
+      "//presearch/components/presearch_ads/browser",
+      "//presearch/components/l10n/browser",
+    ]
+  }
+
+  if (enable_presearch_sync) {
+    sources += [
+      "//presearch/browser/sync/presearch_sync_devices_android.cc",
+      "//presearch/browser/sync/presearch_sync_devices_android.h",
+      "presearch_sync_worker.cc",
+      "presearch_sync_worker.h",
+    ]
+    deps += [
+      "//presearch/components/presearch_sync",
+      "//presearch/components/presearch_sync:crypto",
+      "//presearch/components/presearch_sync:prefs",
+      "//presearch/components/presearch_sync:profile_sync_service_helper",
+      "//components/sync",
+      "//components/sync_device_info",
+      "//components/unified_consent",
+      "//third_party/leveldatabase",
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+diff --git a/third_party/blink/renderer/modules/modules_idl_files.gni b/third_party/blink/renderer/modules/modules_idl_files.gni
+index 2f3b9289edf203980e8ae8dfa73398935c7b1f71..d1faf40800eee61233ddd6801ab76741aceafa77 100644
+--- a/third_party/blink/renderer/modules/modules_idl_files.gni
++++ b/third_party/blink/renderer/modules/modules_idl_files.gni
+@@ -151,6 +151,7 @@ if (!is_android) {
+     "//third_party/blink/renderer/modules/serial/idls.gni",
+   ]
+ }
++_idl_imports += presearch_idl_imports
+ 
+ # Do not add IDL files directly to these lists. See _idl_imports above instead
+ # on how to add IDL files for a module.

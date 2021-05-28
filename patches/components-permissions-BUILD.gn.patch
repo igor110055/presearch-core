@@ -1,0 +1,12 @@
+diff --git a/components/permissions/BUILD.gn b/components/permissions/BUILD.gn
+index 799755985b575a7464897d0969bf383c386d267c..84620efdf6cfc864cc6942272965b42382685c61 100644
+--- a/components/permissions/BUILD.gn
++++ b/components/permissions/BUILD.gn
+@@ -89,6 +89,7 @@ source_set("permissions") {
+     "//ui/base",
+     "//url",
+   ]
++  import("//presearch/components/permissions/sources.gni") sources += presearch_components_permissions_sources deps += presearch_components_permissions_deps
+   if (is_android) {
+     sources += [
+       "android/android_permission_util.cc",

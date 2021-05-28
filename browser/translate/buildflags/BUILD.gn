@@ -1,0 +1,10 @@
+import("//build/buildflag_header.gni")
+import("//presearch/browser/translate/buildflags/buildflags.gni")
+
+buildflag_header("buildflags") {
+  header = "buildflags.h"
+  flags = [
+    "ENABLE_PRESEARCH_TRANSLATE_GO=$enable_presearch_translate_go",
+    "ENABLE_PRESEARCH_TRANSLATE_EXTENSION=$enable_presearch_translate_extension",
+  ]
+}

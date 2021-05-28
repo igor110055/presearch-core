@@ -1,0 +1,8 @@
+import("//presearch/build/config.gni")
+
+declare_args() {
+  enable_speedreader = !is_android
+  enable_speedreader_feature =
+      presearch_channel == "nightly" || presearch_channel == "development" ||
+      presearch_channel == "dev" || presearch_channel == "beta"
+}

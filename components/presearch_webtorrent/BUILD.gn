@@ -1,0 +1,39 @@
+import("//presearch/components/common/typescript.gni")
+import("//tools/grit/grit_rule.gni")
+import("//tools/grit/repack.gni")
+
+grit("static_resources") {
+  source = "resources.grd"
+  outputs = [
+    "grit/presearch_webtorrent_resources_map.cc",
+    "grit/presearch_webtorrent_resources_map.h",
+    "grit/presearch_webtorrent_resources.h",
+    "presearch_webtorrent_static.pak",
+  ]
+
+  deps = [ ]
+
+  resource_ids = ""
+}
+
+pack_web_resources("generated_resources") {
+  resource_name = "presearch_webtorrent"
+  output_dir = "$root_gen_dir/presearch/components/presearch_webtorrent"
+  # Need wepack and GRD generation first
+  deps = [
+    "extension:generate_presearch_webtorrent"
+  ]
+}
+
+repack("resources") {
+  deps = [
+    ":static_resources",
+    ":generated_resources",
+  ]
+  sources = [
+    "$root_gen_dir/presearch/components/presearch_webtorrent/presearch_webtorrent_static.pak",
+    "$root_gen_dir/presearch/components/presearch_webtorrent/presearch_webtorrent_generated.pak",
+  ]
+  # This output repacked by presearch_paks.gni
+  output = "$root_gen_dir/presearch/components/presearch_webtorrent/presearch_webtorrent_resources.pak"
+}

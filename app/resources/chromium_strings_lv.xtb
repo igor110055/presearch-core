@@ -1,0 +1,284 @@
+<?xml version="1.0" ?>
+<!DOCTYPE translationbundle>
+<translationbundle lang="lv">
+<translation id="1065672644894730302">Jūsu preferences nevar nolasīt. Dažas funkcijas var nebūt pieejamas, un preferenču izmaiņas netiks saglabātas</translation>
+<translation id="2796517443093885402">Presearch var palīdzēt aizsargāt jūs pret datu noplūdi, ļaunprātīgiem paplašinājumiem un citiem apdraudējumiem.</translation>
+<translation id="5918095577778020936">Pārlūkā Presearch tiek mēģināts eksportēt jūsu paroles. Lai to atļautu, ievadiet savu Windows paroli.</translation>
+<translation id="5468853758063275923">Jūsu noklusējuma pārlūks ir Presearch.</translation>
+<translation id="8522292744959221145">Lai pārbaudītu, vai jūsu paroles ir aizsargātas pret datu pārkāpumiem un citām drošības problēmām, <ph name="BEGIN_LINK"/>pierakstieties pārlūkā Presearch<ph name="END_LINK"/>.</translation>
+<translation id="8541922081612557424">Par Presearch</translation>
+<translation id="4798342026247191171">Jaunā Presearch profila iestatīšana</translation>
+<translation id="113959764510199339">Presearch mēģina rādīt paroles.</translation>
+<translation id="8132634101975074716">Esat pierakstījies operētājsistēmā Presearch!</translation>
+<translation id="7370605478942575409">Lai aizsargāta multivides satura atskaņošanai izmantotu Rosetta, jums jārestartē pārlūks Presearch.</translation>
+<translation id="7419046106786626209">Presearch OS nevarēja sinhronizēt jūsu datus, jo jūsu domēnā nav pieejama sinhronizācija.</translation>
+<translation id="5147525139567260139">Presearch cilnes kopīgošana</translation>
+<translation id="1530633922026945685">Pārlūkam Presearch ir nepieciešama atļauja piekļūt jūsu kamerai, lai varētu izveidot jūsu apkārtnes 3D karti</translation>
+<translation id="5616153642055197778">Ir pieejama jauna un drošāka Presearch versija.</translation>
+<translation id="6797402139308059782">Ļaut Presearch darboties fonā</translation>
+<translation id="5875673934455379806">Pārinstalēt Presearch</translation>
+<translation id="4528406859989804913">Jūs pierakstāties ar pārvaldītu kontu, kura administrators var kontrolēt jūsu profilu. Jūsu Presearch dati, piemēram, lietotnes, grāmatzīmes, vēsture, paroles un citi iestatījumi, tiks neatgriezeniski saistīti ar lietotāju <ph name="USER_NAME"/>. Varēsiet dzēst šos datus, izmantojot Presearch kontu informācijas paneli, taču nevarēsiet šos datus saistīt ar citu kontu. Ja vēlaties, varat izveidot jaunu profilu, lai atsevišķi glabātu Presearch datus. <ph name="LEARN_MORE"/></translation>
+<translation id="1649714546770135458">Ja izslēgsiet šo iestatījumu, varēsiet pierakstīties Presearch vietnēs, piemēram, pakalpojumā Gmail, nepierakstoties pārlūkā Presearch.</translation>
+<translation id="189297655255130768">Presearch nereaģē. Vai restartēt to tūlīt?</translation>
+<translation id="1775322105159056176">Presearch nevar noteikt vai iestatīt noklusējuma pārlūku.</translation>
+<translation id="9220324636239049437">Veicot šo darbību, no šīs ierīces tiks dzēsts 1 vienums. Lai vēlāk izgūtu datus, pierakstieties pārlūkā Presearch kā <ph name="USER_EMAIL"/>.</translation>
+<translation id="831418749472885028">Lai pārbaudītu, vai jūsu pārējās paroles ir aizsargātas pret datu pārkāpumiem un citām drošības problēmām, <ph name="BEGIN_LINK"/>pierakstieties pārlūkā Presearch<ph name="END_LINK"/>.</translation>
+<translation id="8745514854244955877">Presearch — pierakstīšanās tīklā — <ph name="PAGE_TITLE"/></translation>
+<translation id="162629503687514352">Presearch OS nevarēja sinhronizēt jūsu paroles.</translation>
+<translation id="5659384504794665581">Ja jūsu datoru izmanto arī jūsu draugi un ģimenes locekļi, viņi var iestatīt pārlūku Presearch atbilstoši savām vēlmēm un pārlūkot saturu atsevišķos kontos.</translation>
+<translation id="5997267581285668459">Neobligāti: palīdziet uzlabot Presearch OS funkcijas un veiktspēju, automātiski nosūtot Presearch serveriem diagnostikas un lietojuma datus.</translation>
+<translation id="9095263438435683933">Lai nosūtītu numuru no šejienes uz savu Android tālruni, abās ierīcēs pierakstieties pārlūkā Presearch.</translation>
+<translation id="3813272600615358652">Šis paplašinājums mainīja iestatījumu, kura lapa tiek parādīta, palaižot pārlūku Presearch.</translation>
+<translation id="2576129394594491151">Paplašinājums “<ph name="EXTENSION_NAME"/>” mainīja iestatījumu, kura lapa tiek parādīta, palaižot pārlūku Presearch.</translation>
+<translation id="6078442581074612226">Pārlūkā Presearch</translation>
+<translation id="2485422356828889247">Atinstalēt</translation>
+<translation id="9026991721384951619">Presearch OS nevarēja sinhronizēt jūsu datus, jo jūsu konta pierakstīšanās informācija ir novecojusi.</translation>
+<translation id="7798069806040634998">Pārlūkam Presearch ir nepieciešama piekļuve krātuvei, lai varētu lejupielādēt failus.</translation>
+<translation id="8447483940522230788">Presearch palīgs</translation>
+<translation id="7933006624150961626">Lai piekļūtu savam Presearch saturam visās jūsu ierīcēs, pierakstieties un ieslēdziet sinhronizāciju.</translation>
+<translation id="7291143854620707672">Darba profila administrators var noņemt šī profila lietošanas laikā ģenerētos Presearch datus (piemēram, grāmatzīmes, vēsturi, paroles un citus iestatījumus). <ph name="LEARN_MORE"/></translation>
+<translation id="2063848847527508675">Lai lietotu atjauninājumu, operētājsistēma Presearch ir jārestartē.</translation>
+<translation id="3913823837305937258">Šis dators drīz vairs nesaņems Presearch atjauninājumus, jo tā aparatūra vairs netiek atbalstīta.</translation>
+<translation id="7387051847644272380">Instalācijas laikā radās operētājsistēmas kļūda. Lejupielādējiet Presearch vēlreiz.</translation>
+<translation id="2648689842065142443">Ja ierīci izmanto arī jūsu draugi un ģimenes locekļi, viņi var iestatīt pārlūku Presearch atbilstoši savām vēlmēm un pārlūkot saturu atsevišķos profilos.</translation>
+<translation id="3749489756681759571">Presearch iesaka atspējot šo paplašinājumu, jo šobrīd tas neatbilst standartiem, ko nosaka droša pārlūkošana ar papildu aizsardzību.</translation>
+<translation id="6791166902140255175">Presearch cilne</translation>
+<translation id="8372880274820509128">Papildu drošības nolūkos Presearch šifrēs jūsu datus.</translation>
+<translation id="2770231113462710648">Mainīt noklusējuma pārlūkprogrammu uz:</translation>
+<translation id="2799223571221894425">Restartēt</translation>
+<translation id="6811506454451584223">Vai izveidot atsevišķu Presearch profilu?</translation>
+<translation id="3783547330001921298">Tādējādi tiks izveidots jauns Presearch profils lietotājam <ph name="USER_EMAIL_ADDRESS"/>.</translation>
+<translation id="777113543093865885">Noņemšana no pārlūka Presearch...</translation>
+<translation id="2885378588091291677">Uzdevumu pārvaldnieks</translation>
+<translation id="2176825726964012531">Par &amp;Presearch</translation>
+<translation id="245659736593643560">Presearch OS un <ph name="BEGIN_LINK_LINUX_OSS"/>Linux izstrādes vides (beta)<ph name="END_LINK_LINUX_OSS"/> darbību nodrošina <ph name="BEGIN_LINK_CROS_OSS"/>atklātā pirmkoda programmatūra<ph name="END_LINK_CROS_OSS"/>.</translation>
+<translation id="8208853227947884571">Presearch ir atjaunināts</translation>
+<translation id="2953892977076487219">Presearch mēģina rediģēt paroles.</translation>
+<translation id="8755404239607088219">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paroles. Vēlāk mēģiniet vēlreiz.</translation>
+<translation id="8880183781256147665">Notiek pievienošana pārlūkam Presearch...</translation>
+<translation id="7918740962659365265">Palīdzēt uzlabot Presearch, nosūtot Presearch serveriem avāriju pārskatus un <ph name="UMA_LINK"/></translation>
+<translation id="7365690458036015383">Instalēšanas programmai neizdevās atarhivēt arhīvu. Lejupielādējiet Presearch vēlreiz.</translation>
+<translation id="8919461291440820124">Pārlūkā Presearch tiek izmantots jūsu mikrofons.</translation>
+<translation id="4805806622840861220">Restartēt Presearch</translation>
+<translation id="1477146545787277177">Eh! Presearch ir avarējis. Vai restartēt to tūlīt?</translation>
+<translation id="7503098128120083822">Pārlūkā Presearch tiek mēģināts eksportēt jūsu paroles.</translation>
+<translation id="2585240446624043880">Presearch nevar nolasīt savu datu direktoriju un ierakstīt tajā:
+
+<ph name="USER_DATA_DIRECTORY"/></translation>
+<translation id="2423637317249323944">Ir instalēta Presearch versija <ph name="PRODUCT_VERSION"/></translation>
+<translation id="2339258256897053758">Trūkst Presearch API atslēgu. Tiks atspējotas dažas Presearch funkcijas.</translation>
+<translation id="8926637909431618259">Turpināt lietotņu izpildi fonā, kad Presearch ir aizvērts</translation>
+<translation id="4480040274068703980">Presearch OS nevarēja sinhronizēt jūsu datus pierakstīšanās kļūdas dēļ.</translation>
+<translation id="2711887072399498551">Presearch profils ar šādu kontu jau pastāv</translation>
+<translation id="2297290224191497273">Vai pāriet uz esošo Presearch profilu?</translation>
+<translation id="2450003541323895471">Izmantojot Presearch profilus, varat nodalīt visu savu Presearch saturu. Izveidojiet profilus draugiem un ģimenes locekļiem vai nodaliet darba un izklaides saturu.</translation>
+<translation id="9216183508558772570">Ja pierakstīsieties ar uzlauztu paroli, pārlūkprogrammā Presearch tiks parādīts paziņojums</translation>
+<translation id="5853262807109651878">Veicot šo darbību, no šīs ierīces tiks dzēsts(-i) <ph name="ITEMS_COUNT"/> vienums(-i). Lai vēlāk izgūtu datus, pierakstieties pārlūkā Presearch kā <ph name="USER_EMAIL"/>.</translation>
+<translation id="8703492925273919597">Aizveriet visus Presearch logus un mēģiniet vēlreiz.</translation>
+<translation id="1384923383737428730">Jūsu datorā ir kaitīga programmatūra. Pārlūkprogramma Presearch var to noņemt, atjaunot jūsu iestatījumus un atspējot paplašinājumus, lai atkal pareizi darbotos.</translation>
+<translation id="7029305463989165490">Lai nosūtītu numuru no vietnes <ph name="ORIGIN"/> uz savu Android tālruni, abās ierīcēs pierakstieties pārlūkā Presearch.</translation>
+<translation id="4304059894777924102">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paroles. Pārbaudiet interneta savienojumu.</translation>
+<translation id="2588634262982826227">Presearch OS var automātiski atjaunot jūsu lietotnes un lapas pēc atkārtotas palaišanas (bez nepieciešamības jautāt katru reizi).</translation>
+<translation id="1807774211756215222">Atvērt saiti jaunā Presearch &amp;cilnē</translation>
+<translation id="7453070689008684791">Pārlūkā Presearch tiks izmantota Diskā pieejamā informācija, lai adrešu joslā piedāvātu ieteikumus</translation>
+<translation id="2106568569080763501">Presearch ļauj jums noklikšķināt uz tālruņa numura un zvanīt uz to pakalpojumā Skype!</translation>
+<translation id="5381622442243174305"><ph name="PAGE_TITLE"/> — Presearch</translation>
+<translation id="6315734375101223238">Pielāgojiet un kontrolējiet pārlūkprogrammu Presearch. Ir nepieciešama jūsu uzmanība. Noklikšķiniet, lai skatītu plašāku informāciju.</translation>
+<translation id="7130675370997202556">Noklikšķiniet uz sava vārda, lai atvērtu Presearch un sāktu pārlūkošanu.</translation>
+<translation id="4920958997042285125">Lietotājs <ph name="EXISTING_USER"/> jau ir pierakstījies šajā Presearch profilā. Lai atdalītu pārlūkošanu, pārlūkā Presearch varat sev izveidot atsevišķu profilu.</translation>
+<translation id="8090497651549769448">Presearch mēģina nokopēt paroles. Lai to atļautu, ierakstiet savu Windows paroli.</translation>
+<translation id="6056473803837713617">Palīdziet uzlabot pārlūku Presearch, ziņojot par <ph name="BEGIN_LINK"/>pašreizējiem iestatījumiem<ph name="END_LINK"/>.</translation>
+<translation id="4050175100176540509">Jaunākajā versijā ir pieejami svarīgi drošības uzlabojumi un jaunas funkcijas.</translation>
+<translation id="4658486203392098459"><ph name="PAGE_TITLE"/> — pierakstīšanās tīklā — Presearch</translation>
+<translation id="2871190378186459992">Atklājiet lieliskas lietotnes, spēles, paplašinājumus un motīvus, ko varat izmantot pārlūkā Presearch.</translation>
+<translation id="5757460455745382269">Šī valoda tiek izmantota, lai attēlotu Presearch lietotāja saskarni</translation>
+<translation id="1853997773668795891">Vai saistīt Presearch datus ar šo kontu?</translation>
+<translation id="8923080813984421771"><ph name="MANAGER"/> pieprasa, lai pirms šīs ierīces lietošanas jūs izlasītu tālāk sniegtos pakalpojumu sniegšanas noteikumus un piekristu tiem. Šie noteikumi nepaplašina, nepārveido un neierobežo operētājsistēmas Presearch OS noteikumus.</translation>
+<translation id="3262506503470845422">Saņemt palīdzību par Presearch</translation>
+<translation id="7691786510374174420">Instalācija neizdevās nenoteiktas kļūdas dēļ. Ja Presearch šobrīd darbojas, aizveriet to un mēģiniet vēlreiz.</translation>
+<translation id="9183662282810237335">Vai tik un tā aizvērt pārlūku Presearch?</translation>
+<translation id="4065288863231444640">Ļaut pārlūkam Presearch darboties fonā</translation>
+<translation id="8148611988012584308">Pielāgot un kontrolēt Presearch</translation>
+<translation id="1201005444605297066">Šajā lapā varat pārvaldīt Presearch kontus, kuros esat pierakstījies. Šie konti būs pieejami pārlūkā Presearch un Play veikala lietotnēs, kā arī tādos pakalpojumos kā Gmail, Disks un YouTube. <ph name="LINK_BEGIN"/>Uzziniet vairāk<ph name="LINK_END"/>.</translation>
+<translation id="7084397798469173252">Laipni lūdzam pārlūkā Presearch (tika atvērts jauns pārlūka logs)!</translation>
+<translation id="2633397153656205379">Pārlūkprogramma Presearch netika atjaunināta. Radās problēma. <ph name="BEGIN_LINK"/>Novērsiet Presearch atjaunināšanas problēmas.<ph name="END_LINK"/></translation>
+<translation id="3679799810790990472">Vai turpināt jaunā Presearch profilā?</translation>
+<translation id="4567424176335768812">Jūs esat pierakstījies kā <ph name="USER_EMAIL_ADDRESS"/>. Tagad varat piekļūt savām grāmatzīmēm, vēsturei un citiem iestatījumiem visās ierīcēs, kurās esat pierakstījies.</translation>
+<translation id="300669147395456190">Presearch lietotnes</translation>
+<translation id="8142245354207161805">Šķiet, ka profils tiek izmantots citā Presearch procesā (<ph name="PROCESS_ID"/>) citā datorā (<ph name="HOST_NAME"/>). Lai profils netiktu bojāts, pārlūkā Presearch tas ir bloķēts. Ja esat pārliecināts, ka šis profils netiek izmantots citos procesos, varat to atbloķēt un restartēt pārlūku Presearch.</translation>
+<translation id="3395323229510056640">Saņemt palīdzību par Presearch OS</translation>
+<translation id="847561904663814268">Kāds iepriekš pierakstījās pārlūkā Presearch šajā datorā, izmantojot e-pasta adresi <ph name="ACCOUNT_EMAIL_LAST"/>. Lūdzu, izveidojiet jaunu Presearch lietotāju, lai nošķirtu savu informāciju.</translation>
+<translation id="3834935463915107022">Vai tik un tā aizvērt pārlūku Presearch?</translation>
+<translation id="8668413672647811944">Tikko tika piemērots īpašs Presearch drošības atjauninājums. Restartējiet tūlīt, un mēs atjaunosim jūsu cilnes.</translation>
+<translation id="4823369970559443694">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paroles. Mēģiniet vēlreiz pēc 24 stundām vai <ph name="BEGIN_LINK"/>pārbaudiet paroles savā Presearch kontā<ph name="END_LINK"/>.</translation>
+<translation id="215320507915280336">Šeit tiek izmantota tāds pats pareizrakstības pārbaudītājs, kāds tiek izmantots Presearch meklēšanā. Pārlūkprogrammā ievadītais teksts tiek nosūtīts Presearch serveriem. Jebkurā brīdī varat mainīt šo darbību iestatījumos.</translation>
+<translation id="1912973375560256099">Ienākošo savienojumu kārtula pārlūkam Presearch, lai atļautu mDNS datplūsmu.</translation>
+<translation id="8797356639448065696">Presearch darbojas fona režīmā.</translation>
+<translation id="7406627712452599344">Viesi var izmantot Presearch, neatstājot nekādas pēdas.</translation>
+<translation id="5952898964075639679">Pievienot savu kontu pārlūkā Presearch</translation>
+<translation id="9078804073692109646">Nav saglabātu paroļu. Pārlūkprogrammā Presearch var pārbaudīt jūsu paroles, ja jūs tās saglabājat.</translation>
+<translation id="729580998737807583">Lietotājs <ph name="EXISTING_USER"/> jau ir pierakstījies šajā Presearch profilā. Tādējādi tiks izveidots jauns Presearch profils lietotājam <ph name="USER_EMAIL_ADDRESS"/>.</translation>
+<translation id="8586264863973514035">Lai ieviestu veiktās izmaiņas, atkārtoti palaidiet pārlūku Presearch.</translation>
+<translation id="7708394612738038097">Jūs pierakstāties ar pārvaldītu kontu, kura administrators var kontrolēt jūsu profilu. Jūsu Presearch dati, piemēram, lietotnes, grāmatzīmes, vēsture, paroles un citi iestatījumi, tiks neatgriezeniski saistīti ar lietotāju <ph name="USER_NAME"/>. Varēsiet dzēst šos datus, izmantojot Presearch kontu informācijas paneli, taču nevarēsiet šos datus saistīt ar citu kontu. <ph name="LEARN_MORE"/></translation>
+<translation id="1786715389543715322">Notiek Presearch atjaunināšana (<ph name="PROGRESS_PERCENT"/>)</translation>
+<translation id="7021823858304886493">Atļaut pierakstīties pārlūkā Presearch</translation>
+<translation id="5536657158619734169">Pieejama jauna Presearch versija.</translation>
+<translation id="5874882355102994015">Presearch nevar parādīt drukas priekšskatījumu, ja nav pieejams iebūvētais PDF skatītājs.</translation>
+<translation id="239760341987199724">Iestatīt Presearch kā noklusējuma pārlūku</translation>
+<translation id="1403270718080126244"><ph name="PAGE_TITLE"/> — Presearch beta versija</translation>
+<translation id="707769633889902835">Presearch OS nevar atvērt šo lapu.</translation>
+<translation id="696826782632239602">Pārlūkam Presearch ir nepieciešama piekļuve jūsu atrašanās vietas datiem, lai varētu tos kopīgot ar šo vietni.</translation>
+<translation id="1744365871163268756">Lūdzu, uzgaidiet, kamēr Presearch instalē jaunākos sistēmas atjauninājumus.</translation>
+<translation id="3861679447659630159">Presearch mēģina rediģēt paroles. Lai to atļautu, ierakstiet savu Windows paroli.</translation>
+<translation id="1026406809507858026">{0,plural, =0{Ir pieejams Presearch atjauninājums}=1{Ir pieejams Presearch atjauninājums}zero{Presearch atjauninājums ir pieejams jau # dienu}one{Presearch atjauninājums ir pieejams jau # dienu}other{Presearch atjauninājums ir pieejams jau # dienas}}</translation>
+<translation id="95624393026532554">Pārlūka Presearch izmantošanai nepieciešama operētājsistēma Windows 7 vai jaunāka versija.</translation>
+<translation id="5646769069113654257">Lūdzu, nekavējoties restartējiet pārlūku Presearch</translation>
+<translation id="2335583906071111058">Rādīt Presearch šajā valodā</translation>
+<translation id="3009727137063767373">Lai pārlūkā Presearch iespējotu aizsargāta multivides satura atskaņošanu, jums jāinstalē Rosetta. Vai vēlaties to instalēt tūlīt?</translation>
+<translation id="4331809312908958774">Chrome OS</translation>
+<translation id="7207456302801184289">Laipni lūdzam pārlūkā Presearch!</translation>
+<translation id="5895138241574237353">Restartēt</translation>
+<translation id="5903106910045431592"><ph name="PAGE_TITLE"/> — pierakstīšanās tīklā</translation>
+<translation id="3598551856834560515">Lai sāktu sinhronizēšanu, atjauniniet Presearch.</translation>
+<translation id="4325083532956419387">Chrome OS versija</translation>
+<translation id="505042220086416644">Ir pieejama jauna Presearch versija, un tā ir ātrāka nekā jebkad agrāk.</translation>
+<translation id="9071554113102421877">&amp;Atvērt pārlūkā Presearch</translation>
+<translation id="7861579472672677409">Paplašinājums <ph name="EXTENSION_NAME"/> ir pievienots pārlūkam Presearch</translation>
+<translation id="608006075545470555">Darba profila pievienošana šai pārlūkprogrammai</translation>
+<translation id="2577755334620061182">Presearch nevarēja sinhronizēt jūsu datus pierakstīšanās kļūdas dēļ.</translation>
+<translation id="5849446944780602366">Pielāgojiet un pārvaldiet pārlūku Presearch. Ir pieejams atjauninājums.</translation>
+<translation id="492209281555538239">Pārlūks Presearch saglabās šo paroli jūsu Presearch kontā. To nav nepieciešams iegaumēt.</translation>
+<translation id="4168372721886011198">Fails <ph name="FILE_NAME"/> ir bīstams, tādēļ Presearch to bloķēja.</translation>
+<translation id="7006260220514217183">Droša pārlūkošana ir izslēgta. Pārlūkā Presearch tiek ieteikts to ieslēgt.</translation>
+<translation id="4368341489795135329">Ierīcē <ph name="TARGET_DEVICE_NAME"/> pierakstieties pārlūkā Presearch un pēc tam vēlreiz mēģiniet veikt sūtīšanu.</translation>
+<translation id="8320964054148936490">Šim datoram jau ir jaunākā Presearch versija. Ja programmatūra nedarbojas, atinstalējiet pārlūku Presearch un mēģiniet vēlreiz.</translation>
+<translation id="3574823187131579180">{0,plural, =0{Pārlūks Presearch tūlīt tiks restartēts}=1{Pārlūks Presearch pēc 1 sekundes tiks restartēts}zero{Pārlūks Presearch pēc # sekundēm tiks restartēts}one{Pārlūks Presearch pēc # sekundes tiks restartēts}other{Pārlūks Presearch pēc # sekundēm tiks restartēts}}</translation>
+<translation id="3127818369811890733">Presearch OS nevarēja sinhronizēt jūsu datus.</translation>
+<translation id="5019879183386042809">Padarīt Presearch par noklusējuma pārlūku</translation>
+<translation id="428541510811554120">Pārlūkprogrammā Presearch nevar pārbaudīt atjauninājumu pieejamību. Pārbaudiet interneta savienojumu.</translation>
+<translation id="7445061995866044926">Vai izrakstīties no Presearch?</translation>
+<translation id="6806912298071949921">Pielāgot Presearch profilu</translation>
+<translation id="3792238845239580301">Presearch profila nosaukšana</translation>
+<translation id="3561569806301739367">Fails <ph name="FILE_NAME"/> var būt bīstams, tādēļ Presearch to bloķēja.</translation>
+<translation id="3205074487970075628">Presearch saitē tiek izmantota kamera.</translation>
+<translation id="1819119299840995223">Tiek veikta cita darbība pārlūkā Presearch. Lūdzu, vēlāk mēģiniet vēlreiz.</translation>
+<translation id="8616874628011103667">Tagad pārlūkā Presearch ir vieglāk izmantot Presearch kontu, kā arī ir atvieglota lietošana datoros, ko izmanto vairākas personas.</translation>
+<translation id="335632367599648646">Vai tiešām vēlaties atinstalēt pārlūku Presearch?</translation>
+<translation id="6373767849825830651">Presearch ir tīmekļa pārlūks, kas darbina tīmekļa lapas un lietojumprogrammas zibenīgā ātrumā. Tas ir ātrs, stabils un ērti lietojams. Pārlūkojiet tīmekli vēl drošāk ar aizsardzību pret ļaunprātīgu programmatūru un pikšķerēšanu, kas iebūvēta pārlūkā Presearch.</translation>
+<translation id="2644798301485385923">Presearch OS sistēma</translation>
+<translation id="1684121725014454063">Laipni lūdzam Presearch profilos!</translation>
+<translation id="2513524988380267210">{SECONDS,plural, =1{Pārlūks Presearch tiks restartēts pēc 1 sekundes.}zero{Pārlūks Presearch tiks restartēts pēc # sekundēm.}one{Pārlūks Presearch tiks restartēts pēc # sekundes.}other{Pārlūks Presearch tiks restartēts pēc # sekundēm.}}</translation>
+<translation id="2675662665675552980">Tas nosaka arī to, kāda lapa tiks rādīta, kad atvērsiet pārlūku Presearch.</translation>
+<translation id="5590013613412457132">Atinstalēt Presearch</translation>
+<translation id="8646609321956191980">Katrā profilā tiek glabāta attiecīgā Presearch profila informācija, piemēram, grāmatzīmes, vēsture, paroles un citi dati.</translation>
+<translation id="2312399718665761438">Lai izlabotu pareizrakstības kļūdas, Presearch nosūta teksta laukos ievadīto tekstu Presearch serveriem.</translation>
+<translation id="3507835409099344374">Pāriet uz Presearch paziņojumu iestatījumiem</translation>
+<translation id="9156965752763025780">Izmaiņas stāsies spēkā, kad restartēsiet Presearch.</translation>
+<translation id="6676384891291319759">Piekļūt internetam</translation>
+<translation id="1489465648257900784">Jūsu profilu nevar izmantot, jo tas ir no jaunākas Presearch versijas.
+
+Dažas funkcijas var nebūt pieejamas. Norādiet citu profila direktoriju vai izmantojiet jaunāku Presearch versiju.</translation>
+<translation id="5450493308072741203">Atjaunināt &amp;Presearch</translation>
+<translation id="6666624454809779082">Pārlūks Presearch jau ir instalēts visiem lietotājiem jūsu datorā.</translation>
+<translation id="5360050006043219962">Lai piekļūtu savam Presearch saturam visās jūsu ierīcēs, pierakstieties un pēc tam ieslēdziet sinhronizāciju.</translation>
+<translation id="8291513491595858997">Viens no jūsu vecākiem ir izslēdzis “Atļaujas vietnēm, lietotnēm un paplašinājumiem” pārlūkam Presearch. Nav atļauts iespējot šo: <ph name="EXTENSION_TYPE_PARAMETER"/>.</translation>
+<translation id="8211837073776713955">Ja jūsu paroles kādreiz tiks apdraudētas, pārlūkā Presearch saņemsiet paziņojumu</translation>
+<translation id="7830723774663008396">Presearch — <ph name="PAGE_TITLE"/></translation>
+<translation id="5253815230176279256">Presearch Pay (kopēts pārlūkā Presearch)</translation>
+<translation id="2301993384336631869">Pārlūks Presearch ir atjaunināts, bet jūs neesat to izmantojis vismaz 30 dienas.</translation>
+<translation id="8522287263361940593">Izmantojot Rosetta, pārlūkā Presearch var atskaņot aizsargātu multivides saturu šajā lapā.</translation>
+<translation id="8828443087767259398">Pārlūkam Presearch ir nepieciešama Bluetooth piekļuve, lai turpinātu savienošanu pārī. <ph name="IDS_BLUETOOTH_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"/></translation>
+<translation id="6418340404893954563">Nedrošas paroles ir viegli uzminēt. Pārlūkā Presearch <ph name="BEGIN_LINK"/>var automātiski veidot un iegaumēt drošas paroles jūsu kontiem<ph name="END_LINK"/>.</translation>
+<translation id="3335606533094650083">Pārlūkam Presearch ir nepieciešama atļauja piekļūt jūsu mikrofonam šajā vietnē.</translation>
+<translation id="1785833016412082453">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paplašinājumus. Vēlāk mēģiniet vēlreiz.</translation>
+<translation id="1705567146636171298">Atjaunināt Presearch</translation>
+<translation id="123620459398936149">Presearch OS nevarēja sinhronizēt jūsu datus. Lūdzu, atjauniniet savu sinhronizācijas ieejas frāzi.</translation>
+<translation id="5499063270485366718">Ja attēlam nav vērtīga apraksta, pārlūks Presearch mēģinās jums tādu nodrošināt. Lai izveidotu aprakstus, attēli tiek nosūtīti uzņēmumam Presearch.</translation>
+<translation id="1197672524850678392">Neizdevās palaist Presearch. Mēģiniet vēlreiz.</translation>
+<translation id="3405035915691517126">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paroles. Mēģiniet vēlreiz pēc 24 stundām.</translation>
+<translation id="5660079256336839395">Paslēpšana Presearch izvēlnē</translation>
+<translation id="5516268345616100622">Uzdevumu pārvaldnieks — Presearch</translation>
+<translation id="61852838583753520">Atjaunināt &amp;Chrome OS</translation>
+<translation id="1864557848095568223">Notiek Presearch atjaunināšana</translation>
+<translation id="3403365884036456766">Jūsu preferenču fails ir bojāts vai nederīgs. Presearch nespēj atkopt jūsu iestatījumus.</translation>
+<translation id="939305735877869636">Presearch</translation>
+<translation id="7339898014177206373">Jauns logs</translation>
+<translation id="3511996232906761537">Šeit atrodas jūsu tīmekļa saturs, grāmatzīmes un cits Presearch saturs.</translation>
+<translation id="5380963249588143069">Jūsu sistēmas administrators ir konfigurējis Presearch atvērt <ph name="ALTERNATIVE_BROWSER_NAME"/>, lai piekļūtu <ph name="TARGET_URL_HOSTNAME"/>.</translation>
+<translation id="5062123544085870375">Presearch OS restartēšana</translation>
+<translation id="3943696263619956191"><ph name="PAGE_TITLE"/> — Presearch izstrādātāju versija</translation>
+<translation id="2034072705932785495">Pārlūkam Presearch ir nepieciešama atļauja piekļūt jūsu kamerai šajā vietnē.</translation>
+<translation id="2619516027171717873">Nevar instalēt to pašu Presearch versiju, kas jau šobrīd darbojas. Aizveriet Presearch un mēģiniet vēlreiz.</translation>
+<translation id="3186363903915641692">{0,plural, =1{Pārlūks Presearch pēc 1 minūtes tiks restartēts}zero{Pārlūks Presearch pēc # minūtēm tiks restartēts}one{Pārlūks Presearch pēc # minūtes tiks restartēts}other{Pārlūks Presearch pēc # minūtēm tiks restartēts}}</translation>
+<translation id="573759479754913123">Par Chrome OS</translation>
+<translation id="8516116288943000095">Notīrīt arī datus no Presearch (<ph name="URL"/>)</translation>
+<translation id="5657226924540934362">Ja šajā lapā iestatījums nav pieejams, skatiet to sadaļā <ph name="LINK_BEGIN"/>
+      Presearch OS iestatījumi<ph name="LINK_END"/>.</translation>
+<translation id="3293668930608086049">Pārlūkā Presearch tiek izmantota jūsu kamera un mikrofons.</translation>
+<translation id="2827121003398607864">Pārlūkā Presearch ir veikti uzlabojumi</translation>
+<translation id="3343095737966473035">Presearch nav jūsu noklusējuma pārlūks.</translation>
+<translation id="5477319665405831211">Presearch sinhronizēšana un personalizēšana visās savās ierīcēs</translation>
+<translation id="5419189641394808652">Presearch nevarēja sinhronizēt jūsu datus, jo jūsu domēnam nav pieejama sinhronizācija.</translation>
+<translation id="4784414698887946907">Veicot šo darbību, no šīs ierīces tiks dzēsti pārlūkošanas dati. Lai vēlāk izgūtu datus, pierakstieties pārlūkā Presearch kā <ph name="USER_EMAIL"/>.</translation>
+<translation id="7747138024166251722">Instalētājam neizdevās izveidot pagaidu katalogu. Lūdzu, pārbaudiet, vai diskā pietiek vietas un vai ir atļauja instalēt programmatūru.</translation>
+<translation id="6236814935154483927"><ph name="PAGE_TITLE"/> — Presearch Canary</translation>
+<translation id="38898988211673781">Aizverot Presearch, notīriet sīkfailus un vietnes datus</translation>
+<translation id="1652855885539187849">Šajā ierīcē jau pastāv Presearch profils ar šādu kontu.</translation>
+<translation id="8462524920674814187">Lai varētu saņemt nākamos Presearch atjauninājumus, nepieciešama OS X 10.11 vai jaunāka versija. Šajā datorā tiek izmantota OS X 10.10 versija.</translation>
+<translation id="7963515534397191222">Nevarēja atjaunināt uz jaunāko Presearch versiju, tādēļ jūs nevarēsiet piekļūt jaunākajām funkcijām un drošības labojumiem.</translation>
+<translation id="7573289029918943991">Lai pārbaudītu, vai ierīce ir atjaunināta, pārejiet uz sadaļu <ph name="LINK_BEGIN"/>Presearch OS iestatījumi<ph name="LINK_END"/>.</translation>
+<translation id="6755885556185485672">Presearch OS netika pareizi izslēgta.</translation>
+<translation id="2925193881330501265">Operētājsistēmā Presearch iepriekš pierakstījāties kā lietotājs <ph name="USER_EMAIL_ADDRESS"/>. Lai pierakstītos vēlreiz, lūdzu, izmantojiet to pašu kontu.</translation>
+<translation id="6915252145142862992">Šī ir Presearch papildu instalācija, un to nevar izmantot kā noklusējuma pārlūku.</translation>
+<translation id="4054452651944170004">Paslēpt Presearch izvēlnē</translation>
+<translation id="7685904775439037072">Tiklīdz pārlūkam Presearch tiks sniegta piekļuve, vietnes varēs lūgt jums piekļuvi.</translation>
+<translation id="9067428552314418522">Šis fails ir bīstams, tāpēc Presearch to bloķēja.</translation>
+<translation id="8207657266087451193">Ja attēlam nav vērtīga apraksta, pārlūks Presearch mēģinās jums tādu nodrošināt. Lai izveidotu aprakstus, attēli tiek nosūtīti uzņēmumam Presearch. Jebkurā brīdī iestatījumos varat izslēgt šo iespēju.</translation>
+<translation id="8622246347342688645">Pārlūkprogrammā Presearch nevar pārbaudīt jūsu paroles, jo jūs neesat pierakstījies.</translation>
+<translation id="96347285368592620">Presearch mēģina nokopēt paroles.</translation>
+<translation id="89367911614620585">Šis fails var būt bīstams, tāpēc Presearch to bloķēja.</translation>
+<translation id="3360368475735266712">Pierakstieties, lai sinhronizētu un personalizētu pārlūku Presearch visās savās ierīcēs.</translation>
+<translation id="2591326305549412656"><ph name="USER_EMAIL_ADDRESS"/> iepriekš izmantoja Presearch</translation>
+<translation id="5337999052834672687">{0,plural, =1{Restartējiet pārlūku Presearch vienas dienas laikā}zero{Restartējiet pārlūku Presearch # dienu laikā}one{Restartējiet pārlūku Presearch # dienas laikā}other{Restartējiet pārlūku Presearch # dienu laikā}}</translation>
+<translation id="6914496861676471566">Instalēšanas programmas arhīvs ir bojāts vai nav derīgs. Lejupielādējiet Presearch vēlreiz.</translation>
+<translation id="2097604701283463988">Presearch versija ir novecojusi</translation>
+<translation id="8550334526674375523">Šis darba profils ir pilnīgi nesaistīts ar jūsu personīgo profilu.</translation>
+<translation id="2452889775041290116">Viens no jūsu vecākiem ir izslēdzis “Atļaujas vietnēm, lietotnēm un paplašinājumiem” pārlūkam Presearch. Nav atļauts pievienot šo: <ph name="EXTENSION_TYPE_PARAMETER"/>.</translation>
+<translation id="227028348235968071">Pārlūkprogrammā Presearch var pārbaudīt jūsu paroles, ja esat pierakstījies savā Presearch kontā.</translation>
+<translation id="8121009781989288430">Autortiesības <ph name="YEAR"/> Presearch autori. Visas tiesības paturētas.</translation>
+<translation id="3052349005266761501">Notiek Presearch palaišana...</translation>
+<translation id="6283840329609797763">Instalēšana neizdevās nenoteiktas kļūdas dēļ. Lejupielādējiet pārlūku Presearch vēlreiz.</translation>
+<translation id="2433912322225810055">Tas nosaka arī to, kāda lapa tiks rādīta, kad atvērsiet pārlūku Presearch vai meklēsiet, izmantojot universālo lodziņu.</translation>
+<translation id="4100716194836114130">Šis ir jūsu Presearch</translation>
+<translation id="4831743161813926460">Pārlūkam Presearch ir nepieciešama atļauja piekļūt jūsu kamerai un mikrofonam šajā vietnē.</translation>
+<translation id="7408085963519505752">Presearch OS noteikumi</translation>
+<translation id="2262856633481902138">Presearch nevarēja sinhronizēt jūsu datus, jo jūsu konta pierakstīšanās informācija ir novecojusi.</translation>
+<translation id="8862326446509486874">Jums nav vajadzīgo tiesību, lai instalētu sistēmas līmenī. Mēģiniet vēlreiz palaist instalēšanas programmu kā administrators.</translation>
+<translation id="6412037018950369131">Ja tā ir, lūdzu, rediģējiet saglabāto paroli pārlūkprogrammā Presearch, lai tā atbilstu jūsu jaunajai parolei.</translation>
+<translation id="3215652305414474626">Tas nosaka arī to, kāda lapa tiks rādīta, kad atvērsiet pārlūku Presearch vai noklikšķināsiet uz pogas “Sākums”.</translation>
+<translation id="8285294305439559616">Presearch mēģina rādīt paroles. Lai to atļautu, ierakstiet savu Windows paroli.</translation>
+<translation id="6389268239133412586">Nevar atjaunināt Presearch</translation>
+<translation id="6368958679917195344">Chrome OS ir kļuvusi iespējama, pateicoties papildu <ph name="BEGIN_LINK_CROS_OSS"/>atklātā pirmkoda programmatūrai<ph name="END_LINK_CROS_OSS"/>.</translation>
+<translation id="8986207147630327271">Jūs pievienosiet šai pārlūkprogrammai darba profilu un piešķirsiet administratoram kontroli tikai pār darba profilu.</translation>
+<translation id="1156157157416773301">Vai pārvietot kontu uz jaunu Presearch profilu?</translation>
+<translation id="5173820533850252773">Presearch versija ir novecojusi.</translation>
+<translation id="310518206836658214">{0,plural, =1{Pārlūks Presearch pēc stundas tiks restartēts}zero{Pārlūks Presearch pēc # stundām tiks restartēts}one{Pārlūks Presearch pēc # stundas tiks restartēts}other{Pārlūks Presearch pēc # stundām tiks restartēts}}</translation>
+<translation id="7863882214613921971">Atvērt saiti jaunā Presearch &amp;cilnē</translation>
+<translation id="911206726377975832">Vai dzēst arī pārlūkošanas datus?</translation>
+<translation id="2444257125841652328">Sistēmas administrators ir konfigurējis Presearch, lai vietne <ph name="TARGET_URL_HOSTNAME"/> tiktu atvērta papildu pārlūkā.</translation>
+<translation id="3350544518197210895">Presearch (mDNS ienākošie savienojumi)</translation>
+<translation id="6568793831116033768">Presearch OS sistēma</translation>
+<translation id="7977787072794666032">Iespējams, Presearch nedarbosies pareizi, jo tas vairs netiek atbalstīts operētājsistēmās Windows XP un Windows Vista.</translation>
+<translation id="4484434718272972655">Kas izmanto pārlūku Presearch?</translation>
+<translation id="8992261409816268381">Presearch autori</translation>
+<translation id="6134859571175647580">Brīdinājums! Presearch nevar novērst to, ka paplašinājumi ieraksta jūsu pārlūkošanas vēsturi. Lai atspējotu šo paplašinājumu inkognito režīmā, noņemiet atzīmi no šīs opcijas.</translation>
+<translation id="1448049584457347995">Lai uzlabotu Presearch drošību, mēs atspējojām dažus paplašinājumus, kas nav norādīti vietnē <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/> un, iespējams, tika pievienoti, jums nezinot.</translation>
+<translation id="8848045066928358658">Lai uzlabotu Presearch drošību, mēs atspējojām tālāk norādīto paplašinājumu, kas nav norādīts vietnē <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/> un, iespējams, tika pievienots, jums nezinot.</translation>
+<translation id="669092380621816981">Šī lietotāja pārlūkošanas dati tiks dzēsti no šīs ierīces. Lai atkoptu datus, pierakstieties pārlūkprogrammā Presearch kā lietotājs <ph name="USER_EMAIL"/>.</translation>
+<translation id="4624945300945265642">Atvērt saiti inko&amp;gnito režīma logā</translation>
+<translation id="6554952862405000915">Atvērt saiti inko&amp;gnito režīma logā</translation>
+<translation id="8274659559228306809">{COUNT,plural, =0{Pieejams Presearch atjauninājums, un tas tiks lietots, tiklīdz restartēsiet pārlūku.}=1{Pieejams Presearch atjauninājums, un tas tiks lietots, tiklīdz restartēsiet pārlūku. Jūsu inkognito režīma logs netiks atkārtoti atvērts.}zero{Pieejams Presearch atjauninājums, un tas tiks lietots, tiklīdz restartēsiet pārlūku. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}one{Pieejams Presearch atjauninājums, un tas tiks lietots, tiklīdz restartēsiet pārlūku. # jūsu inkognito režīma logs netiks atkārtoti atvērts.}other{Pieejams Presearch atjauninājums, un tas tiks lietots, tiklīdz restartēsiet pārlūku. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}}</translation>
+<translation id="3829358914761176693">{COUNT,plural, =0{Lai lietotu šo atjauninājumu, administrators lūdz restartēt pārlūku Presearch.}=1{Lai lietotu šo atjauninājumu, administrators lūdz restartēt pārlūku Presearch. Jūsu inkognito režīma logs netiks atkārtoti atvērts.}zero{Lai lietotu šo atjauninājumu, administrators lūdz restartēt pārlūku Presearch. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}one{Lai lietotu šo atjauninājumu, administrators lūdz restartēt pārlūku Presearch. # jūsu inkognito režīma logs netiks atkārtoti atvērts.}other{Lai lietotu šo atjauninājumu, administrators lūdz restartēt pārlūku Presearch. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}}</translation>
+<translation id="552349673358711446">{COUNT,plural, =0{Lai lietotu atjauninājumu, administrators pieprasa restartēt pārlūku Presearch.}=1{Lai lietotu atjauninājumu, administrators pieprasa restartēt pārlūku Presearch. Jūsu inkognito režīma logs netiks atkārtoti atvērts.}zero{Lai lietotu atjauninājumu, administrators pieprasa restartēt pārlūku Presearch. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}one{Lai lietotu atjauninājumu, administrators pieprasa restartēt pārlūku Presearch. # jūsu inkognito režīma logs netiks atkārtoti atvērts.}other{Lai lietotu atjauninājumu, administrators pieprasa restartēt pārlūku Presearch. # jūsu inkognito režīma logi netiks atkārtoti atvērti.}}</translation>
+<translation id="7914115000169617076">Gandrīz atjaunināts! Lai pabeigtu atjaunināšanu, atkārtoti palaidiet pārlūkprogrammu Presearch. Inkognito režīma logi netiks atkārtoti atvērti.</translation>
+</translationbundle>

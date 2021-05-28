@@ -1,0 +1,27 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+presearch_browser_new_tab_sources = []
+presearch_browser_new_tab_deps = []
+
+if (!is_android) {
+  presearch_browser_new_tab_sources += [
+    "//presearch/browser/new_tab/new_tab_shows_navigation_throttle.cc",
+    "//presearch/browser/new_tab/new_tab_shows_navigation_throttle.h",
+    "//presearch/browser/new_tab/new_tab_shows_options.cc",
+    "//presearch/browser/new_tab/new_tab_shows_options.h",
+  ]
+
+  presearch_browser_new_tab_deps += [
+    "//base",
+    "//presearch/app:presearch_generated_resources_grit",
+    "//presearch/common:pref_names",
+    "//chrome/common",
+    "//components/prefs",
+    "//content/public/browser",
+    "//ui/base",
+    "//url",
+  ]
+}

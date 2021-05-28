@@ -1,0 +1,42 @@
+# Copyright (c) 2019 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//build/config/sanitizers/sanitizers.gni")
+import("//testing/test.gni")
+
+source_set("presearch_rewards_unit_tests") {
+  testonly = true
+
+  if (presearch_rewards_enabled) {
+    sources = [
+      "//presearch/components/presearch_rewards/browser/rewards_service_impl_unittest.cc",
+      "//presearch/components/l10n/browser/locale_helper_mock.cc",
+      "//presearch/components/l10n/browser/locale_helper_mock.h",
+    ]
+
+    deps = [
+      "//base/test:test_support",
+      "//presearch/browser",
+      "//presearch/components/presearch_rewards/browser:browser",
+      "//presearch/components/presearch_rewards/browser:testutil",
+      "//presearch/components/presearch_rewards/resources:static_resources_grit",
+      "//presearch/components/challenge_bypass_ristretto",
+      "//presearch/components/l10n/browser:browser",
+      "//presearch/vendor/bat-native-ledger",
+      "//presearch/vendor/bat-native-ledger:publishers_proto",
+      "//presearch/vendor/bat-native-rapidjson",
+      "//chrome/browser:browser",
+      "//chrome/browser/profiles:profile",
+      "//content/test:test_support",
+      "//net:net",
+      "//ui/base:base",
+      "//url:url",
+    ]
+
+    configs += [ "//presearch/vendor/bat-native-ledger:internal_config" ]
+  }  # if (presearch_rewards_enabled)
+}  # source_set("presearch_rewards_unit_tests")

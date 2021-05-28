@@ -1,0 +1,5 @@
+group("chromium_deps") {
+  deps = [
+    "//presearch/ui/webui/resources",
+  ]
+}

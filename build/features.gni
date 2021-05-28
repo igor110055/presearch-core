@@ -1,0 +1,10 @@
+declare_args() {
+  presearch_services_key = ""
+}
+
+presearch_service_key_defines = []
+if (presearch_services_key != "") {
+  presearch_service_key_defines += [ "PRESEARCH_SERVICES_KEY=\"$presearch_services_key\"" ]
+} else {
+  presearch_service_key_defines += [ "PRESEARCH_SERVICES_KEY=\"dummytoken\"" ]
+}

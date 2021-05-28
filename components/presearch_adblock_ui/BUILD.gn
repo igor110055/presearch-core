@@ -1,0 +1,17 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("presearch_adblock_ui") {
+  entry_points = [
+    ["presearch_adblock", rebase_path("presearch_adblock.tsx")]
+  ]
+
+  resource_name = "presearch_adblock"
+}
+
+pack_web_resources("generated_resources") {
+  resource_name = "presearch_adblock"
+  output_dir = "$root_gen_dir/presearch/components/presearch_adblock/resources"
+  deps = [
+    ":presearch_adblock_ui"
+  ]
+}

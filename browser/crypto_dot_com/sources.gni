@@ -1,0 +1,25 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import("//presearch/components/crypto_dot_com/browser/buildflags/buildflags.gni")
+
+presearch_browser_crypto_dot_com_sources = []
+presearch_browser_crypto_dot_com_deps = []
+
+if (crypto_dot_com_enabled) {
+  presearch_browser_crypto_dot_com_sources += [
+    "//presearch/browser/crypto_dot_com/crypto_dot_com_service_factory.cc",
+    "//presearch/browser/crypto_dot_com/crypto_dot_com_service_factory.h",
+  ]
+
+  presearch_browser_crypto_dot_com_deps += [
+    "//base",
+    "//presearch/browser/profiles",
+    "//presearch/components/crypto_dot_com/browser",
+    "//presearch/components/crypto_dot_com/common",
+    "//chrome/browser/profiles:profile",
+    "//components/keyed_service/content",
+  ]
+}

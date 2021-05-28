@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java b/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
+index 8195ba51211467d3a987c3915412ab500e745ce5..e7fd504035747b4f600f771038bab54200949593 100644
+--- a/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
++++ b/chrome/browser/ui/android/appmenu/internal/java/src/org/chromium/chrome/browser/ui/appmenu/AppMenu.java
+@@ -220,6 +220,7 @@ class AppMenu implements OnItemClickListener, OnKeyListener, AppMenuClickHandler
+         mPopup.setOutsideTouchable(true);
+ 
+         if (!isByPermanentButton) mPopup.setAnimationStyle(R.style.OverflowMenuAnim);
++        if (!isByPermanentButton) mPopup.setAnimationStyle(PresearchAppMenu.getAnimationStyle());
+ 
+         // Turn off window animations for low end devices.
+         if (SysUtils.isLowEndDevice()) mPopup.setAnimationStyle(0);

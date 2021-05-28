@@ -1,0 +1,343 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/browser/autocomplete/sources.gni")
+import("//presearch/browser/binance/sources.gni")
+import("//presearch/browser/presearch_rewards/sources.gni")
+import("//presearch/browser/presearch_shields/sources.gni")
+import("//presearch/browser/presearch_wallet/sources.gni")
+import("//presearch/browser/component_updater/sources.gni")
+import("//presearch/browser/crypto_dot_com/sources.gni")
+import("//presearch/browser/decentralized_dns/sources.gni")
+import("//presearch/browser/download/sources.gni")
+import("//presearch/browser/gemini/sources.gni")
+import("//presearch/browser/greaselion/sources.gni")
+import("//presearch/browser/importer/sources.gni")
+import("//presearch/browser/ipfs/sources.gni")
+import("//presearch/browser/new_tab/sources.gni")
+import("//presearch/browser/permissions/sources.gni")
+import("//presearch/browser/search_engines/sources.gni")
+import("//presearch/browser/signin/sources.gni")
+import("//presearch/browser/speedreader/sources.gni")
+import("//presearch/browser/themes/sources.gni")
+import("//presearch/chromium_src/chrome/browser/prefs/sources.gni")
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import(
+    "//presearch/components/presearch_perf_predictor/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_referrals/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_sync/buildflags/buildflags.gni")
+import("//presearch/components/presearch_together/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//presearch/components/presearch_wayback_machine/buildflags/buildflags.gni")
+import("//presearch/components/presearch_webtorrent/browser/buildflags/buildflags.gni")
+import("//presearch/components/sidebar/buildflags/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//extensions/buildflags/buildflags.gni")
+
+presearch_chrome_browser_visibility = [
+  "//presearch/browser/*",
+  "//presearch/test:*",
+
+  # these are layering violation and need to be fixed
+  "//presearch/components/presearch_ads/test:*",
+  "//presearch/components/ipfs/test:*",
+
+  # Chrome does not yet define a visibility list by itself, meaning we can't
+  # append our list to them and that what we have here will become law not just
+  # for Presearch, but also for the rest of chrome. Thus, we need to provide our own
+  # permissive list for chrome here too, to be removed in the future if Chrome
+  # ever provides it's own list (at which point we'll append instead of set).
+  "//chrome:browser_dependencies",
+  "//chrome/app/*",
+  "//chrome/test/*",
+  "//extensions/*",
+]
+
+presearch_chrome_browser_sources = [
+  "//presearch/browser/presearch_browser_main_extra_parts.cc",
+  "//presearch/browser/presearch_browser_main_extra_parts.h",
+  "//presearch/browser/presearch_browser_main_parts.cc",
+  "//presearch/browser/presearch_browser_main_parts.h",
+  "//presearch/browser/presearch_browser_process.h",
+  "//presearch/browser/presearch_browser_process_impl.cc",
+  "//presearch/browser/presearch_browser_process_impl.h",
+  "//presearch/browser/presearch_content_browser_client.cc",
+  "//presearch/browser/presearch_content_browser_client.h",
+  "//presearch/browser/presearch_local_state_prefs.cc",
+  "//presearch/browser/presearch_local_state_prefs.h",
+  "//presearch/browser/presearch_profile_prefs.cc",
+  "//presearch/browser/presearch_profile_prefs.h",
+  "//presearch/browser/presearch_tab_helpers.cc",
+  "//presearch/browser/presearch_tab_helpers.h",
+  "//presearch/browser/browser_context_keyed_service_factories.cc",
+  "//presearch/browser/browser_context_keyed_service_factories.h",
+  "//presearch/browser/geolocation/presearch_geolocation_permission_context_delegate.cc",
+  "//presearch/browser/geolocation/presearch_geolocation_permission_context_delegate.h",
+  "//presearch/browser/metrics/metrics_reporting_util.cc",
+  "//presearch/browser/metrics/metrics_reporting_util.h",
+  "//presearch/browser/update_util.cc",
+  "//presearch/browser/update_util.h",
+]
+
+presearch_chrome_browser_deps = [
+  "//base",
+  "//presearch/app:presearch_generated_resources_grit",
+  "//presearch/browser/presearch_ads",
+  "//presearch/browser/presearch_ads/notifications",
+  "//presearch/browser/presearch_stats:stats_updater",
+  "//presearch/browser/browsing_data",
+  "//presearch/browser/content_settings",
+  "//presearch/browser/ephemeral_storage",
+  "//presearch/browser/gcm_driver",
+  "//presearch/browser/net",
+  "//presearch/browser/ntp_background_images",
+  "//presearch/browser/profiles",
+  "//presearch/browser/renderer_context_menu",
+  "//presearch/browser/search",
+  "//presearch/browser/sync",
+  "//presearch/browser/themes",
+  "//presearch/browser/translate/buildflags",
+  "//presearch/browser/ui",
+  "//presearch/common",
+  "//presearch/common:pref_names",
+  "//presearch/common:switches",
+  "//presearch/components/binance/browser/buildflags",
+  "//presearch/components/presearch_ads/browser/buildflags",
+  "//presearch/components/presearch_referrals/buildflags",
+  "//presearch/components/presearch_rewards/browser/buildflags",
+  "//presearch/components/presearch_search/browser",
+  "//presearch/components/presearch_search/common:mojom",
+  "//presearch/components/presearch_sync/buildflags:buildflags",
+  "//presearch/components/presearch_wallet/common/buildflags",
+  "//presearch/components/presearch_wayback_machine:buildflags",
+  "//presearch/components/presearch_webtorrent/browser/buildflags",
+  "//presearch/components/cosmetic_filters/browser",
+  "//presearch/components/cosmetic_filters/common:mojom",
+  "//presearch/components/crypto_dot_com/browser/buildflags",
+  "//presearch/components/decentralized_dns/buildflags",
+  "//presearch/components/gemini/browser/buildflags",
+  "//presearch/components/greaselion/browser/buildflags",
+  "//presearch/components/ipfs/buildflags",
+  "//presearch/components/l10n/browser",
+  "//presearch/components/l10n/common",
+  "//presearch/components/ntp_background_images/browser",
+  "//presearch/components/ntp_tiles",
+  "//presearch/components/p3a",
+  "//presearch/components/p3a:buildflags",
+  "//presearch/components/resources",
+  "//presearch/components/sidebar/buildflags",
+  "//presearch/components/speedreader:buildflags",
+  "//presearch/components/tor/buildflags",
+  "//presearch/services/network/public/cpp",
+  "//chrome/browser:browser_process",
+  "//chrome/browser/profiles:profile",
+  "//chrome/browser/ui",
+  "//chrome/common",
+  "//components/account_id",
+  "//components/autofill/core/common",
+  "//components/browsing_data/core",
+  "//components/content_settings/browser",
+  "//components/content_settings/core/browser",
+  "//components/content_settings/core/common",
+  "//components/embedder_support",
+  "//components/feed/core/shared_prefs:feed_shared_prefs",
+  "//components/gcm_driver:gcm_buildflags",
+  "//components/metrics",
+  "//components/ntp_tiles",
+  "//components/password_manager/core/common",
+  "//components/permissions",
+  "//components/pref_registry",
+  "//components/prefs",
+  "//components/safe_browsing/core/common:safe_browsing_prefs",
+  "//components/search_engines",
+  "//components/services/heap_profiling/public/mojom",
+  "//components/signin/public/base",
+  "//components/sync/base",
+  "//components/sync/driver",
+  "//components/translate/core/browser:translate_pref_names",
+  "//components/version_info",
+  "//components/version_info:channel",
+  "//content/public/browser",
+  "//content/public/common",
+  "//extensions/buildflags",
+  "//mojo/public/cpp/bindings",
+  "//net",
+  "//services/metrics/public/cpp:metrics_cpp",
+  "//services/network/public/cpp",
+  "//third_party/blink/public/mojom:mojom_platform_headers",
+  "//third_party/widevine/cdm:buildflags",
+  "//ui/base",
+  "//url",
+]
+
+if (is_mac) {
+  presearch_chrome_browser_sources += [
+    "//presearch/browser/presearch_browser_main_parts_mac.h",
+    "//presearch/browser/presearch_browser_main_parts_mac.mm",
+  ]
+}
+
+if (enable_sparkle) {
+  presearch_chrome_browser_sources += [
+    "//presearch/browser/mac/sparkle_glue.h",
+    "//presearch/browser/mac/sparkle_glue.mm",
+    "//presearch/browser/mac/su_updater.h",
+  ]
+}
+
+if (presearch_wallet_enabled) {
+  presearch_chrome_browser_deps += [
+    "//presearch/browser/presearch_wallet",
+    "//presearch/components/presearch_wallet/browser",
+    "//presearch/components/presearch_wallet/common",
+    "//presearch/components/presearch_wallet/common:mojom",
+  ]
+}
+
+if (enable_presearch_sync) {
+  presearch_chrome_browser_deps += [
+    "//presearch/components/presearch_sync",
+    "//presearch/components/presearch_sync:features",
+    "//presearch/components/presearch_sync:network_time_helper",
+    "//presearch/components/presearch_sync:prefs",
+  ]
+}
+
+if (!is_android) {
+  presearch_chrome_browser_sources += [
+    "//presearch/browser/p3a/p3a_core_metrics.cc",
+    "//presearch/browser/p3a/p3a_core_metrics.h",
+  ]
+
+  presearch_chrome_browser_deps += [
+    "//presearch/app:presearch_generated_resources_grit",
+    "//presearch/browser/importer",
+    "//presearch/browser/infobars",
+    "//presearch/browser/ui/bookmark",
+    "//presearch/components/weekly_storage",
+  ]
+} else {
+  presearch_chrome_browser_deps +=
+      [ "//presearch/browser/android:android_browser_process" ]
+}
+
+if (enable_sidebar) {
+  presearch_chrome_browser_deps += [ "//presearch/components/sidebar" ]
+}
+
+if (presearch_together_enabled) {
+  presearch_chrome_browser_deps += [ "//presearch/components/presearch_together/browser" ]
+}
+
+if (enable_tor) {
+  presearch_chrome_browser_deps += [
+    "//presearch/browser/tor",
+    "//presearch/components/tor",
+    "//presearch/components/tor:pref_names",
+  ]
+}
+
+if (enable_extensions) {
+  presearch_chrome_browser_deps += [
+    "//presearch/browser/extensions",
+    "//chrome/browser/extensions",
+    "//extensions/browser",
+    "//extensions/common:common_constants",
+  ]
+
+  if (enable_presearch_webtorrent) {
+    presearch_chrome_browser_deps +=
+        [ "//presearch/components/presearch_webtorrent/browser" ]
+  }
+}
+
+if (enable_presearch_referrals) {
+  presearch_chrome_browser_deps += [ "//presearch/components/presearch_referrals/browser" ]
+}
+
+if (presearch_ads_enabled) {
+  presearch_chrome_browser_deps += [
+    "//presearch/components/presearch_ads/browser",
+    "//components/dom_distiller/core",
+  ]
+}
+
+if (enable_presearch_wayback_machine) {
+  presearch_chrome_browser_deps += [ "//presearch/components/presearch_wayback_machine" ]
+}
+
+if (enable_widevine) {
+  presearch_chrome_browser_sources += [
+    "//presearch/browser/presearch_drm_tab_helper.cc",
+    "//presearch/browser/presearch_drm_tab_helper.h",
+  ]
+  presearch_chrome_browser_deps += [
+    "//presearch/browser/widevine",
+    "//presearch/components/presearch_drm",
+  ]
+}
+
+if (enable_presearch_perf_predictor) {
+  presearch_chrome_browser_deps +=
+      [ "//presearch/components/presearch_perf_predictor/browser" ]
+}
+
+if (is_win && is_official_build) {
+  presearch_chrome_browser_sources += [
+    "//chrome/browser/google/google_update_win.cc",
+    "//chrome/browser/google/google_update_win.h",
+    "//chrome/browser/google/switches.cc",
+    "//chrome/browser/google/switches.h",
+  ]
+
+  presearch_chrome_browser_deps += [ "//google_update" ]
+}
+
+presearch_chrome_browser_public_deps = [
+  "//presearch/components/presearch_sync:constants",
+  "//presearch/components/variations:constants",
+]
+
+presearch_chrome_browser_sources += presearch_browser_autocomplete_sources
+presearch_chrome_browser_sources += presearch_browser_binance_sources
+presearch_chrome_browser_sources += presearch_browser_presearch_rewards_sources
+presearch_chrome_browser_sources += presearch_browser_presearch_shields_sources
+presearch_chrome_browser_sources += presearch_browser_component_updater_sources
+presearch_chrome_browser_sources += presearch_browser_crypto_dot_com_sources
+presearch_chrome_browser_sources += presearch_browser_decentralized_dns_sources
+presearch_chrome_browser_sources += presearch_browser_download_sources
+presearch_chrome_browser_sources += presearch_browser_gemini_sources
+presearch_chrome_browser_sources += presearch_browser_greaselion_sources
+presearch_chrome_browser_sources += presearch_browser_importer_sources
+presearch_chrome_browser_sources += presearch_browser_ipfs_sources
+presearch_chrome_browser_sources += presearch_browser_new_tab_sources
+presearch_chrome_browser_sources += presearch_browser_permissions_sources
+presearch_chrome_browser_sources += presearch_browser_search_engines_sources
+presearch_chrome_browser_sources += presearch_browser_signin_sources
+presearch_chrome_browser_sources += presearch_browser_speedreader_sources
+presearch_chrome_browser_sources += presearch_browser_themes_sources
+presearch_chrome_browser_sources += presearch_browser_wallet_sources
+
+presearch_chrome_browser_deps += presearch_browser_autocomplete_deps
+presearch_chrome_browser_deps += presearch_browser_binance_deps
+presearch_chrome_browser_deps += presearch_browser_presearch_rewards_deps
+presearch_chrome_browser_deps += presearch_browser_presearch_shields_deps
+presearch_chrome_browser_deps += presearch_browser_component_updater_deps
+presearch_chrome_browser_deps += presearch_browser_crypto_dot_com_deps
+presearch_chrome_browser_deps += presearch_browser_decentralized_dns_deps
+presearch_chrome_browser_deps += presearch_browser_download_deps
+presearch_chrome_browser_deps += presearch_browser_gemini_deps
+presearch_chrome_browser_deps += presearch_browser_greaselion_deps
+presearch_chrome_browser_deps += presearch_browser_importer_deps
+presearch_chrome_browser_deps += presearch_browser_ipfs_deps
+presearch_chrome_browser_deps += presearch_browser_new_tab_deps
+presearch_chrome_browser_deps += presearch_browser_permissions_deps
+presearch_chrome_browser_deps += presearch_browser_search_engines_deps
+presearch_chrome_browser_deps += presearch_browser_signin_deps
+presearch_chrome_browser_deps += presearch_browser_speedreader_deps
+presearch_chrome_browser_deps += presearch_browser_themes_deps
+presearch_chrome_browser_deps += presearch_browser_wallet_deps
+presearch_chrome_browser_deps += presearch_chromium_src_chrome_browser_prefs_deps

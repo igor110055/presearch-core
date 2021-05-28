@@ -1,0 +1,10 @@
+presearch_browser_permissions_sources = [
+  "//presearch/browser/permissions/permission_lifetime_manager_factory.cc",
+  "//presearch/browser/permissions/permission_lifetime_manager_factory.h",
+]
+
+presearch_browser_permissions_deps = [
+  "//base",
+  "//components/keyed_service/content",
+  "//components/permissions",
+]

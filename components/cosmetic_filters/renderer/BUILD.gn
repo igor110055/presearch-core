@@ -1,0 +1,30 @@
+import("//build/config/features.gni")
+
+source_set("renderer") {
+  visibility = [
+    "//presearch:child_dependencies",
+    "//presearch/renderer/*",
+    "//chrome/renderer/*",
+    "//components/content_settings/renderer/*",
+  ]
+
+  sources = [
+    "cosmetic_filters_js_handler.cc",
+    "cosmetic_filters_js_handler.h",
+    "cosmetic_filters_js_render_frame_observer.cc",
+    "cosmetic_filters_js_render_frame_observer.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/components/cosmetic_filters/common:mojom",
+    "//presearch/components/cosmetic_filters/resources/data:generated_resources",
+    "//content/public/renderer",
+    "//gin",
+    "//mojo/public/cpp/bindings",
+    "//net",
+    "//third_party/blink/public:blink",
+    "//third_party/blink/public/common",
+    "//v8",
+  ]
+}

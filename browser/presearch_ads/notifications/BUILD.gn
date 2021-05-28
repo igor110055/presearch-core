@@ -1,0 +1,19 @@
+source_set("notifications") {
+  sources = [
+    "platform_bridge.cc",
+    "platform_bridge.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser/presearch_ads",
+    "//presearch/browser/profiles",
+    "//presearch/components/presearch_ads/browser",
+    "//presearch/ui/presearch_ads",
+    "//presearch/ui/presearch_ads/public/cpp",
+  ]
+
+  if (is_android) {
+    deps += [ "//presearch/browser/presearch_ads/android:jni_headers" ]
+  }
+}

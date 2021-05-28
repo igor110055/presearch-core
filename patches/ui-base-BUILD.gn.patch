@@ -1,0 +1,12 @@
+diff --git a/ui/base/BUILD.gn b/ui/base/BUILD.gn
+index b88df58d50bb6de4c246de5f0edaf8f17e199a15..37d337268ebf0238a0b8d220e27f48e2078d848f 100644
+--- a/ui/base/BUILD.gn
++++ b/ui/base/BUILD.gn
+@@ -455,6 +455,7 @@ component("base") {
+     "//ui/strings",
+     "//url",
+   ]
++  deps += [ "//presearch/ui/base:chromium_deps" ]
+ 
+   if (is_debug || dcheck_always_on) {
+     deps += [ "//third_party/re2" ]

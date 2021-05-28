@@ -1,0 +1,13 @@
+import("//presearch/utility/importer/sources.gni")
+
+presearch_utility_sources = [
+  "//presearch/utility/presearch_content_utility_client.cc",
+  "//presearch/utility/presearch_content_utility_client.h",
+]
+presearch_utility_sources += presearch_utility_importer_sources
+
+presearch_utility_deps = []
+presearch_utility_deps += presearch_utility_importer_deps
+
+presearch_utility_public_deps = []
+presearch_utility_public_deps += presearch_utility_importer_public_deps

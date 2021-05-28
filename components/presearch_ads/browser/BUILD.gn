@@ -1,0 +1,164 @@
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+
+source_set("browser") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10639 is resolved
+  check_includes = false
+  public_deps = [
+    "buildflags",
+    "//presearch/components/presearch_rewards/browser",
+  ]
+
+  sources = [
+    "ads_service.cc",
+    "ads_service.h",
+    "ads_service_observer.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/common",
+    "//presearch/components/presearch_ads/common",
+    "//presearch/components/presearch_rewards/common",
+    "//presearch/components/l10n/browser",
+    "//presearch/components/rpill/common",
+    "//chrome/common:buildflags",
+
+    # for profile.h
+    "//components/domain_reliability",
+    "//components/keyed_service/content",
+    "//components/keyed_service/core",
+    "//components/pref_registry",
+    "//components/prefs",
+    "//components/sessions",
+    "//content/public/browser",
+    "//url",
+  ]
+
+  if (presearch_ads_enabled) {
+    sources += [
+      "ad_notification.cc",
+      "ad_notification.h",
+      "ads_notification_handler.cc",
+      "ads_notification_handler.h",
+      "ads_p2a.cc",
+      "ads_p2a.h",
+      "ads_service_impl.cc",
+      "ads_service_impl.h",
+      "background_helper.cc",
+      "background_helper.h",
+      "component_updater/component_info.cc",
+      "component_updater/component_info.h",
+      "component_updater/component_util.cc",
+      "component_updater/component_util.h",
+      "component_updater/components.h",
+      "component_updater/resource_component.cc",
+      "component_updater/resource_component.h",
+      "component_updater/resource_component_observer.h",
+      "component_updater/resource_info.h",
+      "frequency_capping_helper.cc",
+      "frequency_capping_helper.h",
+      "notification_helper.cc",
+      "notification_helper.h",
+    ]
+
+    public_deps += [ "//presearch/vendor/bat-native-ads" ]
+
+    deps += [
+      "//base",
+      "//presearch/app:presearch_generated_resources_grit",
+      "//presearch/browser/notifications",
+      "//presearch/components/presearch_ads/resources",
+      "//presearch/components/presearch_component_updater/browser",
+      "//presearch/components/l10n/browser",
+      "//presearch/components/l10n/common",
+      "//presearch/components/services/bat_ads/public/cpp",
+      "//components/history/core/browser",
+      "//components/history/core/common",
+      "//components/wifi",
+      "//net",
+      "//services/network/public/cpp",
+      "//services/network/public/mojom",
+      "//ui/base",
+      "//ui/message_center/public/cpp",
+    ]
+
+    if (is_android) {
+      sources += [
+        "//presearch/browser/presearch_ads/android/presearch_ads_native_helper.cc",
+        "//presearch/browser/presearch_ads/android/presearch_ads_native_helper.h",
+        "background_helper_android.cc",
+        "background_helper_android.h",
+        "notification_helper_android.cc",
+        "notification_helper_android.h",
+      ]
+      deps += [
+        "//presearch/browser/presearch_ads/android:jni_headers",
+        "//presearch/build/android:jni_headers",
+        "//chrome/android:jni_headers",
+      ]
+    }
+
+    if (is_linux) {
+      sources += [
+        "background_helper_linux.cc",
+        "background_helper_linux.h",
+        "notification_helper_linux.cc",
+        "notification_helper_linux.h",
+      ]
+      deps += [ "//ui/gfx/x" ]
+    }
+
+    if (is_mac) {
+      sources += [
+        "background_helper_mac.h",
+        "background_helper_mac.mm",
+        "notification_helper_mac.h",
+        "notification_helper_mac.mm",
+      ]
+    }
+
+    if (is_win) {
+      sources += [
+        "background_helper_win.cc",
+        "background_helper_win.h",
+        "notification_helper_win.cc",
+        "notification_helper_win.h",
+      ]
+      deps += [
+        "//ui/gfx",
+        "//ui/views",
+      ]
+    }
+  }
+}
+
+source_set("testutil") {
+  testonly = true
+
+  deps = [
+    ":browser",
+    "//base",
+    "//presearch/browser/presearch_ads",
+    "//presearch/components/presearch_rewards/browser:browser",
+    "//chrome/test:test_support",
+    "//content/public/browser",
+    "//testing/gtest",
+  ]
+
+  if (presearch_ads_enabled) {
+    deps += [ "//presearch/vendor/bat-native-ads" ]
+
+    configs += [ "//presearch/vendor/bat-native-ads:internal_config" ]
+  }
+
+  sources = [
+    "test_util.cc",
+    "test_util.h",
+  ]
+
+  if (is_android) {
+    deps += [ "//chrome/android:test_support_jni_headers" ]
+  }
+}

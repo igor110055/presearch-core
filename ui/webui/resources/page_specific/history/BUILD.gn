@@ -1,0 +1,9 @@
+import("//tools/polymer/polymer.gni")
+
+# Targets for auto-generating Polymer 3 JS Modules.
+
+polymer_modulizer("presearch_history_item") {
+  js_file = "presearch_history_item.js"
+  html_file = "presearch_history_item.html"
+  html_type = "dom-module"
+}

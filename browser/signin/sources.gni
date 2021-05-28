@@ -1,0 +1,13 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+
+presearch_browser_signin_sources = [
+  "//presearch/browser/signin/presearch_identity_manager_factory.cc",
+  "//presearch/browser/signin/presearch_identity_manager_factory.h",
+]
+
+presearch_browser_signin_deps = [ "//base" ]

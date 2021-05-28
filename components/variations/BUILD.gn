@@ -1,0 +1,15 @@
+declare_args() {
+  presearch_variations_server_url = ""
+}
+
+if (is_official_build) { assert(presearch_variations_server_url != "") }
+
+config("presearch_variations_config") {
+  defines = [
+    "PRESEARCH_VARIATIONS_SERVER_URL=\"$presearch_variations_server_url\""
+  ]
+}
+
+group("constants") {
+  public_configs = [ ":presearch_variations_config" ]
+}

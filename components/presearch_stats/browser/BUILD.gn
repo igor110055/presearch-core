@@ -1,0 +1,19 @@
+declare_args() {
+  presearch_stats_api_key = ""
+}
+
+source_set("browser") {
+    defines = [
+      "PRESEARCH_STATS_API_KEY=\"$presearch_stats_api_key\"",
+    ]
+
+    sources = [
+      "presearch_stats_updater_util.cc",
+      "presearch_stats_updater_util.h",
+    ]
+
+    deps = [
+      "//base",
+      "//components/prefs",
+    ]
+}

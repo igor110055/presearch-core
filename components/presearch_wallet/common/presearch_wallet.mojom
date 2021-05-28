@@ -1,0 +1,8 @@
+module presearch_wallet.mojom;
+
+import "mojo/public/mojom/base/values.mojom";
+
+interface PresearchWalletProvider {
+  Request(string json_payload) => (int32 http_code,
+                                   string response);
+};

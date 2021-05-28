@@ -1,0 +1,38 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/. */
+
+import("//presearch/build/config.gni")
+import("//presearch/components/presearch_wallet/common/buildflags/buildflags.gni")
+import("//testing/test.gni")
+
+source_set("presearch_wallet_unit_tests") {
+  testonly = true
+  if (presearch_wallet_enabled) {
+    sources = [
+      "//presearch/components/presearch_wallet/browser/presearch_wallet_types_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/presearch_wallet_utils_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_address_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_call_data_builder_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_json_rpc_controller_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_requests_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_response_parser_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/eth_transaction_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/hd_key_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/hd_keyring_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/rlp_decode_unittest.cc",
+      "//presearch/components/presearch_wallet/browser/rlp_encode_unittest.cc",
+    ]
+
+    deps = [
+      "//base/test:test_support",
+      "//presearch/components/presearch_wallet/browser",
+      "//presearch/components/presearch_wallet/common",
+      "//presearch/components/presearch_wallet/renderer/test:presearch_wallet_response_unit_tests",
+      "//content/test:test_support",
+      "//testing/gtest",
+      "//url",
+    ]
+  }  # if (presearch_wallet_enabled)
+}  # source_set("presearch_wallet_unit_tests")

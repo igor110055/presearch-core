@@ -1,0 +1,137 @@
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+import("//extensions/buildflags/buildflags.gni")
+
+source_set("tor") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10655 is resolved
+  check_includes = false
+  visibility = [
+    ":*",
+    "//presearch/browser",
+    "//presearch/browser/decentralized_dns/test:unit_tests",
+    "//presearch/browser/ipfs/test:*",
+    "//presearch/browser/profiles",
+    "//presearch/browser/ui",
+    "//presearch/test:*",
+    "//chrome/browser",
+  ]
+
+  if (enable_tor) {
+    sources = [
+      "onion_location_navigation_throttle_delegate.cc",
+      "onion_location_navigation_throttle_delegate.h",
+      "tor_profile_manager.cc",
+      "tor_profile_manager.h",
+      "tor_profile_service_factory.cc",
+      "tor_profile_service_factory.h",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/browser/translate/buildflags",
+      "//presearch/common:pref_names",
+      "//presearch/components/presearch_webtorrent/browser/buildflags",
+      "//presearch/components/tor",
+      "//presearch/components/tor:pref_names",
+      "//chrome/common",
+      "//components/keyed_service/content",
+      "//components/safe_browsing/core/common:safe_browsing_prefs",
+      "//components/translate/core/browser",
+      "//content/public/browser",
+      "//third_party/blink/public/common",
+    ]
+
+    # Below dep list are not directly used tor target.
+    # Only added to fix intermittent build failure.
+    # Most of the case comes from including presearch_browser_process_impl.h`
+    # headers. That header includes some buildflags but sometimes they are
+    # not generated before evaluating tor target.
+    deps += [
+      "//presearch/components/presearch_referrals/buildflags",
+      "//presearch/components/greaselion/browser/buildflags",
+      "//presearch/components/speedreader:buildflags",
+    ]
+  }
+}
+
+source_set("unit_tests") {
+  testonly = true
+  if (enable_tor) {
+    sources = [
+      "tor_navigation_throttle_unittest.cc",
+      "tor_profile_manager_unittest.cc",
+    ]
+
+    deps = [
+      "//base",
+      "//base/test:test_support",
+      "//presearch/browser/tor",
+      "//presearch/browser/translate/buildflags",
+      "//presearch/common:pref_names",
+      "//presearch/components/presearch_webtorrent/browser/buildflags",
+      "//presearch/components/tor",
+      "//presearch/components/tor:test_support",
+      "//chrome/common",
+      "//chrome/test:test_support",
+      "//components/keyed_service/content",
+      "//components/safe_browsing/core/common:safe_browsing_prefs",
+      "//components/translate/core/browser",
+      "//content/public/browser",
+      "//content/test:test_support",
+      "//testing/gtest",
+      "//third_party/blink/public/common",
+      "//url",
+    ]
+  }
+}
+
+source_set("browser_tests") {
+  testonly = true
+  if (enable_tor) {
+    sources = [
+      "presearch_local_state_browsertest.cc",
+      "presearch_tor_client_updater_browsertest.cc",
+      "onion_location_navigation_throttle_browsertest.cc",
+      "tor_profile_manager_browsertest.cc",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/app:presearch_generated_resources_grit",
+      "//presearch/browser",
+      "//presearch/browser/tor",
+      "//presearch/browser/ui",
+      "//presearch/common",
+      "//presearch/components/ipfs/buildflags",
+      "//presearch/components/tor",
+      "//presearch/components/tor:pref_names",
+      "//presearch/components/tor:test_support",
+      "//chrome/browser",
+      "//chrome/browser:browser_process",
+      "//chrome/test:test_support",
+      "//chrome/test:test_support_ui",
+      "//components/bookmarks/browser",
+      "//components/bookmarks/common",
+      "//content/public/browser",
+      "//content/test:test_support",
+      "//net:test_support",
+      "//ui/views:test_support",
+    ]
+
+    if (enable_extensions) {
+      deps += [
+        "//extensions/browser",
+        "//extensions/common",
+      ]
+    }
+
+    if (presearch_ads_enabled) {
+      deps += [
+        "//presearch/browser/presearch_ads",
+        "//presearch/components/presearch_ads/browser",
+      ]
+    }
+
+    defines = [ "HAS_OUT_OF_PROC_TEST_RUNNER" ]
+  }
+}

@@ -1,0 +1,47 @@
+import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
+import("//presearch/components/presearch_rewards/browser/buildflags/buildflags.gni")
+import("//presearch/components/ipfs/buildflags/buildflags.gni")
+import("//presearch/components/tor/buildflags/buildflags.gni")
+
+presearch_utility_importer_sources = []
+presearch_utility_importer_deps = []
+presearch_utility_importer_public_deps = []
+
+if (!is_android) {
+  presearch_utility_importer_sources += [
+    "//presearch/utility/importer/presearch_external_process_importer_bridge.cc",
+    "//presearch/utility/importer/presearch_external_process_importer_bridge.h",
+    "//presearch/utility/importer/presearch_profile_import_impl.cc",
+    "//presearch/utility/importer/presearch_profile_import_impl.h",
+    "//presearch/utility/importer/chrome_importer.cc",
+    "//presearch/utility/importer/chrome_importer.h",
+  ]
+
+  presearch_utility_importer_deps += [
+    "//base",
+    "//presearch/common/importer:importer",
+    "//presearch/common/importer:interfaces",
+    "//chrome/app:chromium_strings",
+    "//components/os_crypt",
+    "//components/password_manager/core/browser",
+    "//components/webdata/common",
+  ]
+}
+
+if (enable_tor) {
+  presearch_utility_importer_deps += [ "//presearch/components/services/tor" ]
+}
+
+if (ipfs_enabled) {
+  presearch_utility_importer_deps += [ "//presearch/components/services/ipfs" ]
+}
+
+if (presearch_ads_enabled) {
+  presearch_utility_importer_public_deps +=
+      [ "//presearch/components/services/bat_ads:lib" ]
+}
+
+if (presearch_rewards_enabled) {
+  presearch_utility_importer_public_deps +=
+      [ "//presearch/components/services/bat_ledger:lib" ]
+}

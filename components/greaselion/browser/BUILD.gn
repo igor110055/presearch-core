@@ -1,0 +1,30 @@
+import("//presearch/build/config.gni")
+
+source_set("browser") {
+  sources = [
+    "greaselion_download_service.cc",
+    "greaselion_download_service.h",
+    "greaselion_service.h",
+    "greaselion_service_impl.cc",
+    "greaselion_service_impl.h",
+    "switches.cc",
+    "switches.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/browser:version_info",
+    "//presearch/components/presearch_component_updater/browser",
+    "//chrome/browser/extensions:extensions",
+    "//components/version_info",
+    "//content/public/browser",
+    "//content/public/common",
+    "//extensions/browser",
+    "//url",
+  ]
+
+  public_deps = [
+    "buildflags"
+  ]
+
+}

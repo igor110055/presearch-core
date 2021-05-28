@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Nearby Share specific strings (included from generated_resources.grd). -->
+<grit-part>
+  <message name="IDS_NEARBY_ONBOARDING_PAGE_SUBTITLE" desc="Subtitle of the Nearby Share onboarding page that sets up the local device for the feature which provides a way for nearby devices to share files, text, and urls.">
+    Share files with profiles around you
+  </message>
+  </grit-part>

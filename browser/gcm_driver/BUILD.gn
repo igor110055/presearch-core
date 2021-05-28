@@ -1,0 +1,24 @@
+import("//build/buildflag_header.gni")
+import("//components/gcm_driver/config.gni")
+
+source_set("gcm_driver") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10663 is resolved
+  check_includes = false
+  if (!use_gcm_from_platform) {
+    sources = [
+      "presearch_gcm_channel_status.cc",
+      "presearch_gcm_channel_status.h",
+      "presearch_gcm_utils.cc",
+      "presearch_gcm_utils.h",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/common:pref_names",
+      "//components/prefs",
+      "//components/pref_registry",
+      # For profile.h
+      "//content/public/browser",
+    ]
+  }
+}

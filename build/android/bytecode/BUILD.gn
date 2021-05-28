@@ -1,0 +1,59 @@
+# Copyright 2020 The Presearch Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/android/rules.gni")
+
+assert(current_toolchain == default_toolchain)
+
+java_binary("java_bytecode_rewriter") {
+  sources = [
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchActivityClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchAndroidSyncSettingsClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchAppMenuClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchBookmarkUtilsClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchBottomControlsCoordinatorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchBottomControlsMediatorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchClassVisitor.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchCommandLineInitUtilClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchEditUrlSuggestionProcessorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchFeedSurfaceCoordinatorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchHomepageManagerClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchIncognitoToggleTabLayoutClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchLaunchIntentDispatcherClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchMainPreferenceBaseClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchManageSyncSettingsClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchMimeUtilsClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchNewTabPageClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchNewTabPageLayoutClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchPasswordSettingsBaseClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchPermissionDialogDelegateClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchPermissionDialogModelClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchQueryTileSectionClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchSearchEngineAdapterClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchSettingsLauncherImplClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchSingleCategorySettingsClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchSiteSettingsDelegateClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTabGroupUiCoordinatorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTabSwitcherModeTTCoordinatorPhoneClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTabSwitcherModeTTPhoneClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTabbedActivityClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTileViewClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchToolbarLayoutClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchToolbarManagerClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchTopToolbarCoordinatorClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/ByteCodeProcessor.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/ClassPathValidator.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/ThreadAssertionClassAdapter.java",
+    "//presearch/build/android/bytecode/java/org/presearch/bytecode/TypeUtils.java",
+  ]
+  main_class = "org.presearch.bytecode.ByteCodeProcessor"
+  deps = [
+    "//third_party/android_deps:org_ow2_asm_asm_java",
+    "//third_party/android_deps:org_ow2_asm_asm_tree_java",
+    "//third_party/android_deps:org_ow2_asm_asm_util_java",
+  ]
+  wrapper_script_name = "helper/java_bytecode_rewriter"
+  enable_bytecode_checks = false
+}

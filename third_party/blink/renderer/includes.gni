@@ -1,0 +1,38 @@
+# common includes which can help minimize patches for
+# src/third_party/blink/renderer/core/BUILD.gn
+presearch_blink_renderer_core_visibility =
+    [ "//presearch/third_party/blink/renderer/*" ]
+
+presearch_blink_renderer_core_public_deps = [ "//presearch/third_party/blink/renderer" ]
+
+# common includes which can help minimize patches for
+# src/third_party/blink/renderer/modules/BUILD.gn
+presearch_blink_renderer_modules_visibility =
+    [ "//presearch/third_party/blink/renderer/*" ]
+
+presearch_blink_sub_modules = [
+  "//presearch/third_party/blink/renderer/modules/presearch",
+  "//presearch/third_party/blink/renderer/modules/global_privacy_control",
+]
+
+# common includes which can help minimize patches for
+# src/third_party/blink/renderer/modules/modules_idl_files.gni
+presearch_idl_imports = [
+  "//presearch/third_party/blink/renderer/modules/presearch/idls.gni",
+  "//presearch/third_party/blink/renderer/modules/global_privacy_control/idls.gni",
+]
+
+# common includes which can help minimize patches for
+# third_party/blink/renderer/bindings/idl_in_modules.gni
+presearch_static_idl_files_in_modules = [
+  "//presearch/third_party/blink/renderer/modules/presearch/presearch.idl",
+  "//presearch/third_party/blink/renderer/modules/presearch/navigator_presearch.idl",
+  "//presearch/third_party/blink/renderer/modules/global_privacy_control/navigator_global_privacy_control.idl",
+]
+
+# common includes which can help minimize patches for
+# third_party/blink/renderer/bindings/generated_in_modules.gni
+presearch_generated_interface_sources_in_modules = [
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_presearch.h",
+  "$root_gen_dir/third_party/blink/renderer/bindings/modules/v8/v8_presearch.cc",
+]

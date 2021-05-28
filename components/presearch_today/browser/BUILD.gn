@@ -1,0 +1,15 @@
+import("//presearch/build/config.gni")
+
+source_set("browser") {
+  sources = [
+    "urls.cc",
+    "urls.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/components/presearch_today/common",
+    "//presearch/components/l10n/browser",
+    "//presearch/components/l10n/common",
+  ]
+}

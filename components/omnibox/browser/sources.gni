@@ -1,0 +1,34 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+import("//presearch/components/binance/browser/buildflags/buildflags.gni")
+
+presearch_components_omnibox_browser_sources = [
+  "//presearch/components/omnibox/browser/presearch_omnibox_client.cc",
+  "//presearch/components/omnibox/browser/presearch_omnibox_client.h",
+  "//presearch/components/omnibox/browser/constants.cc",
+  "//presearch/components/omnibox/browser/constants.h",
+  "//presearch/components/omnibox/browser/suggested_sites_match.cc",
+  "//presearch/components/omnibox/browser/suggested_sites_match.h",
+  "//presearch/components/omnibox/browser/suggested_sites_provider.cc",
+  "//presearch/components/omnibox/browser/suggested_sites_provider.h",
+  "//presearch/components/omnibox/browser/suggested_sites_provider_data.cc",
+  "//presearch/components/omnibox/browser/topsites_provider.cc",
+  "//presearch/components/omnibox/browser/topsites_provider.h",
+  "//presearch/components/omnibox/browser/topsites_provider_data.cc",
+]
+
+presearch_components_omnibox_browser_deps = [
+  "//base",
+  "//presearch/common:pref_names",
+  "//presearch/components/binance/browser/buildflags",
+  "//url",
+]
+
+if (binance_enabled) {
+  presearch_components_omnibox_browser_deps += [
+    "//presearch/components/binance/browser",
+    "//presearch/components/ntp_widget_utils/browser",
+  ]
+}

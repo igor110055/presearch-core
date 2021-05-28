@@ -1,0 +1,275 @@
+# Copyright 2020 The Presearch Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Contains flags that should be applied only to presearch_public_apk_for_test.
+
+# Do not obfuscate class names, methods and fields that are
+# needed for checking of existence for bytecode manipulation
+-keepnames class org.chromium.chrome.browser.settings.MainSettings
+
+-keep class org.chromium.chrome.browser.sync.AndroidSyncSettings {
+    *** updateCachedSettings(...);
+    *** setChromeSyncEnabled(...);
+    *** mIsSyncable;
+    *** mChromeSyncEnabled;
+    *** mMasterSyncEnabled;
+}
+
+-keep class org.chromium.chrome.browser.bookmarks.BookmarkBridge {
+    *** extensiveBookmarkChangesBeginning(...);
+    *** extensiveBookmarkChangesEnded(...);
+    *** createBookmarkItem(...);
+}
+
+-keep class org.chromium.components.external_intents.ExternalNavigationHandler {
+    *** clobberCurrentTabWithFallbackUrl(...);
+}
+
+-keep class org.chromium.chrome.browser.LaunchIntentDispatcher {
+    *** isCustomTabIntent(...);
+}
+
+-keep class org.chromium.chrome.browser.homepage.HomepageManager {
+    *** shouldCloseAppWithZeroTabs(...);
+}
+
+-keep class org.chromium.chrome.browser.ntp.NewTabPageLayout {
+    *** insertSiteSectionView(...);
+    *** mSiteSectionView;
+    *** mTileGroup;
+    *** updateTileGridPlaceholderVisibility(...);
+}
+
+-keep class org.chromium.chrome.browser.feed.FeedSurfaceCoordinator {
+    *** mActivity;
+    *** mScrollViewForPolicy;
+    *** mNtpHeader;
+    *** mRootView;
+}
+
+-keep class org.chromium.chrome.browser.ntp.NewTabPage {
+    *** mNewTabPageLayout;
+    *** mFeedSurfaceProvider;
+}
+
+-keep class org.chromium.chrome.browser.omnibox.suggestions.editurl.EditUrlSuggestionProcessor {
+    *** mHasClearedOmniboxForFocus;
+}
+
+-keep class org.chromium.chrome.browser.sync.settings.ManageSyncSettings {
+    *** mGoogleActivityControls;
+    *** mSyncEncryption;
+    *** mManageSyncData;
+    *** mSyncPaymentsIntegration;
+}
+
+-keep class org.chromium.chrome.browser.search_engines.settings.SearchEngineAdapter {
+    *** getPermissionsLinkMessage(...);
+    *** getSearchEngineSourceType(...);
+    *** sortAndFilterUnnecessaryTemplateUrl(...);
+}
+
+-keep class org.chromium.base.CommandLineInitUtil {
+    *** initCommandLine(...);
+}
+
+-keep class org.chromium.chrome.browser.ui.appmenu.AppMenu {
+    *** getPopupPosition(...);
+}
+
+-keep class org.chromium.chrome.browser.toolbar.bottom.BottomControlsCoordinator {
+    *** mMediator;
+}
+
+-keep class org.chromium.chrome.browser.toolbar.ToolbarManager {
+    public <init>(...);
+    *** mBottomControlsCoordinatorSupplier;
+    *** mCallbackController;
+    *** mBrowserControlsSizer;
+    *** mFullscreenManager;
+    *** mActivityTabProvider;
+    *** mAppThemeColorProvider;
+    *** mShareDelegateSupplier;
+    *** mScrimCoordinator;
+    *** mShowStartSurfaceSupplier;
+    *** mMenuButtonCoordinator;
+    *** mToolbarTabController;
+    *** mLocationBar;
+    *** mActionModeController;
+    *** mLocationBarModel;
+    *** mToolbar;
+    *** mBookmarkBridgeSupplier;
+    *** mLayoutManager;
+    *** mOverlayPanelVisibilitySupplier;
+    *** mTabModelSelector;
+    *** mIncognitoStateProvider;
+    *** mTabCountProvider;
+    *** mTabGroupUi;
+    *** onOrientationChange(...);
+    *** updateButtonStatus(...);
+    *** updateBookmarkButtonStatus(...);
+    *** updateReloadState(...);
+}
+
+-keep class org.chromium.chrome.browser.toolbar.top.TopToolbarCoordinator {
+    *** mTabSwitcherModeCoordinatorPhone;
+    *** mOptionalButtonController;
+}
+
+-keep class org.chromium.chrome.browser.toolbar.top.TabSwitcherModeTTCoordinatorPhone {
+    *** mTabSwitcherModeToolbar;
+}
+
+-keep class org.chromium.chrome.browser.toolbar.top.TabSwitcherModeTTPhone {
+    *** mNewTabViewButton;
+    *** mNewTabImageButton;
+    *** mToggleTabStackButton;
+    *** mMenuButton;
+    *** mShouldShowNewTabVariation;
+    *** updateNewTabButtonVisibility(...);
+    *** shouldShowIncognitoToggle(...);
+}
+
+-keep class org.chromium.chrome.browser.download.MimeUtils {
+    *** canAutoOpenMimeType(...);
+}
+
+-keep class org.chromium.chrome.browser.app.ChromeActivity {
+    *** mTabModelProfileSupplier;
+}
+
+-keep class org.chromium.chrome.browser.tabbed_mode.TabbedRootUiCoordinator {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.tabbed_mode.TabbedAppMenuPropertiesDelegate {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.appmenu.PresearchTabbedAppMenuPropertiesDelegate {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.tabmodel.ChromeTabCreator {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.tabmodel.PresearchTabCreator {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.bookmarks.PresearchBookmarkUtils {
+    *** addOrEditBookmark(...);
+}
+
+-keep class org.chromium.chrome.browser.bookmarks.BookmarkUtils {
+    *** showBookmarkBottomSheet(...);
+    *** addBookmarkAndShowSnackbar(...);
+}
+
+-keep class org.chromium.chrome.browser.toolbar.PresearchToolbarManager {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.toolbar.bottom.BottomControlsMediator {
+    public <init>(...);
+    *** mBottomControlsHeight;
+    *** mModel;
+    *** mBrowserControlsSizer;
+}
+
+-keep class org.chromium.chrome.browser.toolbar.bottom.PresearchBottomControlsMediator {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.query_tiles.QueryTileSection {
+    *** getMaxRowsForMostVisitedTiles(...);
+}
+
+-keep class org.chromium.chrome.browser.query_tiles.PresearchQueryTileSection {
+    *** getMaxRowsForMostVisitedTiles(...);
+}
+
+-keep class org.chromium.chrome.browser.password_manager.settings.PasswordSettings {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.password_manager.settings.PresearchPasswordSettingsBase {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.app.appmenu.AppMenuPropertiesDelegateImpl {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.app.appmenu.PresearchAppMenuPropertiesDelegateImpl {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.customtabs.CustomTabAppMenuPropertiesDelegate {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.settings.SettingsLauncherImpl {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.settings.PresearchSettingsLauncherImpl {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.toolbar.IncognitoToggleTabLayout {
+    *** mIncognitoButtonIcon;
+}
+
+-keep class org.chromium.chrome.browser.tasks.tab_management.TabGroupUiCoordinator {
+    public <init>(...);
+    *** mToolbarView;
+}
+
+-keep class org.chromium.chrome.browser.tasks.tab_management.PresearchTabGroupUiCoordinator {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.site_settings.PresearchSiteSettingsDelegate {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.site_settings.PresearchSingleCategorySettings {
+    public <init>(...);
+}
+
+-keep class org.chromium.components.browser_ui.site_settings.SingleCategorySettings {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.site_settings.ChromeSiteSettingsDelegate {
+    public <init>(...);
+}
+
+-keep class org.chromium.chrome.browser.settings.PresearchMainPreferencesBase
+
+-keep class org.chromium.chrome.browser.search_engines.settings.PresearchBaseSearchEngineAdapter
+
+-keep class org.chromium.chrome.browser.ChromeTabbedActivity
+
+-keep class org.chromium.chrome.browser.app.PresearchActivity
+
+-keep class org.chromium.chrome.browser.suggestions.tile.SuggestionsTileView
+
+-keep class org.chromium.chrome.browser.suggestions.tile.PresearchTileView
+
+-keep class org.chromium.chrome.browser.customtabs.features.toolbar.CustomTabToolbar
+
+-keep class org.chromium.chrome.browser.toolbar.top.PresearchToolbarLayout
+
+-keep class org.chromium.chrome.browser.toolbar.top.ToolbarPhone
+
+-keep class org.chromium.components.permissions.PresearchPermissionDialogModel {
+    *** getModel(...);
+}
+
+-keep class org.chromium.components.permissions.PermissionDialogModel {
+    *** getModel(...);
+}

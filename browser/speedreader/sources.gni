@@ -1,0 +1,27 @@
+# Copyright (c) 2021 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+import("//presearch/components/speedreader/buildflags.gni")
+
+presearch_browser_speedreader_sources = []
+presearch_browser_speedreader_deps = []
+
+if (enable_speedreader) {
+  presearch_browser_speedreader_sources += [
+    "//presearch/browser/speedreader/speedreader_service_factory.cc",
+    "//presearch/browser/speedreader/speedreader_service_factory.h",
+    "//presearch/browser/speedreader/speedreader_tab_helper.cc",
+    "//presearch/browser/speedreader/speedreader_tab_helper.h",
+  ]
+
+  presearch_browser_speedreader_deps += [
+    "//base",
+    "//presearch/components/speedreader",
+    "//chrome/browser/profiles:profile",
+    "//components/keyed_service/content",
+    "//components/keyed_service/core",
+    "//content/public/browser",
+  ]
+}

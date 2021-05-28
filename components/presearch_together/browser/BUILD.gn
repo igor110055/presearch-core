@@ -1,0 +1,11 @@
+import("//presearch/components/presearch_together/buildflags/buildflags.gni")
+
+source_set("browser") {
+  sources = [
+    "regions.h",
+  ]
+
+  public_deps = [
+    "//presearch/components/presearch_together/buildflags",
+  ]
+}

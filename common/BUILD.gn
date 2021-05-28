@@ -1,0 +1,188 @@
+import("//build/util/branding.gni")
+import("//extensions/buildflags/buildflags.gni")
+import("//mojo/public/tools/bindings/mojom.gni")
+
+presearch_common_visibility_targets = [
+  ":*",
+  "//presearch:browser_dependencies",
+  "//presearch:child_dependencies",
+  "//presearch/browser/*",
+  "//presearch/renderer/*",
+  "//presearch/test/*",
+  "//presearch/utility/*",
+  "//chrome/common/*",
+  "//chrome/browser/*",
+  "//chrome/renderer/*",
+  "//chrome/utility/*",
+]
+
+source_set("channel_info") {
+  visibility = presearch_common_visibility_targets
+
+  if (is_linux) {
+    sources = [
+      "presearch_channel_info_posix.cc",
+      "presearch_channel_info_posix.h",
+    ]
+
+    deps = [
+      "//base:base",
+      "//base:logging_buildflags",
+      "//components/version_info:version_info",
+    ]
+
+    configs += [ "//presearch/build/linux:linux_channel_names" ]
+  }
+}
+
+source_set("network_constants") {
+  visibility = presearch_common_visibility_targets +
+               # These are layering violation and need to be fixed
+               [
+                 "//presearch/components/content_settings/core/browser",
+                 "//presearch/components/sync/driver:unit_tests",
+                 "//components/sync/driver",
+               ]
+
+  sources = [
+    "network_constants.cc",
+    "network_constants.h",
+  ]
+}
+
+source_set("pref_names") {
+  visibility = presearch_common_visibility_targets +
+               # These are layering violation and need to be fixed
+               [
+                 "//presearch/components/content_settings/core/browser",
+                 "//presearch/components/p3a",
+                 "//presearch/components/binance/browser",
+                 "//presearch/ios/app",
+                 "//components/omnibox/browser",
+               ]
+
+  sources = [
+    "pref_names.cc",
+    "pref_names.h",
+  ]
+
+  deps = [ "//components/gcm_driver:gcm_buildflags" ]
+}
+
+source_set("switches") {
+  visibility = presearch_common_visibility_targets
+
+  sources = [
+    "presearch_switches.cc",
+    "presearch_switches.h",
+  ]
+
+  deps = [ "//base" ]
+}
+
+source_set("common") {
+  visibility =
+      presearch_common_visibility_targets +
+      # These are layering violation and need to be fixed
+      [
+        "//presearch/vendor/bat-native-ads:ads",
+        "//presearch/components/p3a",
+        "//presearch/components/presearch_webtorrent/browser",
+        "//presearch/components/presearch_referrals/browser",
+        "//presearch/components/presearch_ads/browser",
+        "//presearch/components/presearch_wallet/renderer",
+        "//presearch/components/content_settings/renderer",
+        "//presearch/components/external_intents/android",
+        "//presearch/components/webcompat_reporter/browser",
+        "//presearch/chromium_src/third_party/blink/renderer/modules:browser_tests",
+      ]
+  if (!is_android && !is_ios) {
+    visibility += [ "//presearch/components/ipfs/test:presearch_ipfs_browser_tests" ]
+  }
+
+  # Remove when https://github.com/presearch/presearch-browser/issues/10653 is resolved
+  check_includes = false
+  deps = []
+
+  sources = [
+    "presearch_channel_info.cc",
+    "presearch_channel_info.h",
+    "presearch_constants.cc",
+    "presearch_constants.h",
+    "presearch_features.cc",
+    "presearch_features.h",
+    "presearch_paths.cc",
+    "presearch_paths.h",
+    "common_message_generator.cc",
+    "common_message_generator.h",
+    "resource_bundle_helper.cc",
+    "resource_bundle_helper.h",
+    "translate_network_constants.cc",
+    "translate_network_constants.h",
+    "url_constants.cc",
+    "url_constants.h",
+    "webui_url_constants.cc",
+    "webui_url_constants.h",
+  ]
+
+  if (!is_android && !is_ios) {
+    deps += [ "//presearch/common/importer" ]
+  }
+
+  if (enable_extensions) {
+    sources += [
+      "extensions/presearch_extensions_api_provider.cc",
+      "extensions/presearch_extensions_api_provider.h",
+      "extensions/whitelist.cc",
+      "extensions/whitelist.h",
+    ]
+
+    deps += [ "//extensions/common:common_constants" ]
+
+    public_deps = [ "extensions/api" ]
+  }
+
+  deps += [
+    ":mojo_bindings",
+    ":network_constants",
+    ":pref_names",
+    ":switches",
+    "//base",
+    "//presearch/chromium_src:common",
+    "//presearch/components/resources",
+    "//components/resources",
+    "//extensions/buildflags",
+    "//services/service_manager",
+    "//ui/base",
+  ]
+
+  if (!is_ios) {
+    sources += [
+      "presearch_content_client.cc",
+      "presearch_content_client.h",
+    ]
+
+    deps += [
+      "//presearch/components/resources",
+      "//components/resources",
+      "//content/public/common",
+      "//third_party/widevine/cdm:buildflags",
+    ]
+  }
+}
+
+config("constants_configs") {
+  visibility = presearch_common_visibility_targets +
+               # These are layering violation and need to be fixed
+               [ "//chrome/tools/build/mac:infoplist_strings_util" ]
+  defines = []
+  if (is_mac) {
+    defines += [ "PRESEARCH_PRODUCT_STRING=\"$chrome_product_full_name\"" ]
+  }
+}
+
+mojom("mojo_bindings") {
+  sources = [ "presearch_renderer_configuration.mojom" ]
+
+  deps = [ "//mojo/public/mojom/base" ]
+}

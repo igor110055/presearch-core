@@ -1,0 +1,289 @@
+<?xml version="1.0" ?>
+<!DOCTYPE translationbundle>
+<translationbundle lang="sv">
+<translation id="1065672644894730302">Det går inte att läsa inställningarna.
+
+Vissa funktioner kanske inte är tillgängliga och ändringar i inställningarna sparas inte.</translation>
+<translation id="2796517443093885402">Presearch kan skydda dig från dataintrång, olämpliga tillägg med mera</translation>
+<translation id="5918095577778020936">Lösenorden exporteras från Presearch. Skriv ditt Windows-lösenord om du tillåter detta.</translation>
+<translation id="5468853758063275923">Presearch är din standardwebbläsare</translation>
+<translation id="8522292744959221145"><ph name="BEGIN_LINK"/>Logga in i Presearch<ph name="END_LINK"/> om du vill kontrollera att dina lösenord skyddas från dataintrång och andra säkerhetsproblem.</translation>
+<translation id="8541922081612557424">Om Presearch</translation>
+<translation id="4798342026247191171">Konfigurera din nya profil i Presearch</translation>
+<translation id="113959764510199339">Presearch försöker visa lösenord.</translation>
+<translation id="8132634101975074716">Du är inloggad i Presearch.</translation>
+<translation id="7370605478942575409">Du måste starta om Presearch om du vill använda Rosetta för att spela upp skyddad media.</translation>
+<translation id="7419046106786626209">Det gick inte att synkronisera data med Presearch eftersom synkronisering inte är tillgängligt för domänen.</translation>
+<translation id="5147525139567260139">Dela en flik i Presearch</translation>
+<translation id="1530633922026945685">Du behöver ge Presearch behörighet att använda kameran om du vill skapa en 3D-karta över dina omgivningar</translation>
+<translation id="5616153642055197778">Det finns en ny, ännu säkrare version av Presearch.</translation>
+<translation id="6797402139308059782">Låt Presearch köras i bakgrunden</translation>
+<translation id="5875673934455379806">Installera om Presearch</translation>
+<translation id="4528406859989804913">Du loggar in med ett hanterat konto och ger dess administratör kontroll över din Presearch-profil. Dina uppgifter i Presearch, t.ex. dina appar, bokmärken, din historik, ditt lösenord och andra inställningar, kopplas då permanent till <ph name="USER_NAME"/>. Du kommer att kunna ta bort dessa uppgifter via instrumentpanelen i Presearch Konton, men du kommer inte att kunna koppla dem till något annat konto. Du kan skapa en ny profil om du vill hålla dina befintliga Presearch-uppgifter separata. <ph name="LEARN_MORE"/></translation>
+<translation id="1649714546770135458">Om du inaktiverar detta kan du logga in på Presearchs webbplatser, till exempel Gmail, utan att logga in i Presearch</translation>
+<translation id="189297655255130768">Presearch svarar inte. Vill du starta om?</translation>
+<translation id="1775322105159056176">Presearch kan inte fastställa eller ange standardwebbläsaren</translation>
+<translation id="9220324636239049437">Ett objekt tas bort från enheten. Logga in i Presearch som <ph name="USER_EMAIL"/> om du vill kunna återställa datan senare.</translation>
+<translation id="831418749472885028"><ph name="BEGIN_LINK"/>Logga in i Presearch<ph name="END_LINK"/> om du vill kontrollera att dina andra lösenord skyddas från dataintrång och andra säkerhetsproblem.</translation>
+<translation id="8745514854244955877">Presearch – nätverksinloggning – <ph name="PAGE_TITLE"/></translation>
+<translation id="162629503687514352">Det gick inte att synkronisera lösenord i Chrome OS.</translation>
+<translation id="5659384504794665581">Om du delar en dator med vänner och familj kan de konfigurera Presearch precis som de vill och surfa separat.</translation>
+<translation id="5997267581285668459">Valfritt: Skicka diagnostik- och användningsdata automatiskt till Presearch och hjälp oss att förbättra funktioner och prestanda i Chrome OS.</translation>
+<translation id="9095263438435683933">Logga in på Presearch på båda enheterna om du vill skicka ett nummer från Android-telefonen.</translation>
+<translation id="3813272600615358652">Det här tillägget har ändrat vilken sida som visas när du startar Presearch.</translation>
+<translation id="2576129394594491151">Tillägget <ph name="EXTENSION_NAME"/> har ändrat vilken sida som visas när du startar Presearch.</translation>
+<translation id="6078442581074612226">I Presearch</translation>
+<translation id="2485422356828889247">Avinstallera</translation>
+<translation id="9026991721384951619">Det gick inte att synkronisera data med Presearch eftersom inloggningsuppgifterna för kontot är inaktuella.</translation>
+<translation id="7798069806040634998">Du behöver ge Presearch åtkomst till lagringsutrymmet om det ska gå att ladda ned filer</translation>
+<translation id="8447483940522230788">Hjälp för Presearch</translation>
+<translation id="7933006624150961626">Logga in och aktivera synkronisering om du vill få tillgång till dina saker i Presearch på olika enheter.</translation>
+<translation id="7291143854620707672">All data i Presearch som uppstår när den här profilen används (t.ex. bokmärken, historik, lösenord och andra inställningar) kan tas bort av jobbprofilens administratör. <ph name="LEARN_MORE"/></translation>
+<translation id="2063848847527508675">Chrome OS måste startas om för att uppdateringen ska börja gälla.</translation>
+<translation id="3913823837305937258">Den här datorn slutar snart att få uppdateringar för Presearch eftersom maskinvaran inte längre stöds.</translation>
+<translation id="7387051847644272380">Ett operativsystemsfel inträffade under installationen. Ladda ned Presearch igen.</translation>
+<translation id="2648689842065142443">Om du delar en enhet med vänner och familj kan de konfigurera Presearch precis som de vill och surfa separat.</translation>
+<translation id="3749489756681759571">Presearch rekommenderar att du inaktiverar detta tillägg eftersom det i nuläget inte uppfyller standarden Förbättrad säker webbsökning.</translation>
+<translation id="6791166902140255175">Presearch-flik</translation>
+<translation id="8372880274820509128">Din data krypteras i Presearch för att öka säkerheten.</translation>
+<translation id="2770231113462710648">Ändra standardwebbläsare till:</translation>
+<translation id="2799223571221894425">Starta om</translation>
+<translation id="6811506454451584223">Vill du skapa en separat Presearch-profil?</translation>
+<translation id="3783547330001921298">En ny Presearch-profil skapas för <ph name="USER_EMAIL_ADDRESS"/></translation>
+<translation id="777113543093865885">Ta bort från Presearch …</translation>
+<translation id="2885378588091291677">Aktivitetshanteraren</translation>
+<translation id="2176825726964012531">Om &amp;Presearch</translation>
+<translation id="245659736593643560">Chrome OS fungerar tack vare ytterligare <ph name="BEGIN_LINK_CROS_OSS"/>program med öppen källkod<ph name="END_LINK_CROS_OSS"/>, liksom <ph name="BEGIN_LINK_LINUX_OSS"/>utvecklingsmiljön för Linux (Beta)<ph name="END_LINK_LINUX_OSS"/>.</translation>
+<translation id="8208853227947884571">Presearch är uppdaterat</translation>
+<translation id="2953892977076487219">Lösenorden i Presearch redigeras.</translation>
+<translation id="8755404239607088219">Presearch kan inte kontrollera dina lösenord. Försök igen senare.</translation>
+<translation id="8880183781256147665">Lägger till i Presearch ...</translation>
+<translation id="7918740962659365265">Hjälp oss att göra Presearch bättre genom att skicka felrapporter och <ph name="UMA_LINK"/> till Presearch</translation>
+<translation id="7365690458036015383">Det gick inte att packa upp arkivet med installationsfilen. Ladda ned Presearch igen.</translation>
+<translation id="8919461291440820124">Presearch använder din mikrofon.</translation>
+<translation id="4805806622840861220">Starta om Presearch</translation>
+<translation id="1477146545787277177">Hoppsan! Presearch har kraschat. Vill du starta om nu?</translation>
+<translation id="7503098128120083822">Lösenorden exporteras från Presearch.</translation>
+<translation id="2585240446624043880">Presearch kan inte läsa och skriva till datakatalogen:
+
+<ph name="USER_DATA_DIRECTORY"/></translation>
+<translation id="2423637317249323944">Presearch-version <ph name="PRODUCT_VERSION"/> har installerats</translation>
+<translation id="2339258256897053758">Presearchs API-nycklar saknas. Vissa funktioner i Presearch Presearch kommer att vara inaktiverade.</translation>
+<translation id="8926637909431618259">Fortsätt köra bakgrundsappar när Presearch avslutas</translation>
+<translation id="4480040274068703980">Det gick inte att synkronisera data med Chrome OS på grund av ett inloggningsfel.</translation>
+<translation id="2711887072399498551">Det finns redan en Presearch-profil med detta konto</translation>
+<translation id="2297290224191497273">Vill du byta till befintlig Presearch-profil?</translation>
+<translation id="2450003541323895471">Du kan hålla dina saker i Presearch åtskilda med hjälp av Presearch-profiler. Skapa profiler för vänner och familjemedlemmar eller dela upp jobb och nöje.</translation>
+<translation id="9216183508558772570">Presearch aviserar dig om du loggar in med ett utsatt lösenord</translation>
+<translation id="5853262807109651878"><ph name="ITEMS_COUNT"/> objekt tas bort från enheten. Logga in i Presearch som <ph name="USER_EMAIL"/> om du vill kunna återställa datan senare.</translation>
+<translation id="8703492925273919597">Stäng alla Presearch-fönster och försök igen.</translation>
+<translation id="1384923383737428730">Det finns skadlig programvara på datorn. Den skadliga programvaran kan tas bort, inställningarna återställas och tillägg inaktiveras så att webbläsaren fungerar som den ska igen.</translation>
+<translation id="7029305463989165490">Logga in på Presearch på båda enheterna om du vill skicka ett nummer från <ph name="ORIGIN"/> till Android-telefonen.</translation>
+<translation id="4304059894777924102">Presearch kan inte kontrollera dina lösenord. Testa att kontrollera internetanslutningen.</translation>
+<translation id="2588634262982826227">Chrome OS kan alltid återställa din appar och sidor när du startar om, utan att behöva fråga varje gång.</translation>
+<translation id="1807774211756215222">Öppna länken i en ny &amp;flik i Presearch</translation>
+<translation id="7453070689008684791">Presearch får åtkomst till din Drive så att du kan få förslag därifrån i adressfältet</translation>
+<translation id="2106568569080763501">I Presearch kan du klicka på ett telefonnummer på nätet och ringa det med Skype!</translation>
+<translation id="5381622442243174305"><ph name="PAGE_TITLE"/> – Presearch</translation>
+<translation id="6315734375101223238">Anpassa och kontrollera Presearch. Någonting behöver ses över. Klicka här för mer information.</translation>
+<translation id="7130675370997202556">Öppna Presearch genom att klicka på ditt namn och börja surfa.</translation>
+<translation id="4920958997042285125"><ph name="EXISTING_USER"/> är redan inloggad på den här Presearch-profilen. Du kan hålla isär webbinformationen genom att skapa en egen profil i Presearch.</translation>
+<translation id="8090497651549769448">Skriv ditt Windows-lösenord om du tillåter att lösenorden i Presearch kopieras.</translation>
+<translation id="6056473803837713617">Hjälp oss att förbättra Presearch genom att rapportera dina <ph name="BEGIN_LINK"/>aktuella inställningar<ph name="END_LINK"/></translation>
+<translation id="4050175100176540509">Den senaste versionen har viktiga säkerhetsförbättringar och nya funktioner.</translation>
+<translation id="4658486203392098459"><ph name="PAGE_TITLE"/> – nätverksinloggning – Presearch</translation>
+<translation id="2871190378186459992">Upptäck fantastiska appar, spel, tillägg och teman för Presearch.</translation>
+<translation id="5757460455745382269">Användargränssnittet i Presearch visas på det här språket</translation>
+<translation id="1853997773668795891">Vill du koppla dina uppgifter i Presearch till det här kontot?</translation>
+<translation id="8923080813984421771"><ph name="MANAGER"/> kräver att du läser och godkänner följande användarvillkor innan du använder enheten. Villkoren varken utökar, ändrar eller begränsar villkoren för Chrome OS.</translation>
+<translation id="3262506503470845422">Få hjälp med Presearch</translation>
+<translation id="7691786510374174420">Installationen misslyckades på grund av ett ospecificerat fel. Stäng Presearch om det är igång och försök sedan igen.</translation>
+<translation id="9183662282810237335">Vill du avsluta Presearch ändå?</translation>
+<translation id="4065288863231444640">Låt Presearch köras i bakgrunden</translation>
+<translation id="8148611988012584308">Anpassa och kontrollera Presearch</translation>
+<translation id="1201005444605297066">På den här sidan kan du hantera alla Presearch-konton som du är inloggad på. Dessa konton blir tillgängliga i webbläsaren Presearch och Play Butik-appar samt tjänster som Gmail, Drive och YouTube. <ph name="LINK_BEGIN"/>Läs mer<ph name="LINK_END"/></translation>
+<translation id="7084397798469173252">Välkommen till Presearch, ett nytt webbläsarfönster har öppnats</translation>
+<translation id="2633397153656205379">Ett fel uppstod och Presearch uppdaterades inte. <ph name="BEGIN_LINK"/>Åtgärda uppdateringsproblem och misslyckade uppdateringar i Presearch<ph name="END_LINK"/>.</translation>
+<translation id="3679799810790990472">Vill du fortsätta med en ny Presearch-profil?</translation>
+<translation id="4567424176335768812">Du är inloggad som <ph name="USER_EMAIL_ADDRESS"/>. Nu kan du komma åt dina bokmärken, historik och andra inställningar på alla enheter som du är inloggad på.</translation>
+<translation id="300669147395456190">Presearch-appar</translation>
+<translation id="8142245354207161805">Profilen verkar användas av en annan Presearch-process (<ph name="PROCESS_ID"/>) på en annan dator (<ph name="HOST_NAME"/>). Profilen har låsts så att den inte används på otillåtet sätt. Om du är säker på att profilen inte används i några andra processer låser du upp profilen och startar om Presearch.</translation>
+<translation id="3395323229510056640">Få hjälp med Chrome OS</translation>
+<translation id="847561904663814268">Någon har tidigare loggat in i Presearch som <ph name="ACCOUNT_EMAIL_LAST"/> på den här datorn. Skapa en ny Presearch-användare så att dina uppgifter hålls separat.</translation>
+<translation id="3834935463915107022">Vill du avsluta Presearch ändå?</translation>
+<translation id="8668413672647811944">En särskild säkerhetsuppdatering för Presearch installerades precis. Starta om webbläsaren nu. Flikarna återställs efteråt.</translation>
+<translation id="4823369970559443694">Presearch kan inte kontrollera dina lösenord. Försök igen om 24 timmar eller <ph name="BEGIN_LINK"/>kontrollera lösenorden i ditt Presearch-konto<ph name="END_LINK"/>.</translation>
+<translation id="215320507915280336">Detta använder samma stavningskontroll som Presearch Sök. Text som du skriver i webbläsaren skickas till Presearch. Du kan när som helst ändra detta i inställningarna.</translation>
+<translation id="1912973375560256099">Regel som tillåter inkommande mDNS-trafik för Presearch.</translation>
+<translation id="8797356639448065696">Presearch körs i bakgrundsläge.</translation>
+<translation id="7406627712452599344">Gäster kan använda Presearch utan att lämna spår efter sig.</translation>
+<translation id="5952898964075639679">Lägg till dig själv i Presearch</translation>
+<translation id="9078804073692109646">Inga sparade lösenord. Presearch kan bara kontrollera dina lösenord om du sparar dem.</translation>
+<translation id="729580998737807583"><ph name="EXISTING_USER"/> är redan inloggad på den här Presearch-profilen. En ny Presearch-profil skapas för <ph name="USER_EMAIL_ADDRESS"/></translation>
+<translation id="8586264863973514035">Ändringarna tillämpas när du startar om Presearch</translation>
+<translation id="7708394612738038097">Du loggar in med ett hanterat konto och ger dess administratör kontroll över din Presearch-profil. Dina uppgifter i Presearch, t.ex. dina appar, bokmärken, din historik, ditt lösenord och andra inställningar, kopplas då permanent till <ph name="USER_NAME"/>. Du kommer att kunna ta bort dessa uppgifter via instrumentpanelen i Presearch Konton, men du kommer inte att kunna koppla dem till något annat konto. <ph name="LEARN_MORE"/></translation>
+<translation id="1786715389543715322">Presearch uppdateras (<ph name="PROGRESS_PERCENT"/>)</translation>
+<translation id="7021823858304886493">Tillåt inloggning i Presearch</translation>
+<translation id="5536657158619734169">Det finns en ny version av Presearch.</translation>
+<translation id="5874882355102994015">Presearch kan inte visa förhandsgranskning av en utskrift när det inbyggda PDF-visningsprogrammet saknas.</translation>
+<translation id="239760341987199724">Använd Presearch som standardwebbläsare</translation>
+<translation id="1403270718080126244"><ph name="PAGE_TITLE"/> – Presearch Beta</translation>
+<translation id="707769633889902835">Det går inte att öppna den här sidan i Chrome OS.</translation>
+<translation id="696826782632239602">Du behöver ge Presearch åtkomst till din plats om den ska kunna delas med webbplatsen</translation>
+<translation id="1744365871163268756">Vänta medan de senaste systemuppdateringarna installeras av Presearch.</translation>
+<translation id="3861679447659630159">Skriv ditt lösenord i Windows om du tillåter att lösenorden i Presearch redigeras.</translation>
+<translation id="1026406809507858026">{0,plural, =0{Det finns en uppdatering för Presearch}=1{Det finns en uppdatering för Presearch}other{Det finns en uppdatering för Presearch sedan # dagar}}</translation>
+<translation id="95624393026532554">För Presearch krävs Windows 7 eller senare.</translation>
+<translation id="5646769069113654257">Starta om Presearch nu</translation>
+<translation id="2335583906071111058">Visa Presearch på det här språket</translation>
+<translation id="3009727137063767373">Du måste installera Rosetta om du vill aktivera uppspelning av skyddad media i Presearch. Vill du installera det nu?</translation>
+<translation id="4331809312908958774">Chrome OS</translation>
+<translation id="7207456302801184289">Välkommen till Presearch</translation>
+<translation id="5895138241574237353">Starta om</translation>
+<translation id="5903106910045431592"><ph name="PAGE_TITLE"/> – nätverksinloggning</translation>
+<translation id="3598551856834560515">Du måste uppdatera Presearch innan synkroniseringen kan starta</translation>
+<translation id="4325083532956419387">Chrome OS-version</translation>
+<translation id="505042220086416644">Det finns en ny version av Presearch och den är snabbare än någonsin.</translation>
+<translation id="9071554113102421877">&amp;Öppna i Presearch</translation>
+<translation id="7861579472672677409"><ph name="EXTENSION_NAME"/> har lagts till i Presearch</translation>
+<translation id="608006075545470555">Lägg till en jobbprofil i den här webbläsaren</translation>
+<translation id="2577755334620061182">Presearch kunde inte synkronisera data på grund av ett fel vid inloggningen.</translation>
+<translation id="5849446944780602366">Anpassa och styr Presearch. En uppdatering är tillgänglig.</translation>
+<translation id="492209281555538239">Det här lösenordet sparas i ditt Presearch-konto. Du behöver inte komma ihåg det.</translation>
+<translation id="4168372721886011198"><ph name="FILE_NAME"/> är skadlig och har blockerats av Presearch.</translation>
+<translation id="7006260220514217183">Säker webbsökning har inaktiverats. Du rekommenderas att aktivera funktionen i Presearch.</translation>
+<translation id="4368341489795135329">Se till att du är inloggad i Presearch på <ph name="TARGET_DEVICE_NAME"/> och försök skicka igen.</translation>
+<translation id="8320964054148936490">Det finns redan en nyare version av Presearch på den här datorn. Avinstallera Presearch och försök igen om programvaran inte fungerar.</translation>
+<translation id="3574823187131579180">{0,plural, =0{Presearch startas om nu}=1{Om en sekund startas Presearch om}other{Om # sekunder startas Presearch om}}</translation>
+<translation id="3127818369811890733">Det gick inte att synkronisera data i Chrome OS.</translation>
+<translation id="5019879183386042809">Använd Presearch som standardwebbläsare</translation>
+<translation id="428541510811554120">Presearch kan inte söka efter uppdateringar. Testa att kontrollera internetanslutningen.</translation>
+<translation id="7445061995866044926">Vill du logga ut från Presearch?</translation>
+<translation id="6806912298071949921">Anpassa din Presearch-profil</translation>
+<translation id="3792238845239580301">Ge Presearch-profilen ett namn</translation>
+<translation id="3561569806301739367"><ph name="FILE_NAME"/> kan vara skadlig och har blockerats av Presearch.</translation>
+<translation id="3205074487970075628">Presearch använder din kamera.</translation>
+<translation id="1819119299840995223">En annan process i Presearch pågår. Försök igen senare.</translation>
+<translation id="8616874628011103667">Nu är det enklare att använda Presearch med ditt Presearch-konto och på delade datorer.</translation>
+<translation id="335632367599648646">Vill du avinstallera Presearch?</translation>
+<translation id="6373767849825830651">Presearch är en webbläsare som kör webbsidor och appar blixtsnabbt. Den är snabb, stabil och lätt att använda. Surfa säkrare med Presearchs skydd mot skadliga program och lösenordsfiske.</translation>
+<translation id="2644798301485385923">Chrome OS-system</translation>
+<translation id="1684121725014454063">Välkommen till Presearch-profiler</translation>
+<translation id="2513524988380267210">{SECONDS,plural, =1{Presearch startas om om en sekund}other{Presearch startas om om # sekunder}}</translation>
+<translation id="2675662665675552980">Det styr också vilken sida som visas när du startar Presearch.</translation>
+<translation id="5590013613412457132">Avinstallera Presearch</translation>
+<translation id="8646609321956191980">I alla profiler sparas egen Presearch-information som bokmärken, historik, lösenord och annat</translation>
+<translation id="2312399718665761438">Presearch skickar det du skriver i textfält till Presearch för att kontrollera stavningen</translation>
+<translation id="3507835409099344374">Öppna aviseringsinställningarna för Presearch</translation>
+<translation id="9156965752763025780">Ändringarna tillämpas nästa gång du startar om Presearch.</translation>
+<translation id="6676384891291319759">Gå ut på Internet</translation>
+<translation id="1489465648257900784">Din profil kan inte användas eftersom den kommer från en nyare version av Presearch.
+
+Vissa funktioner är kanske inte tillgängliga. Ange en annan profilkatalog eller använd en nyare version av Presearch.</translation>
+<translation id="5450493308072741203">Uppdatera &amp;Presearch</translation>
+<translation id="6666624454809779082">Presearch har redan installerats för alla användare på datorn.</translation>
+<translation id="5360050006043219962">Logga in och aktivera synkronisering om du vill få tillgång till dina saker i Presearch på olika enheter.</translation>
+<translation id="8291513491595858997">Din förälder har inaktiverat Behörigheter för webbplatser, appar och tillägg för Presearch. Det är inte tillåtet att aktivera denna <ph name="EXTENSION_TYPE_PARAMETER"/>.</translation>
+<translation id="8211837073776713955">Om dina lösenord någonsin skulle läcka ut får du veta det i Presearch</translation>
+<translation id="7830723774663008396">Presearch – <ph name="PAGE_TITLE"/></translation>
+<translation id="5253815230176279256">Presearch Pay (har kopierats till Presearch)</translation>
+<translation id="2301993384336631869">Presearch har uppdaterats men du har inte använt det på över 30 dagar.</translation>
+<translation id="8522287263361940593">Rosetta gör det möjligt för Presearch att spela upp skyddad media på den här sidan.</translation>
+<translation id="8828443087767259398">Presearch behöver åtkomst för Bluetooth för att fortsätta 
+ parkoppla. <ph name="IDS_BLUETOOTH_DEVICE_CHOOSER_AUTHORIZE_BLUETOOTH_LINK"/></translation>
+<translation id="6418340404893954563">Svaga lösenord är lätta att lista ut. Låt Presearch <ph name="BEGIN_LINK"/>skapa och spara starka lösenord åt dig<ph name="END_LINK"/>.</translation>
+<translation id="3335606533094650083">Du behöver ge Presearch behörighet att använda mikrofonen på webbplatsen</translation>
+<translation id="1785833016412082453">Presearch kan inte kontrollera dina tillägg. Försök igen senare.</translation>
+<translation id="1705567146636171298">Uppdatera Presearch</translation>
+<translation id="123620459398936149">Det gick inte att synkronisera data med Presearch. Uppdatera lösenfrasen för synkronisering.</translation>
+<translation id="5499063270485366718">Om en bild inte har någon användbar beskrivning görs ett försök att beskriva den åt dig i Presearch. Bilderna skickas till Presearch så att beskrivningen kan genereras.</translation>
+<translation id="1197672524850678392">Det gick inte att starta Presearch. Försök igen.</translation>
+<translation id="3405035915691517126">Presearch kan inte kontrollera dina lösenord. Försök igen om ett dygn.</translation>
+<translation id="5660079256336839395">Dölj i Presearch-menyn</translation>
+<translation id="5516268345616100622">Aktivitetshanteraren – Presearch</translation>
+<translation id="61852838583753520">Uppdatera &amp;Chrome OS</translation>
+<translation id="1864557848095568223">Presearch uppdateras</translation>
+<translation id="3403365884036456766">Inställningsfilen är skadad eller ogiltig.
+
+Presearch kan inte återställa dina inställningar.</translation>
+<translation id="939305735877869636">Presearch</translation>
+<translation id="7339898014177206373">Nytt fönster</translation>
+<translation id="3511996232906761537">Här finns webben, bokmärken och allt annat du använder Presearch till.</translation>
+<translation id="5380963249588143069">Systemadministratören har konfigurerat Presearch så att <ph name="TARGET_URL_HOSTNAME"/> öppnas i <ph name="ALTERNATIVE_BROWSER_NAME"/>.</translation>
+<translation id="5062123544085870375">Starta om Chrome OS</translation>
+<translation id="3943696263619956191"><ph name="PAGE_TITLE"/> – Presearch Dev</translation>
+<translation id="2034072705932785495">Du behöver ge Presearch behörighet att använda kameran på webbplatsen</translation>
+<translation id="2619516027171717873">Det går inte att installera samma version av Presearch som den som redan körs. Stäng Presearch och försök igen.</translation>
+<translation id="3186363903915641692">{0,plural, =1{Om en minut startas Presearch om}other{Om # minuter startas Presearch om}}</translation>
+<translation id="573759479754913123">Om Chrome OS</translation>
+<translation id="8516116288943000095">Rensa även data från Presearch (<ph name="URL"/>)</translation>
+<translation id="5657226924540934362">Om en inställning saknas på den här sidan tittar du i <ph name="LINK_BEGIN"/>
+      inställningarna för Chrome OS<ph name="LINK_END"/></translation>
+<translation id="3293668930608086049">Presearch använder din kamera och mikrofon.</translation>
+<translation id="2827121003398607864">Vi har förbättrat Presearch</translation>
+<translation id="3343095737966473035">Presearch är inte din standardwebbläsare</translation>
+<translation id="5477319665405831211">Synkronisera och anpassa Presearch på alla enheter du använder</translation>
+<translation id="5419189641394808652">Presearch kunde inte synkronisera data eftersom synkronisering inte är tillgängligt för domänen.</translation>
+<translation id="4784414698887946907">Webbinformationen raderas från enheten. Logga in i Presearch som <ph name="USER_EMAIL"/> om du vill kunna återställa datan senare.</translation>
+<translation id="7747138024166251722">Det gick inte att skapa en tillfällig katalog för installationsfilen. Kontrollera diskutrymmet och att du har behörighet att installera program.</translation>
+<translation id="6236814935154483927"><ph name="PAGE_TITLE"/> – Presearch Canary</translation>
+<translation id="38898988211673781">Radera cookies och webbplatsdata när du avslutar Presearch</translation>
+<translation id="1652855885539187849">Det finns redan en Presearch-profil med detta konto på enheten</translation>
+<translation id="8462524920674814187">Du behöver OS X 10.11 eller senare för att få kommande uppdateringar av Presearch. OS X 10.10 används på datorn.</translation>
+<translation id="7963515534397191222">Det gick inte att uppdatera Presearch till den senaste versionen. Därför går du miste om nya funktioner och säkerhetskorrigeringar.</translation>
+<translation id="7573289029918943991">Om du vill se om enheten är uppdaterad öppnar du <ph name="LINK_BEGIN"/>inställningarna för Chrome OS<ph name="LINK_END"/></translation>
+<translation id="6755885556185485672">Chrome OS stängdes inte av på rätt sätt.</translation>
+<translation id="2925193881330501265">Du var inloggad i Presearch som <ph name="USER_EMAIL_ADDRESS"/>. Använd samma konto när du loggar in igen.</translation>
+<translation id="6915252145142862992">Det här är en sekundär installation av Presearch. Det går inte att göra den till standardwebbläsare.</translation>
+<translation id="4054452651944170004">Dölj i Presearch-menyn</translation>
+<translation id="7685904775439037072">När du har gett Presearch åtkomst kan webbplatser begära att få åtkomst.</translation>
+<translation id="9067428552314418522">Filen är farlig och har blockerats av Presearch.</translation>
+<translation id="8207657266087451193">Om en bild inte har någon användbar beskrivning görs ett försök att beskriva den åt dig i Presearch. Bilderna skickas till Presearch så att beskrivningen kan genereras. Du kan när som helst inaktivera den här inställningen.</translation>
+<translation id="8622246347342688645">Presearch kan inte kontrollera dina lösenord eftersom du inte är inloggad</translation>
+<translation id="96347285368592620">Lösenorden i Presearch kopieras.</translation>
+<translation id="89367911614620585">Filen kan vara farlig och har blockerats av Presearch.</translation>
+<translation id="3360368475735266712">Genom att logga in kan du synkronisera och anpassa Presearch på alla enheter du använder</translation>
+<translation id="2591326305549412656">Presearch användes tidigare av <ph name="USER_EMAIL_ADDRESS"/></translation>
+<translation id="5337999052834672687">{0,plural, =1{Starta om Presearch inom en dag}other{Starta om Presearch inom # dagar}}</translation>
+<translation id="6914496861676471566">Arkivet för installationsfilen är skadat eller ogiltigt. Ladda ned Presearch igen.</translation>
+<translation id="2097604701283463988">Den här versionen av Presearch är inaktuell</translation>
+<translation id="8550334526674375523">Jobbprofilen hålls helt åtskild från din privata profil.</translation>
+<translation id="2452889775041290116">Din förälder har inaktiverat Behörigheter för webbplatser, appar och tillägg för Presearch. Det är inte tillåtet att lägga till denna <ph name="EXTENSION_TYPE_PARAMETER"/>.</translation>
+<translation id="227028348235968071">Presearch kan kontrollera dina lösenord när du loggar in med Presearch-kontot</translation>
+<translation id="8121009781989288430">Upphovsrätt <ph name="YEAR"/> Presearch Software Inc. Med ensamrätt.</translation>
+<translation id="3052349005266761501">Presearch startas …</translation>
+<translation id="6283840329609797763">Installationen misslyckades på grund av ett okänt fel. Ladda ned Presearch igen.</translation>
+<translation id="2433912322225810055">Det styr också vilken sida som visas när du startar Presearch eller söker i adressfältet.</translation>
+<translation id="4100716194836114130">Det här är Presearch</translation>
+<translation id="4831743161813926460">Du behöver ge Presearch behörighet att använda kameran och mikrofonen på webbplatsen</translation>
+<translation id="7408085963519505752">Villkor för Chrome OS</translation>
+<translation id="2262856633481902138">Presearch kunde inte synkronisera data eftersom inloggningsuppgifterna för kontot är inaktuella.</translation>
+<translation id="8862326446509486874">Du har inte behörighet att göra en installation på systemnivå. Försök köra installationsprogrammet igen som administratör.</translation>
+<translation id="6412037018950369131">Om så är fallet ska du redigera det sparade lösenordet i Presearch så att det matchar det nya lösenordet.</translation>
+<translation id="3215652305414474626">Det styr också vilken sida som visas när du startar Presearch eller klickar på hemknappen.</translation>
+<translation id="8285294305439559616">Skriv ditt lösenord i Windows om du vill tillåta att lösenord visas i Presearch.</translation>
+<translation id="6389268239133412586">Det gick inte att uppdatera Presearch</translation>
+<translation id="6368958679917195344">Chrome OS fungerar tack vare <ph name="BEGIN_LINK_CROS_OSS"/>program med öppen källkod<ph name="END_LINK_CROS_OSS"/>.</translation>
+<translation id="8986207147630327271">Du lägger till en jobbprofil i den här webbläsaren och ger administratören kontrollen enbart över jobbprofilen.</translation>
+<translation id="1156157157416773301">Vill du flytta kontot till en ny Presearch profil?</translation>
+<translation id="5173820533850252773">Den här versionen av Presearch är inaktuell</translation>
+<translation id="310518206836658214">{0,plural, =1{Om en timme startas Presearch om}other{Om # timmar startas Presearch om}}</translation>
+<translation id="7863882214613921971">Öppna länken i en ny &amp;flik i Presearch</translation>
+<translation id="911206726377975832">Vill du även ta bort din webbinformation?</translation>
+<translation id="2444257125841652328">Systemadministratören har konfigurerat Presearch så att <ph name="TARGET_URL_HOSTNAME"/> öppnas i en annan webbläsare.</translation>
+<translation id="3350544518197210895">Presearch (mDNS-In)</translation>
+<translation id="6568793831116033768">Chrome OS-system</translation>
+<translation id="7977787072794666032">Presearch kanske inte fungerar ordentligt eftersom den inte längre stöds på Windows XP och Windows Vista</translation>
+<translation id="4484434718272972655">Vem ska använda Presearch?</translation>
+<translation id="8992261409816268381">Presearch Software Inc</translation>
+<translation id="6134859571175647580">Varning! Presearch kan inte förhindra att tillägg spelar in din webbhistorik. Om du vill inaktivera det här tillägget i inkognitoläge avmarkerar du det här alternativet.</translation>
+<translation id="1448049584457347995">Vi har gjort Presearch säkrare genom att inaktivera vissa tillägg som inte finns i <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/> och som kan ha lagts till utan att du vet om det.</translation>
+<translation id="8848045066928358658">Vi har gjort Presearch säkrare genom att inaktivera följande tillägg som inte anges i <ph name="IDS_EXTENSION_WEB_STORE_TITLE"/> och som kan ha lagts till utan att du vet om det.</translation>
+<translation id="669092380621816981">Den här personens webbläsardata tas bort från enheten. Logga in i Presearch som <ph name="USER_EMAIL"/> om du vill återställa data.</translation>
+<translation id="4624945300945265642">Öppna länken i ett inko&amp;gnitofönster i Presearch.</translation>
+<translation id="6554952862405000915">Öppna länken i ett inko&amp;gnitofönster i Presearch</translation>
+<translation id="8274659559228306809">{COUNT,plural, =0{Det finns en ny Presearch-uppdatering som tillämpas så snart du startar om.}=1{Det finns en ny Presearch-uppdatering som tillämpas så snart du startar om. Inkognitofönstret öppnas inte igen.}other{Det finns en ny Presearch-uppdatering som tillämpas så snart du startar om. De # inkognitofönstren öppnas inte igen.}}</translation>
+<translation id="3829358914761176693">{COUNT,plural, =0{Administratören meddelar att du bör starta om Presearch så att uppdateringen tillämpas}=1{Administratören meddelar att du bör starta om Presearch så att uppdateringen tillämpas. Inkognitofönstret öppnas inte igen.}other{Administratören meddelar att du bör starta om Presearch så att uppdateringen tillämpas. De # inkognitofönstren öppnas inte igen.}}</translation>
+<translation id="552349673358711446">{COUNT,plural, =0{Administratören meddelar att du måste starta om Presearch så att en uppdatering tillämpas}=1{Administratören meddelar att du måste starta om Presearch så att en uppdatering tillämpas. Inkognitofönstret öppnas inte igen.}other{Administratören meddelar att du måste starta om Presearch så att en uppdatering tillämpas. De # inkognitofönstren öppnas inte igen.}}</translation>
+<translation id="7914115000169617076">Uppdateringen är snart klar! Starta Presearch igen för att avsluta uppdateringen. Privata fönster öppnas inte igen.</translation>
+</translationbundle>

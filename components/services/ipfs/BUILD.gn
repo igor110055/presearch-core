@@ -1,0 +1,14 @@
+source_set("ipfs") {
+  sources = [ "ipfs_service_impl.h" ]
+  if (!is_android) {
+    sources += [ "ipfs_service_impl.cc" ]
+  } else {
+    sources += [ "ipfs_service_impl_android.cc" ]
+  }
+
+  deps = [
+    "//base",
+    "//presearch/components/services/ipfs/public/mojom",
+    "//mojo/public/cpp/bindings",
+  ]
+}

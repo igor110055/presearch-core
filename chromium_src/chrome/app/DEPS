@@ -1,0 +1,10 @@
+include_rules = [
+  "+../../../../chrome/app",
+  "+../../../../../chrome/app/android",
+  "+presearch/app",
+  "+presearch/browser",
+  "+presearch/common",
+  "+chrome/app",
+  "+chrome/browser",
+  "+chrome/common",
+]

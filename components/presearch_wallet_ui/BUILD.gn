@@ -1,0 +1,17 @@
+import("//presearch/components/common/typescript.gni")
+
+transpile_web_ui("presearch_wallet_ui") {
+  entry_points = [
+    ["presearch_wallet", rebase_path("presearch_wallet.tsx")]
+  ]
+  resource_name = "presearch_wallet"
+}
+
+pack_web_resources("generated_resources") {
+  resource_name = "presearch_wallet"
+  output_dir = "$root_gen_dir/presearch/components/presearch_wallet/resources"
+  deps = [
+    ":presearch_wallet_ui"
+  ]
+}
+

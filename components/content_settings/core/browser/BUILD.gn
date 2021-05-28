@@ -1,0 +1,29 @@
+source_set("browser") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10624 is resolved
+  check_includes = false
+  if (!is_ios) {
+    sources = [
+      "presearch_content_settings_default_provider.cc",
+      "presearch_content_settings_default_provider.h",
+      "presearch_content_settings_pref_provider.cc",
+      "presearch_content_settings_pref_provider.h",
+      "presearch_content_settings_utils.cc",
+      "presearch_content_settings_utils.h",
+    ]
+
+    deps = [
+      "//base",
+      "//presearch/common:network_constants",
+      "//presearch/common:pref_names",
+      "//presearch/components/presearch_shields/common",
+      "//presearch/components/content_settings/core/common",
+
+      # see https://github.com/presearch/presearch-browser/issues/10624 above
+      # "//components/content_settings/core/browser",
+      "//components/content_settings/core/common",
+      "//components/prefs",
+      "//net",
+      "//url",
+    ]
+  }
+}

@@ -1,0 +1,42 @@
+# Copyright 2019 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+import("//build/config/android/rules.gni")
+
+source_set("preferences") {
+  # Remove when https://github.com/presearch/presearch-browser/issues/10657 is resolved
+  check_includes = false
+  sources = [
+    "background_video_playback_tab_helper.cc",
+    "background_video_playback_tab_helper.h",
+    "presearch_pref_service_bridge.cc",
+    "website/desktop_mode_tab_helper.cc",
+    "website/desktop_mode_tab_helper.h",
+  ]
+
+  deps = [
+    "//base",
+    "//presearch/common",
+    "//presearch/components/presearch_referrals/common",
+    "//presearch/components/presearch_rewards/common",
+    "//presearch/components/presearch_shields/browser",
+    "//presearch/components/presearch_sync",
+    "//presearch/components/p3a",
+    "//components/content_settings/core/browser",
+    "//components/prefs",
+    "//content/public/browser",
+    "//net",
+    "//url",
+  ]
+}
+
+java_cpp_strings("java_pref_names_srcjar") {
+  sources = [
+    "//presearch/common/pref_names.cc",
+    "//presearch/components/presearch_rewards/common/pref_names.cc",
+    "//presearch/components/ntp_background_images/common/pref_names.cc",
+  ]
+
+  template = "//presearch/browser/preferences/android/java_templates/PresearchPref.java.tmpl"
+}

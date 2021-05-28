@@ -1,0 +1,12 @@
+diff --git a/chrome/browser/ui/webui/settings/import_data_handler.h b/chrome/browser/ui/webui/settings/import_data_handler.h
+index 173e710d6e8c7ab463e32ed6c55c9131e29b2bbc..1b2a77ea5f22d63eebf7b95f2f1887c2819f6736 100644
+--- a/chrome/browser/ui/webui/settings/import_data_handler.h
++++ b/chrome/browser/ui/webui/settings/import_data_handler.h
+@@ -34,6 +34,7 @@ class ImportDataHandler : public SettingsPageUIHandler,
+   void OnJavascriptAllowed() override {}
+   void OnJavascriptDisallowed() override;
+ 
++  PRESEARCH_IMPORT_DATA_HANDLER_H
+  private:
+   void StartImport(const importer::SourceProfile& source_profile,
+                    uint16_t imported_items);

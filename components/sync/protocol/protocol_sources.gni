@@ -1,0 +1,17 @@
+# Copyright (c) 2020 The Presearch Authors. All rights reserved.
+# This Source Code Form is subject to the terms of the Mozilla Public
+# License, v. 2.0. If a copy of the MPL was not distributed with this file,
+# You can obtain one at http://mozilla.org/MPL/2.0/.
+
+presearch_sync_protocol_bases = [
+  "presearch_device_info_specifics",
+]
+
+presearch_sync_protocol_sources = []
+presearch_sync_protocol_pyprotos = []
+
+foreach(base, presearch_sync_protocol_bases) {
+  presearch_sync_protocol_sources += [ "//presearch/components/sync/protocol/${base}.proto" ]
+  presearch_sync_protocol_pyprotos +=
+      [ "$root_out_dir/pyproto/components/sync/protocol/${base}_pb2.py" ]
+}

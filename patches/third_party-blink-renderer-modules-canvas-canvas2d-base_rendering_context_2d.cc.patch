@@ -1,0 +1,20 @@
+diff --git a/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc b/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+index 98b485c0911552699cfbdf187501b08c52dc623a..f47f15028bcf1f5bbbe06b6d43910b8b3ce3e7a3 100644
+--- a/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
++++ b/third_party/blink/renderer/modules/canvas/canvas2d/base_rendering_context_2d.cc
+@@ -1822,6 +1822,7 @@ ImageData* BaseRenderingContext2D::getImageData(
+ }
+ 
+ ImageData* BaseRenderingContext2D::getImageDataInternal(
++    PRESEARCH_GET_IMAGE_DATA_PARAMS
+     int sx,
+     int sy,
+     int sw,
+@@ -2005,6 +2006,7 @@ ImageData* BaseRenderingContext2D::getImageDataInternal(
+     default:
+       NOTREACHED();
+   }
++  PRESEARCH_GET_IMAGE_DATA
+   ImageData* image_data = ImageData::ValidateAndCreate(
+       sw, sh, data_array, image_data_settings, exception_state,
+       ImageData::Context2DErrorMode);
