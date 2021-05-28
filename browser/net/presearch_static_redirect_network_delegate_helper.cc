@@ -12,8 +12,8 @@
 
 #include "base/strings/string_piece_forward.h"
 #include "presearch/browser/translate/buildflags/buildflags.h"
-#include "presearch.orgmon/network_constants.h"
-#include "presearch.orgmon/translate_network_constants.h"
+#include "presearch.common/network_constants.h"
+#include "presearch.common/translate_network_constants.h"
 #include "extensions/common/url_pattern.h"
 #include "net/base/net_errors.h"
 

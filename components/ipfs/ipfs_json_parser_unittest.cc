@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-#include "presearch.orgponents/ipfs/ipfs_json_parser.h"
+#include "presearch.components/ipfs/ipfs_json_parser.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 typedef testing::Test IPFSJSONParserTest;

@@ -3,8 +3,8 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch.orgponents/adblock_rust_ffi/src/wrapper.h"
-#include "presearch.orgponents/presearch_shields/browser/ad_block_service_helper.h"
+#include "presearch.components/adblock_rust_ffi/src/wrapper.h"
+#include "presearch.components/presearch_shields/browser/ad_block_service_helper.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(AdBlockRegionalServiceTest, UserModelLanguages) {

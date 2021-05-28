@@ -7,8 +7,8 @@
 
 #include "base/feature_list.h"
 #include "base/test/scoped_feature_list.h"
-#include "presearch.orgponents/sidebar/features.h"
-#include "presearch.orgponents/sidebar/sidebar_service.h"
+#include "presearch.components/sidebar/features.h"
+#include "presearch.components/sidebar/sidebar_service.h"
 #include "components/prefs/testing_pref_service.h"
 #include "testing/gtest/include/gtest/gtest.h"
 

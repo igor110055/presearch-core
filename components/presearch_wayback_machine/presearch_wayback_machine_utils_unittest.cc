@@ -5,8 +5,8 @@
 
 #include <string>
 
-#include "presearch.orgponents/presearch_wayback_machine/presearch_wayback_machine_utils.h"
-#include "presearch.orgponents/presearch_wayback_machine/url_constants.h"
+#include "presearch.components/presearch_wayback_machine/presearch_wayback_machine_utils.h"
+#include "presearch.components/presearch_wayback_machine/url_constants.h"
 #include "net/base/url_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/gurl.h"

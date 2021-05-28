@@ -5,8 +5,8 @@
 
 #include "base/path_service.h"
 #include "presearch/browser/extensions/api/presearch_shields_api.h"
-#include "presearch.orgmon/presearch_paths.h"
-#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.common/presearch_paths.h"
+#include "presearch.components/presearch_shields/common/presearch_shield_constants.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/extensions/api/content_settings/content_settings_api.h"
 #include "chrome/browser/extensions/api/content_settings/content_settings_api_constants.h"

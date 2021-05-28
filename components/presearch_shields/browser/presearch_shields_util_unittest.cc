@@ -6,9 +6,9 @@
 #include <memory>
 
 #include "base/macros.h"
-#include "presearch.orgponents/presearch_shields/browser/presearch_shields_util.h"
-#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
-#include "presearch.orgponents/presearch_shields/common/features.h"
+#include "presearch.components/presearch_shields/browser/presearch_shields_util.h"
+#include "presearch.components/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.components/presearch_shields/common/features.h"
 #include "build/build_config.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/test/base/testing_profile.h"
