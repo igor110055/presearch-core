@@ -9,7 +9,7 @@ import * as actions from '../../../presearch_extension/extension/presearch_exten
 describe('webNavigationActions', () => {
   it('onBeforeNavigate', () => {
     const tabId = 1
-    const url = 'https://www.presearch.com'
+    const url = 'https://www.presearch.org'
     const isMainFrame = true
     expect(actions.onBeforeNavigate(tabId, url, isMainFrame)).toEqual({
       type: types.ON_BEFORE_NAVIGATION,
@@ -20,7 +20,7 @@ describe('webNavigationActions', () => {
   })
   it('onCommitted', () => {
     const tabId = 1
-    const url = 'https://www.presearch.com'
+    const url = 'https://www.presearch.org'
     const isMainFrame = true
     expect(actions.onCommitted(tabId, url, isMainFrame)).toEqual({
       type: types.ON_COMMITTED,

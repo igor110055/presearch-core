@@ -78,7 +78,7 @@ storiesOf('Rewards/Modal', module)
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 40,
         onRemove: doNothing
       },
@@ -88,7 +88,7 @@ storiesOf('Rewards/Modal', module)
           verified: true,
           src: ddgo
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 20,
         onRemove: doNothing
       },
@@ -98,7 +98,7 @@ storiesOf('Rewards/Modal', module)
           verified: false,
           src: buzz
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 10,
         onRemove: doNothing
       },
@@ -108,7 +108,7 @@ storiesOf('Rewards/Modal', module)
           verified: true,
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 5,
         onRemove: doNothing
       },
@@ -118,7 +118,7 @@ storiesOf('Rewards/Modal', module)
           verified: false,
           src: wiki
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 4,
         onRemove: doNothing
       }
@@ -147,7 +147,7 @@ storiesOf('Rewards/Modal', module)
               provider: 'youtube',
               src: ''
             },
-            url: 'https://presearch.com',
+            url: 'https://presearch.org',
             amount: {
               tokens: '5.0',
               converted: '5.00'
@@ -225,7 +225,7 @@ storiesOf('Rewards/Modal', module)
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'recurring',
         contribute: {
           tokens: '2.0',
@@ -239,7 +239,7 @@ storiesOf('Rewards/Modal', module)
           name: 'theguardian.com',
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'donation',
         contribute: {
           tokens: '12000.0',
@@ -254,7 +254,7 @@ storiesOf('Rewards/Modal', module)
           provider: 'twitter',
           src: eich
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'tip',
         contribute: {
           tokens: '7.0',
@@ -280,7 +280,7 @@ storiesOf('Rewards/Modal', module)
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'recurring',
         amount: {
           tokens: '2.0',
@@ -295,7 +295,7 @@ storiesOf('Rewards/Modal', module)
           name: 'theguardian.com',
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'tip',
         amount: {
           tokens: '12000.0',
@@ -311,7 +311,7 @@ storiesOf('Rewards/Modal', module)
           provider: 'twitter',
           src: eich
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'ac',
         amount: {
           tokens: '1.0',

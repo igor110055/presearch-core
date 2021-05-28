@@ -32,7 +32,7 @@ TEST(RewardsUtilTest, GetServerUrlStaging) {
 TEST(RewardsUtilTest, GetServerUrlProduction) {
   ledger::_environment = type::Environment::PRODUCTION;
   const std::string url = GetServerUrl("/test");
-  ASSERT_EQ(url, "https://rewards.presearch.com/test");
+  ASSERT_EQ(url, "https://rewards.presearch.org/test");
 }
 
 }  // namespace rewards

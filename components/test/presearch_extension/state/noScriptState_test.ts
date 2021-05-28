@@ -27,7 +27,7 @@ const noScriptInfo: NoScriptInfo = {
   [url5]: { actuallyBlocked: true, willBlock: true, userInteracted: false }
 }
 
-const url: string = 'https://presearch.com'
+const url: string = 'https://presearch.org'
 const tabId: number = 2
 const state: State = deepFreeze({
   tabs: { [tabId]: { origin: url, id: tabId, noScriptInfo } },

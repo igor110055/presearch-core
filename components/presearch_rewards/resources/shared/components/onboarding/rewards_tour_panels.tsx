@@ -145,7 +145,7 @@ export function getVerifyWalletPanel (
             formatMessage(getString('onboardingPanelBitflyerLearnMore'), {
               tags: {
                 $1: (content) => (
-                  <NewTabLink key='learn-more' href='https://presearch.com/ja/users-bitflyer/'>
+                  <NewTabLink key='learn-more' href='https://presearch.org/ja/users-bitflyer/'>
                     {content}
                   </NewTabLink>
                 )

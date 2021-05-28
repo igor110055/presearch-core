@@ -10,7 +10,7 @@ import { shallow } from 'enzyme'
 
 const fakeProps: Props = {
   favicon: '',
-  hostname: 'presearch.com',
+  hostname: 'presearch.org',
   isBlockedListOpen: true,
   setBlockedListOpen: () => { return },
   fingerprinting: 'allow',

@@ -7,7 +7,7 @@ import * as tabsAPI from '../../../../presearch_extension/extension/presearch_ex
 describe('tabs API', () => {
   describe('createTab', () => {
     let spy: jest.SpyInstance
-    const createProperties = { url: 'https://www.presearch.com' }
+    const createProperties = { url: 'https://www.presearch.org' }
     beforeEach(() => {
       spy = jest.spyOn(chrome.tabs, 'create')
     })

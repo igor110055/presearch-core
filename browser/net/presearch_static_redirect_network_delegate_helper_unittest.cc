@@ -11,7 +11,7 @@
 #include "base/strings/string_util.h"
 #include "presearch/browser/net/url_context.h"
 #include "presearch/browser/translate/buildflags/buildflags.h"
-#include "presearch/common/translate_network_constants.h"
+#include "presearch.orgmon/translate_network_constants.h"
 #include "components/component_updater/component_updater_url_constants.h"
 #include "net/base/net_errors.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -21,7 +21,7 @@
 using presearch::ResponseCallback;
 
 TEST(PresearchStaticRedirectNetworkDelegateHelperTest, NoModifyTypicalURL) {
-  const GURL url("https://bradhatesprimes.presearch.com/composite_numbers_ftw");
+  const GURL url("https://bradhatesprimes.presearch.org/composite_numbers_ftw");
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_StaticRedirectWork(ResponseCallback(), request_info);
@@ -46,7 +46,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet1) {
       "https://dl.google.com/release2/chrome_component/AJ4r388iQSJq_4819/"
       "4819_all_crl-set-5934829738003798040.data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/release2/chrome_component/"
+      "https://crlsets.presearch.org/release2/chrome_component/"
       "AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -62,7 +62,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet2) {
       "chrome_component/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040"
       ".data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/edgedl/release2/chrome_compone"
+      "https://crlsets.presearch.org/edgedl/release2/chrome_compone"
       "nt/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -77,7 +77,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet3) {
       "https://www.google.com/dl/release2/chrome_component/LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/dl/release2/chrome_component/LLjIBPPmveI_4988/"
+      "https://crlsets.presearch.org/dl/release2/chrome_component/LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -96,7 +96,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRXDownload) {
       "extension_2_0_67"
       "3_0.crx");
   const GURL expected_url(
-      "https://crxdownload.presearch.com/crx/blobs/QgAAAC6"
+      "https://crxdownload.presearch.org/crx/blobs/QgAAAC6"
       "zw0qH2DJtnXe8Z7rUJP1RM6lX7kVcwkQ56ujmG3AWYOAkxoNnIdnEBUz_"
       "3z4keVhjzzAF10sr"
       "saL7lrntfBIflcYIrTziwX3SUS9i_P-CAMZSmuV5tdQl-Roo6cnVC_GRzKsnZSKm1Q/"
@@ -115,7 +115,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet1_http) {
       "http://dl.google.com/release2/chrome_component/AJ4r388iQSJq_4819/"
       "4819_all_crl-set-5934829738003798040.data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/release2/chrome_component/"
+      "https://crlsets.presearch.org/release2/chrome_component/"
       "AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -131,7 +131,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet2_http) {
       "chrome_component/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040"
       ".data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/edgedl/release2/chrome_compone"
+      "https://crlsets.presearch.org/edgedl/release2/chrome_compone"
       "nt/AJ4r388iQSJq_4819/4819_all_crl-set-5934829738003798040.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -146,7 +146,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRLSet3_http) {
       "http://www.google.com/dl/release2/chrome_component/LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
   const GURL expected_url(
-      "https://crlsets.presearch.com/dl/release2/chrome_component/LLjIBPPmveI_4988/"
+      "https://crlsets.presearch.org/dl/release2/chrome_component/LLjIBPPmveI_4988/"
       "4988_all_crl-set-6296993568184466307.data.crx3");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -165,7 +165,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyCRXDownload_http) {
       "extension_2_0_67"
       "3_0.crx");
   const GURL expected_url(
-      "https://crxdownload.presearch.com/crx/blobs/QgAAAC6"
+      "https://crxdownload.presearch.org/crx/blobs/QgAAAC6"
       "zw0qH2DJtnXe8Z7rUJP1RM6lX7kVcwkQ56ujmG3AWYOAkxoNnIdnEBUz_"
       "3z4keVhjzzAF10sr"
       "saL7lrntfBIflcYIrTziwX3SUS9i_P-CAMZSmuV5tdQl-Roo6cnVC_GRzKsnZSKm1Q/"
@@ -216,7 +216,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyGvt1) {
       "http://redirector.gvt1.com/edgedl/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
   const GURL expected_url(
-      "https://redirector.presearch.com/edgedl/release2/"
+      "https://redirector.presearch.org/edgedl/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -231,7 +231,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest, ModifyGoogleDl) {
       "http://dl.google.com/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
   const GURL expected_url(
-      "https://redirector.presearch.com/release2/"
+      "https://redirector.presearch.org/release2/"
       "NfaZYtcKdtFc0LUvFkcNFA_0.3/AKveSIjhHAm2K09XAMovFEQ");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
@@ -275,7 +275,7 @@ TEST(PresearchStaticRedirectNetworkDelegateHelperTest,
       "https://sb-ssl.google.com/safebrowsing/clientreport/download?"
       "key=DUMMY_KEY");
   GURL expected_url(
-      "https://sb-ssl.presearch.com/safebrowsing/clientreport/download?"
+      "https://sb-ssl.presearch.org/safebrowsing/clientreport/download?"
       "key=DUMMY_KEY");
 
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);

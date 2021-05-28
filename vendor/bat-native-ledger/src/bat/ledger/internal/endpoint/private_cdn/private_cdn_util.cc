@@ -12,7 +12,7 @@ namespace private_cdn {
 
 const char kDevelopment[] = "https://pcdn.presearch.software";
 const char kStaging[] = "https://pcdn.presearchsoftware.com";
-const char kProduction[] = "https://pcdn.presearch.com";
+const char kProduction[] = "https://pcdn.presearch.org";
 
 std::string GetServerUrl(const std::string& path) {
   DCHECK(!path.empty());

@@ -108,7 +108,7 @@ const Config = function () {
   this.safeBrowsingApiEndpoint = getNPMConfig(['safebrowsing_api_endpoint']) || ''
   this.updaterProdEndpoint = getNPMConfig(['updater_prod_endpoint']) || ''
   this.updaterDevEndpoint = getNPMConfig(['updater_dev_endpoint']) || ''
-  this.webcompatReportApiEndpoint = getNPMConfig(['webcompat_report_api_endpoint']) || 'https://webcompat.presearch.com/1/webcompat'
+  this.webcompatReportApiEndpoint = getNPMConfig(['webcompat_report_api_endpoint']) || 'https://webcompat.presearch.org/1/webcompat'
   this.chromePgoPhase = 0
   // this.buildProjects()
   this.presearchVersion = getNPMConfig(['version']) || '0.0.0'

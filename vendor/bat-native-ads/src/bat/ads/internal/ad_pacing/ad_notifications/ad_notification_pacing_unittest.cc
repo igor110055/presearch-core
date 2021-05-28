@@ -68,7 +68,7 @@ class BatAdsAdNotificationPacingTest : public UnitTestBase {
     ad_creative_1.total_max = 4;
     ad_creative_1.segment = "Technology & Computing-Software";
     ad_creative_1.geo_targets = {"US"};
-    ad_creative_1.target_url = "https://presearch.com";
+    ad_creative_1.target_url = "https://presearch.org";
     ad_creative_1.title = "Test Ad 1 Title";
     ad_creative_1.body = "Test Ad 1 Body";
     ad_creative_1.ptr = 1.0;
@@ -87,7 +87,7 @@ class BatAdsAdNotificationPacingTest : public UnitTestBase {
     ad_creative_2.total_max = 4;
     ad_creative_2.segment = "Food & Drink";
     ad_creative_2.geo_targets = {"US"};
-    ad_creative_2.target_url = "https://presearch.com";
+    ad_creative_2.target_url = "https://presearch.org";
     ad_creative_2.title = "Test Ad 2 Title";
     ad_creative_2.body = "Test Ad 2 Body";
     ad_creative_2.ptr = 1.0;

@@ -20,7 +20,7 @@ TEST(BatAdsRewardsServerUtilTest, Production) {
   const std::string host = rewards::server::GetHost();
 
   // Assert
-  const std::string expected_host = "https://grant.rewards.presearch.com";
+  const std::string expected_host = "https://grant.rewards.presearch.org";
   EXPECT_EQ(expected_host, host);
 }
 

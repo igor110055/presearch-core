@@ -67,7 +67,7 @@ describe('welcomeReducer', () => {
     it('calls window.open', () => {
       welcomeReducer(undefined, {
         type: types.GO_TO_TAB_REQUESTED,
-        payload: { url: 'https://presearch.com', target: '_blank' }
+        payload: { url: 'https://presearch.org', target: '_blank' }
       })
       expect(window.open).toBeCalled()
     })

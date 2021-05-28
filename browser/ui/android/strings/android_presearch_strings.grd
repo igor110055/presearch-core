@@ -769,10 +769,10 @@ until they verify, or until 90 days have passed.
         Don't show again
       </message>
       <message name="IDS_PRESEARCH_PRIVACY_NOTICE_URL" desc="URL for the Presearch privacy notice" translateable="false">
-        https://presearch.com/privacy_android
+        https://presearch.org/privacy_android
       </message>
       <message name="IDS_PRESEARCH_TERMS_OF_SERVICE_URL" desc="URL for Presearch Terms of Service" translateable="false">
-        https://presearch.com/terms_of_use
+        https://presearch.org/terms_of_use
       </message>
       <message name="IDS_PRESEARCH_LICENSE_TEXT" desc="Title for Presearch License">
         Presearch License
@@ -808,7 +808,7 @@ until they verify, or until 90 days have passed.
         Pending Contribution
       </message>
       <message name="IDS_PRESEARCH_UI_VERIFIED_PUBLISHER_NOTIFICATION" desc="Notification text that tells user which publisher just verified">
-        Creator <ph name="PUBLISHER_NAME">%1$s<ex>presearch.com</ex></ph> recently verified
+        Creator <ph name="PUBLISHER_NAME">%1$s<ex>presearch.org</ex></ph> recently verified
       </message>
        <message name="IDS_PRESEARCH_UI_YOUR_BALANCE" desc="Your balance title">
         Your balance
@@ -1165,7 +1165,7 @@ until they verify, or until 90 days have passed.
         Presearch works everywhere
       </message>
       <message name="IDS_DOWNLOAD_PRESEARCH" desc="Cross promotional modal text">
-        Download Presearch at presearch.com on your laptop or tablet for a faster and more private web
+        Download Presearch at presearch.org on your laptop or tablet for a faster and more private web
       </message>
       <message name="IDS_PRIVACY_PROTECTION" desc="Title for onboading bottomsheet.">
         Privacy protection

@@ -27,7 +27,7 @@
               "payload": {
                 "body": "Test Ad 1 Campaign 1 Body",
                 "title": "Test Ad 1 Campaign 1 Title",
-                "targetUrl": "https://presearch.com/1"
+                "targetUrl": "https://presearch.org/1"
               }
             },
             {
@@ -41,7 +41,7 @@
               "payload": {
                 "body": "Test Ad 2 Campaign 1 Body",
                 "title": "Test Ad 2 Campaign 1 Title",
-                "targetUrl": "https://presearch.com/2"
+                "targetUrl": "https://presearch.org/2"
               }
             },
             {
@@ -53,7 +53,7 @@
                 "version": 1
               },
               "payload": {
-                "feed": "https://presearch.com/3",
+                "feed": "https://presearch.org/3",
                 "title": "Test Ad 3 Campaign 1 Title",
                 "domain": "Domain",
                 "category": "Category",
@@ -74,7 +74,7 @@
           "conversions": [
             {
               "observationWindow": 30,
-              "urlPattern": "https://www.presearch.com/*",
+              "urlPattern": "https://www.presearch.org/*",
               "type": "postview"
             }
           ],
@@ -119,9 +119,9 @@
               "payload": {
                 "logo": {
                   "alt": "This is a test NTP creative",
-                  "imageUrl": "https://presearch.com/test.jpg",
+                  "imageUrl": "https://presearch.org/test.jpg",
                   "companyName": "Presearch",
-                  "destinationUrl": "https://presearch.com"
+                  "destinationUrl": "https://presearch.org"
                 },
                 "wallpapers": [
                   {
@@ -129,14 +129,14 @@
                       "x": 1200,
                       "y": 1400
                     },
-                    "imageUrl": "https://presearch.com/test2.jpg"
+                    "imageUrl": "https://presearch.org/test2.jpg"
                   },
                   {
                     "focalPoint": {
                       "x": 1200,
                       "y": 1400
                     },
-                    "imageUrl": "https://presearch.com/test3.jpg"
+                    "imageUrl": "https://presearch.org/test3.jpg"
                   }
                 ]
               }
@@ -193,7 +193,7 @@
               "payload": {
                 "body": "Test Ad 1 Campaign 2 Body",
                 "title": "Test Ad 1 Campaign 2 Title",
-                "targetUrl": "https://presearch.com/1"
+                "targetUrl": "https://presearch.org/1"
               }
             }
           ],
@@ -208,7 +208,7 @@
           "conversions": [
             {
               "observationWindow": 7,
-              "urlPattern": "https://www.presearch.com/*",
+              "urlPattern": "https://www.presearch.org/*",
               "type": "postclick"
             }
           ],

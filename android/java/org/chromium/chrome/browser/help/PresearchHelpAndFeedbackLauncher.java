@@ -18,7 +18,7 @@ import org.chromium.chrome.browser.feedback.HelpAndFeedbackLauncherImpl;
 import javax.annotation.Nonnull;
 
 public class PresearchHelpAndFeedbackLauncher extends HelpAndFeedbackLauncherImpl {
-    protected static final String FALLBACK_SUPPORT_URL = "https://community.presearch.com/";
+    protected static final String FALLBACK_SUPPORT_URL = "https://community.presearch.org/";
     private static final String TAG = "PresearchHelpAndFeedbackLauncher";
 
     @Override

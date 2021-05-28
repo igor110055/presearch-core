@@ -101,7 +101,7 @@ export const summary = () => {
         }}
         onActivity={doNothing}
         reservedAmount={number('Reserved amount', 52)}
-        reservedMoreLink={'https://presearch.com'}
+        reservedMoreLink={'https://presearch.org'}
         onSeeAllReserved={doNothing}
         onlyAnonWallet={boolean('Anon Wallet Only', false)}
       />

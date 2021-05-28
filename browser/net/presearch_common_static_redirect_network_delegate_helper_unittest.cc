@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/browser/net/presearch_common_static_redirect_network_delegate_helper.h"
+#include "presearch/browser/net/presearch.orgmon_static_redirect_network_delegate_helper.h"
 
 #include <memory>
 #include <string>
 
 #include "base/command_line.h"
 #include "presearch/browser/net/url_context.h"
-#include "presearch/common/network_constants.h"
-#include "presearch/components/presearch_component_updater/browser/switches.h"
+#include "presearch.orgmon/network_constants.h"
+#include "presearch.orgponents/presearch.orgponent_updater/browser/switches.h"
 #include "components/component_updater/component_updater_url_constants.h"
 #include "net/base/net_errors.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -21,7 +21,7 @@
 using presearch::ResponseCallback;
 
 namespace {
-const char kComponentUpdaterProxy[] = "https://componentupdater.presearch.com";
+const char kComponentUpdaterProxy[] = "https://componentupdater.presearch.org";
 }
 
 TEST(PresearchCommonStaticRedirectNetworkDelegateHelperTest,
@@ -43,7 +43,7 @@ TEST(PresearchCommonStaticRedirectNetworkDelegateHelperTest,
      ModifyComponentUpdaterURLDev) {
   presearch::SetUpdateURLHostForTesting(true);
   base::CommandLine::ForCurrentProcess()->AppendSwitch(
-      presearch_component_updater::kUseGoUpdateDev);
+      presearch.orgponent_updater::kUseGoUpdateDev);
   const std::string query_string("?foo=bar");
   const GURL url(component_updater::kUpdaterJSONDefaultUrl + query_string);
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);

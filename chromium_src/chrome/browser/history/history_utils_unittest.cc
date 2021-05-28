@@ -12,7 +12,7 @@
 // This test covers all cases that upstream and our version of
 // CanAddURLToHistory().
 TEST(HistoryUtilsTest, VariousURLTest) {
-  EXPECT_TRUE(CanAddURLToHistory(GURL("https://www.presearch.com/")));
+  EXPECT_TRUE(CanAddURLToHistory(GURL("https://www.presearch.org/")));
   EXPECT_FALSE(CanAddURLToHistory(GURL("presearch://sync/")));
   EXPECT_FALSE(CanAddURLToHistory(GURL("javascript://test")));
   EXPECT_FALSE(CanAddURLToHistory(GURL("about://test")));

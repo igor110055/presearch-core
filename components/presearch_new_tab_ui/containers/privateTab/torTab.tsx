@@ -70,7 +70,7 @@ export default class TorTab extends React.PureComponent<Props, {}> {
           <Separator />
           <ButtonGroup>
             <Link
-              href='https://support.presearch.com/hc/en-us/articles/360018266171'
+              href='https://support.presearch.org/hc/en-us/articles/360018266171'
               target='_blank'
             >
               {getLocale('learnMore')}
@@ -86,7 +86,7 @@ export default class TorTab extends React.PureComponent<Props, {}> {
           </Content>
           <Separator />
           <FakeButton
-            href='https://support.presearch.com/hc/en-us/articles/360018121491'
+            href='https://support.presearch.org/hc/en-us/articles/360018121491'
             target='_blank'
           >
             {getLocale('boxTorButton')}

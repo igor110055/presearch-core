@@ -59,7 +59,7 @@ class PageWallet extends React.Component<Props, State> {
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         amount: {
           tokens: '5.0',
           converted: '5.00'
@@ -72,7 +72,7 @@ class PageWallet extends React.Component<Props, State> {
           verified: true,
           src: ddgo
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         amount: {
           tokens: '4.0',
           converted: '11.00'
@@ -85,7 +85,7 @@ class PageWallet extends React.Component<Props, State> {
           verified: false,
           src: buzz
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         amount: {
           tokens: '3.0',
           converted: '15.00'
@@ -98,7 +98,7 @@ class PageWallet extends React.Component<Props, State> {
           verified: true,
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         amount: {
           tokens: '2.0',
           converted: '17.00'
@@ -111,7 +111,7 @@ class PageWallet extends React.Component<Props, State> {
           verified: false,
           src: wiki
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         amount: {
           tokens: '1.0',
           converted: '11.00'

@@ -31,7 +31,7 @@ import org.chromium.chrome.browser.ntp_background_images.NTPBackgroundImagesBrid
 
 public class RateFeedbackUtils {
 	private static final String TAG = "Rate_Presearch";
-	private static final String RATE_URL = "https://laptop-updates.presearch.com/1/feedback";
+	private static final String RATE_URL = "https://laptop-updates.presearch.org/1/feedback";
 
 	public interface RateFeedbackCallback {
 		void rateFeedbackSubmitted();

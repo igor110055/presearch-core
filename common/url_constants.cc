@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 
-#include "presearch/common/url_constants.h"
+#include "presearch.orgmon/url_constants.h"
 
 const char kChromeExtensionScheme[] = "chrome-extension";
 const char kPresearchUIScheme[] = "presearch";
@@ -14,11 +14,11 @@ const char kGeminiScheme[] = "com.presearch.gemini";
 const char kWidevineMoreInfoURL[] = "https://www.eff.org/issues/drm";
 const char kWidevineTOS[] = "https://policies.google.com/terms";
 const char kRewardsUpholdSupport[] = "https://uphold.com/en/presearch/support";
-const char kP3ALearnMoreURL[] = "https://presearch.com/P3A";
+const char kP3ALearnMoreURL[] = "https://presearch.org/P3A";
 const char kP3ASettingsLink[] = "chrome://settings/privacy";
 const char kImportDataHelpURL[] =
-    "https://support.presearch.com/hc/en-us/articles/360019782291#safari";
+    "https://support.presearch.org/hc/en-us/articles/360019782291#safari";
 const char kCryptoWalletsLearnMoreURL[] =
-    "https://support.presearch.com/hc/en-us/articles/360034535452";
+    "https://support.presearch.org/hc/en-us/articles/360034535452";
 const char kPermissionPromptLearnMoreUrl[] =
     "https://github.com/presearch/presearch-browser/wiki/Web-API-Permissions";

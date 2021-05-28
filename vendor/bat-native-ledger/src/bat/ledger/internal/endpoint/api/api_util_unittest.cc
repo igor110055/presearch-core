@@ -32,7 +32,7 @@ TEST(APIUtilTest, GetServerUrlStaging) {
 TEST(APIUtilTest, GetServerUrlProduction) {
   ledger::_environment = type::Environment::PRODUCTION;
   const std::string url = GetServerUrl("/test");
-  ASSERT_EQ(url, "https://api.rewards.presearch.com/test");
+  ASSERT_EQ(url, "https://api.rewards.presearch.org/test");
 }
 
 }  // namespace api

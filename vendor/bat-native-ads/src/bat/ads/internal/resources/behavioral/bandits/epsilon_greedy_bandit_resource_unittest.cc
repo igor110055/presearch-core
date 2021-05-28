@@ -52,7 +52,7 @@ TEST_F(BatAdsEpsilonGreedyBanditResourceTest, LoadFromDatabase) {
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.title = "Test Ad Title";
   info.body = "Test Ad Body";
   info.ptr = 1.0;

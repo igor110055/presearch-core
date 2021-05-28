@@ -39,7 +39,7 @@ TEST_F(BatAdsAntiTargetingFrequencyCapTest, AllowIfResourceDidNotLoad) {
   resource::AntiTargeting resource;
 
   BrowsingHistoryList history = {{"https://www.foo1.org"},
-                                 {"https://www.presearch.com"},
+                                 {"https://www.presearch.org"},
                                  {"https://www.foo2.org"}};
 
   // Act
@@ -59,7 +59,7 @@ TEST_F(BatAdsAntiTargetingFrequencyCapTest, AllowIfCreativeSetDoesNotMatch) {
   resource.Load();
 
   BrowsingHistoryList history = {{"https://www.foo1.org"},
-                                 {"https://www.presearch.com"},
+                                 {"https://www.presearch.org"},
                                  {"https://www.foo2.org"}};
 
   // Act
@@ -99,7 +99,7 @@ TEST_F(BatAdsAntiTargetingFrequencyCapTest,
   resource.Load();
 
   BrowsingHistoryList history = {{"https://www.foo1.org"},
-                                 {"https://www.presearch.com"}};
+                                 {"https://www.presearch.org"}};
 
   // Act
   AntiTargetingFrequencyCap frequency_cap(&resource, history);

@@ -17,7 +17,7 @@ const int kVersion = 1;
 
 std::string BuildViaHeader() {
   return base::StringPrintf(
-      "Via: 1.%d presearch, 1.1 ads-serve.presearch.com (Apache/1.%d)",
+      "Via: 1.%d presearch, 1.1 ads-serve.presearch.org (Apache/1.%d)",
       g_sys_info.is_uncertain_future ? 1 : 0, kVersion);
 }
 

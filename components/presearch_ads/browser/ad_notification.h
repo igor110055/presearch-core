@@ -25,7 +25,7 @@ namespace presearch_ads {
 class Notification;
 
 // On Android, this URL must represent an HTTP or HTTPS web origin.
-const char* const kPresearchAdsUrlPrefix = "https://www.presearch.com/ads/?";
+const char* const kPresearchAdsUrlPrefix = "https://www.presearch.org/ads/?";
 
 std::unique_ptr<Notification> CreateAdNotification(
     const ads::AdNotificationInfo& info);

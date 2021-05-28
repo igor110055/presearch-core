@@ -6,9 +6,9 @@
 #include "base/path_service.h"
 #include "base/task/post_task.h"
 #include "base/test/thread_test_helper.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_search/browser/presearch_search_host.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_search/browser/presearch_search_host.h"
 #include "chrome/browser/extensions/extension_browsertest.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
@@ -26,9 +26,9 @@ using extensions::ExtensionBrowserTest;
 namespace {
 
 const char kEmbeddedTestServerDirectory[] = "presearch-search";
-const char kAllowedDomain[] = "search.presearch.com";
-const char kAllowedDomainDev[] = "search-dev.presearch.com";
-const char kNotAllowedDomain[] = "presearch.com";
+const char kAllowedDomain[] = "search.presearch.org";
+const char kAllowedDomainDev[] = "search-dev.presearch.org";
+const char kNotAllowedDomain[] = "presearch.org";
 const char kBackupSearchContent[] = "<html><body>results</body></html>";
 
 std::string GetChromeFetchBackupResultsAvailScript() {

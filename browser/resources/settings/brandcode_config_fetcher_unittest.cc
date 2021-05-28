@@ -43,7 +43,7 @@ TEST_F(BrandcodeConfigFetcherTest, NoFetch) {
   BrandcodeConfigFetcher* uploader = new BrandcodeConfigFetcher(
       test_url_loader_factory(),
       base::BindLambdaForTesting([&]() { callback_called = true; }),
-      GURL("https://www.presearch.com/"), "BRAV");
+      GURL("https://www.presearch.org/"), "BRAV");
   base::RunLoop().RunUntilIdle();
   EXPECT_FALSE(uploader->IsActive());
   EXPECT_FALSE(network_access_occurred);

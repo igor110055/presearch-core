@@ -60,7 +60,7 @@ TEST_F(PostVotesTest, ServerOK) {
   token.public_key = "dvpysTSiJdZUPihius7pvGOfngRWfDiIbrowykgMi1I=";
 
   credential::CredentialsRedeem redeem;
-  redeem.publisher_key = "presearch.com";
+  redeem.publisher_key = "presearch.org";
   redeem.type = type::RewardsType::ONE_TIME_TIP;
   redeem.processor = type::ContributionProcessor::UPHOLD;
   redeem.token_list = {token};
@@ -92,7 +92,7 @@ TEST_F(PostVotesTest, ServerError400) {
   token.public_key = "dvpysTSiJdZUPihius7pvGOfngRWfDiIbrowykgMi1I=";
 
   credential::CredentialsRedeem redeem;
-  redeem.publisher_key = "presearch.com";
+  redeem.publisher_key = "presearch.org";
   redeem.type = type::RewardsType::ONE_TIME_TIP;
   redeem.processor = type::ContributionProcessor::UPHOLD;
   redeem.token_list = {token};
@@ -124,7 +124,7 @@ TEST_F(PostVotesTest, ServerError500) {
   token.public_key = "dvpysTSiJdZUPihius7pvGOfngRWfDiIbrowykgMi1I=";
 
   credential::CredentialsRedeem redeem;
-  redeem.publisher_key = "presearch.com";
+  redeem.publisher_key = "presearch.org";
   redeem.type = type::RewardsType::ONE_TIME_TIP;
   redeem.processor = type::ContributionProcessor::UPHOLD;
   redeem.token_list = {token};
@@ -156,7 +156,7 @@ TEST_F(PostVotesTest, ServerErrorRandom) {
   token.public_key = "dvpysTSiJdZUPihius7pvGOfngRWfDiIbrowykgMi1I=";
 
   credential::CredentialsRedeem redeem;
-  redeem.publisher_key = "presearch.com";
+  redeem.publisher_key = "presearch.org";
   redeem.type = type::RewardsType::ONE_TIME_TIP;
   redeem.processor = type::ContributionProcessor::UPHOLD;
   redeem.token_list = {token};

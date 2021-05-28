@@ -45,12 +45,12 @@
     "url": "git+https://github.com/mamylinx/presearch-core.git"
   },
   "author": {
-    "name": "Presearch Software <devopsmdg@presearch.com>"
+    "name": "Presearch Software <devopsmdg@presearch.org>"
   },
   "contributors": [
     {
       "name": "Mamy Linx",
-      "email": "devopsmdg@presearch.com"
+      "email": "devopsmdg@presearch.org"
     }
   ],
   "license": "MPL-2.0",

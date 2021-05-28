@@ -28,7 +28,7 @@ TEST_F(BatAdsPurchaseIntentProcessorTest,
   resource::PurchaseIntent resource;
 
   // Act
-  const GURL url = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url = GURL("https://www.presearch.org/test?foo=bar");
   processor::PurchaseIntent processor(&resource);
   processor.Process(url);
 
@@ -78,7 +78,7 @@ TEST_F(BatAdsPurchaseIntentProcessorTest, ProcessUrl) {
   resource.Load();
 
   // Act
-  const GURL url = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url = GURL("https://www.presearch.org/test?foo=bar");
   processor::PurchaseIntent processor(&resource);
   processor.Process(url);
 
@@ -104,7 +104,7 @@ TEST_F(BatAdsPurchaseIntentProcessorTest, ProcessMultipleMatchingUrls) {
   // Act
   processor::PurchaseIntent processor(&resource);
 
-  const GURL url = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url = GURL("https://www.presearch.org/test?foo=bar");
   processor.Process(url);
   processor.Process(url);
 
@@ -135,7 +135,7 @@ TEST_F(BatAdsPurchaseIntentProcessorTest, ProcessMultipleUniqueUrls) {
   processor::PurchaseIntent processor(&resource);
 
   const int64_t now_1 = NowAsTimestamp();
-  const GURL url_1 = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url_1 = GURL("https://www.presearch.org/test?foo=bar");
   processor.Process(url_1);
 
   FastForwardClockBy(base::TimeDelta::FromMinutes(5));

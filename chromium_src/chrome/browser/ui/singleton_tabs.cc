@@ -8,7 +8,7 @@
 
 void ShowSingletonTab(Browser* browser, const GURL& url) {
   GURL new_url = url.DomainIs("google.com") ?
-    GURL("https://community.presearch.com/") : url;
+    GURL("https://community.presearch.org/") : url;
 
   ShowSingletonTab_ChromiumImpl(browser, new_url);
 }

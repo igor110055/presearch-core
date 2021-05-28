@@ -199,7 +199,7 @@ export class Panel extends React.Component<Props, State> {
 
   onDeviceLimitReached = (id: string) => {
     chrome.tabs.create({
-      url: 'https://support.presearch.com/hc/en-us/articles/360056508071'
+      url: 'https://support.presearch.org/hc/en-us/articles/360056508071'
     })
     this.actions.deleteNotification(id)
   }
@@ -866,7 +866,7 @@ export class Panel extends React.Component<Props, State> {
               onIncludeInAuto={this.switchAutoContribute}
               showUnVerified={this.shouldShowConnectedMessage()}
               acEnabled={enabledAC}
-              moreLink={'https://presearch.com/faq/#unclaimed-funds'}
+              moreLink={'https://presearch.org/faq/#unclaimed-funds'}
               onRefreshPublisher={this.refreshPublisher}
               refreshingPublisher={this.state.refreshingPublisher}
               publisherRefreshed={this.state.publisherRefreshed}
@@ -880,7 +880,7 @@ export class Panel extends React.Component<Props, State> {
             compact={true}
             reservedAmount={pendingTotal}
             onlyAnonWallet={this.props.onlyAnonWallet}
-            reservedMoreLink={'https://presearch.com/faq/#unclaimed-funds'}
+            reservedMoreLink={'https://presearch.org/faq/#unclaimed-funds'}
             {...this.getWalletSummary()}
           />
         </WalletSummarySlider>

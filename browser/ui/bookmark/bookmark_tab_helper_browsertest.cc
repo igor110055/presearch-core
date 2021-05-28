@@ -5,7 +5,7 @@
 
 #include <vector>
 
-#include "presearch/common/pref_names.h"
+#include "presearch.orgmon/pref_names.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/search/search.h"
@@ -40,7 +40,7 @@ bool IsNTP(content::WebContents* web_contents) {
 }
 
 void AddBookmarkNode(Profile* profile) {
-  const GURL url = GURL("https://www.presearch.com");
+  const GURL url = GURL("https://www.presearch.org");
   bookmarks::BookmarkModel* bookmark_model =
       BookmarkModelFactory::GetForBrowserContext(profile);
 

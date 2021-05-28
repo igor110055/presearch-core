@@ -27,7 +27,7 @@ TEST_F(BatAdsPurchaseIntentModelTest, DoNotGetSegmentsForUnitializedResource) {
   resource::PurchaseIntent resource;
   processor::PurchaseIntent processor(&resource);
 
-  const GURL url = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url = GURL("https://www.presearch.org/test?foo=bar");
   processor.Process(url);
 
   // Act
@@ -47,7 +47,7 @@ TEST_F(BatAdsPurchaseIntentModelTest, DoNotGetSegmentsForExpiredSignals) {
 
   processor::PurchaseIntent processor(&resource);
 
-  const GURL url_1 = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url_1 = GURL("https://www.presearch.org/test?foo=bar");
   processor.Process(url_1);
 
   FastForwardClockBy(base::TimeDelta::FromDays(1));
@@ -108,7 +108,7 @@ TEST_F(BatAdsPurchaseIntentModelTest, GetSegmentsForPreviouslyMatchedSite) {
 
   processor::PurchaseIntent processor(&resource);
 
-  const GURL url_1 = GURL("https://www.presearch.com/test?foo=bar");
+  const GURL url_1 = GURL("https://www.presearch.org/test?foo=bar");
   processor.Process(url_1);
 
   const GURL url_2 = GURL("https://www.basicattentiontoken.org/test?bar=foo");

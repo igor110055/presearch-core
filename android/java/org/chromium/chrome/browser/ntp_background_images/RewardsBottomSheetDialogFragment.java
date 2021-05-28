@@ -54,7 +54,7 @@ import org.chromium.ui.base.DeviceFormFactor;
 
 public class RewardsBottomSheetDialogFragment extends BottomSheetDialogFragment {
     private static final String PRESEARCH_TERMS_PAGE = "https://basicattentiontoken.org/user-terms-of-service/";
-    private static final String PRESEARCH_REWARDS_LEARN_MORE = "https://presearch.com/faq-rewards";
+    private static final String PRESEARCH_REWARDS_LEARN_MORE = "https://presearch.org/faq-rewards";
 
     private int ntpType;
     private NewTabPageListener newTabPageListener;

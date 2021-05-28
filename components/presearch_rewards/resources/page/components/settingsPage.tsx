@@ -176,7 +176,7 @@ class SettingsPage extends React.Component<Props, State> {
   }
 
   openPrivacyPolicy () {
-    window.open('https://presearch.com/privacy#rewards', '_blank')
+    window.open('https://presearch.org/privacy#rewards', '_blank')
   }
 
   onDismissPromo = (promo: PromoType, event: React.MouseEvent<HTMLDivElement>) => {

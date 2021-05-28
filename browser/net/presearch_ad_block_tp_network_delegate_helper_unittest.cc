@@ -10,14 +10,14 @@
 #include <vector>
 
 #include "presearch/browser/net/url_context.h"
-#include "presearch/common/network_constants.h"
+#include "presearch.orgmon/network_constants.h"
 #include "net/base/net_errors.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 using presearch::ResponseCallback;
 
 TEST(PresearchAdBlockTPNetworkDelegateHelperTest, NoChangeURL) {
-  const GURL url("https://bradhatesprimes.presearch.com/composite_numbers_ftw");
+  const GURL url("https://bradhatesprimes.presearch.org/composite_numbers_ftw");
   auto request_info = std::make_shared<presearch::PresearchRequestInfo>(url);
   int rc =
       OnBeforeURLRequest_AdBlockTPPreWork(ResponseCallback(), request_info);

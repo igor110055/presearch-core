@@ -168,7 +168,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 40,
         onRemove: this.doNothing
       },
@@ -178,7 +178,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: true,
           src: ddgo
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 20,
         onRemove: this.doNothing
       },
@@ -188,7 +188,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: false,
           src: buzz
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 10,
         onRemove: this.doNothing
       },
@@ -198,7 +198,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: true,
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 5,
         onRemove: this.doNothing
       },
@@ -208,7 +208,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: false,
           src: wiki
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 4,
         onRemove: this.doNothing
       },
@@ -218,7 +218,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: true,
           src: ddgo
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 20,
         onRemove: this.doNothing
       },
@@ -228,7 +228,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: false,
           src: buzz
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 10,
         onRemove: this.doNothing
       },
@@ -238,7 +238,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: true,
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 5,
         onRemove: this.doNothing
       },
@@ -248,7 +248,7 @@ class ContributeBoxMobile extends React.Component<Props, State> {
           verified: false,
           src: wiki
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         attention: 4,
         onRemove: this.doNothing
       }

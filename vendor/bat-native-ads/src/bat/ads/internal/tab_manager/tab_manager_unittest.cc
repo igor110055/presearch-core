@@ -35,7 +35,7 @@ TEST_F(BatAdsTabManagerTest, IsTabVisible) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   EXPECT_TRUE(TabManager::Get()->IsVisible(1));
@@ -45,7 +45,7 @@ TEST_F(BatAdsTabManagerTest, IsTabOccluded) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", false, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", false, false);
 
   // Assert
   EXPECT_FALSE(TabManager::Get()->IsVisible(1));
@@ -55,14 +55,14 @@ TEST_F(BatAdsTabManagerTest, UpdatedTab) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
 
   TabInfo expected_tab;
   expected_tab.id = 1;
-  expected_tab.url = "https://presearch.com";
+  expected_tab.url = "https://presearch.org";
   expected_tab.is_playing_media = false;
   EXPECT_EQ(expected_tab, tab);
 }
@@ -71,7 +71,7 @@ TEST_F(BatAdsTabManagerTest, OpenedNewTabUserActivityEvent) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   const UserActivityEvents events =
@@ -89,10 +89,10 @@ TEST_F(BatAdsTabManagerTest, OpenedNewTabUserActivityEvent) {
 
 TEST_F(BatAdsTabManagerTest, FocusedOnExistingTabUserActivityEvent) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", false, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", false, false);
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   const UserActivityEvents events =
@@ -112,7 +112,7 @@ TEST_F(BatAdsTabManagerTest, UpdatedIncognitoTab) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, true);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, true);
 
   // Assert
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
@@ -123,7 +123,7 @@ TEST_F(BatAdsTabManagerTest, DoNotRecordEventWhenUpdatingIncognitoTab) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, true);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, true);
 
   // Assert
   const UserActivityEvents events =
@@ -139,14 +139,14 @@ TEST_F(BatAdsTabManagerTest, UpdatedOccludedTab) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", false, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", false, false);
 
   // Assert
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
 
   TabInfo expected_tab;
   expected_tab.id = 1;
-  expected_tab.url = "https://presearch.com";
+  expected_tab.url = "https://presearch.org";
   expected_tab.is_playing_media = false;
 
   EXPECT_EQ(expected_tab, tab.value());
@@ -156,7 +156,7 @@ TEST_F(BatAdsTabManagerTest, DoNotRecordEventWhenUpdatingOccludedTab) {
   // Arrange
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", false, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", false, false);
 
   // Assert
   const UserActivityEvents events =
@@ -170,17 +170,17 @@ TEST_F(BatAdsTabManagerTest, DoNotRecordEventWhenUpdatingOccludedTab) {
 
 TEST_F(BatAdsTabManagerTest, UpdatedExistingTabWithSameUrl) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
 
   TabInfo expected_tab;
   expected_tab.id = 1;
-  expected_tab.url = "https://presearch.com";
+  expected_tab.url = "https://presearch.org";
   expected_tab.is_playing_media = false;
 
   EXPECT_EQ(expected_tab, tab.value());
@@ -189,10 +189,10 @@ TEST_F(BatAdsTabManagerTest, UpdatedExistingTabWithSameUrl) {
 TEST_F(BatAdsTabManagerTest,
        DoNotRecordEventWhenUpdatingExistingTabWithSameUrl) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Assert
   const UserActivityEvents events =
@@ -210,17 +210,17 @@ TEST_F(BatAdsTabManagerTest,
 
 TEST_F(BatAdsTabManagerTest, UpdatedExistingTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com/about", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org/about", true, false);
 
   // Assert
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
 
   TabInfo expected_tab;
   expected_tab.id = 1;
-  expected_tab.url = "https://presearch.com/about";
+  expected_tab.url = "https://presearch.org/about";
   expected_tab.is_playing_media = false;
 
   EXPECT_EQ(expected_tab, tab.value());
@@ -228,10 +228,10 @@ TEST_F(BatAdsTabManagerTest, UpdatedExistingTab) {
 
 TEST_F(BatAdsTabManagerTest, RecordEventWhenUpdatingExistingTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
-  TabManager::Get()->OnUpdated(1, "https://presearch.com/about", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org/about", true, false);
 
   // Assert
   const UserActivityEvents events =
@@ -252,7 +252,7 @@ TEST_F(BatAdsTabManagerTest, RecordEventWhenUpdatingExistingTab) {
 
 TEST_F(BatAdsTabManagerTest, ClosedTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
   TabManager::Get()->OnClosed(1);
@@ -264,7 +264,7 @@ TEST_F(BatAdsTabManagerTest, ClosedTab) {
 
 TEST_F(BatAdsTabManagerTest, RecordEventWhenClosingTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
   TabManager::Get()->OnClosed(1);
@@ -360,7 +360,7 @@ TEST_F(BatAdsTabManagerTest, DoNotRecordEventWhenAlreadyPlayingMedia) {
 
 TEST_F(BatAdsTabManagerTest, StoppedPlayingMedia) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
   TabManager::Get()->OnMediaPlaying(1);
 
   // Act
@@ -372,7 +372,7 @@ TEST_F(BatAdsTabManagerTest, StoppedPlayingMedia) {
 
 TEST_F(BatAdsTabManagerTest, RecordEventWhenStoppedPlayingMedia) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
   TabManager::Get()->OnMediaPlaying(1);
 
   // Act
@@ -401,7 +401,7 @@ TEST_F(BatAdsTabManagerTest, RecordEventWhenStoppedPlayingMedia) {
 TEST_F(BatAdsTabManagerTest, GetVisibleTab) {
   // Arrange
   TabManager::Get()->OnUpdated(1, "https://foobar.com", true, false);
-  TabManager::Get()->OnUpdated(2, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(2, "https://presearch.org", true, false);
 
   // Act
   base::Optional<TabInfo> tab = TabManager::Get()->GetVisible();
@@ -409,7 +409,7 @@ TEST_F(BatAdsTabManagerTest, GetVisibleTab) {
   // Assert
   TabInfo expected_tab;
   expected_tab.id = 2;
-  expected_tab.url = "https://presearch.com";
+  expected_tab.url = "https://presearch.org";
   expected_tab.is_playing_media = false;
   EXPECT_EQ(expected_tab, *tab);
 }
@@ -417,7 +417,7 @@ TEST_F(BatAdsTabManagerTest, GetVisibleTab) {
 TEST_F(BatAdsTabManagerTest, GetLastVisibleTab) {
   // Arrange
   TabManager::Get()->OnUpdated(1, "https://foobar.com", true, false);
-  TabManager::Get()->OnUpdated(2, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(2, "https://presearch.org", true, false);
 
   // Act
   base::Optional<TabInfo> tab = TabManager::Get()->GetLastVisible();
@@ -432,7 +432,7 @@ TEST_F(BatAdsTabManagerTest, GetLastVisibleTab) {
 
 TEST_F(BatAdsTabManagerTest, GetTabForId) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(1);
@@ -440,14 +440,14 @@ TEST_F(BatAdsTabManagerTest, GetTabForId) {
   // Assert
   TabInfo expected_tab;
   expected_tab.id = 1;
-  expected_tab.url = "https://presearch.com";
+  expected_tab.url = "https://presearch.org";
   expected_tab.is_playing_media = false;
   EXPECT_EQ(expected_tab, *tab);
 }
 
 TEST_F(BatAdsTabManagerTest, GetTabWithInvalidId) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   // Act
   base::Optional<TabInfo> tab = TabManager::Get()->GetForId(2);

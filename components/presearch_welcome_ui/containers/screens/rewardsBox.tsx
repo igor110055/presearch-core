@@ -55,7 +55,7 @@ export default class PaymentsBox extends React.PureComponent<Props, {}> {
         </a>
         {afterLink1}
         <a
-          href='https://presearch.com/privacy/#rewards'
+          href='https://presearch.org/privacy/#rewards'
           target='_blank'
           rel='noopener noreferrer'
         >

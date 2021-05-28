@@ -33,7 +33,7 @@ std::string GetResponse(const std::string& url) {
 
   // Fetch promotions
   response.insert(std::make_pair(
-      "https://grant.rewards.presearch.com/v1/promotions?"
+      "https://grant.rewards.presearch.org/v1/promotions?"
       "migrate=true&paymentId=fa5dea51-6af4-44ca-801b-07b6df3dcfe4&platform=",
       R"({
       "promotions":[{

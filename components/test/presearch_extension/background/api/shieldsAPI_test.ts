@@ -18,7 +18,7 @@ describe('Shields API', () => {
 
     it('resolves the returned promise with shield settings for the tab data', (cb) => {
       const tab: chrome.tabs.Tab = {
-        url: 'https://www.presearch.com/serg/dont/know/pokemon',
+        url: 'https://www.presearch.org/serg/dont/know/pokemon',
         id: 5,
         index: 1,
         pinned: false,
@@ -34,9 +34,9 @@ describe('Shields API', () => {
       expect.assertions(1)
       shieldsAPI.getShieldSettingsForTabData(tab).then((data) => {
         expect(data).toEqual({
-          url: 'https://www.presearch.com/serg/dont/know/pokemon',
-          origin: 'https://www.presearch.com',
-          hostname: 'www.presearch.com',
+          url: 'https://www.presearch.org/serg/dont/know/pokemon',
+          origin: 'https://www.presearch.org',
+          hostname: 'www.presearch.org',
           presearchShields: 'block',
           ads: 'block',
           trackers: 'block',
@@ -101,8 +101,8 @@ describe('Shields API', () => {
         cosmeticFiltering: true,
         firstPartyCosmeticFiltering: false,
         httpUpgradableResources: 'block',
-        origin: 'https://www.presearch.com',
-        hostname: 'www.presearch.com',
+        origin: 'https://www.presearch.org',
+        hostname: 'www.presearch.org',
         id: 2,
         javascript: 'block',
         fingerprinting: 'block',
@@ -115,7 +115,7 @@ describe('Shields API', () => {
           expect(spy).toBeCalledTimes(1)
           expect(spy.mock.calls[0][0]).toEqual({
             ...details,
-            url: 'https://www.presearch.com/test',
+            url: 'https://www.presearch.org/test',
             presearchShields: 'block'
           })
           cb()
@@ -135,7 +135,7 @@ describe('Shields API', () => {
       spy.mockRestore()
     })
     it('calls chrome.presearchShields.setAdControlTypeAsync with the correct args', () => {
-      shieldsAPI.setAllowAds('https://www.presearch.com', 'block')
+      shieldsAPI.setAllowAds('https://www.presearch.org', 'block')
         .catch(() => {
           expect(true).toBe(false)
         })
@@ -143,7 +143,7 @@ describe('Shields API', () => {
       const arg1 = spy.mock.calls[0][1]
       expect.assertions(2)
       expect(arg0).toEqual('block')
-      expect(arg1).toEqual('https://www.presearch.com')
+      expect(arg1).toEqual('https://www.presearch.org')
     })
   })
 
@@ -156,7 +156,7 @@ describe('Shields API', () => {
       spy.mockRestore()
     })
     it('calls chrome.presearchShields.setHTTPSEverywhereEnabledAsync with the correct args', () => {
-      shieldsAPI.setAllowHTTPUpgradableResources('https://www.presearch.com', 'block')
+      shieldsAPI.setAllowHTTPUpgradableResources('https://www.presearch.org', 'block')
         .catch(() => {
           expect(true).toBe(false)
         })
@@ -164,7 +164,7 @@ describe('Shields API', () => {
       const arg1 = spy.mock.calls[0][1]
       expect.assertions(2)
       expect(arg0).toEqual(true)
-      expect(arg1).toEqual('https://www.presearch.com')
+      expect(arg1).toEqual('https://www.presearch.org')
     })
   })
 
@@ -177,7 +177,7 @@ describe('Shields API', () => {
       spy.mockRestore()
     })
     it('calls chrome.presearchShields.setNoScriptControlTypeAsync with the correct args', () => {
-      shieldsAPI.setAllowJavaScript('https://www.presearch.com', 'block')
+      shieldsAPI.setAllowJavaScript('https://www.presearch.org', 'block')
         .catch(() => {
           expect(true).toBe(false)
         })
@@ -185,7 +185,7 @@ describe('Shields API', () => {
       const arg1 = spy.mock.calls[0][1]
       expect.assertions(2)
       expect(arg0).toEqual('block')
-      expect(arg1).toEqual('https://www.presearch.com')
+      expect(arg1).toEqual('https://www.presearch.org')
     })
   })
 
@@ -198,7 +198,7 @@ describe('Shields API', () => {
       spy.mockRestore()
     })
     it('calls chrome.presearchShields.setFingerprintingControlTypeAsync with the correct args', () => {
-      shieldsAPI.setAllowFingerprinting('https://www.presearch.com', 'block')
+      shieldsAPI.setAllowFingerprinting('https://www.presearch.org', 'block')
         .catch(() => {
           expect(true).toBe(false)
         })
@@ -206,7 +206,7 @@ describe('Shields API', () => {
       const arg1 = spy.mock.calls[0][1]
       expect.assertions(2)
       expect(arg0).toEqual('block')
-      expect(arg1).toEqual('https://www.presearch.com')
+      expect(arg1).toEqual('https://www.presearch.org')
     })
   })
 
@@ -219,7 +219,7 @@ describe('Shields API', () => {
       spy.mockRestore()
     })
     it('calls chrome.presearchShields.setCookieControlTypeAsync with the correct args', () => {
-      shieldsAPI.setAllowCookies('https://www.presearch.com', 'block')
+      shieldsAPI.setAllowCookies('https://www.presearch.org', 'block')
         .catch(() => {
           expect(true).toBe(false)
         })
@@ -227,7 +227,7 @@ describe('Shields API', () => {
       const arg1 = spy.mock.calls[0][1]
       expect.assertions(2)
       expect(arg0).toEqual('block')
-      expect(arg1).toEqual('https://www.presearch.com')
+      expect(arg1).toEqual('https://www.presearch.org')
     })
   })
 

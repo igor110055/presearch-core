@@ -222,7 +222,7 @@ function getUnverifiedNotice (
       <style.unverifiedNoticeText>
         <strong>{getString('siteBannerNoticeNote')}</strong>&nbsp;
         {text}&nbsp;
-        <NewTabLink href='https://presearch.com/faq/#unclaimed-funds'>
+        <NewTabLink href='https://presearch.org/faq/#unclaimed-funds'>
           {getString('unverifiedTextMore')}
         </NewTabLink>
       </style.unverifiedNoticeText>

@@ -61,10 +61,10 @@ INSERT INTO "meta" VALUES ('mmap_status','-1');
 INSERT INTO "meta" VALUES ('last_compatible_version','1');
 INSERT INTO "meta" VALUES ('version','5');
 INSERT INTO "publisher_info" VALUES ('slo-tech.com',0,0,'slo-tech.com','','https://slo-tech.com/','');
-INSERT INTO "publisher_info" VALUES ('presearch.com',0,0,'presearch.com','','https://presearch.com/','');
+INSERT INTO "publisher_info" VALUES ('presearch.org',0,0,'presearch.org','','https://presearch.org/','');
 INSERT INTO "publisher_info" VALUES ('basicattentiontoken.org',0,0,'basicattentiontoken.org','','https://basicattentiontoken.org/','');
 INSERT INTO "activity_info" VALUES ('slo-tech.com',18,1,1.06291900190826,24,24.254880708636,2,2019,1553423066);
-INSERT INTO "activity_info" VALUES ('presearch.com',20,2,1.07471534438942,25,24.5240629127033,1,2019,1553423066);
+INSERT INTO "activity_info" VALUES ('presearch.org',20,2,1.07471534438942,25,24.5240629127033,1,2019,1553423066);
 INSERT INTO "activity_info" VALUES ('basicattentiontoken.org',31,1,1.1358598545838,26,25.919327084376,2,2019,1553423066);
 INSERT INTO "activity_info" VALUES ('slo-tech.com',26,1,1.10879493373301,25,25.3017292942847,1,2019,1553423066);
 CREATE INDEX IF NOT EXISTS "contribution_info_publisher_id_index" ON "contribution_info" (

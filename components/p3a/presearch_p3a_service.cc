@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/p3a/presearch_p3a_service.h"
+#include "presearch.orgponents/p3a/presearch_p3a_service.h"
 
 #include <memory>
 #include <string>
@@ -20,18 +20,18 @@
 #include "base/strings/string_number_conversions.h"
 #include "base/task/post_task.h"
 #include "base/trace_event/trace_event.h"
-#include "presearch/components/presearch_stats/browser/presearch_stats_updater_util.h"
+#include "presearch.orgponents/presearch_stats/browser/presearch_stats_updater_util.h"
 #include "presearch/browser/version_info.h"
-#include "presearch/common/presearch_channel_info.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_prochlo/prochlo_message.pb.h"
-#include "presearch/components/presearch_referrals/common/pref_names.h"
-#include "presearch/components/p3a/presearch_p2a_protocols.h"
-#include "presearch/components/p3a/presearch_p3a_log_store.h"
-#include "presearch/components/p3a/presearch_p3a_scheduler.h"
-#include "presearch/components/p3a/presearch_p3a_switches.h"
-#include "presearch/components/p3a/presearch_p3a_uploader.h"
-#include "presearch/components/p3a/pref_names.h"
+#include "presearch.orgmon/presearch_channel_info.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_prochlo/prochlo_message.pb.h"
+#include "presearch.orgponents/presearch_referrals/common/pref_names.h"
+#include "presearch.orgponents/p3a/presearch_p2a_protocols.h"
+#include "presearch.orgponents/p3a/presearch_p3a_log_store.h"
+#include "presearch.orgponents/p3a/presearch_p3a_scheduler.h"
+#include "presearch.orgponents/p3a/presearch_p3a_switches.h"
+#include "presearch.orgponents/p3a/presearch_p3a_uploader.h"
+#include "presearch.orgponents/p3a/pref_names.h"
 #include "presearch/vendor/presearch_base/random.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "components/prefs/pref_service.h"
@@ -51,8 +51,8 @@ constexpr uint64_t kSuspendedMetricBucket = INT_MAX - 1;
 
 constexpr char kLastRotationTimeStampPref[] = "p3a.last_rotation_timestamp";
 
-constexpr char kP3AServerUrl[] = "https://p3a.presearch.com/";
-constexpr char kP2AServerUrl[] = "https://p2a.presearch.com/";
+constexpr char kP3AServerUrl[] = "https://p3a.presearch.org/";
+constexpr char kP2AServerUrl[] = "https://p2a.presearch.org/";
 
 constexpr uint64_t kDefaultUploadIntervalSeconds = 60;  // 1 minute.
 

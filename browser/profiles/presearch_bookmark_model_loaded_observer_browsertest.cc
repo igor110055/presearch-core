@@ -4,8 +4,8 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "base/strings/utf_string_conversions.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_sync/presearch_sync_prefs.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_sync/presearch_sync_prefs.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/profiles/profile.h"
 #include "chrome/browser/ui/browser.h"
@@ -29,7 +29,7 @@ void CreateOtherBookmarksFolder(bookmarks::BookmarkModel* model) {
 void CreatePresearchSyncV1MetaInfo(bookmarks::BookmarkModel* model) {
   const bookmarks::BookmarkNode* node = model->AddURL(
       model->bookmark_bar_node(), model->bookmark_bar_node()->children().size(),
-      base::ASCIIToUTF16("Presearch"), GURL("https://presearch.com"));
+      base::ASCIIToUTF16("Presearch"), GURL("https://presearch.org"));
   model->SetNodeMetaInfo(node, "object_id", "object_id_value");
 }
 

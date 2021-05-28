@@ -8,7 +8,7 @@
 #include "presearch/browser/net/presearch_httpse_network_delegate_helper.h"
 
 #include "presearch/browser/net/url_context.h"
-#include "presearch/common/network_constants.h"
+#include "presearch.orgmon/network_constants.h"
 #include "chrome/test/base/chrome_render_view_host_test_harness.h"
 #include "content/public/test/browser_task_environment.h"
 #include "net/cookies/site_for_cookies.h"
@@ -37,14 +37,14 @@ class PresearchHTTPSENetworkDelegateHelperTest: public testing::Test {
 
 TEST_F(PresearchHTTPSENetworkDelegateHelperTest, AlreadySetNewURLNoOp) {
   net::TestDelegate test_delegate;
-  GURL url("http://bradhatesprimes.presearch.com/composite_numbers_ftw");
+  GURL url("http://bradhatesprimes.presearch.org/composite_numbers_ftw");
   std::unique_ptr<net::URLRequest> request =
       context()->CreateRequest(url, net::IDLE, &test_delegate,
                                TRAFFIC_ANNOTATION_FOR_TESTS);
   std::shared_ptr<presearch::PresearchRequestInfo>
       presearch_request_info(new presearch::PresearchRequestInfo());
   request->set_site_for_cookies(net::SiteForCookies::FromUrl(
-      GURL("http://brad.presearch.com/hide_all_primes_in_ui/composites_forever")));
+      GURL("http://brad.presearch.org/hide_all_primes_in_ui/composites_forever")));
   presearch_request_info->new_url_spec = "data:image/png;base64,iVB";
   presearch::ResponseCallback callback;
   int ret =

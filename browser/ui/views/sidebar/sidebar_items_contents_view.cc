@@ -18,8 +18,8 @@
 #include "presearch/browser/ui/sidebar/sidebar_service_factory.h"
 #include "presearch/browser/ui/views/sidebar/sidebar_item_added_feedback_bubble.h"
 #include "presearch/browser/ui/views/sidebar/sidebar_item_view.h"
-#include "presearch/components/sidebar/sidebar_item.h"
-#include "presearch/components/sidebar/sidebar_service.h"
+#include "presearch.orgponents/sidebar/sidebar_item.h"
+#include "presearch.orgponents/sidebar/sidebar_service.h"
 #include "presearch/grit/presearch_generated_resources.h"
 #include "presearch/grit/presearch_theme_resources.h"
 #include "chrome/browser/ui/browser_list.h"
@@ -375,7 +375,7 @@ gfx::ImageSkia SidebarItemsContentsView::GetImageForBuiltInItems(
     return gfx::CreateVectorIcon(kSidebarCryptoWalletIcon, base_button_color);
   }
 
-  if (item_url == GURL("https://together.presearch.com/")) {
+  if (item_url == GURL("https://together.presearch.org/")) {
     if (focused)
       return *bundle.GetImageSkiaNamed(IDR_SIDEBAR_PRESEARCH_TOGETHER_FOCUSED);
     return gfx::CreateVectorIcon(kSidebarPresearchTogetherIcon, base_button_color);

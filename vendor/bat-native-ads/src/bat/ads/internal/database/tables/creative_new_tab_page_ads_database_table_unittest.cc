@@ -61,7 +61,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -81,7 +81,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_2.segment = "Technology & Computing-Software";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 0.8;
@@ -128,7 +128,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -148,7 +148,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_2.segment = "Technology & Computing-Software";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 1.0;
@@ -168,7 +168,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_3.segment = "Technology & Computing-Software";
   info_3.dayparts.push_back(daypart_info);
   info_3.geo_targets = {"US"};
-  info_3.target_url = "https://presearch.com";
+  info_3.target_url = "https://presearch.org";
   info_3.company_name = "Test Ad 3 Title";
   info_3.alt = "Test Ad 3 Body";
   info_3.ptr = 1.0;
@@ -213,7 +213,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.company_name = "Test Ad 1 Title";
   info.alt = "Test Ad 1 Body";
   info.ptr = 1.0;
@@ -260,7 +260,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest, GetForCategories) {
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -280,7 +280,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest, GetForCategories) {
   info_2.segment = "Technology & Computing-Software";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 1.0;
@@ -326,7 +326,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.company_name = "Test Ad 1 Title";
   info.alt = "Test Ad 1 Body";
   info.ptr = 1.0;
@@ -372,7 +372,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.company_name = "Test Ad 1 Title";
   info.alt = "Test Ad 1 Body";
   info.ptr = 1.0;
@@ -414,7 +414,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.company_name = "Test Ad 1 Title";
   info.alt = "Test Ad 1 Body";
   info.ptr = 1.0;
@@ -459,7 +459,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info.segment = "Technology & Computing-Software";
   info.dayparts.push_back(daypart_info);
   info.geo_targets = {"US"};
-  info.target_url = "https://presearch.com";
+  info.target_url = "https://presearch.org";
   info.company_name = "Test Ad 1 Title";
   info.alt = "Test Ad 1 Body";
   info.ptr = 1.0;
@@ -504,7 +504,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -524,7 +524,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_2.segment = "Food & Drink";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 1.0;
@@ -544,7 +544,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_3.segment = "Automobiles";
   info_3.dayparts.push_back(daypart_info);
   info_3.geo_targets = {"US"};
-  info_3.target_url = "https://presearch.com";
+  info_3.target_url = "https://presearch.org";
   info_3.company_name = "Test Ad 3 Title";
   info_3.alt = "Test Ad 3 Body";
   info_3.ptr = 1.0;
@@ -592,7 +592,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -612,7 +612,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_2.segment = "Technology & Computing-Software";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 1.0;
@@ -659,7 +659,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_1.segment = "Technology & Computing-Software";
   info_1.dayparts.push_back(daypart_info);
   info_1.geo_targets = {"US"};
-  info_1.target_url = "https://presearch.com";
+  info_1.target_url = "https://presearch.org";
   info_1.company_name = "Test Ad 1 Title";
   info_1.alt = "Test Ad 1 Body";
   info_1.ptr = 1.0;
@@ -679,7 +679,7 @@ TEST_F(BatAdsCreativeNewTabPageAdsDatabaseTableTest,
   info_2.segment = "Food & Drink";
   info_2.dayparts.push_back(daypart_info);
   info_2.geo_targets = {"US"};
-  info_2.target_url = "https://presearch.com";
+  info_2.target_url = "https://presearch.org";
   info_2.company_name = "Test Ad 2 Title";
   info_2.alt = "Test Ad 2 Body";
   info_2.ptr = 1.0;

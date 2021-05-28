@@ -10,9 +10,9 @@
 #include <utility>
 
 #include "base/bind.h"
-#include "presearch/components/presearch_shields/browser/presearch_shields_util.h"
-#include "presearch/components/presearch_shields/common/presearch_shield_constants.h"
-#include "presearch/components/content_settings/core/browser/presearch_content_settings_utils.h"
+#include "presearch.orgponents/presearch_shields/browser/presearch_shields_util.h"
+#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.orgponents/content_settings/core/browser/presearch_content_settings_utils.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/test/base/testing_profile.h"
 #include "components/content_settings/core/browser/host_content_settings_map.h"
@@ -56,7 +56,7 @@ class PresearchBrowsingDataRemoverDelegateTest : public testing::Test {
 };
 
 TEST_F(PresearchBrowsingDataRemoverDelegateTest, ShieldsSettingsClearTest) {
-  const GURL kPresearchURL("https://www.presearch.com");
+  const GURL kPresearchURL("https://www.presearch.org");
   const GURL kBatURL("https://basicattentiontoken.org");
   const GURL kGoogleURL("https://www.google.com");
   const GURL kAbcURL("https://www.abc.com");

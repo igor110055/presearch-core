@@ -60,7 +60,7 @@ class Together extends React.PureComponent<Props, {}> {
 
   shouldCreateCall = (event: any) => {
     event.preventDefault()
-    window.open(`https://together.presearch.com/widget`, '_self', 'noopener')
+    window.open(`https://together.presearch.org/widget`, '_self', 'noopener')
   }
 
   render () {
@@ -87,7 +87,7 @@ class Together extends React.PureComponent<Props, {}> {
                 <PrivacyLink
                   rel={'noopener'}
                   target={'_blank'}
-                  href={'https://presearch.com/privacy/#presearch-together-learn'}
+                  href={'https://presearch.org/privacy/#presearch-together-learn'}
                 >
                   {getLocale('togetherWidgetAboutData')}
                 </PrivacyLink>

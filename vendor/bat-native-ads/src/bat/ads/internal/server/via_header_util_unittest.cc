@@ -30,7 +30,7 @@ TEST_F(BatAdsViaHeaderUtilTest, BuildViaHeaderForUncertainFuture) {
 
   // Assert
   const std::string expect_via_header =
-      "Via: 1.1 presearch, 1.1 ads-serve.presearch.com (Apache/1.1)";
+      "Via: 1.1 presearch, 1.1 ads-serve.presearch.org (Apache/1.1)";
 
   EXPECT_EQ(expect_via_header, via_header);
 }
@@ -46,7 +46,7 @@ TEST_F(BatAdsViaHeaderUtilTest, BuildViaHeaderForABrightFuture) {
 
   // Assert
   const std::string expect_via_header =
-      "Via: 1.0 presearch, 1.1 ads-serve.presearch.com (Apache/1.1)";
+      "Via: 1.0 presearch, 1.1 ads-serve.presearch.org (Apache/1.1)";
 
   EXPECT_EQ(expect_via_header, via_header);
 }

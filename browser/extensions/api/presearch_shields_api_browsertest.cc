@@ -5,8 +5,8 @@
 
 #include "base/path_service.h"
 #include "presearch/browser/extensions/api/presearch_shields_api.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/components/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/browser/extensions/api/content_settings/content_settings_api.h"
 #include "chrome/browser/extensions/api/content_settings/content_settings_api_constants.h"
@@ -197,11 +197,11 @@ IN_PROC_BROWSER_TEST_F(PresearchShieldsAPIBrowserTest, AllowScriptsOnceIframe) {
 }
 
 constexpr char kJavascriptSetParams[] =
-    "[\"block\", \"https://www.presearch.com/\"]";
-constexpr char kJavascriptGetParams[] = "[\"https://www.presearch.com/\"]";
+    "[\"block\", \"https://www.presearch.org/\"]";
+constexpr char kJavascriptGetParams[] = "[\"https://www.presearch.org/\"]";
 
 const GURL& GetPresearchURL() {
-  static const GURL kPresearchURL("https://www.presearch.com");
+  static const GURL kPresearchURL("https://www.presearch.org");
   return kPresearchURL;
 }
 

@@ -66,12 +66,12 @@ describe('urlUtils test', () => {
   })
   describe('stripProtocolFromUrl', () => {
     it('properly strips out an HTTP protocol', () => {
-      const url = 'http://presearch.com'
-      expect(stripProtocolFromUrl(url)).toBe('presearch.com')
+      const url = 'http://presearch.org'
+      expect(stripProtocolFromUrl(url)).toBe('presearch.org')
     })
     it('properly strips out an HTTPS protocol', () => {
-      const url = 'https://presearch.com'
-      expect(stripProtocolFromUrl(url)).toBe('presearch.com')
+      const url = 'https://presearch.org'
+      expect(stripProtocolFromUrl(url)).toBe('presearch.org')
     })
     it('properly strips out an HTTP protocol when domain has HTTP as its name', () => {
       const url = 'https://breakthis.http.com'

@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/sync/driver/presearch_sync_auth_manager.h"
+#include "presearch.orgponents/sync/driver/presearch_sync_auth_manager.h"
 
 #include <memory>
 
 #include "base/callback_helpers.h"
 #include "base/test/mock_callback.h"
 #include "base/test/task_environment.h"
-#include "presearch/common/network_constants.h"
-#include "presearch/components/presearch_sync/network_time_helper.h"
+#include "presearch.orgmon/network_constants.h"
+#include "presearch.orgponents/presearch_sync/network_time_helper.h"
 #include "components/signin/public/identity_manager/identity_test_environment.h"
 #include "components/sync/engine/sync_credentials.h"
 #include "services/network/test/test_url_loader_factory.h"
@@ -38,7 +38,7 @@ const char kAccountId[] =
 
 const char kAccountEmail[] =
   "502042270C8145247ED70A18F87022A3 "
-  "9886900AB36F2FFF655635DBE516765E @presearch.com";
+  "9886900AB36F2FFF655635DBE516765E @presearch.org";
 
 class PresearchSyncAuthManagerTest : public testing::Test {
  protected:

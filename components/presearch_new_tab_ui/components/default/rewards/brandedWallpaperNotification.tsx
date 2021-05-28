@@ -40,7 +40,7 @@ export default class BrandedWallpaperRewardsNotification extends React.PureCompo
         </Title>
         <SubTitle>
           {beforeTag}
-          <SubTitleLink href='https://presearch.com/presearch-rewards/'>
+          <SubTitleLink href='https://presearch.org/presearch-rewards/'>
             {duringTag}
           </SubTitleLink>
           {afterTag}

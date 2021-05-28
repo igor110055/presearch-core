@@ -73,7 +73,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_ad_notification.payload.title =
         "Test Ad Notification Campaign 1 Title";
     catalog_creative_ad_notification.payload.target_url =
-        "https://presearch.com/1/ad_notification";
+        "https://presearch.org/1/ad_notification";
     catalog_creative_ad_notifications.push_back(
         catalog_creative_ad_notification);
 
@@ -93,7 +93,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_new_tab_page_ad.payload.alt =
         "Test New Tab Page Ad Campaign 1";
     catalog_creative_new_tab_page_ad.payload.target_url =
-        "https://presearch.com/1/new_tab_page_ad";
+        "https://presearch.org/1/new_tab_page_ad";
     catalog_creative_new_tab_page_ads.push_back(
         catalog_creative_new_tab_page_ad);
 
@@ -114,7 +114,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_promoted_content_ad.payload.description =
         "Test Promoted Content Ad Campaign 1";
     catalog_creative_promoted_content_ad.payload.target_url =
-        "https://presearch.com/1/promoted_content_ad";
+        "https://presearch.org/1/promoted_content_ad";
     catalog_creative_promoted_content_ads.push_back(
         catalog_creative_promoted_content_ad);
 
@@ -124,7 +124,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     ConversionInfo conversion;
     conversion.creative_set_id = "340c927f-696e-4060-9933-3eafc56c3f31";
     conversion.type = "postview";
-    conversion.url_pattern = "https://www.presearch.com/1/*";
+    conversion.url_pattern = "https://www.presearch.org/1/*";
     conversion.observation_window = 30;
     conversion.expiry_timestamp = 4105036799;
     conversions.push_back(conversion);
@@ -228,7 +228,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_ad_notification.payload.title =
         "Test Ad Notification Campaign 2 Title";
     catalog_creative_ad_notification.payload.target_url =
-        "https://presearch.com/2/ad_notification";
+        "https://presearch.org/2/ad_notification";
     catalog_creative_ad_notifications.push_back(
         catalog_creative_ad_notification);
 
@@ -248,7 +248,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_new_tab_page_ad.payload.alt =
         "Test New Tab Page Ad Campaign 2";
     catalog_creative_new_tab_page_ad.payload.target_url =
-        "https://presearch.com/2/new_tab_page_ad";
+        "https://presearch.org/2/new_tab_page_ad";
     catalog_creative_new_tab_page_ads.push_back(
         catalog_creative_new_tab_page_ad);
 
@@ -269,7 +269,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     catalog_creative_promoted_content_ad.payload.description =
         "Test Promoted Content Ad Campaign 2";
     catalog_creative_promoted_content_ad.payload.target_url =
-        "https://presearch.com/2/promoted_content_ad";
+        "https://presearch.org/2/promoted_content_ad";
     catalog_creative_promoted_content_ads.push_back(
         catalog_creative_promoted_content_ad);
 
@@ -279,7 +279,7 @@ class BatAdsCatalogTest : public UnitTestBase {
     ConversionInfo conversion;
     conversion.creative_set_id = "741cd2ba-3100-45f2-be1e-acedd24e0067";
     conversion.type = "postclick";
-    conversion.url_pattern = "https://www.presearch.com/2/*";
+    conversion.url_pattern = "https://www.presearch.org/2/*";
     conversion.observation_window = 7;
     conversion.advertiser_public_key = "";
     conversion.expiry_timestamp = 4103049599;

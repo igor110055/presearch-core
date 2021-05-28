@@ -3,24 +3,24 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/common/network_constants.h"
+#include "presearch.orgmon/network_constants.h"
 
-const char kPresearchProxyPattern[] = "https://*.presearch.com/*";
+const char kPresearchProxyPattern[] = "https://*.presearch.org/*";
 const char kPresearchSoftwareProxyPattern[] = "https://*.presearchsoftware.com/*";
 
 const char kPresearchUsageStandardPath[] = "/1/usage/presearch-core";
 const char kPresearchUsageThresholdPath[] = "/1/usage/presearch-core-threshold";
 
-const char kPresearchReferralsServer[] = "laptop-updates.presearch.com";
+const char kPresearchReferralsServer[] = "laptop-updates.presearch.org";
 const char kPresearchReferralsHeadersPath[] = "/promo/custom-headers";
 const char kPresearchReferralsInitPath[] = "/promo/initialize/nonua";
 const char kPresearchReferralsActivityPath[] = "/promo/activity";
 
-const char kPresearchSafeBrowsing2Proxy[] = "safebrowsing2.presearch.com";
-const char kPresearchSafeBrowsingSslProxy[] = "sb-ssl.presearch.com";
-const char kPresearchRedirectorProxy[] = "redirector.presearch.com";
-const char kPresearchClients4Proxy[] = "clients4.presearch.com";
-const char kPresearchStaticProxy[] = "static1.presearch.com";
+const char kPresearchSafeBrowsing2Proxy[] = "safebrowsing2.presearch.org";
+const char kPresearchSafeBrowsingSslProxy[] = "sb-ssl.presearch.org";
+const char kPresearchRedirectorProxy[] = "redirector.presearch.org";
+const char kPresearchClients4Proxy[] = "clients4.presearch.org";
+const char kPresearchStaticProxy[] = "static1.presearch.org";
 
 const char kAutofillPrefix[] = "https://www.gstatic.com/autofill/*";
 const char kClients4Prefix[] = "*://clients4.google.com/";

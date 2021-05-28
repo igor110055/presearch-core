@@ -167,7 +167,7 @@ class AdsBox extends React.Component<Props, {}> {
               </ControlWrapper>
             </Column>
             <div>
-              {getLocale('adsSubdivisionTargetingDescription')} <a href={'https://support.presearch.com/hc/en-us/articles/360026361072-Presearch-Ads-FAQ'} target={'_blank'}>{getLocale('adsSubdivisionTargetingLearn')}</a>
+              {getLocale('adsSubdivisionTargetingDescription')} <a href={'https://support.presearch.org/hc/en-us/articles/360026361072-Presearch-Ads-FAQ'} target={'_blank'}>{getLocale('adsSubdivisionTargetingLearn')}</a>
             </div>
           </> : null }
       </Grid>

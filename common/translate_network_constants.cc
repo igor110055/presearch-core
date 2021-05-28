@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/common/translate_network_constants.h"
+#include "presearch.orgmon/translate_network_constants.h"
 
 const char kTranslateInitiatorURL[] = "https://translate.googleapis.com/";
 const char kTranslateElementJSPattern[] = "https://translate.googleapis.com/translate_a/element.js*"; // NOLINT
@@ -14,7 +14,7 @@ const char kTranslateLanguagePattern[] = "https://translate.googleapis.com/trans
 const char kTranslateGen204Pattern[] = "https://translate.google.com/gen204*";
 const char kTranslateElementMainCSSPattern[] = "https://translate.googleapis.com/translate_static/css/translateelement.css"; // NOLINT
 const char kTranslateBrandingPNGPattern[] = "https://www.gstatic.com/images/branding/product/*x/translate_24dp.png"; // NOLINT
-const char kPresearchTranslateServer[] = "https://translate-relay.presearch.com";
-const char kPresearchTranslateEndpoint[] = "https://translate-relay.presearch.com/translate"; // NOLINT
-const char kPresearchTranslateLanguageEndpoint[] = "https://translate-relay.presearch.com/language"; // NOLINT
-const char kPresearchTranslateServerPrefix[] = "https://translate-relay.presearch.com/*"; // NOLINT
+const char kPresearchTranslateServer[] = "https://translate-relay.presearch.org";
+const char kPresearchTranslateEndpoint[] = "https://translate-relay.presearch.org/translate"; // NOLINT
+const char kPresearchTranslateLanguageEndpoint[] = "https://translate-relay.presearch.org/language"; // NOLINT
+const char kPresearchTranslateServerPrefix[] = "https://translate-relay.presearch.org/*"; // NOLINT

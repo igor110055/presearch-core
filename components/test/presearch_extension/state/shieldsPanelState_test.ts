@@ -20,9 +20,9 @@ const state: State = deepFreeze({
   tabs: {
     2: {
       id: 2,
-      hostname: 'https://presearch.com',
-      origin: 'https://presearch.com',
-      url: 'https://presearch.com',
+      hostname: 'https://presearch.org',
+      origin: 'https://presearch.org',
+      url: 'https://presearch.org',
       ads: 'block',
       adsBlocked: 0,
       adsBlockedResources: [],
@@ -272,7 +272,7 @@ describe('shieldsPanelState test', () => {
   describe('updateResourceBlocked', () => {
     it('can update ads blocked count', () => {
       this.tabId = 2
-      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'shieldsAds', 'https://test.presearch.com')).toEqual({
+      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'shieldsAds', 'https://test.presearch.org')).toEqual({
         ...state,
         tabs: {
           ...state.tabs,
@@ -280,7 +280,7 @@ describe('shieldsPanelState test', () => {
             ...state.tabs[this.tabId],
             adsBlocked: 1,
             adsBlockedResources: [
-              'https://test.presearch.com'
+              'https://test.presearch.org'
             ]
           }
         }
@@ -288,7 +288,7 @@ describe('shieldsPanelState test', () => {
     })
     it('can update tracking protection blocked count', () => {
       this.tabId = 2
-      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'trackers', 'https://test.presearch.com'))
+      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'trackers', 'https://test.presearch.org'))
       .toEqual({
         ...state,
         tabs: {
@@ -297,7 +297,7 @@ describe('shieldsPanelState test', () => {
             ...state.tabs[this.tabId],
             trackersBlocked: 1,
             trackersBlockedResources: [
-              'https://test.presearch.com'
+              'https://test.presearch.org'
             ]
           }
         }
@@ -305,7 +305,7 @@ describe('shieldsPanelState test', () => {
     })
     it('can update javascript blocked count and noScriptInfo', () => {
       this.tabId = 2
-      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'javascript', 'https://test.presearch.com')).toEqual({
+      expect(shieldsPanelState.updateResourceBlocked(state, this.tabId, 'javascript', 'https://test.presearch.org')).toEqual({
         ...state,
         tabs: {
           ...state.tabs,
@@ -313,7 +313,7 @@ describe('shieldsPanelState test', () => {
             ...state.tabs[this.tabId],
             javascriptBlocked: 1,
             noScriptInfo: {
-              'https://test.presearch.com': { actuallyBlocked: true, willBlock: true, userInteracted: false }
+              'https://test.presearch.org': { actuallyBlocked: true, willBlock: true, userInteracted: false }
             }
           }
         }
@@ -345,7 +345,7 @@ describe('shieldsPanelState test', () => {
     it('reset noScriptInfo for a specific tab without navigating away', () => {
       this.tabId = 2
       expect(noScriptState.resetNoScriptInfo(
-        stateWithAllowedScriptOrigins, this.tabId, 'https://presearch.com')).toEqual({
+        stateWithAllowedScriptOrigins, this.tabId, 'https://presearch.org')).toEqual({
           ...state,
           tabs: {
             ...state.tabs,
@@ -370,7 +370,7 @@ describe('shieldsPanelState test', () => {
     it('reset noScriptInfo for a specific tab with navigating away', () => {
       this.tabId = 2
       expect(noScriptState.resetNoScriptInfo(
-        stateWithAllowedScriptOrigins, this.tabId, 'https://test.presearch.com')).toEqual({
+        stateWithAllowedScriptOrigins, this.tabId, 'https://test.presearch.org')).toEqual({
           ...state,
           tabs: {
             ...state.tabs,

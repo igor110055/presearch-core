@@ -9,10 +9,10 @@
 #include "base/macros.h"
 #include "base/optional.h"
 #include "base/values.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_shields/common/presearch_shield_constants.h"
-#include "presearch/components/content_settings/core/browser/presearch_content_settings_pref_provider.h"
-#include "presearch/components/content_settings/core/browser/presearch_content_settings_utils.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.orgponents/content_settings/core/browser/presearch_content_settings_pref_provider.h"
+#include "presearch.orgponents/content_settings/core/browser/presearch_content_settings_utils.h"
 #include "chrome/test/base/testing_profile.h"
 #include "components/content_settings/core/browser/content_settings_registry.h"
 #include "components/content_settings/core/common/content_settings.h"
@@ -260,8 +260,8 @@ TEST_F(PresearchPrefProviderTest, TestShieldsSettingsMigration) {
   ShieldsEnabledSetting enabled_settings(&provider);
   ShieldsScriptSetting script_settings(&provider);
 
-  GURL url("http://presearch.com:8080/");
-  GURL url2("http://allowed.presearch.com:3030");
+  GURL url("http://presearch.org:8080/");
+  GURL url2("http://allowed.presearch.org:3030");
   // Check that the settings for the url are default values.
   cookie_settings.CheckSettingsAreDefault(url);
   cookie_settings.CheckSettingsAreDefault(url2);
@@ -280,42 +280,42 @@ TEST_F(PresearchPrefProviderTest, TestShieldsSettingsMigration) {
   cookie_settings.SetPreMigrationSettings(pattern2, CONTENT_SETTING_ALLOW);
   // Pattern that doesn't need to be migrated.
   cookie_settings.SetPreMigrationSettings(
-      ContentSettingsPattern::FromString("*://help.presearch.com/*"),
+      ContentSettingsPattern::FromString("*://help.presearch.org/*"),
       CONTENT_SETTING_BLOCK);
-  // Check that settings would block presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would block presearch.org:8080, but not presearch.org:5555.
   cookie_settings.CheckSettingsWouldBlock(url);
   cookie_settings.CheckSettingsWouldAllow(url2);
-  cookie_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  cookie_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // Finterprinting.
   fp_settings.SetPreMigrationSettings(pattern, CONTENT_SETTING_ALLOW);
-  // Check that settings would allow presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would allow presearch.org:8080, but not presearch.org:5555.
   fp_settings.CheckSettingsWouldAllow(url);
-  fp_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  fp_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // HTTPSE.
   httpse_settings.SetPreMigrationSettings(pattern, CONTENT_SETTING_BLOCK);
-  // Check that settings would block presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would block presearch.org:8080, but not presearch.org:5555.
   httpse_settings.CheckSettingsWouldBlock(url);
-  httpse_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  httpse_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // Ads.
   ads_settings.SetPreMigrationSettings(pattern, CONTENT_SETTING_ALLOW);
-  // Check that settings would allow presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would allow presearch.org:8080, but not presearch.org:5555.
   ads_settings.CheckSettingsWouldAllow(url);
-  ads_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  ads_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // Enabled.
   enabled_settings.SetPreMigrationSettings(pattern, CONTENT_SETTING_BLOCK);
-  // Check that settings would block presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would block presearch.org:8080, but not presearch.org:5555.
   httpse_settings.CheckSettingsWouldBlock(url);
-  httpse_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  httpse_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // Scripts.
   script_settings.SetPreMigrationSettings(pattern, CONTENT_SETTING_BLOCK);
-  // Check that settings would block presearch.com:8080, but not presearch.com:5555.
+  // Check that settings would block presearch.org:8080, but not presearch.org:5555.
   script_settings.CheckSettingsWouldBlock(url);
-  script_settings.CheckSettingsAreDefault(GURL("http://presearch.com:5555"));
+  script_settings.CheckSettingsAreDefault(GURL("http://presearch.org:5555"));
 
   // Migrate settings.
   // ------------------------------------------------------
@@ -325,55 +325,55 @@ TEST_F(PresearchPrefProviderTest, TestShieldsSettingsMigration) {
   // Check post-migration settings.
   // ------------------------------------------------------
   // Cookies.
-  // Check that settings would block presearch.com with any protocol and port.
+  // Check that settings would block presearch.org with any protocol and port.
   cookie_settings.CheckSettingsWouldBlock(url);
-  cookie_settings.CheckSettingsWouldBlock(GURL("http://presearch.com:5555"));
-  cookie_settings.CheckSettingsWouldBlock(GURL("https://presearch.com"));
-  // Check that settings would allow allow.presearch.com with any protocol and port.
+  cookie_settings.CheckSettingsWouldBlock(GURL("http://presearch.org:5555"));
+  cookie_settings.CheckSettingsWouldBlock(GURL("https://presearch.org"));
+  // Check that settings would allow allow.presearch.org with any protocol and port.
   cookie_settings.CheckSettingsWouldAllow(url2);
-  cookie_settings.CheckSettingsWouldAllow(GURL("https://allowed.presearch.com"));
+  cookie_settings.CheckSettingsWouldAllow(GURL("https://allowed.presearch.org"));
   // Check the pattern that didn't need to be migrated.
   cookie_settings.CheckSettingsWouldBlock(
-      GURL("https://help.presearch.com/article1.html"));
+      GURL("https://help.presearch.org/article1.html"));
   // Would not block a different domain.
   cookie_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
   // Fingerprinting.
-  // Check that settings would allow presearch.com with any protocol and port.
+  // Check that settings would allow presearch.org with any protocol and port.
   fp_settings.CheckSettingsWouldAllow(url);
-  fp_settings.CheckSettingsWouldAllow(GURL("http://presearch.com:5555"));
-  fp_settings.CheckSettingsWouldAllow(GURL("https://presearch.com"));
+  fp_settings.CheckSettingsWouldAllow(GURL("http://presearch.org:5555"));
+  fp_settings.CheckSettingsWouldAllow(GURL("https://presearch.org"));
   // Would not allow a different domain.
   fp_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
   // HTTPSE.
-  // Check that settings would block presearch.com with any protocol and port.
+  // Check that settings would block presearch.org with any protocol and port.
   httpse_settings.CheckSettingsWouldBlock(url);
-  httpse_settings.CheckSettingsWouldBlock(GURL("http://presearch.com:5555"));
+  httpse_settings.CheckSettingsWouldBlock(GURL("http://presearch.org:5555"));
   // Would not block a different domain.
   httpse_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
   // Ads.
-  // Check that settings would allow presearch.com with any protocol and port.
+  // Check that settings would allow presearch.org with any protocol and port.
   ads_settings.CheckSettingsWouldAllow(url);
-  ads_settings.CheckSettingsWouldAllow(GURL("http://presearch.com:5555"));
-  ads_settings.CheckSettingsWouldAllow(GURL("https://presearch.com"));
+  ads_settings.CheckSettingsWouldAllow(GURL("http://presearch.org:5555"));
+  ads_settings.CheckSettingsWouldAllow(GURL("https://presearch.org"));
   // Would not allow a different domain.
   ads_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
   // Enabled.
-  // Check that settings would block presearch.com with any protocol and port.
+  // Check that settings would block presearch.org with any protocol and port.
   httpse_settings.CheckSettingsWouldBlock(url);
-  httpse_settings.CheckSettingsWouldBlock(GURL("http://presearch.com:5555"));
-  httpse_settings.CheckSettingsWouldBlock(GURL("https://presearch.com"));
+  httpse_settings.CheckSettingsWouldBlock(GURL("http://presearch.org:5555"));
+  httpse_settings.CheckSettingsWouldBlock(GURL("https://presearch.org"));
   // Would not block a different domain.
   httpse_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
   // Scripts.
-  // Check that settings would block presearch.com with any protocol and port.
+  // Check that settings would block presearch.org with any protocol and port.
   script_settings.CheckSettingsWouldBlock(url);
-  script_settings.CheckSettingsWouldBlock(GURL("http://presearch.com:5555"));
-  script_settings.CheckSettingsWouldBlock(GURL("https://presearch.com"));
+  script_settings.CheckSettingsWouldBlock(GURL("http://presearch.org:5555"));
+  script_settings.CheckSettingsWouldBlock(GURL("https://presearch.org"));
   // Would not block a different domain.
   script_settings.CheckSettingsAreDefault(GURL("http://presearch2.com"));
 
@@ -438,15 +438,15 @@ TEST_F(PresearchPrefProviderTest, TestShieldsSettingsMigrationFromResourceIDs) {
                                           expected_last_modified,
                                           expected_example_com_settings_value);
 
-  // Disable Presearch Shields for www.presearch.com.
+  // Disable Presearch Shields for www.presearch.org.
   std::unique_ptr<prefs::DictionaryValueUpdate> presearch_settings_dict =
       plugins_dictionary->SetDictionaryWithoutPathExpansion(
-          "www.presearch.com,*", std::make_unique<base::DictionaryValue>());
+          "www.presearch.org,*", std::make_unique<base::DictionaryValue>());
 
-  const int expected_presearch_com_settings_value = 1;
+  const int expected_presearch.org_settings_value = 1;
   InitializePresearchShieldsSettingInDictionary(presearch_settings_dict.get(),
                                             expected_last_modified,
-                                            expected_presearch_com_settings_value);
+                                            expected_presearch.org_settings_value);
 
   provider.MigrateShieldsSettingsFromResourceIds();
 
@@ -458,10 +458,10 @@ TEST_F(PresearchPrefProviderTest, TestShieldsSettingsMigrationFromResourceIDs) {
     EXPECT_NE(presearch_shields_dict, nullptr);
 
     if (content_type == ContentSettingsType::PRESEARCH_SHIELDS) {
-      // We only changed the value of PRESEARCH_SHIELDS in www.presearch.com.
+      // We only changed the value of PRESEARCH_SHIELDS in www.presearch.org.
       CheckMigrationFromResourceIdentifierForDictionary(
-          presearch_shields_dict, "www.presearch.com,*", expected_last_modified,
-          expected_presearch_com_settings_value);
+          presearch_shields_dict, "www.presearch.org,*", expected_last_modified,
+          expected_presearch.org_settings_value);
     } else {
       // All the other settings we changed them globally and in www.example.com.
       CheckMigrationFromResourceIdentifierForDictionary(

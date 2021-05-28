@@ -8,8 +8,8 @@
 #include "presearch/browser/ui/browser_commands.h"
 #include "presearch/browser/ui/views/location_bar/presearch_location_bar_view.h"
 #include "presearch/browser/ui/views/location_bar/onion_location_view.h"
-#include "presearch/components/tor/onion_location_tab_helper.h"
-#include "presearch/components/tor/pref_names.h"
+#include "presearch.orgponents/tor/onion_location_tab_helper.h"
+#include "presearch.orgponents/tor/pref_names.h"
 #include "presearch/grit/presearch_generated_resources.h"
 #include "chrome/browser/chrome_notification_types.h"
 #include "chrome/browser/ui/browser.h"
@@ -35,7 +35,7 @@ constexpr char kTestOnionURL[] = "https://presearch.onion";
 constexpr char kTestInvalidScheme[] = "/invalid_scheme";
 constexpr char kTestInvalidSchemeURL[] = "presearch://presearch.onion";
 constexpr char kTestNotOnion[] = "/not_onion";
-constexpr char kTestNotOnionURL[] = "https://presearch.com";
+constexpr char kTestNotOnionURL[] = "https://presearch.org";
 
 std::unique_ptr<net::test_server::HttpResponse> HandleOnionLocation(
     const net::test_server::HttpRequest& request) {
@@ -170,7 +170,7 @@ IN_PROC_BROWSER_TEST_F(OnionLocationNavigationThrottleBrowserTest,
   browser()->profile()->GetPrefs()->SetBoolean(tor::prefs::kAutoOnionRedirect,
                                                true);
   BrowserList* browser_list = BrowserList::GetInstance();
-  ui_test_utils::NavigateToURL(browser(), GURL("https://presearch.com"));
+  ui_test_utils::NavigateToURL(browser(), GURL("https://presearch.org"));
   EXPECT_EQ(1U, browser_list->size());
   ASSERT_FALSE(browser_list->get(0)->profile()->IsTor());
   ASSERT_EQ(browser(), browser_list->get(0));
@@ -201,7 +201,7 @@ IN_PROC_BROWSER_TEST_F(OnionLocationNavigationThrottleBrowserTest,
 IN_PROC_BROWSER_TEST_F(OnionLocationNavigationThrottleBrowserTest,
                        OnionDomain_AutoOnionRedirect_OffByDefault) {
   BrowserList* browser_list = BrowserList::GetInstance();
-  ui_test_utils::NavigateToURL(browser(), GURL("https://presearch.com"));
+  ui_test_utils::NavigateToURL(browser(), GURL("https://presearch.org"));
 
   ui_test_utils::NavigateToURL(browser(), GURL(kTestOnionURL));
   EXPECT_EQ(1U, browser_list->size());

@@ -70,9 +70,9 @@ interface Tabs {
 export const tabs: Tabs = {
   2: {
     id: 2,
-    url: 'https://www.presearch.com/test',
-    origin: 'https://www.presearch.com',
-    hostname: 'www.presearch.com',
+    url: 'https://www.presearch.org/test',
+    origin: 'https://www.presearch.org',
+    hostname: 'www.presearch.org',
     ads: 'block',
     adsBlocked: 0,
     trackers: 'block',
@@ -99,7 +99,7 @@ export const activeTabData = tabs[2]
 export const blockedResource: BlockDetails = {
   blockType: 'shieldsAds',
   tabId: 2,
-  subresource: 'https://www.presearch.com/test'
+  subresource: 'https://www.presearch.org/test'
 }
 
 // see: https://developer.chrome.com/extensions/events

@@ -897,7 +897,7 @@ export default function getTodayState (): PresearchTodayState {
             {
               category: `Presearch`,
               publish_time: `2020-09-09 16:18:41 UTC`,
-              url: `https://store.presearch.com/`,
+              url: `https://store.presearch.org/`,
               img: `https://pcdn.presearch.software/presearch-today/cache/36369312906f78355082d4821525dc8561129373ef70fb613f46cc84a4f803c2.jpg.pad`,
               title: `Presearch Swag Store`,
               description: `Code PRESEARCHTODAY for 40% off entire order. Limit 1 per customer.`,

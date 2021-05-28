@@ -31,7 +31,7 @@ export default class TOSAndPP extends React.PureComponent<Props> {
           {text[0].duringTag}
         </StyledLink>
         {text[1].beforeTag}
-        <StyledLink href={'https://presearch.com/privacy/#rewards'} target={'_blank'}>
+        <StyledLink href={'https://presearch.org/privacy/#rewards'} target={'_blank'}>
           {text[1].duringTag}
         </StyledLink>
         {text[1].afterTag}

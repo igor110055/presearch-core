@@ -11,8 +11,8 @@ import { shallow } from 'enzyme'
 const fakeProps: Props = {
   enabled: false,
   favicon: '',
-  origin: 'https://presearch.com',
-  hostname: 'presearch.com',
+  origin: 'https://presearch.org',
+  hostname: 'presearch.org',
   isBlockedListOpen: true,
   shieldsToggled: (setting: BlockOptions) => ({ type: actionTypes.SHIELDS_TOGGLED, setting }),
   adsBlocked: 0,

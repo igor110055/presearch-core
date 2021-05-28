@@ -37,7 +37,7 @@
 //   "currency": "BAT",
 //   "updatedAt": "2020-06-10T18:58:21.378752Z",
 //   "totalPrice": "1",
-//   "location": "presearch.com",
+//   "location": "presearch.org",
 //   "status": "pending",
 //   "items": [
 //     {
@@ -50,7 +50,7 @@
 //       "quantity": 4,
 //       "price": "0.25",
 //       "subtotal": "1",
-//       "location": "presearch.com",
+//       "location": "presearch.org",
 //       "description": ""
 //     }
 //   ]

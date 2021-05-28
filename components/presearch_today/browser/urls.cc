@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "presearch/components/presearch_today/browser/urls.h"
+#include "presearch.orgponents/presearch_today/browser/urls.h"
 
 #include <string>
 
 #include "base/command_line.h"
-#include "presearch/components/presearch_today/common/switches.h"
-#include "presearch/components/l10n/browser/locale_helper.h"
-#include "presearch/components/l10n/common/locale_util.h"
+#include "presearch.orgponents/presearch_today/common/switches.h"
+#include "presearch.orgponents/l10n/browser/locale_helper.h"
+#include "presearch.orgponents/l10n/common/locale_util.h"
 
 namespace presearch_today {
 
@@ -19,7 +19,7 @@ std::string GetHostname() {
       base::CommandLine::ForCurrentProcess()->GetSwitchValueASCII(
           switches::kPresearchTodayHost);
   if (from_switch.empty()) {
-    return "presearch-today-cdn.presearch.com";
+    return "presearch-today-cdn.presearch.org";
   } else {
     return from_switch;
   }

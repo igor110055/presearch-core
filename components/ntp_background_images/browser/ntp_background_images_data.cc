@@ -3,14 +3,14 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/ntp_background_images/browser/ntp_background_images_data.h"
+#include "presearch.orgponents/ntp_background_images/browser/ntp_background_images_data.h"
 
 #include <utility>
 
 #include "base/json/json_reader.h"
 #include "base/logging.h"
 #include "base/strings/stringprintf.h"
-#include "presearch/components/ntp_background_images/browser/url_constants.h"
+#include "presearch.orgponents/ntp_background_images/browser/url_constants.h"
 #include "content/public/common/url_constants.h"
 
 /* Sample photo.json.
@@ -20,7 +20,7 @@
     "imageUrl": "logo.png",
     "alt": "Visit Presearch Software",
     "companyName": "Presearch Software",
-    "destinationUrl": "https://www.presearch.com/"
+    "destinationUrl": "https://www.presearch.org/"
   },
   "wallpapers": [
     {

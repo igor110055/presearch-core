@@ -18,9 +18,9 @@ describe('cosmeticFilterEvents events', () => {
   describe('when runtime.onMessage is received', () => {
     describe('contextMenuOpened', () => {
       it('assigns the base URI', () => {
-        chrome.runtime.sendMessage({ type: 'contextMenuOpened', baseURI: 'presearch.com' },
+        chrome.runtime.sendMessage({ type: 'contextMenuOpened', baseURI: 'presearch.org' },
         () => {
-          expect(cosmeticFilterEvents.rule.host).toBe('presearch.com')
+          expect(cosmeticFilterEvents.rule.host).toBe('presearch.org')
         })
       })
     })
@@ -47,7 +47,7 @@ describe('cosmeticFilterEvents events', () => {
 
     describe('addBlockElement', function () {
       it('triggers addBlockElement action (query call)', function () {
-        const info: chrome.contextMenus.OnClickData = { menuItemId: 'elementPickerMode', editable: false, pageUrl: 'presearch.com' }
+        const info: chrome.contextMenus.OnClickData = { menuItemId: 'elementPickerMode', editable: false, pageUrl: 'presearch.org' }
         // calls query
         const tab: chrome.tabs.Tab = {
           id: 3,
@@ -76,7 +76,7 @@ describe('cosmeticFilterEvents events', () => {
         })
         it('calls `chrome.tabs.insertCSS` with cosmetic filter rule', function () {
           selectorToReturn = '#test_selector'
-          cosmeticFilterEvents.applyCosmeticFilter('presearch.com', selectorToReturn)
+          cosmeticFilterEvents.applyCosmeticFilter('presearch.org', selectorToReturn)
           let returnObj = {
             'code': '#test_selector {display: none !important;}',
             'cssOrigin': 'user'

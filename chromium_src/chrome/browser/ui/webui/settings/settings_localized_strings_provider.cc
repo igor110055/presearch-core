@@ -10,12 +10,12 @@
 #include "base/strings/utf_string_conversions.h"
 #include "presearch/browser/ui/webui/settings/presearch_privacy_handler.h"
 #include "presearch/browser/version_info.h"
-#include "presearch/components/ipfs/ipfs_constants.h"
-#include "presearch/components/ipfs/pref_names.h"
-#include "presearch/components/sidebar/buildflags/buildflags.h"
+#include "presearch.orgponents/ipfs/ipfs_constants.h"
+#include "presearch.orgponents/ipfs/pref_names.h"
+#include "presearch.orgponents/sidebar/buildflags/buildflags.h"
 #include "chrome/browser/ui/webui/webui_util.h"
 #include "chrome/common/pref_names.h"
-#include "components/grit/presearch_components_strings.h"
+#include "components/grit/presearch.orgponents_strings.h"
 #include "components/prefs/pref_service.h"
 
 namespace settings {
@@ -49,7 +49,7 @@ void PresearchAddLocalizedStrings(content::WebUIDataSource*, Profile*);
 namespace settings {
 
 const char kWebRTCLearnMoreURL[] =
-    "https://support.presearch.com/hc/en-us/articles/"
+    "https://support.presearch.org/hc/en-us/articles/"
     "360017989132-How-do-I-change-my-Privacy-Settings-#webrtc";
 const char kPresearchBuildInstructionsUrl[] =
     "https://github.com/presearch/presearch-browser/wiki";

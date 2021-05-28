@@ -3,17 +3,17 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/adblock_rust_ffi/src/wrapper.h"
-#include "presearch/components/presearch_shields/browser/ad_block_service_helper.h"
+#include "presearch.orgponents/adblock_rust_ffi/src/wrapper.h"
+#include "presearch.orgponents/presearch_shields/browser/ad_block_service_helper.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
 TEST(AdBlockRegionalServiceTest, UserModelLanguages) {
   std::vector<adblock::FilterList> catalog = std::vector<adblock::FilterList>();
   catalog.push_back(adblock::FilterList("uuid",
-                                        "https://presearch.com",
+                                        "https://presearch.org",
                                         "Testing Filter List",
                                         {"fr"},
-                                        "https://support.presearch.com",
+                                        "https://support.presearch.org",
                                         "componentid",
                                         "base64publickey",
                                         "Filter list for testing purposes"));

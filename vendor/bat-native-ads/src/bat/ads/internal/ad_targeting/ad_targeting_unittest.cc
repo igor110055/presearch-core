@@ -142,9 +142,9 @@ class BatAdsAdTargetingTest
 
   void ProcessPurchaseIntent() {
     const std::vector<GURL> urls = {
-        GURL("https://www.presearch.com/test?foo=bar"),
+        GURL("https://www.presearch.org/test?foo=bar"),
         GURL("https://www.basicattentiontoken.org/test?bar=foo"),
-        GURL("https://www.presearch.com/test?foo=bar")};
+        GURL("https://www.presearch.org/test?foo=bar")};
 
     for (const auto& url : urls) {
       purchase_intent_processor_->Process(url);

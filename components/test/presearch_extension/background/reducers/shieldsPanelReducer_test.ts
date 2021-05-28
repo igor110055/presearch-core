@@ -27,14 +27,14 @@ import { initialState } from '../../../testData'
 import * as deepFreeze from 'deep-freeze-node'
 import * as actions from '../../../../presearch_extension/extension/presearch_extension/actions/shieldsPanelActions'
 
-const origin = 'https://presearch.com'
+const origin = 'https://presearch.org'
 const windowId = 1
 const tabId = 2
 
 const details: ShieldDetails = {
   id: tabId,
   origin,
-  hostname: 'presearch.com',
+  hostname: 'presearch.org',
   httpUpgradableResources: 'block',
   javascript: 'block',
   trackers: 'block',
@@ -116,7 +116,7 @@ describe('presearchShieldsPanelReducer', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: true
       })
       expect(spy).toBeCalledTimes(1)
@@ -126,7 +126,7 @@ describe('presearchShieldsPanelReducer', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: false
       })
       expect(spy).not.toBeCalled()
@@ -135,18 +135,18 @@ describe('presearchShieldsPanelReducer', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: true
       })
       expect(resetNoScriptInfoSpy).toBeCalledTimes(1)
       expect(resetNoScriptInfoSpy.mock.calls[0][1]).toBe(tabId)
-      expect(resetNoScriptInfoSpy.mock.calls[0][2]).toBe('https://www.presearch.com')
+      expect(resetNoScriptInfoSpy.mock.calls[0][2]).toBe('https://www.presearch.org')
     })
     it('does not call resetNoScriptInfo when isMainFrame is false', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: false
       })
       expect(resetNoScriptInfoSpy).not.toBeCalled()
@@ -155,7 +155,7 @@ describe('presearchShieldsPanelReducer', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: true
       })
       expect(spy).toBeCalledTimes(1)
@@ -165,7 +165,7 @@ describe('presearchShieldsPanelReducer', () => {
       shieldsPanelReducer(initialState.shieldsPanel, {
         type: webNavigationTypes.ON_COMMITTED,
         tabId: tabId,
-        url: 'https://www.presearch.com',
+        url: 'https://www.presearch.org',
         isMainFrame: false
       })
       expect(spy).not.toBeCalled()
@@ -202,7 +202,7 @@ describe('presearchShieldsPanelReducer', () => {
         1: tabId
       },
       tabs: {
-        [tabId]: { url: 'https://presearch.com' }
+        [tabId]: { url: 'https://presearch.org' }
       }
     })
     beforeEach(() => {
@@ -455,7 +455,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'javascript',
           tabId: 2,
-          subresource: 'https://test.presearch.com/index.js'
+          subresource: 'https://test.presearch.org/index.js'
         }
       })
 
@@ -467,7 +467,7 @@ describe('presearchShieldsPanelReducer', () => {
             ...state.tabs[2],
             javascriptBlocked: 1,
             noScriptInfo: {
-              'https://test.presearch.com/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
+              'https://test.presearch.org/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
             }
           }
         }
@@ -525,7 +525,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'fingerprinting',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
       expect(nextState).toEqual({
@@ -535,7 +535,7 @@ describe('presearchShieldsPanelReducer', () => {
           2: {
             ...state.tabs[2],
             fingerprintingBlocked: 1,
-            fingerprintingBlockedResources: [ 'https://test.presearch.com' ]
+            fingerprintingBlockedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -546,7 +546,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
       expect(nextState).toEqual({
@@ -556,7 +556,7 @@ describe('presearchShieldsPanelReducer', () => {
           2: {
             ...state.tabs[2],
             adsBlocked: 1,
-            adsBlockedResources: [ 'https://test.presearch.com' ]
+            adsBlockedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -566,7 +566,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: 2,
-          subresource: 'https://test2.presearch.com'
+          subresource: 'https://test2.presearch.org'
         }
       })
       expect(nextState).toEqual({
@@ -577,8 +577,8 @@ describe('presearchShieldsPanelReducer', () => {
             ...state.tabs[2],
             adsBlocked: 2,
             adsBlockedResources: [
-              'https://test.presearch.com',
-              'https://test2.presearch.com'
+              'https://test.presearch.org',
+              'https://test2.presearch.org'
             ]
           }
         }
@@ -591,11 +591,11 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: tabId,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
       expect(nextState.tabs[tabId].adsBlockedResources).toEqual(
-        [ 'https://test.presearch.com' ]
+        [ 'https://test.presearch.org' ]
       )
 
       nextState = shieldsPanelReducer(nextState, {
@@ -603,13 +603,13 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: tabId,
-          subresource: 'https://test2.presearch.com'
+          subresource: 'https://test2.presearch.org'
         }
       })
       expect(nextState.tabs[tabId].adsBlockedResources).toEqual(
         [
-          'https://test.presearch.com',
-          'https://test2.presearch.com'
+          'https://test.presearch.org',
+          'https://test2.presearch.org'
         ]
       )
 
@@ -618,13 +618,13 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: tabId,
-          subresource: 'https://test2.presearch.com'
+          subresource: 'https://test2.presearch.org'
         }
       })
       expect(nextState.tabs[tabId].adsBlockedResources).toEqual(
         [
-          'https://test.presearch.com',
-          'https://test2.presearch.com'
+          'https://test.presearch.org',
+          'https://test2.presearch.org'
         ]
       )
     })
@@ -634,7 +634,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       }))
       expect(nextState).toEqual({
@@ -645,7 +645,7 @@ describe('presearchShieldsPanelReducer', () => {
             ...state.tabs[2],
             adsBlocked: 1,
             adsBlockedResources: [
-              'https://test.presearch.com'
+              'https://test.presearch.org'
             ]
           }
         }
@@ -656,7 +656,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: 3,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
 
@@ -667,7 +667,7 @@ describe('presearchShieldsPanelReducer', () => {
           2: {
             ...state.tabs[2],
             adsBlocked: 1,
-            adsBlockedResources: [ 'https://test.presearch.com' ]
+            adsBlockedResources: [ 'https://test.presearch.org' ]
           },
           3: {
             fingerprintingBlocked: 0,
@@ -679,7 +679,7 @@ describe('presearchShieldsPanelReducer', () => {
             trackersBlocked: 0,
             trackersBlockedResources: [],
             adsBlocked: 1,
-            adsBlockedResources: [ 'https://test.presearch.com' ]
+            adsBlockedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -690,7 +690,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'shieldsAds',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       }))
       expect(nextState).toEqual({
@@ -700,7 +700,7 @@ describe('presearchShieldsPanelReducer', () => {
           2: {
             ...state.tabs[2],
             adsBlocked: 1,
-            adsBlockedResources: [ 'https://test.presearch.com' ]
+            adsBlockedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -710,7 +710,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'trackers',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
 
@@ -722,8 +722,8 @@ describe('presearchShieldsPanelReducer', () => {
             ...state.tabs[2],
             adsBlocked: 1,
             trackersBlocked: 1,
-            trackersBlockedResources: [ 'https://test.presearch.com' ],
-            adsBlockedResources: [ 'https://test.presearch.com' ]
+            trackersBlockedResources: [ 'https://test.presearch.org' ],
+            adsBlockedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -733,7 +733,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'httpUpgradableResources',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
       expect(nextState).toEqual({
@@ -745,9 +745,9 @@ describe('presearchShieldsPanelReducer', () => {
             adsBlocked: 1,
             trackersBlocked: 1,
             httpsRedirected: 1,
-            trackersBlockedResources: [ 'https://test.presearch.com' ],
-            adsBlockedResources: [ 'https://test.presearch.com' ],
-            httpsRedirectedResources: [ 'https://test.presearch.com' ]
+            trackersBlockedResources: [ 'https://test.presearch.org' ],
+            adsBlockedResources: [ 'https://test.presearch.org' ],
+            httpsRedirectedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -756,7 +756,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'javascript',
           tabId: 2,
-          subresource: 'https://test.presearch.com/index.js'
+          subresource: 'https://test.presearch.org/index.js'
         }
       })
       expect(nextState).toEqual({
@@ -770,11 +770,11 @@ describe('presearchShieldsPanelReducer', () => {
             httpsRedirected: 1,
             javascriptBlocked: 1,
             noScriptInfo: {
-              'https://test.presearch.com/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
+              'https://test.presearch.org/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
             },
-            trackersBlockedResources: [ 'https://test.presearch.com' ],
-            adsBlockedResources: [ 'https://test.presearch.com' ],
-            httpsRedirectedResources: [ 'https://test.presearch.com' ]
+            trackersBlockedResources: [ 'https://test.presearch.org' ],
+            adsBlockedResources: [ 'https://test.presearch.org' ],
+            httpsRedirectedResources: [ 'https://test.presearch.org' ]
           }
         }
       })
@@ -783,7 +783,7 @@ describe('presearchShieldsPanelReducer', () => {
         details: {
           blockType: 'fingerprinting',
           tabId: 2,
-          subresource: 'https://test.presearch.com'
+          subresource: 'https://test.presearch.org'
         }
       })
       expect(nextState).toEqual({
@@ -798,12 +798,12 @@ describe('presearchShieldsPanelReducer', () => {
             javascriptBlocked: 1,
             fingerprintingBlocked: 1,
             noScriptInfo: {
-              'https://test.presearch.com/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
+              'https://test.presearch.org/index.js': { actuallyBlocked: true, willBlock: true, userInteracted: false }
             },
-            trackersBlockedResources: [ 'https://test.presearch.com' ],
-            adsBlockedResources: [ 'https://test.presearch.com' ],
-            fingerprintingBlockedResources: [ 'https://test.presearch.com' ],
-            httpsRedirectedResources: [ 'https://test.presearch.com' ]
+            trackersBlockedResources: [ 'https://test.presearch.org' ],
+            adsBlockedResources: [ 'https://test.presearch.org' ],
+            fingerprintingBlockedResources: [ 'https://test.presearch.org' ],
+            httpsRedirectedResources: [ 'https://test.presearch.org' ]
           }
         }
       })

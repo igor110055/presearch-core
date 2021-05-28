@@ -18,7 +18,7 @@ export const defaultTopSitesData = [
   },
   {
     name: 'Presearch Software',
-    url: 'https://presearch.com',
+    url: 'https://presearch.org',
     favicon: PresearchFavicon,
     background: 'rgba(255,255,255,0.8)'
   },

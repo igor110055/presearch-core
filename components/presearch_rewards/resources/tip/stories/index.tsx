@@ -55,15 +55,15 @@ function createDialogArgs (): DialogArgs {
 function createHostState (): HostState {
   return {
     publisherInfo: {
-      publisherKey: 'presearch.com',
-      name: 'presearch.com',
+      publisherKey: 'presearch.org',
+      name: 'presearch.org',
       title: 'Presearch Software',
       description: 'Thanks for stopping by. Presearch is on a mission to fix ' +
         'the web by giving users a safer, faster and better browsing experience ' +
         'while growing support for content creators through a new attention-based ' +
         'ecosystem of rewards. Join us. It’s time to fix the web together!',
       background: '',
-      logo: 'https://rewards.presearch.com/LH3yQwkb78iP28pJDSSFPJwU',
+      logo: 'https://rewards.presearch.org/LH3yQwkb78iP28pJDSSFPJwU',
       amounts: [0.25, 2, 10],
       provider: '',
       links: {

@@ -18,8 +18,8 @@ const details: ShieldDetails = {
   ads: 'allow',
   trackers: 'block',
   httpUpgradableResources: 'allow',
-  origin: 'https://www.presearch.com',
-  hostname: 'www.presearch.com',
+  origin: 'https://www.presearch.org',
+  hostname: 'www.presearch.org',
   id: 1,
   javascript: 'allow',
   fingerprinting: 'allow',
@@ -62,7 +62,7 @@ describe('shieldsPanelActions', () => {
     const details: BlockDetails = {
       blockType: 'shieldsAds',
       tabId: 2,
-      subresource: 'https://www.presearch.com/test'
+      subresource: 'https://www.presearch.org/test'
     }
     expect(actions.resourceBlocked(details)).toEqual({
       type: types.RESOURCE_BLOCKED,

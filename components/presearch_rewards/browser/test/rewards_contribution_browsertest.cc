@@ -9,15 +9,15 @@
 #include "base/containers/flat_map.h"
 #include "base/test/bind.h"
 #include "presearch/browser/presearch_rewards/rewards_service_factory.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/components/presearch_rewards/browser/rewards_service_impl.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_context_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_contribution.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_promotion.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgponents/presearch_rewards/browser/rewards_service_impl.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_context_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_contribution.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_promotion.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/testing_profile.h"
@@ -233,7 +233,7 @@ IN_PROC_BROWSER_TEST_F(
   order->order_id = "a38b211b-bf78-42c8-9479-b11e92e3a76c";
   order->total_amount = 20;
   order->merchant_id = "";
-  order->location = "presearch.com";
+  order->location = "presearch.org";
   order->items = std::move(items);
   response_->SetSKUOrder(std::move(order));
 
@@ -320,7 +320,7 @@ IN_PROC_BROWSER_TEST_F(
   contribution_->AddBalance(promotion_->ClaimPromotionViaCode());
 
   contribution_->TipPublisher(
-      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.com"),
+      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.org"),
       rewards_browsertest_util::TipAction::OneTime);
 }
 
@@ -349,7 +349,7 @@ IN_PROC_BROWSER_TEST_F(
   contribution_->AddBalance(promotion_->ClaimPromotionViaCode());
 
   contribution_->TipPublisher(
-      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.com"),
+      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.org"),
       rewards_browsertest_util::TipAction::SetMonthly);
 }
 
@@ -389,11 +389,11 @@ IN_PROC_BROWSER_TEST_F(
   response_->SetAlternativePublisherList(true);
   // Tip unverified publisher
   contribution_->TipViaCode(
-      "presearch.com",
+      "presearch.org",
       1.0,
       ledger::type::PublisherStatus::NOT_VERIFIED);
   contribution_->TipViaCode(
-      "presearch.com",
+      "presearch.org",
       5.0,
       ledger::type::PublisherStatus::NOT_VERIFIED);
   contribution_->TipViaCode(
@@ -665,7 +665,7 @@ IN_PROC_BROWSER_TEST_F(
                             true);
 
   context_helper_->VisitPublisher(
-      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.com"),
+      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.org"),
       !verified);
 
   // Trigger contribution process
@@ -771,7 +771,7 @@ IN_PROC_BROWSER_TEST_F(
   order->order_id = "a38b211b-bf78-42c8-9479-b11e92e3a76c";
   order->total_amount = 20;
   order->merchant_id = "";
-  order->location = "presearch.com";
+  order->location = "presearch.org";
   order->items = std::move(items);
   response_->SetSKUOrder(std::move(order));
 

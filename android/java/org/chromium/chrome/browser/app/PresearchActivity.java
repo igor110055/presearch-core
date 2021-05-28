@@ -120,11 +120,11 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
     public static final String REWARDS_SETTINGS_URL = "chrome://rewards/";
     public static final String PRESEARCH_REWARDS_SETTINGS_URL = "presearch://rewards/";
     public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/contribute";
-    public static final String REWARDS_LEARN_MORE_URL = "https://presearch.com/faq-rewards/#unclaimed-funds";
+    public static final String REWARDS_LEARN_MORE_URL = "https://presearch.org/faq-rewards/#unclaimed-funds";
     public static final String PRESEARCH_TERMS_PAGE =
             "https://basicattentiontoken.org/user-terms-of-service/";
-    public static final String P3A_URL = "https://presearch.com/p3a";
-    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.com/privacy/#rewards";
+    public static final String P3A_URL = "https://presearch.org/p3a";
+    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/#rewards";
     private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
     public static final String OPEN_URL = "open_url";
 
@@ -143,7 +143,7 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
     public static final String CHANNEL_ID = "com.presearch.browser";
     public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
     public static final String ANDROID_PACKAGE_NAME = "android";
-    public static final String PRESEARCH_BLOG_URL = "http://www.presearch.com/blog";
+    public static final String PRESEARCH_BLOG_URL = "http://www.presearch.org/blog";
 
     private static final String JAPAN_COUNTRY_CODE = "JP";
 

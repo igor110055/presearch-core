@@ -43,7 +43,7 @@ export default class TorTab extends React.PureComponent<{}, State> {
               <Title>{locale.headerTorTitle}</Title>
               <Text>{locale.headerTorText}</Text>
               {/* <FakeButton
-                href='https://support.presearch.com/hc/en-us/articles/360018121491'
+                href='https://support.presearch.org/hc/en-us/articles/360018121491'
                 target='_blank'
               >
                 {locale.headerTorButton}
@@ -60,12 +60,12 @@ export default class TorTab extends React.PureComponent<{}, State> {
           </Content>
           <Separator />
           <ButtonGroup>
-            <FakeButton settings={true} href='https://support.presearch.com/hc/en-us/articles/360018266171' target='_blank'>
+            <FakeButton settings={true} href='https://support.presearch.org/hc/en-us/articles/360018266171' target='_blank'>
               <span>{locale.learnMore}</span>
               <OpenNewIcon />
             </FakeButton>
             {/* <Link
-              href='https://support.presearch.com/hc/en-us/articles/360018266171'
+              href='https://support.presearch.org/hc/en-us/articles/360018266171'
               target='_blank'
             >
               {locale.learnMore}
@@ -81,7 +81,7 @@ export default class TorTab extends React.PureComponent<{}, State> {
           </Content>
           <Separator />
           <FakeButton
-            href='https://support.presearch.com/hc/en-us/articles/360018121491'
+            href='https://support.presearch.org/hc/en-us/articles/360018121491'
             target='_blank'
           >
             {locale.boxTorButton}

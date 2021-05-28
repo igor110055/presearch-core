@@ -858,7 +858,7 @@ BATClassAdsBridge(BOOL, isDebug, setDebug, g_is_debug)
 
   NSString *baseUrl;
   if (ads::g_environment == ads::Environment::PRODUCTION) {
-    baseUrl = @"https://presearch-user-model-installer-input.s3.presearch.com";
+    baseUrl = @"https://presearch-user-model-installer-input.s3.presearch.org";
   } else {
     baseUrl = @"https://presearch-user-model-installer-input-dev.s3.presearchsoftware.com";
   }

@@ -9,11 +9,11 @@
 #include "presearch/browser/presearch_rewards/rewards_service_factory.h"
 #include "presearch/browser/tor/tor_profile_manager.h"
 #include "presearch/browser/tor/tor_profile_service_factory.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/components/ipfs/buildflags/buildflags.h"
-#include "presearch/components/tor/mock_tor_launcher_factory.h"
-#include "presearch/components/tor/tor_constants.h"
-#include "presearch/components/tor/tor_profile_service.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgponents/ipfs/buildflags/buildflags.h"
+#include "presearch.orgponents/tor/mock_tor_launcher_factory.h"
+#include "presearch.orgponents/tor/tor_constants.h"
+#include "presearch.orgponents/tor/tor_profile_service.h"
 #include "chrome/browser/bookmarks/bookmark_model_factory.h"
 #include "chrome/browser/browser_process.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
@@ -193,7 +193,7 @@ IN_PROC_BROWSER_TEST_F(TorProfileManagerTest, SwitchToTorProfileInheritPrefs) {
 
 IN_PROC_BROWSER_TEST_F(TorProfileManagerTest,
                        SwitchToTorProfileInheritContentSettings) {
-  const GURL presearch_url("https://www.presearch.com");
+  const GURL presearch_url("https://www.presearch.org");
   ProfileManager* profile_manager = g_browser_process->profile_manager();
   ASSERT_TRUE(profile_manager);
 

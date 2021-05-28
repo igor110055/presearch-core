@@ -6,8 +6,8 @@
 #include <memory>
 #include <vector>
 
-#include "presearch/components/presearch_wallet/browser/presearch_wallet_constants.h"
-#include "presearch/components/presearch_wallet/browser/eth_json_rpc_controller.h"
+#include "presearch.orgponents/presearch_wallet/browser/presearch_wallet_constants.h"
+#include "presearch.orgponents/presearch_wallet/browser/eth_json_rpc_controller.h"
 #include "content/public/test/browser_task_environment.h"
 #include "content/public/test/test_browser_context.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -32,32 +32,32 @@ TEST_F(EthJsonRpcControllerUnitTest, SetNetwork) {
   EthJsonRpcController controller(context(), Network::kRinkeby);
   ASSERT_EQ(controller.GetNetwork(), Network::kRinkeby);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://rinkeby-infura.presearch.com/");
+            "https://rinkeby-infura.presearch.org/");
 
   controller.SetNetwork(Network::kMainnet);
   ASSERT_EQ(controller.GetNetwork(), Network::kMainnet);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://mainnet-infura.presearch.com/");
+            "https://mainnet-infura.presearch.org/");
 
   controller.SetNetwork(Network::kRinkeby);
   ASSERT_EQ(controller.GetNetwork(), Network::kRinkeby);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://rinkeby-infura.presearch.com/");
+            "https://rinkeby-infura.presearch.org/");
 
   controller.SetNetwork(Network::kRopsten);
   ASSERT_EQ(controller.GetNetwork(), Network::kRopsten);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://ropsten-infura.presearch.com/");
+            "https://ropsten-infura.presearch.org/");
 
   controller.SetNetwork(Network::kGoerli);
   ASSERT_EQ(controller.GetNetwork(), Network::kGoerli);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://goerli-infura.presearch.com/");
+            "https://goerli-infura.presearch.org/");
 
   controller.SetNetwork(Network::kKovan);
   ASSERT_EQ(controller.GetNetwork(), Network::kKovan);
   ASSERT_EQ(controller.GetNetworkURL().GetOrigin(),
-            "https://kovan-infura.presearch.com/");
+            "https://kovan-infura.presearch.org/");
 
   controller.SetNetwork(Network::kLocalhost);
   ASSERT_EQ(controller.GetNetwork(), Network::kLocalhost);

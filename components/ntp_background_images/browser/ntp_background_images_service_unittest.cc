@@ -7,14 +7,14 @@
 #include <string>
 
 #include "base/test/task_environment.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_referrals/buildflags/buildflags.h"
-#include "presearch/components/presearch_referrals/browser/presearch_referrals_service.h"
-#include "presearch/components/presearch_referrals/common/pref_names.h"
-#include "presearch/components/ntp_background_images/browser/ntp_background_images_data.h"
-#include "presearch/components/ntp_background_images/browser/ntp_background_images_service.h"
-#include "presearch/components/ntp_background_images/browser/url_constants.h"
-#include "presearch/components/ntp_background_images/common/pref_names.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_referrals/buildflags/buildflags.h"
+#include "presearch.orgponents/presearch_referrals/browser/presearch_referrals_service.h"
+#include "presearch.orgponents/presearch_referrals/common/pref_names.h"
+#include "presearch.orgponents/ntp_background_images/browser/ntp_background_images_data.h"
+#include "presearch.orgponents/ntp_background_images/browser/ntp_background_images_service.h"
+#include "presearch.orgponents/ntp_background_images/browser/url_constants.h"
+#include "presearch.orgponents/ntp_background_images/common/pref_names.h"
 #include "components/prefs/testing_pref_service.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -31,7 +31,7 @@ constexpr char kTestSponsoredImages[] = R"(
         "logo": {
           "imageUrl":  "logo.png",
           "alt": "Technikke: For music lovers",
-          "destinationUrl": "https://www.presearch.com/",
+          "destinationUrl": "https://www.presearch.org/",
           "companyName": "Technikke"
         },
         "wallpapers": [
@@ -205,7 +205,7 @@ TEST_F(NTPBackgroundImagesServiceTest, InternalDataTest) {
         "logo": {
           "imageUrl":  "logo.png",
           "alt": "Technikke: For music lovers",
-          "destinationUrl": "https://www.presearch.com/",
+          "destinationUrl": "https://www.presearch.org/",
           "companyName": "Technikke"
         },
         "wallpapers": [
@@ -274,7 +274,7 @@ const char kTestSuperReferral[] = R"(
         "imageUrl": "logo.png",
         "alt": "Technikke: For music lovers",
         "companyName": "Technikke",
-        "destinationUrl": "https://www.presearch.com/?from-super-referreer-demo"
+        "destinationUrl": "https://www.presearch.org/?from-super-referreer-demo"
       },
       "wallpapers": [
         {
@@ -292,7 +292,7 @@ const char kTestSuperReferral[] = R"(
       "topSites": [
         {
           "name": "Presearch",
-          "destinationUrl": "https://presearch.com/",
+          "destinationUrl": "https://presearch.org/",
           "backgroundColor": "#e22919",
           "iconUrl": "presearch.png"
         },

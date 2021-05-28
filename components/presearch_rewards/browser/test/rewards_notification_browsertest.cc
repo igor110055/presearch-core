@@ -5,16 +5,16 @@
 
 #include "base/containers/flat_map.h"
 #include "presearch/browser/presearch_rewards/rewards_service_factory.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/components/presearch_rewards/browser/rewards_notification_service.h"
-#include "presearch/components/presearch_rewards/browser/rewards_notification_service_observer.h"
-#include "presearch/components/presearch_rewards/browser/rewards_service_impl.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_contribution.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_promotion.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgponents/presearch_rewards/browser/rewards_notification_service.h"
+#include "presearch.orgponents/presearch_rewards/browser/rewards_notification_service_observer.h"
+#include "presearch.orgponents/presearch_rewards/browser/rewards_service_impl.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_contribution.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_promotion.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/ui_test_utils.h"
@@ -343,7 +343,7 @@ IN_PROC_BROWSER_TEST_F(
       rewards_browsertest_util::GetUrl(https_server_.get(), "bumpsmack.com"),
       verified);
   context_helper_->VisitPublisher(
-      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.com"),
+      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.org"),
       !verified,
       true);
 
@@ -375,7 +375,7 @@ IN_PROC_BROWSER_TEST_F(
                             true);
 
   contribution_->TipViaCode(
-      "presearch.com",
+      "presearch.org",
       50.0,
       ledger::type::PublisherStatus::NOT_VERIFIED,
       0,
@@ -409,7 +409,7 @@ IN_PROC_BROWSER_TEST_F(
                             true);
 
   contribution_->TipViaCode(
-      "presearch.com",
+      "presearch.org",
       50.0,
       ledger::type::PublisherStatus::NOT_VERIFIED,
       0,

@@ -753,7 +753,7 @@ class PageWallet extends React.Component<Props, State> {
       return (
         <span>
           {tags.beforeTag}
-          <a href='https://presearch.com/faq#convert-old-keys' target='_blank' rel='noopener noreferrer'>
+          <a href='https://presearch.org/faq#convert-old-keys' target='_blank' rel='noopener noreferrer'>
             {tags.duringTag}
           </a>
           {tags.afterTag}
@@ -829,7 +829,7 @@ class PageWallet extends React.Component<Props, State> {
             : <WalletSummary
               reservedAmount={pendingTotal}
               onlyAnonWallet={onlyAnonWallet}
-              reservedMoreLink={'https://presearch.com/faq/#unclaimed-funds'}
+              reservedMoreLink={'https://presearch.org/faq/#unclaimed-funds'}
               onActivity={this.onModalActivityToggle}
               {...this.getWalletSummary()}
             />

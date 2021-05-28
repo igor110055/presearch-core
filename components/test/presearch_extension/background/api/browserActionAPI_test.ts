@@ -28,7 +28,7 @@ describe('BrowserAction API', () => {
     let setIconSpy: jest.SpyInstance
     let disableSpy: jest.SpyInstance
     let enableSpy: jest.SpyInstance
-    let url = 'https://presearch.com'
+    let url = 'https://presearch.org'
     const tabId = 1
     let shieldsEnabled = true
     beforeEach(() => {

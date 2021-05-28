@@ -1556,7 +1556,7 @@ https://support.google.com/chrome/?p=applescript</translation>
 <translation id="2725200716980197196">La connectivité réseau a été rétablie</translation>
 <translation id="2727633948226935816">Ne pas me le rappeler</translation>
 <translation id="2727712005121231835">Taille réelle</translation>
-<translation id="8988766505821653206">Aussi effacer les données de navigation (<ph name="URL"/>), ce qui risque de vous déconnecter de Presearch.com. <ph name="LEARN_MORE"/></translation>
+<translation id="8988766505821653206">Aussi effacer les données de navigation (<ph name="URL"/>), ce qui risque de vous déconnecter de presearch.org. <ph name="LEARN_MORE"/></translation>
 <translation id="2730029791981212295">Sauvegarde des applications et des fichiers Linux en cours…</translation>
 <translation id="2730901670247399077">Suggestions d'émojis</translation>
 <translation id="273093730430620027">Cette page accède à votre caméra.</translation>
@@ -4132,7 +4132,7 @@ Souhaitez-vous lancer <ph name="CONTROL_PANEL_APPLET_NAME"/>?</translation>
 <translation id="5707117624115653804">Personnalisez la taille et le style des sous-titres pour les applications et les sites qui prennent en charge ce paramètre</translation>
 <translation id="5707185214361380026">Échec du chargement de l'extension de :</translation>
 <translation id="5708171344853220004">Nom Microsoft principal</translation>
-<translation id="239760341987199724">Définir Presearch comme navigateur par défaut</translation>
+<translation id="239760341987199724">Définir presearch.orgme navigateur par défaut</translation>
 <translation id="5711983031544731014">Impossible de procéder au déverrouillage. Veuillez entrer votre mot de passe.</translation>
 <translation id="5715711091495208045">Gestionnaire de plugiciels : <ph name="PLUGIN_NAME"/></translation>
 <translation id="5719603411793408026">Moteurs de recherche par défaut</translation>

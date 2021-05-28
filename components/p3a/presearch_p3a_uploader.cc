@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/p3a/presearch_p3a_uploader.h"
+#include "presearch.orgponents/p3a/presearch_p3a_uploader.h"
 
 #include <utility>
 
@@ -25,7 +25,7 @@ net::NetworkTrafficAnnotationTag GetNetworkTrafficAnnotation(
           sender: "Presearch Privacy-Preserving Product Analytics Uploader"
           description:
             "Report of anonymized usage statistics. For more info, see "
-            "https://presearch.com/P3A"
+            "https://presearch.org/P3A"
           trigger:
             "Reports are automatically generated on startup and at intervals "
             "while Presearch is running."
@@ -47,7 +47,7 @@ net::NetworkTrafficAnnotationTag GetNetworkTrafficAnnotation(
         sender: "Presearch Privacy-Preserving Ad Analytics Uploader"
         description:
           "Report of anonymized usage statistics. For more info, see "
-          "https://presearch.com/P2A"
+          "https://presearch.org/P2A"
         trigger:
           "Reports are automatically generated on startup and at intervals "
           "while Presearch is running."

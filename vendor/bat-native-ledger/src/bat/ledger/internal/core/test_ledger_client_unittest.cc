@@ -27,7 +27,7 @@ TEST_F(TestLedgerClientTest, CanAccessDatabaseDirectly) {
 
 TEST_F(TestLedgerClientTest, LoadURLIsAsync) {
   auto request = mojom::UrlRequest::New();
-  request->url = "https://presearch.com";
+  request->url = "https://presearch.org";
   bool finished = false;
   client_.LoadURL(std::move(request), [&finished](auto&) { finished = true; });
   ASSERT_FALSE(finished);

@@ -11,7 +11,7 @@
 namespace crashpad {
 
 namespace {
-const char presearch_crash_url[] = "https://cr.presearch.com";
+const char presearch_crash_url[] = "https://cr.presearch.org";
 }
 
 class PresearchCrashpadClient {

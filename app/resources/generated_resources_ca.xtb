@@ -1553,7 +1553,7 @@ Pots gestionar la configuració d'aquest compte instal·lant l'aplicació Family
 <translation id="2725200716980197196">S'ha restablert la connectivitat de la xarxa</translation>
 <translation id="2727633948226935816">No m'ho tornis a recordar</translation>
 <translation id="2727712005121231835">Mida real</translation>
-<translation id="8988766505821653206">Esborra també les dades de navegació (<ph name="URL"/>). Pot ser que, en fer-ho, se't tanqui la sessió de Presearch.com. <ph name="LEARN_MORE"/></translation>
+<translation id="8988766505821653206">Esborra també les dades de navegació (<ph name="URL"/>). Pot ser que, en fer-ho, se't tanqui la sessió de presearch.org. <ph name="LEARN_MORE"/></translation>
 <translation id="2730029791981212295">S'està fent una còpia de seguretat de les aplicacions i dels fitxers de Linux</translation>
 <translation id="2730901670247399077">Suggeriments d'emojis</translation>
 <translation id="273093730430620027">Aquesta pàgina té accés a la càmera.</translation>
@@ -4130,7 +4130,7 @@ Assegureu-vos que no es pugui accedir a informació sensible.</translation>
 <translation id="5707117624115653804">Personalitza la mida i l'estil dels subtítols per a les aplicacions i per als llocs web que admeten aquesta opció de configuració</translation>
 <translation id="5707185214361380026">No s'ha pogut carregar l'extensió de:</translation>
 <translation id="5708171344853220004">Nom principal de Microsoft</translation>
-<translation id="239760341987199724">Defineix Presearch com a navegador predeterminat</translation>
+<translation id="239760341987199724">Defineix presearch.org a navegador predeterminat</translation>
 <translation id="5711983031544731014">No es pot desbloquejar: introduïu la contrasenya</translation>
 <translation id="5715711091495208045">Agent de connectors: <ph name="PLUGIN_NAME"/></translation>
 <translation id="5719603411793408026">Motors de cerca predeterminats</translation>

@@ -4,7 +4,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #define PRESEARCH_CRASH_REPORTER_CLIENT_GET_UPLOAD_URL \
-  return "https://cr.presearch.com";
+  return "https://cr.presearch.org";
 
 #include "../../../../../../components/crash/core/app/crash_reporter_client.cc"
 #undef PRESEARCH_CRASH_REPORTER_CLIENT_GET_UPLOAD_URL

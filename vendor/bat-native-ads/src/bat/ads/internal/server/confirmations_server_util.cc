@@ -13,7 +13,7 @@ namespace server {
 
 namespace {
 
-const char kProductionHost[] = "https://ads-serve.presearch.com";
+const char kProductionHost[] = "https://ads-serve.presearch.org";
 const char kStagingHost[] = "https://ads-serve.presearchsoftware.com";
 const char kDevelopmentHost[] = "https://ads-serve.presearch.software";
 

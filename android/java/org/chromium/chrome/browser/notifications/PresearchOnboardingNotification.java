@@ -36,9 +36,9 @@ public class PresearchOnboardingNotification extends BroadcastReceiver {
 
     private static final int PRESEARCH_ONBOARDING_NOTIFICATION_ID = -2;
     public static String PRESEARCH_ONBOARDING_NOTIFICATION_TAG = "presearch_onboarding_notification_tag";
-    private static String PRESEARCH_ONBOARDING_ORIGIN_EN = "https://presearch.com/my-first-ad/";
-    private static String PRESEARCH_ONBOARDING_ORIGIN_DE = "https://presearch.com/de/my-first-ad/";
-    private static String PRESEARCH_ONBOARDING_ORIGIN_FR = "https://presearch.com/fr/my-first-ad/";
+    private static String PRESEARCH_ONBOARDING_ORIGIN_EN = "https://presearch.org/my-first-ad/";
+    private static String PRESEARCH_ONBOARDING_ORIGIN_DE = "https://presearch.org/de/my-first-ad/";
+    private static String PRESEARCH_ONBOARDING_ORIGIN_FR = "https://presearch.org/fr/my-first-ad/";
     public static final String DEEP_LINK = "deep_link";
     public static final String USE_CUSTOM_NOTIFICATION = "use_custom_notification";
 

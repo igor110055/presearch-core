@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch/components/ipfs/ipfs_constants.h"
+#include "presearch.orgponents/ipfs/ipfs_constants.h"
 
 namespace ipfs {
 
@@ -18,7 +18,7 @@ const char kDefaultIPFSGateway[] = "https://dweb.link";
 const char kDefaultIPFSLocalGateway[] = "http://localhost";
 const char kIPFSSettingsURL[] = "presearch://settings/ipfs";
 const char kIPFSLearnMoreURL[] =
-    "https://support.presearch.com/hc/en-us/sections/"
+    "https://support.presearch.org/hc/en-us/sections/"
     "360010974932-InterPlanetary-File-System-IPFS-";
 const char kRepoStatsPath[] = "/api/v0/repo/stat";
 const char kRepoStatsHumanReadableParamName[] = "human";

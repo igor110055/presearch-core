@@ -9,7 +9,7 @@ import { types } from '../../../presearch_new_tab_ui/constants/grid_sites_types'
 import * as gridSitesState from '../../../presearch_new_tab_ui/state/gridSitesState'
 
 const topSites: chrome.topSites.MostVisitedURL[] = [{
-  url: 'https://presearch.com',
+  url: 'https://presearch.org',
   title: 'presearch'
 }, {
   url: 'https://cezaraugusto.net',

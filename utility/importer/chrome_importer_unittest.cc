@@ -12,7 +12,7 @@
 #include "base/files/scoped_temp_dir.h"
 #include "base/path_service.h"
 #include "base/strings/utf_string_conversions.h"
-#include "presearch/common/presearch_paths.h"
+#include "presearch.orgmon/presearch_paths.h"
 #include "chrome/common/chrome_paths.h"
 #include "chrome/common/importer/imported_bookmark_entry.h"
 #include "chrome/common/importer/importer_data_types.h"
@@ -82,7 +82,7 @@ TEST_F(ChromeImporterTest, ImportHistory) {
   importer_->StartImport(profile_, importer::HISTORY, bridge_.get());
 
   ASSERT_EQ(3u, history.size());
-  EXPECT_EQ("https://presearch.com/", history[0].url.spec());
+  EXPECT_EQ("https://presearch.org/", history[0].url.spec());
   EXPECT_EQ("https://github.com/presearch", history[1].url.spec());
   EXPECT_EQ("https://www.nytimes.com/", history[2].url.spec());
 }
@@ -110,7 +110,7 @@ TEST_F(ChromeImporterTest, ImportBookmarks) {
   EXPECT_TRUE(bookmarks[1].is_folder);
   EXPECT_EQ(ASCIIToUTF16("Empty"), bookmarks[1].title);
 
-  EXPECT_EQ("https://presearch.com/", bookmarks[2].url.spec());
+  EXPECT_EQ("https://presearch.org/", bookmarks[2].url.spec());
   EXPECT_FALSE(bookmarks[2].in_toolbar);
 }
 
@@ -129,7 +129,7 @@ TEST_F(ChromeImporterTest, ImportFavicons) {
   ASSERT_EQ(4u, favicons.size());
   EXPECT_EQ("https://www.google.com/favicon.ico",
             favicons[0].favicon_url.spec());
-  EXPECT_EQ("https://presearch.com/images/cropped-presearch_appicon_release-32x32.png",
+  EXPECT_EQ("https://presearch.org/images/cropped-presearch_appicon_release-32x32.png",
             favicons[1].favicon_url.spec());
   EXPECT_EQ("https://assets-cdn.github.com/favicon.ico",
             favicons[2].favicon_url.spec());

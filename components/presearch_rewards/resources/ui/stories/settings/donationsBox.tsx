@@ -50,7 +50,7 @@ class DonationsBox extends React.Component<{}, State> {
           provider: 'youtube',
           src: favicon
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'recurring',
         contribute: {
           tokens: '2.0',
@@ -64,7 +64,7 @@ class DonationsBox extends React.Component<{}, State> {
           name: 'theguardian.com',
           src: guardian
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'donation',
         contribute: {
           tokens: '12.0',
@@ -79,7 +79,7 @@ class DonationsBox extends React.Component<{}, State> {
           provider: 'twitter',
           src: eich
         },
-        url: 'https://presearch.com',
+        url: 'https://presearch.org',
         type: 'tip',
         contribute: {
           tokens: '7.0',

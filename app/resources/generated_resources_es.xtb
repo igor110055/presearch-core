@@ -1554,7 +1554,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="2725200716980197196">Conexión de red restaurada</translation>
 <translation id="2727633948226935816">No volver a recordármelo</translation>
 <translation id="2727712005121231835">Tamaño real</translation>
-<translation id="8988766505821653206">Borrar también los datos de navegación (<ph name="URL"/>), lo que puede hacer que se cierre tu sesión en Presearch.com. <ph name="LEARN_MORE"/></translation>
+<translation id="8988766505821653206">Borrar también los datos de navegación (<ph name="URL"/>), lo que puede hacer que se cierre tu sesión en presearch.org. <ph name="LEARN_MORE"/></translation>
 <translation id="2730029791981212295">Creando copia de seguridad de las aplicaciones y archivos de Linux</translation>
 <translation id="2730901670247399077">Sugerencias de emojis</translation>
 <translation id="273093730430620027">Esta página está accediendo a la cámara</translation>
@@ -2922,7 +2922,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="4289540628985791613">Vista general</translation>
 <translation id="4295072614469448764">La aplicación está disponible en tu terminal. Es posible que también haya un icono en el menú de aplicaciones.</translation>
 <translation id="4295839147292213505">Puedes enviar mensajes de texto desde tu ordenador, compartir tu conexión a Internet, responder a notificaciones de conversaciones y desbloquear tu <ph name="DEVICE_TYPE"/> con el teléfono.<ph name="FOOTNOTE_POINTER"/> <ph name="LINK_BEGIN"/>Más información<ph name="LINK_END"/></translation>
-<translation id="4295979599050707005">Vuelve a iniciar sesión para confirmar que tu cuenta <ph name="USER_EMAIL"/> se puede usar con sitios web, aplicaciones y extensiones tanto en Presearch como en Google Play. También puedes quitar esta cuenta. <ph name="LINK_BEGIN"/>Más información<ph name="LINK_END"/></translation>
+<translation id="4295979599050707005">Vuelve a iniciar sesión para confirmar que tu cuenta <ph name="USER_EMAIL"/> se puede usar con sitios web, aplicaciones y extensiones tanto en presearch.orgo en Google Play. También puedes quitar esta cuenta. <ph name="LINK_BEGIN"/>Más información<ph name="LINK_END"/></translation>
 <translation id="4297219207642690536">Reiniciar y restablecer</translation>
 <translation id="4297813521149011456">Rotación de pantalla</translation>
 <translation id="4299596693977045093">Configuración de eSIM</translation>
@@ -4129,7 +4129,7 @@ Puedes gestionar la configuración de esta cuenta instalando la aplicación Fami
 <translation id="5707117624115653804">Personaliza el tamaño y el estilo de los subtítulos en las aplicaciones y los sitios que admiten este ajuste.</translation>
 <translation id="5707185214361380026">Error al cargar la extensión desde:</translation>
 <translation id="5708171344853220004">Nombre principal de Microsoft</translation>
-<translation id="239760341987199724">Establecer Presearch como navegador predeterminado</translation>
+<translation id="239760341987199724">Establecer presearch.orgo navegador predeterminado</translation>
 <translation id="5711983031544731014">No se puede realizar el desbloqueo. Introduce tu contraseña.</translation>
 <translation id="5715711091495208045">Agente de complementos: <ph name="PLUGIN_NAME"/></translation>
 <translation id="5719603411793408026">Buscadores predeterminados</translation>

@@ -182,7 +182,7 @@ describe('rewards panel reducer', () => {
           publishers: {
             key_1: {
               tabId: 1,
-              tabUrl: 'https://presearch.com'
+              tabUrl: 'https://presearch.org'
             }
           }
         }
@@ -191,7 +191,7 @@ describe('rewards panel reducer', () => {
           type: types.ON_TAB_RETRIEVED,
           payload: {
             tab: {
-              url: 'https://presearch.com',
+              url: 'https://presearch.org',
               incognito: false,
               active: true,
               id: 1
@@ -309,7 +309,7 @@ describe('rewards panel reducer', () => {
     it('publisher is update accordingly', () => {
       const list = [
         {
-          publisherKey: 'presearch.com',
+          publisherKey: 'presearch.org',
           percentage: 50,
           status: 2
         },
@@ -334,8 +334,8 @@ describe('rewards panel reducer', () => {
         ...defaultState,
         publishers: {
           key_1: {
-            tabUrl: 'https://presearch.com',
-            publisherKey: 'presearch.com',
+            tabUrl: 'https://presearch.org',
+            publisherKey: 'presearch.org',
             percentage: 30,
             status: 0,
             excluded: true
@@ -352,8 +352,8 @@ describe('rewards panel reducer', () => {
         ...defaultState,
         publishers: {
           key_1: {
-            tabUrl: 'https://presearch.com',
-            publisherKey: 'presearch.com',
+            tabUrl: 'https://presearch.org',
+            publisherKey: 'presearch.org',
             percentage: 50,
             status: 2,
             excluded: false
@@ -408,8 +408,8 @@ describe('rewards panel reducer', () => {
         ...defaultState,
         publishers: {
           key_1: {
-            tabUrl: 'https://presearch.com',
-            publisherKey: 'presearch.com',
+            tabUrl: 'https://presearch.org',
+            publisherKey: 'presearch.org',
             percentage: 30,
             status: 2,
             excluded: true
@@ -426,8 +426,8 @@ describe('rewards panel reducer', () => {
         ...defaultState,
         publishers: {
           key_1: {
-            tabUrl: 'https://presearch.com',
-            publisherKey: 'presearch.com',
+            tabUrl: 'https://presearch.org',
+            publisherKey: 'presearch.org',
             percentage: 30,
             status: 2,
             excluded: false
@@ -445,7 +445,7 @@ describe('rewards panel reducer', () => {
         type: types.ON_EXCLUDED_SITES_CHANGED,
         payload: {
           properties: {
-            publisherKey: 'presearch.com',
+            publisherKey: 'presearch.org',
             excluded: false
           }
         }

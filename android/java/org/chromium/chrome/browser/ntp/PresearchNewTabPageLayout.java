@@ -126,8 +126,8 @@ public class PresearchNewTabPageLayout
         extends NewTabPageLayout implements CryptoWidgetBottomSheetDialogFragment
                                                     .CryptoWidgetBottomSheetDialogDismissListener {
     private static final String TAG = "PresearchNewTabPageView";
-    private static final String PRESEARCH_BINANCE = "https://www.presearch.com/";
-    private static final String PRESEARCH_REF_URL = "https://www.presearch.com/";
+    private static final String PRESEARCH_BINANCE = "https://www.presearch.org/";
+    private static final String PRESEARCH_REF_URL = "https://www.presearch.org/";
 
     private View mPresearchStatsViewFallBackLayout;
 

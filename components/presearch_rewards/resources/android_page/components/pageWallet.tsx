@@ -130,7 +130,7 @@ class PageWallet extends React.Component<Props, State> {
                 : <WalletSummary
                   reservedAmount={pendingTotal}
                   onlyAnonWallet={onlyAnonWallet}
-                  reservedMoreLink={'https://presearch.com/faq-rewards/#unclaimed-funds'}
+                  reservedMoreLink={'https://presearch.org/faq-rewards/#unclaimed-funds'}
                   {...this.getWalletSummary()}
                 />
               }

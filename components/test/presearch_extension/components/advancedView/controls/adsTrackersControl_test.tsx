@@ -11,7 +11,7 @@ import { shallow } from 'enzyme'
 const fakeProps: Props = {
   isBlockedListOpen: true,
   setBlockedListOpen: () => { return },
-  hostname: 'presearch.com',
+  hostname: 'presearch.org',
   favicon: '',
   ads: 'allow',
   cosmeticFiltering: 'block_third_party',

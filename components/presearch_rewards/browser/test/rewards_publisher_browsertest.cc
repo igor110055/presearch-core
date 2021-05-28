@@ -5,13 +5,13 @@
 
 #include "base/containers/flat_map.h"
 #include "presearch/browser/presearch_rewards/rewards_service_factory.h"
-#include "presearch/common/presearch_paths.h"
-#include "presearch/components/presearch_rewards/browser/rewards_service_impl.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_context_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
+#include "presearch.orgmon/presearch_paths.h"
+#include "presearch.orgponents/presearch_rewards/browser/rewards_service_impl.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_context_helper.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_context_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_response.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_util.h"
 #include "chrome/browser/ui/views/frame/browser_view.h"
 #include "chrome/test/base/in_process_browser_test.h"
 #include "chrome/test/base/testing_profile.h"
@@ -149,7 +149,7 @@ IN_PROC_BROWSER_TEST_F(RewardsPublisherBrowserTest, VisitUnverifiedPublisher) {
   rewards_service_->SetAutoContributeEnabled(true);
   context_helper_->LoadURL(rewards_browsertest_util::GetRewardsUrl());
   context_helper_->VisitPublisher(
-      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.com"),
+      rewards_browsertest_util::GetUrl(https_server_.get(), "presearch.org"),
       false);
 }
 

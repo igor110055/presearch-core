@@ -34,7 +34,7 @@ type ArticleProps = {
   isPromoted?: boolean
 }
 
-const promotedInfoUrl = 'https://presearch.com/presearch-today'
+const promotedInfoUrl = 'https://presearch.org/presearch-today'
 
 function onClickPromoted (e: React.MouseEvent) {
   const openInNewTab = e.ctrlKey || e.metaKey

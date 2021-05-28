@@ -465,7 +465,7 @@
     "placeholders": {
       "name": {
         "content": "$1",
-        "example": "presearch.com"
+        "example": "presearch.org"
       }
     }
   },

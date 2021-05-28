@@ -7,8 +7,8 @@
 
 #include "base/feature_list.h"
 #include "base/test/scoped_feature_list.h"
-#include "presearch/components/sidebar/features.h"
-#include "presearch/components/sidebar/sidebar_service.h"
+#include "presearch.orgponents/sidebar/features.h"
+#include "presearch.orgponents/sidebar/sidebar_service.h"
 #include "components/prefs/testing_pref_service.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
@@ -106,7 +106,7 @@ TEST_F(SidebarServiceTest, AddRemoveItems) {
   ClearState();
 
   const SidebarItem item2 =
-      SidebarItem::Create(GURL("https://www.presearch.com/"), base::string16(),
+      SidebarItem::Create(GURL("https://www.presearch.org/"), base::string16(),
                           SidebarItem::Type::kTypeWeb, true);
   EXPECT_TRUE(IsWebType(item2));
   service_->AddItem(item2);

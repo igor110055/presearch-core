@@ -11,7 +11,7 @@ import { BlockJSOptions } from '../../../../../presearch_extension/extension/pre
 const fakeProps: Props = {
   isBlockedListOpen: true,
   setBlockedListOpen: () => { return },
-  hostname: 'presearch.com',
+  hostname: 'presearch.org',
   favicon: '',
   javascript: 'allow',
   javascriptBlocked: 0,

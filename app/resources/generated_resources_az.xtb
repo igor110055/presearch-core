@@ -974,7 +974,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="208928984520943006">İstənilən vaxt Əsas ekrana keçmək üçün aşağıdan yuxarı sürüşdürün.</translation>
 <translation id="2618024864038703735">Presearch ilə təhlükəsiz axtarış edin</translation>
 <translation id="2089795179672254991">Sayt buferə kopyalanan mətn və şəkillərə baxmaq istədikdə icazə tələb edilsin (məsləhətlidir)</translation>
-<translation id="2090165459409185032">Hesab məlumatlarını bərpa üçün getmək üçün: Presearch.com/accounts/recovery</translation>
+<translation id="2090165459409185032">Hesab məlumatlarını bərpa üçün getmək üçün: presearch.org/accounts/recovery</translation>
 <translation id="2090876986345970080">Sistem güvənlik ayarı</translation>
 <translation id="2091887806945687916">Səs</translation>
 <translation id="209539936453343974">Valideyn nəzarətlərini ayarlamaq üçün uşağın valideyn tərəfindən idarə edilən Presearch Hesabı olmalıdır. <ph name="DEVICE_TYPE_PLURAL"/> valideynlərə Family Link tətbiqi ilə ekran limitləri təyin etmək, veb saytları təsdiq etmək və ya bloklamaq və daha çoxunu etmək imkanı verir. Uşaq Presearch Classroom kimi saytlarda məktəb tapşırığını yerinə yetirməli olsa, məktəb hesabı daha sonra əlavə edilə bilər.</translation>
@@ -1550,7 +1550,7 @@ Cihazda Family Link tətbiqini quraşdırmaqla bu hesabın ayarlarını idarə e
 <translation id="2725200716980197196">Şəbəkə bağlantısı bərpa edildi</translation>
 <translation id="2727633948226935816">Daha yadıma salmayın</translation>
 <translation id="2727712005121231835">Aktual Ölçü</translation>
-<translation id="8988766505821653206">Həmçinin baxış datasını (<ph name="URL"/>) silin, bunun nəticəsində Presearch.com ünvanından çıxa bilərsiniz. <ph name="LEARN_MORE"/></translation>
+<translation id="8988766505821653206">Həmçinin baxış datasını (<ph name="URL"/>) silin, bunun nəticəsində presearch.org ünvanından çıxa bilərsiniz. <ph name="LEARN_MORE"/></translation>
 <translation id="2730029791981212295">Linux tətbiq və faylları yedəklənir</translation>
 <translation id="2730901670247399077">Emoji təklifləri</translation>
 <translation id="273093730430620027">Bu səhifə kameranıza daxil olur.</translation>

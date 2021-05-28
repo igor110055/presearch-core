@@ -10,7 +10,7 @@ import * as gridSitesState from '../../../presearch_new_tab_ui/state/gridSitesSt
 import * as storage from '../../../presearch_new_tab_ui/storage/grid_sites_storage'
 
 const newTopSite1: chrome.topSites.MostVisitedURL = {
-  url: 'https://presearch.com',
+  url: 'https://presearch.org',
   title: 'presearch!'
 }
 

@@ -5,8 +5,8 @@
 
 #include <string>
 
-#include "presearch/components/presearch_wayback_machine/presearch_wayback_machine_utils.h"
-#include "presearch/components/presearch_wayback_machine/url_constants.h"
+#include "presearch.orgponents/presearch_wayback_machine/presearch_wayback_machine_utils.h"
+#include "presearch.orgponents/presearch_wayback_machine/url_constants.h"
 #include "net/base/url_util.h"
 #include "testing/gtest/include/gtest/gtest.h"
 #include "url/gurl.h"
@@ -23,7 +23,7 @@ TEST(PresearchWaybackMachineUtilsTest, LocalHostDisabledTest) {
       GURL("http://127.0045.1.2:8080/index.html")));
   EXPECT_FALSE(IsWaybackMachineDisabledFor(GURL("http://www.local-news.com")));
   EXPECT_FALSE(IsWaybackMachineDisabledFor(GURL("http://www.onion-news.com")));
-  EXPECT_FALSE(IsWaybackMachineDisabledFor(GURL("http://www.presearch.com")));
+  EXPECT_FALSE(IsWaybackMachineDisabledFor(GURL("http://www.presearch.org")));
   EXPECT_FALSE(
       IsWaybackMachineDisabledFor(GURL("https://archive.org/foobar.html")));
 }

@@ -44,7 +44,7 @@ export const contribution = () => {
         provider: 'youtube',
         src: favicon
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       attention: 40,
       onRemove: doNothing
     },
@@ -54,7 +54,7 @@ export const contribution = () => {
         verified: true,
         src: ddgo
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       attention: 20,
       onRemove: doNothing
     },
@@ -64,7 +64,7 @@ export const contribution = () => {
         verified: false,
         src: buzz
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       attention: 10,
       onRemove: doNothing
     },
@@ -74,7 +74,7 @@ export const contribution = () => {
         verified: true,
         src: guardian
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       attention: 5,
       onRemove: doNothing
     },
@@ -84,7 +84,7 @@ export const contribution = () => {
         verified: false,
         src: wiki
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       attention: 4,
       onRemove: doNothing
     }
@@ -115,7 +115,7 @@ export const conation = () => {
         provider: 'youtube',
         src: favicon
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'recurring',
       contribute: {
         tokens: '2.0',
@@ -129,7 +129,7 @@ export const conation = () => {
         name: 'theguardian.com',
         src: guardian
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'donation',
       contribute: {
         tokens: '12000.0',
@@ -144,7 +144,7 @@ export const conation = () => {
         provider: 'twitter',
         src: eich
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'tip',
       contribute: {
         tokens: '1.0',
@@ -222,7 +222,7 @@ export const pendingContributions = () => {
         provider: 'youtube',
         src: favicon
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'recurring',
       amount: {
         tokens: '2.0',
@@ -237,7 +237,7 @@ export const pendingContributions = () => {
         name: 'theguardian.com',
         src: guardian
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'tip',
       amount: {
         tokens: '12000.0',
@@ -253,7 +253,7 @@ export const pendingContributions = () => {
         provider: 'twitter',
         src: eich
       },
-      url: 'https://presearch.com',
+      url: 'https://presearch.org',
       type: 'ac',
       amount: {
         tokens: '1.0',

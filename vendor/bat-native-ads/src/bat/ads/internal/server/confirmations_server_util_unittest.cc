@@ -20,7 +20,7 @@ TEST(BatAdsConfirmationsServerUtilTest, Production) {
   const std::string host = confirmations::server::GetHost();
 
   // Assert
-  const std::string expected_host = "https://ads-serve.presearch.com";
+  const std::string expected_host = "https://ads-serve.presearch.org";
   EXPECT_EQ(expected_host, host);
 }
 

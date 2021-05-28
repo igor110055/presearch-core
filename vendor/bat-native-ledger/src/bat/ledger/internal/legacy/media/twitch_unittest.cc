@@ -210,13 +210,13 @@ TEST(MediaTwitchTest, GetLinkType) {
   const std::string url("https://k8923479-sub.cdn.ttvnw.net/v1/segment/");
 
   // url is not correct
-  std::string result = Twitch::GetLinkType("https://presearch.com",
+  std::string result = Twitch::GetLinkType("https://presearch.org",
                                                 "https://www.twitch.tv",
                                                 "");
   ASSERT_EQ(result, "");
 
   // first party is off
-  result = Twitch::GetLinkType(url, "https://www.presearch.com", "");
+  result = Twitch::GetLinkType(url, "https://www.presearch.org", "");
   ASSERT_EQ(result, "");
 
   // regular page
@@ -229,7 +229,7 @@ TEST(MediaTwitchTest, GetLinkType) {
 
   // player page
   result = Twitch::GetLinkType(url,
-                                    "https://presearch.com/",
+                                    "https://presearch.org/",
                                     "https://player.twitch.tv/");
   ASSERT_EQ(result, "twitch");
 }

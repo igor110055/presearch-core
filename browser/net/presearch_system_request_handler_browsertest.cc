@@ -75,7 +75,7 @@ class SystemNetworkContextManagerBrowsertest : public InProcessBrowserTest {
 
 IN_PROC_BROWSER_TEST_F(SystemNetworkContextManagerBrowsertest,
                        CheckForPresearchServiceKey) {
-  EXPECT_TRUE(LoadURL("demo.presearch.com"));
+  EXPECT_TRUE(LoadURL("demo.presearch.org"));
   EXPECT_TRUE(LoadURL("demo.presearchsoftware.com"));
   EXPECT_FALSE(LoadURL("presearch.demo.com"));
   EXPECT_FALSE(LoadURL("randomdomain.com"));

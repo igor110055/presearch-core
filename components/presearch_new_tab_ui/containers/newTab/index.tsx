@@ -473,11 +473,11 @@ class NewTabPage extends React.Component<Props, State> {
   }
 
   learnMoreRewards = () => {
-    window.open('https://presearch.com/presearch-rewards/', '_blank', 'noopener')
+    window.open('https://presearch.org/presearch-rewards/', '_blank', 'noopener')
   }
 
   learnMoreBinance = () => [
-    window.open('https://presearch.com/binance/', '_blank', 'noopener')
+    window.open('https://presearch.org/binance/', '_blank', 'noopener')
   ]
 
   setAssetDepositQRCodeSrc = (asset: string, src: string) => {

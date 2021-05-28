@@ -12,7 +12,7 @@ PACKAGE="presearch-browser"
 PROGNAME=presearch
 
 # Base directory for package installation.
-INSTALLDIR=/opt/presearch.com/presearch
+INSTALLDIR=/opt/presearch.org/presearch
 
 # Display string for desktop menu/icon.
 MENUNAME="Presearch Web Browser"
@@ -25,7 +25,7 @@ FULLDESC="Browse faster by blocking ads and trackers that violate your privacy a
 
 # Package maintainer information.
 MAINTNAME="Presearch Software"
-MAINTMAIL="support@presearch.com"
-PRODUCTURL="https://presearch.com/"
+MAINTMAIL="support@presearch.org"
+PRODUCTURL="https://presearch.org/"
 VERSION=$(cat $OUTPUTDIR/version | tr -d 'v,')
 VERSIONFULL=$VERSION

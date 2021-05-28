@@ -6,7 +6,7 @@
 #include "chrome/browser/ui/webui/devtools_ui.h"
 #include "testing/gtest/include/gtest/gtest.h"
 
-const char kPresearchDevtoolsURLHost[] = "devtools.presearch.com";
+const char kPresearchDevtoolsURLHost[] = "devtools.presearch.org";
 
 TEST(PresearchDevtoolsURLConstants, TestDevtoolsURL) {
   EXPECT_EQ(DevToolsUI::GetRemoteBaseURL().host(), kPresearchDevtoolsURLHost);

@@ -6,9 +6,9 @@
 #include <memory>
 
 #include "base/macros.h"
-#include "presearch/components/presearch_shields/browser/presearch_shields_util.h"
-#include "presearch/components/presearch_shields/common/presearch_shield_constants.h"
-#include "presearch/components/presearch_shields/common/features.h"
+#include "presearch.orgponents/presearch_shields/browser/presearch_shields_util.h"
+#include "presearch.orgponents/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch.orgponents/presearch_shields/common/features.h"
 #include "build/build_config.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/test/base/testing_profile.h"
@@ -55,33 +55,33 @@ TEST_F(PresearchShieldsUtilTest, GetPatternFromURL) {
   EXPECT_EQ(ContentSettingsPattern::Wildcard(), pattern);
 
   // scheme is a wildcard, should match any scheme
-  pattern = GetPatternFromURL(GURL("http://presearch.com"));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com/path1")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com/path2")));
-  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.com")));
-  EXPECT_TRUE(pattern.Matches(GURL("ftp://presearch.com")));
-  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.com")));
+  pattern = GetPatternFromURL(GURL("http://presearch.org"));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org/path1")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org/path2")));
+  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.org")));
+  EXPECT_TRUE(pattern.Matches(GURL("ftp://presearch.org")));
+  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.org")));
   EXPECT_FALSE(pattern.Matches(GURL("http://presearch2.com")));
 
   // path is a wildcard
-  pattern = GetPatternFromURL(GURL("http://presearch.com/path1"));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com/path1")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com/path2")));
-  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.com")));
+  pattern = GetPatternFromURL(GURL("http://presearch.org/path1"));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org/path1")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org/path2")));
+  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.org")));
   EXPECT_FALSE(pattern.Matches(GURL("http://presearch2.com")));
 
   // port is a wildcard
-  pattern = GetPatternFromURL(GURL("http://presearch.com:8080"));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com:8080")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com:8080/path1")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com:8080/path2")));
-  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.com:5555")));
-  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.com")));
-  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.com:8080")));
-  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.com")));
+  pattern = GetPatternFromURL(GURL("http://presearch.org:8080"));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org:8080")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org:8080/path1")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org:8080/path2")));
+  EXPECT_TRUE(pattern.Matches(GURL("http://presearch.org:5555")));
+  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.org")));
+  EXPECT_TRUE(pattern.Matches(GURL("https://presearch.org:8080")));
+  EXPECT_FALSE(pattern.Matches(GURL("http://subdomain.presearch.org")));
   EXPECT_FALSE(pattern.Matches(GURL("http://presearch2.com")));
 
   // with implied port
@@ -112,14 +112,14 @@ TEST_F(PresearchShieldsUtilTest, ControlTypeFromString) {
 TEST_F(PresearchShieldsUtilTest, SetPresearchShieldsEnabled_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
-  presearch_shields::SetPresearchShieldsEnabled(map, true, GURL("http://presearch.com"));
+  presearch_shields::SetPresearchShieldsEnabled(map, true, GURL("http://presearch.org"));
   // setting should apply to origin
-  auto setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  auto setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                         ContentSettingsType::PRESEARCH_SHIELDS);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // setting should apply to different scheme
-  setting = map->GetContentSetting(GURL("https://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("https://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_SHIELDS);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -154,23 +154,23 @@ TEST_F(PresearchShieldsUtilTest, GetPresearchShieldsEnabled_ForOrigin) {
   auto setting = presearch_shields::GetPresearchShieldsEnabled(map, GURL());
   EXPECT_EQ(true, setting);
   setting =
-      presearch_shields::GetPresearchShieldsEnabled(map, GURL("http://presearch.com"));
+      presearch_shields::GetPresearchShieldsEnabled(map, GURL("http://presearch.org"));
   EXPECT_EQ(true, setting);
   setting =
-      presearch_shields::GetPresearchShieldsEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetPresearchShieldsEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(true, setting);
 
   /* BLOCK */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_SHIELDS,
       CONTENT_SETTING_BLOCK);
   setting =
-      presearch_shields::GetPresearchShieldsEnabled(map, GURL("http://presearch.com/*"));
+      presearch_shields::GetPresearchShieldsEnabled(map, GURL("http://presearch.org/*"));
   EXPECT_EQ(false, setting);
   // https in unchanged
   setting =
-      presearch_shields::GetPresearchShieldsEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetPresearchShieldsEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(true, setting);
   // default is unchanged
   setting = presearch_shields::GetPresearchShieldsEnabled(map, GURL());
@@ -194,7 +194,7 @@ TEST_F(PresearchShieldsUtilTest, SetAdControlType_Default) {
   auto setting =
       map->GetContentSetting(GURL(), GURL(), ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
 
@@ -205,7 +205,7 @@ TEST_F(PresearchShieldsUtilTest, SetAdControlType_Default) {
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // override should apply to all origins
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -216,7 +216,7 @@ TEST_F(PresearchShieldsUtilTest, SetAdControlType_Default) {
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 
   // override should apply to all origins
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 }
@@ -225,14 +225,14 @@ TEST_F(PresearchShieldsUtilTest, SetAdControlType_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   presearch_shields::SetAdControlType(map, ControlType::ALLOW,
-                                  GURL("http://presearch.com"));
+                                  GURL("http://presearch.org"));
   // setting should apply to origin
-  auto setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  auto setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                         ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // setting should also apply to different scheme
-  setting = map->GetContentSetting(GURL("https://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("https://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_ADS);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -268,21 +268,21 @@ TEST_F(PresearchShieldsUtilTest, GetAdControlType_ForOrigin) {
 
   auto setting = presearch_shields::GetAdControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK, setting);
-  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
-  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
 
   /* ALLOW */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_ADS,
       CONTENT_SETTING_ALLOW);
-  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   // https in unchanged
-  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   // default is unchanged
   setting = presearch_shields::GetAdControlType(map, GURL());
@@ -293,22 +293,22 @@ TEST_F(PresearchShieldsUtilTest, GetAdControlType_ForOrigin) {
   map->SetContentSettingCustomScope(
       ContentSettingsPattern::Wildcard(), ContentSettingsPattern::Wildcard(),
       ContentSettingsType::PRESEARCH_ADS, CONTENT_SETTING_ALLOW);
-  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
-  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting = presearch_shields::GetAdControlType(map, GURL());
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   // set override to block
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_ADS,
       CONTENT_SETTING_BLOCK);
-  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.com/*"));
+  setting = presearch_shields::GetAdControlType(map, GURL("http://presearch.org/*"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   // https in unchanged
-  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.com"));
+  setting = presearch_shields::GetAdControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   // default is unchanged
   setting = presearch_shields::GetAdControlType(map, GURL());
@@ -325,9 +325,9 @@ TEST_F(PresearchShieldsUtilTest, SetCookieControlType_Default) {
   setting = map->GetContentSetting(GURL(), GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_COOKIES);
-  setting = map->GetContentSetting(GURL("http://presearch.com"),
+  setting = map->GetContentSetting(GURL("http://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
@@ -341,10 +341,10 @@ TEST_F(PresearchShieldsUtilTest, SetCookieControlType_Default) {
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
   // setting should apply to all urls
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"),
+  setting = map->GetContentSetting(GURL("http://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
@@ -358,10 +358,10 @@ TEST_F(PresearchShieldsUtilTest, SetCookieControlType_Default) {
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
   // setting should apply to all urls
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"),
+  setting = map->GetContentSetting(GURL("http://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
@@ -377,10 +377,10 @@ TEST_F(PresearchShieldsUtilTest, SetCookieControlType_Default) {
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // setting should apply to all urls
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"),
+  setting = map->GetContentSetting(GURL("http://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
@@ -390,20 +390,20 @@ TEST_F(PresearchShieldsUtilTest, SetCookieControlType_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   presearch_shields::SetCookieControlType(map, ControlType::ALLOW,
-                                      GURL("http://presearch.com"));
+                                      GURL("http://presearch.org"));
   // override should apply to origin
-  auto setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  auto setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                         ContentSettingsType::PRESEARCH_COOKIES);
-  setting = map->GetContentSetting(GURL("http://presearch.com"),
+  setting = map->GetContentSetting(GURL("http://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // override should also apply to different scheme
-  setting = map->GetContentSetting(GURL("https://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("https://presearch.org"), GURL(),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
-  setting = map->GetContentSetting(GURL("https://presearch.com"),
+  setting = map->GetContentSetting(GURL("https://presearch.org"),
                                    GURL("https://firstParty"),
                                    ContentSettingsType::PRESEARCH_COOKIES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
@@ -423,7 +423,7 @@ TEST_F(PresearchShieldsUtilTest, GetCookieControlType_Default) {
 
   auto setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
 
   /* ALLOW */
@@ -436,7 +436,7 @@ TEST_F(PresearchShieldsUtilTest, GetCookieControlType_Default) {
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_ALLOW);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::ALLOW, setting);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   /* BLOCK */
@@ -449,7 +449,7 @@ TEST_F(PresearchShieldsUtilTest, GetCookieControlType_Default) {
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_BLOCK);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK, setting);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
 
   /* BLOCK_THIRD_PARTY */
@@ -462,7 +462,7 @@ TEST_F(PresearchShieldsUtilTest, GetCookieControlType_Default) {
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_ALLOW);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
 }
 
@@ -470,47 +470,47 @@ TEST_F(PresearchShieldsUtilTest, GetCookieControlType_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   auto setting =
-      presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+      presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
 
   /* ALLOW */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_COOKIES,
       CONTENT_SETTING_ALLOW);
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::FromString("https://firstParty/*"),
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_ALLOW);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
 
   /* BLOCK */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_COOKIES,
       CONTENT_SETTING_BLOCK);
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::FromString("https://firstParty/*"),
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_BLOCK);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
 
   /* BLOCK_THIRD_PARTY */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::PRESEARCH_COOKIES,
       CONTENT_SETTING_BLOCK);
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::FromString("https://firstParty/*"),
       ContentSettingsType::PRESEARCH_COOKIES, CONTENT_SETTING_ALLOW);
-  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.com"));
+  setting = presearch_shields::GetCookieControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
   setting = presearch_shields::GetCookieControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK_THIRD_PARTY, setting);
@@ -523,7 +523,7 @@ TEST_F(PresearchShieldsUtilTest, SetFingerprintingControlType_Default) {
   auto type = presearch_shields::GetFingerprintingControlType(map, GURL());
   EXPECT_EQ(ControlType::DEFAULT, type);
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::DEFAULT, type);
 
   /* ALLOW */
@@ -533,7 +533,7 @@ TEST_F(PresearchShieldsUtilTest, SetFingerprintingControlType_Default) {
 
   // setting should apply to all urls
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, type);
 
   /* BLOCK */
@@ -543,7 +543,7 @@ TEST_F(PresearchShieldsUtilTest, SetFingerprintingControlType_Default) {
 
   // setting should apply to all urls
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, type);
 
   /* DEFAULT */
@@ -554,23 +554,23 @@ TEST_F(PresearchShieldsUtilTest, SetFingerprintingControlType_Default) {
 
   // setting should apply to all urls
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::DEFAULT, type);
 
   /* Global ALLOW and Site explicit DEFAULT */
   presearch_shields::SetFingerprintingControlType(map, ControlType::ALLOW, GURL());
   presearch_shields::SetFingerprintingControlType(map, ControlType::DEFAULT,
-                                              GURL("http://presearch.com"));
+                                              GURL("http://presearch.org"));
   // Site should have DEFAULT if it's explicitly set.
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::DEFAULT, type);
 
   /* Global BLOCK and Site explicit DEFAULT */
   presearch_shields::SetFingerprintingControlType(map, ControlType::BLOCK, GURL());
   // Site should have DEFAULT if it's explicitly set.
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::DEFAULT, type);
 }
 
@@ -578,23 +578,23 @@ TEST_F(PresearchShieldsUtilTest, SetFingerprintingControlType_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   presearch_shields::SetFingerprintingControlType(map, ControlType::ALLOW,
-                                              GURL("http://presearch.com"));
+                                              GURL("http://presearch.org"));
   auto type = presearch_shields::GetFingerprintingControlType(
-      map, GURL("http://presearch.com"));
+      map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, type);
   // override should also apply to different scheme
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("https://presearch.com"));
+                                                     GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, type);
 
   presearch_shields::SetFingerprintingControlType(map, ControlType::BLOCK,
-                                              GURL("http://presearch.com"));
+                                              GURL("http://presearch.org"));
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("http://presearch.com"));
+                                                     GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, type);
   // override should also apply to different scheme
   type = presearch_shields::GetFingerprintingControlType(map,
-                                                     GURL("https://presearch.com"));
+                                                     GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, type);
 
   // override should not apply to default
@@ -610,7 +610,7 @@ TEST_F(PresearchShieldsUtilTest, SetHTTPSEverywhereEnabled_Default) {
       GURL(), GURL(), ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
   setting = map->GetContentSetting(
-      GURL("http://presearch.com"), GURL(),
+      GURL("http://presearch.org"), GURL(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_DEFAULT, setting);
 
@@ -622,7 +622,7 @@ TEST_F(PresearchShieldsUtilTest, SetHTTPSEverywhereEnabled_Default) {
 
   // override should apply to all origins
   setting = map->GetContentSetting(
-      GURL("http://presearch.com"), GURL(),
+      GURL("http://presearch.org"), GURL(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -634,7 +634,7 @@ TEST_F(PresearchShieldsUtilTest, SetHTTPSEverywhereEnabled_Default) {
 
   // override should apply to all origins
   setting = map->GetContentSetting(
-      GURL("http://presearch.com"), GURL(),
+      GURL("http://presearch.org"), GURL(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 }
@@ -643,16 +643,16 @@ TEST_F(PresearchShieldsUtilTest, SetHTTPSEverywhereEnabled_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   presearch_shields::SetHTTPSEverywhereEnabled(map, false,
-                                           GURL("http://presearch.com"));
+                                           GURL("http://presearch.org"));
   // setting should apply to origin
   auto setting = map->GetContentSetting(
-      GURL("http://presearch.com"), GURL(),
+      GURL("http://presearch.org"), GURL(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // setting should apply to different scheme
   setting = map->GetContentSetting(
-      GURL("https://presearch.com"), GURL(),
+      GURL("https://presearch.org"), GURL(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -691,25 +691,25 @@ TEST_F(PresearchShieldsUtilTest, GetHTTPSEverywhereEnabled_ForOrigin) {
   auto setting = presearch_shields::GetHTTPSEverywhereEnabled(map, GURL());
   EXPECT_EQ(true, setting);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.org"));
   EXPECT_EQ(true, setting);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(true, setting);
 
   /* ALLOW */
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES,
       CONTENT_SETTING_ALLOW);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   // https in unchanged
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(true, setting);
   // default is unchanged
   setting = presearch_shields::GetHTTPSEverywhereEnabled(map, GURL());
@@ -722,26 +722,26 @@ TEST_F(PresearchShieldsUtilTest, GetHTTPSEverywhereEnabled_ForOrigin) {
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES,
       CONTENT_SETTING_ALLOW);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting = presearch_shields::GetHTTPSEverywhereEnabled(map, GURL());
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   // set override to block
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(),
       ContentSettingsType::PRESEARCH_HTTP_UPGRADABLE_RESOURCES,
       CONTENT_SETTING_BLOCK);
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.com/*"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("http://presearch.org/*"));
   EXPECT_EQ(true, setting);
   // https in unchanged
   setting =
-      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.com"));
+      presearch_shields::GetHTTPSEverywhereEnabled(map, GURL("https://presearch.org"));
   EXPECT_EQ(false, setting);
   // default is unchanged
   setting = presearch_shields::GetHTTPSEverywhereEnabled(map, GURL());
@@ -755,7 +755,7 @@ TEST_F(PresearchShieldsUtilTest, SetNoScriptControlType_Default) {
   auto setting =
       map->GetContentSetting(GURL(), GURL(), ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
@@ -766,7 +766,7 @@ TEST_F(PresearchShieldsUtilTest, SetNoScriptControlType_Default) {
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 
   // override should apply to all origins
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 
@@ -777,7 +777,7 @@ TEST_F(PresearchShieldsUtilTest, SetNoScriptControlType_Default) {
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 
   // override should apply to all origins
-  setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                    ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_ALLOW, setting);
 }
@@ -786,14 +786,14 @@ TEST_F(PresearchShieldsUtilTest, SetNoScriptControlType_ForOrigin) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
 
   presearch_shields::SetNoScriptControlType(map, ControlType::BLOCK,
-                                        GURL("http://presearch.com"));
+                                        GURL("http://presearch.org"));
   // setting should apply to origin
-  auto setting = map->GetContentSetting(GURL("http://presearch.com"), GURL(),
+  auto setting = map->GetContentSetting(GURL("http://presearch.org"), GURL(),
                                         ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 
   // setting should also apply to different scheme
-  setting = map->GetContentSetting(GURL("https://presearch.com"), GURL(),
+  setting = map->GetContentSetting(GURL("https://presearch.org"), GURL(),
                                    ContentSettingsType::JAVASCRIPT);
   EXPECT_EQ(CONTENT_SETTING_BLOCK, setting);
 
@@ -830,24 +830,24 @@ TEST_F(PresearchShieldsUtilTest, GetNoScriptControlType_ForOrigin) {
   auto setting = presearch_shields::GetNoScriptControlType(map, GURL());
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   /* BLOCK */
   // set override to block
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::JAVASCRIPT,
       CONTENT_SETTING_BLOCK);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.com/*"));
+      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.org/*"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   // https in unchanged
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
   // default is unchanged
   setting = presearch_shields::GetNoScriptControlType(map, GURL());
@@ -859,25 +859,25 @@ TEST_F(PresearchShieldsUtilTest, GetNoScriptControlType_ForOrigin) {
       ContentSettingsPattern::Wildcard(), ContentSettingsPattern::Wildcard(),
       ContentSettingsType::JAVASCRIPT, CONTENT_SETTING_BLOCK);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   setting = presearch_shields::GetNoScriptControlType(map, GURL());
   EXPECT_EQ(ControlType::BLOCK, setting);
 
   map->SetContentSettingCustomScope(
-      ContentSettingsPattern::FromString("http://presearch.com/*"),
+      ContentSettingsPattern::FromString("http://presearch.org/*"),
       ContentSettingsPattern::Wildcard(), ContentSettingsType::JAVASCRIPT,
       CONTENT_SETTING_ALLOW);
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("http://presearch.org"));
   EXPECT_EQ(ControlType::ALLOW, setting);
 
   // https in unchanged
   setting =
-      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.com"));
+      presearch_shields::GetNoScriptControlType(map, GURL("https://presearch.org"));
   EXPECT_EQ(ControlType::BLOCK, setting);
   // default is unchanged
   setting = presearch_shields::GetNoScriptControlType(map, GURL());
@@ -888,14 +888,14 @@ TEST_F(PresearchShieldsUtilTest, GetNoScriptControlType_ForOrigin) {
 TEST_F(PresearchShieldsUtilDomainBlockFeatureTest, ShouldDoDomainBlocking) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
   auto setting =
-      presearch_shields::ShouldDoDomainBlocking(map, GURL("https://presearch.com"));
+      presearch_shields::ShouldDoDomainBlocking(map, GURL("https://presearch.org"));
   EXPECT_EQ(false, setting);
 }
 
 // Should not do domain blocking if Presearch Shields is down
 TEST_F(PresearchShieldsUtilTest, ShouldDoDomainBlocking_ShieldsDown) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
-  GURL url = GURL("https://presearch.com");
+  GURL url = GURL("https://presearch.org");
   presearch_shields::SetPresearchShieldsEnabled(map, false, url);
   auto setting = presearch_shields::ShouldDoDomainBlocking(map, url);
   EXPECT_EQ(false, setting);
@@ -915,7 +915,7 @@ TEST_F(PresearchShieldsUtilTest, ShouldDoDomainBlocking_IsNotHttpHttps) {
 // Should not do domain blocking unless ad blocking is "aggressive"
 TEST_F(PresearchShieldsUtilTest, ShouldDoDomainBlocking_ControlTypes) {
   auto* map = HostContentSettingsMapFactory::GetForProfile(profile());
-  GURL url = GURL("https://presearch.com");
+  GURL url = GURL("https://presearch.org");
 
   presearch_shields::SetAdControlType(map, ControlType::ALLOW, url);
   auto setting = presearch_shields::ShouldDoDomainBlocking(map, url);

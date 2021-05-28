@@ -37,13 +37,13 @@ const locale = {
   boxTorButton: 'Learn more about Tor in Presearch',
 
   // Modal Private Window with Tor
-  modalPrivateWindowTorTitle: 'Link out to: https://support.presearch.com/hc/en-us/articles/360018121491',
+  modalPrivateWindowTorTitle: 'Link out to: https://support.presearch.org/hc/en-us/articles/360018121491',
 
   // Modal Private Window
-  modalPrivateWindowTitle: 'Link out to: https://support.presearch.com/hc/en-us/articles/360017840332',
+  modalPrivateWindowTitle: 'Link out to: https://support.presearch.org/hc/en-us/articles/360017840332',
 
   // Modal Tor in Presearch
-  modalTorInPresearchTitle: 'Link out to: https://support.presearch.com/hc/en-us/articles/360018121491',
+  modalTorInPresearchTitle: 'Link out to: https://support.presearch.org/hc/en-us/articles/360018121491',
 
   // Modal DuckDuckGo
   modalDuckduckGoTitle: 'Link out to: TBD'

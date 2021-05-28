@@ -9,15 +9,15 @@
 #include "base/feature_list.h"
 #include "base/files/file_path.h"
 #include "base/test/task_environment.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/components/presearch_referrals/browser/presearch_referrals_service.h"
-#include "presearch/components/presearch_referrals/common/pref_names.h"
-#include "presearch/components/ntp_background_images/browser/features.h"
-#include "presearch/components/ntp_background_images/browser/ntp_background_images_data.h"
-#include "presearch/components/ntp_background_images/browser/ntp_background_images_service.h"
-#include "presearch/components/ntp_background_images/browser/view_counter_model.h"
-#include "presearch/components/ntp_background_images/browser/view_counter_service.h"
-#include "presearch/components/ntp_background_images/common/pref_names.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgponents/presearch_referrals/browser/presearch_referrals_service.h"
+#include "presearch.orgponents/presearch_referrals/common/pref_names.h"
+#include "presearch.orgponents/ntp_background_images/browser/features.h"
+#include "presearch.orgponents/ntp_background_images/browser/ntp_background_images_data.h"
+#include "presearch.orgponents/ntp_background_images/browser/ntp_background_images_service.h"
+#include "presearch.orgponents/ntp_background_images/browser/view_counter_model.h"
+#include "presearch.orgponents/ntp_background_images/browser/view_counter_service.h"
+#include "presearch.orgponents/ntp_background_images/common/pref_names.h"
 #include "components/prefs/testing_pref_service.h"
 #include "components/sync_preferences/testing_pref_service_syncable.h"
 #include "testing/gtest/include/gtest/gtest.h"
@@ -34,12 +34,12 @@ std::unique_ptr<NTPBackgroundImagesData> GetDemoWallpaper(bool super_referral) {
   };
   demo->default_logo.alt_text = "Technikke: For music lovers.";
   demo->default_logo.company_name = "Technikke";
-  demo->default_logo.destination_url = "https://presearch.com";
+  demo->default_logo.destination_url = "https://presearch.org";
 
   if (super_referral) {
     demo->theme_name = "Technikke";
     demo->top_sites = {
-      { "Presearch", "https://presearch.com", "presearch.png",
+      { "Presearch", "https://presearch.org", "presearch.png",
         base::FilePath(FILE_PATH_LITERAL("presearch.png")) },
      { "BAT", "https://basicattentiontoken.org/", "bat.png",
         base::FilePath(FILE_PATH_LITERAL("bat.png")) },

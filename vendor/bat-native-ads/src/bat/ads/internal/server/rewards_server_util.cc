@@ -13,7 +13,7 @@ namespace server {
 
 namespace {
 
-const char kProductionDomain[] = "https://grant.rewards.presearch.com";
+const char kProductionDomain[] = "https://grant.rewards.presearch.org";
 const char kStagingDomain[] = "https://grant.rewards.presearchsoftware.com";
 const char kDevelopmentDomain[] = "https://grant.rewards.presearch.software";
 

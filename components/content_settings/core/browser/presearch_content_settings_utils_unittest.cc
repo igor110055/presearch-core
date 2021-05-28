@@ -7,7 +7,7 @@
 
 #include "base/macros.h"
 #include "base/optional.h"
-#include "presearch/components/content_settings/core/browser/presearch_content_settings_utils.h"
+#include "presearch.orgponents/content_settings/core/browser/presearch_content_settings_utils.h"
 #include "chrome/test/base/testing_profile.h"
 #include "components/content_settings/core/common/content_settings_pattern.h"
 #include "content/public/test/browser_task_environment.h"
@@ -56,37 +56,37 @@ TEST_F(PresearchContentSettingsUtilsTest,
   // Wildcard scheme, no port.
   EXPECT_EQ(base::nullopt,
             ConvertPatternToWildcardSchemeAndPort(
-                ContentSettingsPattern::FromString("*://presearch.com/*")));
+                ContentSettingsPattern::FromString("*://presearch.org/*")));
   EXPECT_EQ(base::nullopt,
             ConvertPatternToWildcardSchemeAndPort(
-                ContentSettingsPattern::FromString("*://presearch.com:*/")));
+                ContentSettingsPattern::FromString("*://presearch.org:*/")));
 
   // Wildcard scheme, has port.
   auto pattern = ConvertPatternToWildcardSchemeAndPort(
-      ContentSettingsPattern::FromString("*://presearch.com:8080/*"));
+      ContentSettingsPattern::FromString("*://presearch.org:8080/*"));
   EXPECT_NE(base::nullopt, pattern);
-  EXPECT_EQ(pattern->ToString(), "presearch.com");
-  EXPECT_TRUE(pattern->Matches(GURL("http://presearch.com:80/path1")));
-  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.com/path2")));
+  EXPECT_EQ(pattern->ToString(), "presearch.org");
+  EXPECT_TRUE(pattern->Matches(GURL("http://presearch.org:80/path1")));
+  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.org/path2")));
   EXPECT_FALSE(pattern->Matches(GURL("http://presearch2.com:8080")));
   pattern.reset();
 
   // Scheme, no port.
   pattern = ConvertPatternToWildcardSchemeAndPort(
-      ContentSettingsPattern::FromString("http://presearch.com/"));
+      ContentSettingsPattern::FromString("http://presearch.org/"));
   EXPECT_NE(base::nullopt, pattern);
-  EXPECT_EQ(pattern->ToString(), "presearch.com");
-  EXPECT_TRUE(pattern->Matches(GURL("ftp://presearch.com:80/path1")));
-  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.com/path2")));
+  EXPECT_EQ(pattern->ToString(), "presearch.org");
+  EXPECT_TRUE(pattern->Matches(GURL("ftp://presearch.org:80/path1")));
+  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.org/path2")));
   EXPECT_FALSE(pattern->Matches(GURL("http://presearch2.com:8080")));
   pattern.reset();
 
   // Scheme and port.
   pattern = ConvertPatternToWildcardSchemeAndPort(
-      ContentSettingsPattern::FromString("https://presearch.com:56558/"));
+      ContentSettingsPattern::FromString("https://presearch.org:56558/"));
   EXPECT_NE(base::nullopt, pattern);
-  EXPECT_EQ(pattern->ToString(), "presearch.com");
-  EXPECT_TRUE(pattern->Matches(GURL("wss://presearch.com:80/path1")));
-  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.com/path2")));
+  EXPECT_EQ(pattern->ToString(), "presearch.org");
+  EXPECT_TRUE(pattern->Matches(GURL("wss://presearch.org:80/path1")));
+  EXPECT_TRUE(pattern->Matches(GURL("https://presearch.org/path2")));
   EXPECT_FALSE(pattern->Matches(GURL("http://presearch2.com:8080")));
 }

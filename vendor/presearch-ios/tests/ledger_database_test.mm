@@ -149,8 +149,8 @@
 - (void)testMigratePublisherInfo
 {
   PublisherInfo *publisher = [self coreDataModelOfClass:PublisherInfo.self];
-  publisher.publisherID = @"presearch.com";
-  publisher.url = @"https://presearch.com";
+  publisher.publisherID = @"presearch.org";
+  publisher.url = @"https://presearch.org";
   publisher.faviconURL = @"";
   publisher.name = @"";
   publisher.provider = @"";
@@ -246,7 +246,7 @@
 - (void)testMigrateActivityInfo
 {
   ActivityInfo *activity = [self coreDataModelOfClass:ActivityInfo.self];
-  activity.publisherID = @"presearch.com";
+  activity.publisherID = @"presearch.org";
   activity.duration = 74270;
   activity.percent = 54;
   activity.visits = 16;
@@ -286,7 +286,7 @@
 - (void)testMigrateContributionInfo
 {
   ContributionInfo *contribution = [self coreDataModelOfClass:ContributionInfo.self];
-  contribution.publisherID = @"presearch.com";
+  contribution.publisherID = @"presearch.org";
   contribution.probi = @"1000000000000000000";
   contribution.date = [[NSDate date] timeIntervalSince1970];
   contribution.type = static_cast<int32_t>(ledger::type::RewardsType::ONE_TIME_TIP);
@@ -370,7 +370,7 @@
   
   ContributionPublisher *queuePublisher = [self coreDataModelOfClass:ContributionPublisher.self];
   queuePublisher.queue = queue;
-  queuePublisher.publisherKey = @"presearch.com";
+  queuePublisher.publisherKey = @"presearch.org";
   queuePublisher.amountPercent = 40;
   
   const auto migration = [BATLedgerDatabase migrateCoreDataToSQLTransaction];
@@ -577,7 +577,7 @@
 - (void)testMigrateRecurringTips
 {
   RecurringDonation *tip = [self coreDataModelOfClass:RecurringDonation.self];
-  tip.publisherID = @"presearch.com";
+  tip.publisherID = @"presearch.org";
   tip.amount = 20;
   tip.addedDate = [[NSDate date] timeIntervalSince1970];
   
@@ -780,15 +780,15 @@
 - (void)testClearServerPubList
 {
   ServerPublisherInfo *info = [self coreDataModelOfClass:ServerPublisherInfo.self];
-  info.publisherID = @"presearch.com";
+  info.publisherID = @"presearch.org";
   info.address = NSUUID.UUID.UUIDString;
   info.banner = [self coreDataModelOfClass:ServerPublisherBanner.self];
-  info.banner.publisherID = @"presearch.com";
+  info.banner.publisherID = @"presearch.org";
   ServerPublisherAmount *amount = [self coreDataModelOfClass:ServerPublisherAmount.self];
-  amount.publisherID = @"presearch.com";
+  amount.publisherID = @"presearch.org";
   amount.serverPublisherInfo = info;
   ServerPublisherLink *link = [self coreDataModelOfClass:ServerPublisherLink.self];
-  link.publisherID = @"presearch.com";
+  link.publisherID = @"presearch.org";
   link.serverPublisherInfo = info;
   
   // Save it to disk so the batch delete works

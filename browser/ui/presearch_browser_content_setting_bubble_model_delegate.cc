@@ -4,11 +4,11 @@
 
 #include "presearch/browser/ui/presearch_browser_content_setting_bubble_model_delegate.h"
 
-#include "presearch/common/url_constants.h"
+#include "presearch.orgmon/url_constants.h"
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
 
-const char kPresearchCommunitySupportUrl[] = "https://community.presearch.com/";
+const char kPresearchCommunitySupportUrl[] = "https://community.presearch.org/";
 
 PresearchBrowserContentSettingBubbleModelDelegate::
 PresearchBrowserContentSettingBubbleModelDelegate(Browser* browser) :

@@ -12,7 +12,7 @@ namespace promotion {
 
 const char kDevelopment[] = "https://grant.rewards.presearch.software";
 const char kStaging[] = "https://grant.rewards.presearchsoftware.com";
-const char kProduction[] = "https://grant.rewards.presearch.com";
+const char kProduction[] = "https://grant.rewards.presearch.org";
 
 std::string GetServerUrl(const std::string& path) {
   DCHECK(!path.empty());

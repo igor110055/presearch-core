@@ -32,7 +32,7 @@ TEST_F(BatAdsMediaFrequencyCapTest, AllowAdIfMediaIsNotPlaying) {
 
 TEST_F(BatAdsMediaFrequencyCapTest, AllowAdIfMediaIsStoppedForSingleTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
   TabManager::Get()->OnMediaStopped(1);
@@ -47,7 +47,7 @@ TEST_F(BatAdsMediaFrequencyCapTest, AllowAdIfMediaIsStoppedForSingleTab) {
 
 TEST_F(BatAdsMediaFrequencyCapTest, AllowAdIfMediaIsStoppedOnMultipleTabs) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
   TabManager::Get()->OnMediaPlaying(2);
@@ -65,7 +65,7 @@ TEST_F(BatAdsMediaFrequencyCapTest, AllowAdIfMediaIsStoppedOnMultipleTabs) {
 TEST_F(BatAdsMediaFrequencyCapTest,
        AllowAdIfMediaIsPlayingOnMultipleTabsButStoppedForVisibleTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
   TabManager::Get()->OnMediaPlaying(2);
@@ -81,7 +81,7 @@ TEST_F(BatAdsMediaFrequencyCapTest,
 
 TEST_F(BatAdsMediaFrequencyCapTest, DoNotAllowAdIfMediaIsPlayingOnVisibleTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
 
@@ -96,7 +96,7 @@ TEST_F(BatAdsMediaFrequencyCapTest, DoNotAllowAdIfMediaIsPlayingOnVisibleTab) {
 TEST_F(BatAdsMediaFrequencyCapTest,
        DoNotAllowAdIfMediaIsPlayingOnMultipleTabs) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
   TabManager::Get()->OnMediaPlaying(2);
@@ -112,7 +112,7 @@ TEST_F(BatAdsMediaFrequencyCapTest,
 TEST_F(BatAdsMediaFrequencyCapTest,
        DoNotAllowAdIfMediaIsPlayingOnMultipleTabsButStoppedForOccludedTab) {
   // Arrange
-  TabManager::Get()->OnUpdated(1, "https://presearch.com", true, false);
+  TabManager::Get()->OnUpdated(1, "https://presearch.org", true, false);
 
   TabManager::Get()->OnMediaPlaying(1);
   TabManager::Get()->OnMediaPlaying(2);

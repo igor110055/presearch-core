@@ -55,11 +55,11 @@ TEST_F(GetPublisherTest, ServerError404) {
           }));
 
   publisher_->Request(
-      "presearch.com",
+      "presearch.org",
       "ce55",
       [](const type::Result result, type::ServerPublisherInfoPtr info) {
     EXPECT_EQ(result, type::Result::LEDGER_OK);
-    EXPECT_EQ(info->publisher_key, "presearch.com");
+    EXPECT_EQ(info->publisher_key, "presearch.org");
     EXPECT_EQ(info->status, type::PublisherStatus::NOT_VERIFIED);
   });
 }

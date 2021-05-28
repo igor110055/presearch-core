@@ -33,7 +33,7 @@ TEST(PaymentUtilTest, GetServerUrlStaging) {
 TEST(PaymentUtilTest, GetServerUrlProduction) {
   ledger::_environment = type::Environment::PRODUCTION;
   const std::string url = GetServerUrl("/test");
-  ASSERT_EQ(url, "https://payment.rewards.presearch.com/test");
+  ASSERT_EQ(url, "https://payment.rewards.presearch.org/test");
 }
 
 }  // namespace payment

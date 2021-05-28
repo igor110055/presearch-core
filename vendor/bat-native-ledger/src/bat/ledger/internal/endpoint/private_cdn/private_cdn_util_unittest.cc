@@ -32,7 +32,7 @@ TEST(PrivateCDNTest, GetServerUrlStaging) {
 TEST(PrivateCDNTest, GetServerUrlProduction) {
   ledger::_environment = type::Environment::PRODUCTION;
   const std::string url = GetServerUrl("/test");
-  ASSERT_EQ(url, "https://pcdn.presearch.com/test");
+  ASSERT_EQ(url, "https://pcdn.presearch.org/test");
 }
 
 }  // namespace private_cdn

@@ -7,7 +7,7 @@
 
 #include "base/strings/stringprintf.h"
 #include "bat/ledger/internal/common/request_util.h"
-#include "presearch/components/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
+#include "presearch.orgponents/presearch_rewards/browser/test/common/rewards_browsertest_network_util.h"
 #include "content/public/test/browser_test_utils.h"
 
 namespace rewards_browsertest_util {
@@ -162,7 +162,7 @@ std::string GetOrderCreateResponse(ledger::type::SKUOrderPtr sku_order) {
         "currency": "BAT",
         "updatedAt": "2020-04-08T08:22:26.288974Z",
         "totalPrice": "%g",
-        "location": "presearch.com",
+        "location": "presearch.org",
         "status": "pending",
         "items": [%s]
       })",

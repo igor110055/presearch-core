@@ -49,7 +49,7 @@ class PostSuggestionsClaimTest : public testing::Test {
         "6";  // NOLINT
     token.public_key = "dvpysTSiJdZUPihius7pvGOfngRWfDiIbrowykgMi1I=";
     redeem_ = std::make_unique<credential::CredentialsRedeem>();
-    redeem_->publisher_key = "presearch.com";
+    redeem_->publisher_key = "presearch.org";
     redeem_->type = type::RewardsType::ONE_TIME_TIP;
     redeem_->processor = type::ContributionProcessor::PRESEARCH_TOKENS;
     redeem_->token_list = {token};

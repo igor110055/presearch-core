@@ -32,7 +32,7 @@ TEST(PromotionsUtilTest, GetServerUrlStaging) {
 TEST(PromotionsUtilTest, GetServerUrlProduction) {
   ledger::_environment = type::Environment::PRODUCTION;
   const std::string url = GetServerUrl("/test");
-  ASSERT_EQ(url, "https://grant.rewards.presearch.com/test");
+  ASSERT_EQ(url, "https://grant.rewards.presearch.org/test");
 }
 
 }  // namespace promotion

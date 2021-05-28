@@ -13,7 +13,7 @@
 namespace presearch {
 
 TEST(PresearchSystemRequestHandlerTest, AddPresearchServiceKeyHeaderForPresearch) {
-  GURL url("https://demo.presearch.com");
+  GURL url("https://demo.presearch.org");
   network::ResourceRequest request;
 
   request.url = url;

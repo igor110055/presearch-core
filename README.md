@@ -14,5 +14,5 @@ Follow [@presearch](https://twitter.com/presearch) on Twitter for important anno
 
 You can ask questions and interact with the community in the following
 locations:
-- [Presearch Community](https://community.presearch.com/)
+- [Presearch Community](https://community.presearch.org/)
 - [`community`](https://presearchsoftware.slack.com) channel on Presearch Software's Slack

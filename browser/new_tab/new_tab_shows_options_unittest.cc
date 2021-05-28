@@ -4,8 +4,8 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "presearch/browser/new_tab/new_tab_shows_options.h"
-#include "presearch/common/pref_names.h"
-#include "presearch/common/webui_url_constants.h"
+#include "presearch.orgmon/pref_names.h"
+#include "presearch.orgmon/webui_url_constants.h"
 #include "chrome/common/pref_names.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"
@@ -54,7 +54,7 @@ TEST_F(PresearchNewTabTest, BasicTest) {
   prefs->SetInteger(
       kNewTabPageShowsOptions,
       static_cast<int>(presearch::NewTabPageShowsOptions::kHomepage));
-  prefs->SetString(prefs::kHomePage, "https://www.presearch.com/");
+  prefs->SetString(prefs::kHomePage, "https://www.presearch.org/");
   prefs->SetBoolean(prefs::kHomePageIsNewTabPage, true);
   EXPECT_EQ(GURL(), presearch::GetNewTabPageURL(profile));
   EXPECT_EQ(GURL(), presearch::GetNewTabPageURL(otr_profile));
@@ -64,7 +64,7 @@ TEST_F(PresearchNewTabTest, BasicTest) {
   // Check NTP url is configured url when option is HOMEPAGE and
   // kHomePageIsNewTabPage is false.
   prefs->SetBoolean(prefs::kHomePageIsNewTabPage, false);
-  EXPECT_EQ(GURL("https://www.presearch.com/"), presearch::GetNewTabPageURL(profile));
+  EXPECT_EQ(GURL("https://www.presearch.org/"), presearch::GetNewTabPageURL(profile));
   EXPECT_EQ(GURL(), presearch::GetNewTabPageURL(otr_profile));
   EXPECT_FALSE(presearch::ShouldUseNewTabURLForNewTab(profile));
   EXPECT_FALSE(presearch::ShouldNewTabShowDashboard(profile));
