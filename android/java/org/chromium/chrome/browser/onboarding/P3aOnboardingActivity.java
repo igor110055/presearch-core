@@ -43,23 +43,19 @@ public class P3aOnboardingActivity extends AppCompatActivity {
         boolean isFirstInstall = PackageUtils.isFirstInstall(this);
 
         TextView p3aOnboardingTitle = findViewById(R.id.p3a_onboarding_title);
-        p3aOnboardingTitle.setText(isFirstInstall
-                        ? getResources().getString(R.string.p3a_onboarding_title_text_1)
-                        : getResources().getString(R.string.p3a_onboarding_title_text_2));
-        CheckBox p3aOnboardingCheckbox = findViewById(R.id.p3a_onboarding_checkbox);
-        boolean isP3aEnabled = true;
-        try {
-            isP3aEnabled = PresearchPrefServiceBridge.getInstance().getP3AEnabled();
-        } catch (Exception e) {
-            Log.e("P3aOnboarding", e.getMessage());
+        if (isFirstInstall){
+          p3aOnboardingTitle.setText(getResources().getString(R.string.p3a_onboarding_title_text_1));
         }
-        p3aOnboardingCheckbox.setChecked(isP3aEnabled);
+
+        CheckBox p3aOnboardingCheckbox = findViewById(R.id.p3a_onboarding_checkbox);
+
+        p3aOnboardingCheckbox.setChecked(false);
         p3aOnboardingCheckbox.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         try {
-                            PresearchPrefServiceBridge.getInstance().setP3AEnabled(isChecked);
+                            PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
                             PresearchPrefServiceBridge.getInstance().setP3ANoticeAcknowledged(true);
                         } catch (Exception e) {
                             Log.e("P3aOnboarding", e.getMessage());
@@ -67,61 +63,60 @@ public class P3aOnboardingActivity extends AppCompatActivity {
                     }
                 });
         ImageView p3aOnboardingImg = findViewById(R.id.p3a_onboarding_img);
-        p3aOnboardingImg.setImageResource(isFirstInstall
-                        ? R.drawable.ic_presearch_logo
-                        : (GlobalNightModeStateProviderHolder.getInstance().isInNightMode()
-                                        ? R.drawable.ic_spot_graphic_dark
-                                        : R.drawable.ic_spot_graphic));
+        if(isFirstInstall){
+          p3aOnboardingImg.setImageResource(R.drawable.ic_presearch_logo);
+        }
+
         TextView p3aOnboardingText = findViewById(R.id.p3a_onboarding_text);
         Button btnContinue = findViewById(R.id.btn_continue);
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (PackageUtils.isFirstInstall(P3aOnboardingActivity.this)
-                        && !OnboardingPrefManager.getInstance().isNewOnboardingShown()
-                        && PresearchActivity.getPresearchActivity() != null) {
-                    PresearchActivity.getPresearchActivity().showOnboardingV2(false);
-                }
+                // if (PackageUtils.isFirstInstall(P3aOnboardingActivity.this)
+                //         && !OnboardingPrefManager.getInstance().isNewOnboardingShown()
+                //         && PresearchActivity.getPresearchActivity() != null) {
+                //     PresearchActivity.getPresearchActivity().showOnboardingV2(false);
+                // }
                 OnboardingPrefManager.getInstance().setP3aOnboardingShown(true);
                 OnboardingPrefManager.getInstance().setShowDefaultBrowserModalAfterP3A(true);
                 finish();
             }
         });
 
-        String productAnalysisString =
-                String.format(getResources().getString(R.string.p3a_onboarding_checkbox_text,
-                        getResources().getString(R.string.private_product_analysis_text)));
-        int productAnalysisIndex = productAnalysisString.indexOf(
-                getResources().getString(R.string.private_product_analysis_text));
-        Spanned productAnalysisSpanned =
-                PresearchRewardsHelper.spannedFromHtmlString(productAnalysisString);
-        SpannableString productAnalysisTextSS =
-                new SpannableString(productAnalysisSpanned.toString());
-
-        ClickableSpan productAnalysisClickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View textView) {
-                CustomTabActivity.showInfoPage(P3aOnboardingActivity.this, PresearchActivity.P3A_URL);
-            }
-            @Override
-            public void updateDrawState(@NonNull TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
-            }
-        };
-
-        productAnalysisTextSS.setSpan(productAnalysisClickableSpan, productAnalysisIndex,
-                productAnalysisIndex
-                        + getResources().getString(R.string.private_product_analysis_text).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        productAnalysisTextSS.setSpan(
-                new ForegroundColorSpan(getResources().getColor(R.color.presearch_blue_tint_color)),
-                productAnalysisIndex,
-                productAnalysisIndex
-                        + getResources().getString(R.string.private_product_analysis_text).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        p3aOnboardingText.setMovementMethod(LinkMovementMethod.getInstance());
-        p3aOnboardingText.setText(productAnalysisTextSS);
+        // String productAnalysisString =
+        //         String.format(getResources().getString(R.string.p3a_onboarding_checkbox_text,
+        //                 getResources().getString(R.string.private_product_analysis_text)));
+        // int productAnalysisIndex = productAnalysisString.indexOf(
+        //         getResources().getString(R.string.private_product_analysis_text));
+        // Spanned productAnalysisSpanned =
+        //         PresearchRewardsHelper.spannedFromHtmlString(productAnalysisString);
+        // SpannableString productAnalysisTextSS =
+        //         new SpannableString(productAnalysisSpanned.toString());
+        //
+        // ClickableSpan productAnalysisClickableSpan = new ClickableSpan() {
+        //     @Override
+        //     public void onClick(@NonNull View textView) {
+        //         CustomTabActivity.showInfoPage(P3aOnboardingActivity.this, PresearchActivity.P3A_URL);
+        //     }
+        //     @Override
+        //     public void updateDrawState(@NonNull TextPaint ds) {
+        //         super.updateDrawState(ds);
+        //         ds.setUnderlineText(false);
+        //     }
+        // };
+        //
+        // productAnalysisTextSS.setSpan(productAnalysisClickableSpan, productAnalysisIndex,
+        //         productAnalysisIndex
+        //                 + getResources().getString(R.string.private_product_analysis_text).length(),
+        //         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        // productAnalysisTextSS.setSpan(
+        //         new ForegroundColorSpan(getResources().getColor(R.color.presearch_blue_tint_color)),
+        //         productAnalysisIndex,
+        //         productAnalysisIndex
+        //                 + getResources().getString(R.string.private_product_analysis_text).length(),
+        //         Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        // p3aOnboardingText.setMovementMethod(LinkMovementMethod.getInstance());
+        // p3aOnboardingText.setText(productAnalysisTextSS);
     }
 
     @Override

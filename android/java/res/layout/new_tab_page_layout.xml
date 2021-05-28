@@ -18,7 +18,8 @@
         android:id="@+id/bg_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@null"/>
+        android:contentDescription="@null"
+        android:visibility="gone"/>
 
     <FrameLayout
         android:id="@+id/logo_holder"
@@ -66,7 +67,8 @@
                 android:layout_marginStart="12dp"
                 android:layout_marginBottom="12dp"
                 android:gravity="center_horizontal"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone"><!-- Added by Mamy -->
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/ntp_widget_cardview_layout"
