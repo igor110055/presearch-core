@@ -14,7 +14,7 @@ import android.provider.Browser;
 import javax.annotation.Nonnull;
 
 public class PresearchHelpAndFeedbackLauncherImpl extends HelpAndFeedbackLauncherImpl {
-    protected static final String FALLBACK_SUPPORT_URL = "https://community.presearch.com/";
+    protected static final String FALLBACK_SUPPORT_URL = "https://www.presearch.com/";
 
     @Override
     protected void show(

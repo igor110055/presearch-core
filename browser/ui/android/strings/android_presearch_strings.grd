@@ -1048,16 +1048,16 @@ until they verify, or until 90 days have passed.
         DOWN
       </message>
       <message name="IDS_PRESEARCH_SHIELDS_DOWN_TEXT" desc="Text for presearch adblocks down.">
-        You're browsing this site without Presearch's privacy protections. Does it not work right with Shields up?
+        You're browsing this site without Presearch's privacy protections. Does it not work right with Adblocker up?
       </message>
       <message name="IDS_SITE_BROKEN_TEXT" desc="Shields text for broken text warning message.">
-        If this site appears broken, try Shields down.
+        If this site appears broken, try Adblocker down.
       </message>
       <message name="IDS_REPORT_BROKEN_SITE_TEXT" desc="Shields text for broken text warning message.">
         Report a broken site
       </message>
       <message name="IDS_REPORT_BROKEN_SITE_TEXT_1" desc="Shields text for broken text warning message.">
-        Let Presearch's developers know that this site doesn't work properly with Shields:
+        Let Presearch's developers know that this site doesn't work properly with Adblocker:
       </message>
       <message name="IDS_REPORT_BROKEN_SITE_TEXT_2" desc="Shields text for broken text warning message.">
         Note: This site address will be submitted with your Presearch version number and your IP address(which will not be stored).

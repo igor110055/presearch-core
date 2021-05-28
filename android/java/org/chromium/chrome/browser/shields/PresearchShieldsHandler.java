@@ -85,7 +85,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
+/**g
  * Object responsible for handling the creation, showing, hiding of the PresearchShields menu.
  */
 public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIconReadyCallback {
@@ -697,15 +697,15 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
 
     private void setUpMainSwitchLayout(boolean isChecked) {
         TextView mShieldDownText = mMainLayout.findViewById(R.id.shield_down_text);
-        Button mReportBrokenSiteButton = mMainLayout.findViewById(R.id.btn_report_broken_site);
-        mReportBrokenSiteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mMainLayout.setVisibility(View.GONE);
-                mReportBrokenSiteLayout.setVisibility(View.VISIBLE);
-                setUpReportBrokenSiteLayout();
-            }
-        });
+        // Button mReportBrokenSiteButton = mMainLayout.findViewById(R.id.btn_report_broken_site);
+        // mReportBrokenSiteButton.setOnClickListener(new View.OnClickListener() {
+        //     @Override
+        //     public void onClick(View view) {
+        //         mMainLayout.setVisibility(View.GONE);
+        //         mReportBrokenSiteLayout.setVisibility(View.VISIBLE);
+        //         setUpReportBrokenSiteLayout();
+        //     }
+        // });
 
         LinearLayout mSiteBlockLayout = mMainLayout.findViewById(R.id.site_block_layout);
         TextView mSiteBrokenWarningText = mMainLayout.findViewById(R.id.site_broken_warning_text);
@@ -715,7 +715,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
 
         if (isChecked) {
             mShieldDownText.setVisibility(View.GONE);
-            mReportBrokenSiteButton.setVisibility(View.GONE);
+            // mReportBrokenSiteButton.setVisibility(View.GONE);
 
             mSiteBlockLayout.setVisibility(View.VISIBLE);
             mSiteBrokenWarningText.setVisibility(View.VISIBLE);
@@ -727,7 +727,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
             mShieldsUpText.setText(mSpanString);
         } else {
             mShieldDownText.setVisibility(View.VISIBLE);
-            mReportBrokenSiteButton.setVisibility(View.VISIBLE);
+            // mReportBrokenSiteButton.setVisibility(View.VISIBLE);
 
             mSiteBlockLayout.setVisibility(View.GONE);
             mSiteBrokenWarningText.setVisibility(View.GONE);
