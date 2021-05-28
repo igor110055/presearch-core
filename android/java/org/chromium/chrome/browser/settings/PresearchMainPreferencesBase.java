@@ -108,10 +108,10 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         //     removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
         // }
 
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
-            || (NTPUtil.isReferralEnabled() && NTPBackgroundImagesBridge.enableSponsoredImages())) {
-            removePreferenceIfPresent(PREF_BACKGROUND_IMAGES);
-        }
+        // if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
+        //     || (NTPUtil.isReferralEnabled() && NTPBackgroundImagesBridge.enableSponsoredImages())) {
+        //     removePreferenceIfPresent(PREF_BACKGROUND_IMAGES);
+        // }
     }
 
     /**
