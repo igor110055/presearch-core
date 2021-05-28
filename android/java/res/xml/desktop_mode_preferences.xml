@@ -10,5 +10,6 @@
         android:key="desktop_mode"
         android:title="@string/settings_desktop_mode_title"
         android:summaryOn="@string/settings_desktop_mode_on"
-        android:summaryOff="@string/settings_desktop_mode_off" />
+        android:summaryOff="@string/settings_desktop_mode_off"
+        android:visibility="gone" />
 </PreferenceScreen>
