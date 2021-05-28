@@ -4,7 +4,7 @@
 
 import ITheme from 'brave-ui/theme/theme-interface'
 import IThemeWelcomePage from './welcome-theme'
-import defaultTheme from 'brave-ui/theme/presearch-default'
+import defaultTheme from 'brave-ui/theme/brave-default'
 import colors from 'brave-ui/theme/colors'
 
 const welcomeDarkTheme: ITheme & IThemeWelcomePage = {

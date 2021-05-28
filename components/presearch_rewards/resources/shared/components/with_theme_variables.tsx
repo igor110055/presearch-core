@@ -4,7 +4,7 @@
 
 import * as React from 'react'
 import styled from 'styled-components'
-import defaultTheme from 'brave-ui/theme/presearch-default'
+import defaultTheme from 'brave-ui/theme/brave-default'
 
 function createThemeRules () {
   let list = []

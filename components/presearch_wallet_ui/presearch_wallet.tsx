@@ -15,8 +15,8 @@ import '../../ui/webui/resources/fonts/muli.css'
 
 // Components
 import App from './components/app'
-import Theme from 'brave-ui/theme/presearch-default'
-import DarkTheme from 'brave-ui/theme/presearch-dark'
+import Theme from 'brave-ui/theme/brave-default'
+import DarkTheme from 'brave-ui/theme/brave-dark'
 import PresearchCoreThemeProvider from '../common/PresearchCoreThemeProvider'
 
 function initialize () {

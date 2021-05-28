@@ -7,7 +7,7 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Store } from 'webext-redux'
 
-import Theme from 'brave-ui/theme/presearch-default'
+import Theme from 'brave-ui/theme/brave-default'
 import { ThemeProvider } from 'styled-components'
 import { initLocale } from 'brave-ui/helpers'
 require('emptykit.css')

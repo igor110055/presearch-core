@@ -6,8 +6,8 @@
 import * as React from 'react'
 import { select } from '@storybook/addon-knobs'
 import ITheme from 'brave-ui/theme/theme-interface'
-import Theme from 'brave-ui/theme/presearch-default'
-import DarkTheme from 'brave-ui/theme/presearch-dark'
+import Theme from 'brave-ui/theme/brave-default'
+import DarkTheme from 'brave-ui/theme/brave-dark'
 import PresearchCoreThemeProvider from './PresearchCoreThemeProvider'
 
 type Props = {

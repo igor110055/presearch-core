@@ -3,7 +3,7 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 import ITheme from 'brave-ui/theme/theme-interface'
-import darkTheme from 'brave-ui/theme/presearch-dark'
+import darkTheme from 'brave-ui/theme/brave-dark'
 import colors from 'brave-ui/theme/colors'
 
 const shieldsDarkTheme: ITheme = {

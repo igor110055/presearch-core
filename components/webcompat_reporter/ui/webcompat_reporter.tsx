@@ -8,8 +8,8 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
-import Theme from 'brave-ui/theme/presearch-default'
-import DarkTheme from 'brave-ui/theme/presearch-dark'
+import Theme from 'brave-ui/theme/brave-default'
+import DarkTheme from 'brave-ui/theme/brave-dark'
 import PresearchCoreThemeProvider from '../../common/PresearchCoreThemeProvider'
 require('../../../ui/webui/resources/fonts/muli.css')
 require('../../../ui/webui/resources/fonts/poppins.css')
