@@ -153,7 +153,7 @@ export const rewardsPanelReducer: Reducer<RewardsExtension.State | undefined> = 
       let notifications: Record<string, RewardsExtension.Notification> = state.notifications
 
       // Array check for previous version of state types
-      // (https://github.com/presearch/presearch-browser/issues/4344)
+      // (https://github.com/brave/presearch-browser/issues/4344)
       if (!notifications || Array.isArray(notifications)) {
         notifications = {}
       }

@@ -22,7 +22,7 @@ module.exports = (env, argv) => ({
       'styled-components': path.resolve(__dirname, '../../node_modules/styled-components'),
     },
     // For explanation of "chromeapp", see:
-    // https://github.com/presearch/presearch-browser/issues/5587
+    // https://github.com/brave/presearch-browser/issues/5587
     aliasFields: ['chromeapp']
   },
   optimization: {

@@ -100,7 +100,7 @@ source_set("common") {
     visibility += [ "//presearch/components/ipfs/test:presearch_ipfs_browser_tests" ]
   }
 
-  # Remove when https://github.com/presearch/presearch-browser/issues/10653 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10653 is resolved
   check_includes = false
   deps = []
 

@@ -18,7 +18,7 @@ namespace database {
 
 namespace {
 
-// TODO(https://github.com/presearch/presearch-browser/issues/7144):
+// TODO(https://github.com/brave/presearch-browser/issues/7144):
 //  rename to recurring_tip
 const char kTableName[] = "recurring_donation";
 

@@ -18,10 +18,10 @@ def main():
     python script/changelog.py -t refs/tags/v1.5.51 \
         -u https://raw.githubusercontent.com/presearch/presearch-browser/master/CHANGELOG.md -o markdown
 
-    ## [1.5.51](https://github.com/presearch/presearch-browser/releases/tag/v1.5.51)
+    ## [1.5.51](https://github.com/brave/presearch-browser/releases/tag/v1.5.51)
 
     - Added new setting that allows Presearch Rewards icon in the URL to be hidden if Rewards \
-        is inactive. ([#2975](https://github.com/presearch/presearch-browser/issues/2975))
+        is inactive. ([#2975](https://github.com/brave/presearch-browser/issues/2975))
 
     """
 

@@ -32,7 +32,7 @@ function commaSeparatedList(value, dummyPrevious) {
 // Use this wrapper function instead of JavaScript's parseInt() with option()
 // when defining integer optional parameters, or the default value might get
 // passed as well into the radix parameter of parseInt(), causing wrong results.
-// https://github.com/presearch/presearch-browser/issues/13724
+// https://github.com/brave/presearch-browser/issues/13724
 function parseInteger(string) {
   // As per the spec [1], not passing the optional radix parameter to parseInt()
   // will make parsing to interpret the string passed as a decimal number unless
@@ -159,7 +159,7 @@ program
   .option('--enable_presearch_update', 'enable presearch update')
   .option('--channel <target_channel>', 'target channel to start', /^(beta|dev|nightly|release)$/i, 'release')
   .option('--official_build <official_build>', 'force official build settings')
-  // See https://github.com/presearch/presearch-browser/wiki/Rewards#flags for more information
+  // See https://github.com/brave/presearch-browser/wiki/Rewards#flags for more information
   .option('--rewards [options]', 'options for rewards')
   .option('--presearch_ads_testing', 'ads testing')
   .option('--presearch_ads_production', 'ads production')

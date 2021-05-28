@@ -546,7 +546,7 @@ IN_PROC_BROWSER_TEST_F(AdBlockServiceTest, ServiceWorkerRequest) {
   ASSERT_EQ(true, EvalJs(contents,
                          "setExpectations(0, 0, 0, 1);"
                          "installBlockingServiceWorker()"));
-  // https://github.com/presearch/presearch-browser/issues/14087
+  // https://github.com/brave/presearch-browser/issues/14087
   // EXPECT_EQ(browser()->profile()->GetPrefs()->GetUint64(kAdsBlocked), 1ULL);
 }
 
@@ -955,7 +955,7 @@ IN_PROC_BROWSER_TEST_F(AdBlockServiceTest, CosmeticFilteringSimple) {
 }
 
 // Test cosmetic filtering ignores content determined to be 1st party
-// This is disabled due to https://github.com/presearch/presearch-browser/issues/13882
+// This is disabled due to https://github.com/brave/presearch-browser/issues/13882
 #define MAYBE_CosmeticFilteringProtect1p DISABLED_CosmeticFilteringProtect1p
 IN_PROC_BROWSER_TEST_F(AdBlockServiceTest, MAYBE_CosmeticFilteringProtect1p) {
   UpdateAdBlockInstanceWithRules("b.com##.fpsponsored\n");

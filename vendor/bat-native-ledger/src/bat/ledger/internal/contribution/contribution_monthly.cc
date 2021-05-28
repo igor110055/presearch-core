@@ -59,7 +59,7 @@ void ContributionMonthly::PrepareTipList(
         [](const type::Result _){});
   }
 
-  // TODO(https://github.com/presearch/presearch-browser/issues/8804):
+  // TODO(https://github.com/brave/presearch-browser/issues/8804):
   // we should change this logic and do batch insert with callback
   ledger_->contribution()->CheckContributionQueue();
   callback(type::Result::LEDGER_OK);

@@ -110,7 +110,7 @@ class PresearchWebAudioFarblingBrowserTest : public InProcessBrowserTest {
 };
 
 // Tests for crash in copyFromChannel as reported in
-// https://github.com/presearch/presearch-browser/issues/9552
+// https://github.com/brave/presearch-browser/issues/9552
 // No crash indicates a successful test.
 IN_PROC_BROWSER_TEST_F(PresearchWebAudioFarblingBrowserTest,
                        CopyFromChannelNoCrash) {

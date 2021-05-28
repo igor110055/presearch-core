@@ -41,7 +41,7 @@ const std::vector<SearchProviderInfo> _search_providers = {
                        false),
     SearchProviderInfo(
         "Google",
-        // TODO(https://github.com/presearch/presearch-browser/issues/8487): Presearch Ads
+        // TODO(https://github.com/brave/presearch-browser/issues/8487): Presearch Ads
         // search providers definition doesn't match all patterns
         "https://google.com",
         "https://www.google.com/search?q={searchTerms}",
@@ -70,7 +70,7 @@ const std::vector<SearchProviderInfo> _search_providers = {
         false),
     SearchProviderInfo(
         "Yahoo",
-        // TODO(https://github.com/presearch/presearch-browser/issues/8487): Presearch Ads
+        // TODO(https://github.com/brave/presearch-browser/issues/8487): Presearch Ads
         // search providers definition doesn't match all patterns
         "https://search.yahoo.com",
         "https://search.yahoo.com/search?p={searchTerms}&fr=opensearch",
@@ -89,7 +89,7 @@ const std::vector<SearchProviderInfo> _search_providers = {
         false),
     SearchProviderInfo(
         "StartPage",
-        // TODO(https://github.com/presearch/presearch-browser/issues/8487): Presearch Ads
+        // TODO(https://github.com/brave/presearch-browser/issues/8487): Presearch Ads
         // search providers definition doesn't match all patterns
         "https://startpage.com",
         "https://www.startpage.com/do/"

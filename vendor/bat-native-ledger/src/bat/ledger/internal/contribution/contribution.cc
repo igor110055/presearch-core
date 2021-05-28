@@ -229,7 +229,7 @@ void Contribution::ContributionCompleted(
     return;
   }
 
-  // TODO(https://github.com/presearch/presearch-browser/issues/7717)
+  // TODO(https://github.com/brave/presearch-browser/issues/7717)
   // rename to ContributionCompleted
   ledger_->ledger_client()->OnReconcileComplete(
       result,

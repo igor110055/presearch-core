@@ -83,7 +83,7 @@ TEST_F(ChromeImporterTest, ImportHistory) {
 
   ASSERT_EQ(3u, history.size());
   EXPECT_EQ("https://presearch.org/", history[0].url.spec());
-  EXPECT_EQ("https://github.com/presearch", history[1].url.spec());
+  EXPECT_EQ("https://github.com/brave", history[1].url.spec());
   EXPECT_EQ("https://www.nytimes.com/", history[2].url.spec());
 }
 

@@ -202,7 +202,7 @@ export const addNewStackWidget = (state: NewTab.State) => {
 }
 
 // Replaces any stack widgets that were improperly removed
-// as a result of https://github.com/presearch/presearch-browser/issues/10067
+// as a result of https://github.com/brave/presearch-browser/issues/10067
 export const replaceStackWidgets = (state: NewTab.State) => {
   const {
     showBinance,

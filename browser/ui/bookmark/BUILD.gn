@@ -1,5 +1,5 @@
 source_set("bookmark") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10654 is resolved 
+  # Remove when https://github.com/brave/presearch-browser/issues/10654 is resolved 
   check_includes = false
   sources = [
     "presearch_bookmark_tab_helper.cc",

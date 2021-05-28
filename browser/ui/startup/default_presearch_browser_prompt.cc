@@ -169,7 +169,7 @@ void ShowDefaultPresearchBrowserPrompt(Profile* profile) {
 
 void ResetDefaultPresearchBrowserPrompt(Profile* profile) {
   // Don't reset, but keep this function for now as more work is
-  // planned in https://github.com/presearch/presearch-browser/issues/14469
+  // planned in https://github.com/brave/presearch-browser/issues/14469
 }
 
 void RegisterDefaultPresearchBrowserPromptPrefs(PrefRegistrySimple* registry) {

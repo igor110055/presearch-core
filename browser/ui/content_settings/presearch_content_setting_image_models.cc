@@ -14,8 +14,8 @@ using ImageType = ContentSettingImageModel::ImageType;
 void PresearchGenerateContentSettingImageModels(
     std::vector<std::unique_ptr<ContentSettingImageModel>>* result) {
   // Remove the cookies and javascript content setting image model
-  // https://github.com/presearch/presearch-browser/issues/1197
-  // https://github.com/presearch/presearch-browser/issues/199
+  // https://github.com/brave/presearch-browser/issues/1197
+  // https://github.com/brave/presearch-browser/issues/199
   result->erase(
       base::ranges::remove_if(*result,
                               [](const auto& m) {

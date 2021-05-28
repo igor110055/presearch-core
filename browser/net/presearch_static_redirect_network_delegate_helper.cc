@@ -62,7 +62,7 @@ int OnBeforeURLRequest_StaticRedirectWorkForGURL(
                                                 kSafeBrowsingCrxListPrefix);
 
   // To-Do (@jumde) - Update the naming for the variables below
-  // https://github.com/presearch/presearch-browser/issues/10314
+  // https://github.com/brave/presearch-browser/issues/10314
   static URLPattern crlSet_pattern1(
       URLPattern::SCHEME_HTTP | URLPattern::SCHEME_HTTPS, kCRLSetPrefix1);
   static URLPattern crlSet_pattern2(

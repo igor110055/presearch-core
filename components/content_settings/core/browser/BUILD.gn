@@ -1,5 +1,5 @@
 source_set("browser") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10624 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10624 is resolved
   check_includes = false
   if (!is_ios) {
     sources = [
@@ -18,7 +18,7 @@ source_set("browser") {
       "//presearch/components/presearch_shields/common",
       "//presearch/components/content_settings/core/common",
 
-      # see https://github.com/presearch/presearch-browser/issues/10624 above
+      # see https://github.com/brave/presearch-browser/issues/10624 above
       # "//components/content_settings/core/browser",
       "//components/content_settings/core/common",
       "//components/prefs",

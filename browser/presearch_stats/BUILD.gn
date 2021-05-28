@@ -9,7 +9,7 @@ if (is_official_build) {
 }
 
 source_set("stats_updater") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10657 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10657 is resolved
   check_includes = false
   defines = [ "PRESEARCH_USAGE_SERVER=\"$presearch_stats_updater_url\"" ]
 

@@ -6,9 +6,9 @@ Follow [@presearch](https://twitter.com/presearch) on Twitter for important anno
 
 ## Resources
 
-- [Issues](https://github.com/presearch/presearch-browser/issues)
-- [Releases](https://github.com/presearch/presearch-browser/releases)
-- [Documentation wiki](https://github.com/presearch/presearch-browser/wiki)
+- [Issues](https://github.com/brave/presearch-browser/issues)
+- [Releases](https://github.com/brave/presearch-browser/releases)
+- [Documentation wiki](https://github.com/brave/presearch-browser/wiki)
 
 ## Community
 

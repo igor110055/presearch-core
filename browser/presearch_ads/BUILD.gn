@@ -2,7 +2,7 @@ import("//presearch/build/config.gni")
 import("//presearch/components/presearch_ads/browser/buildflags/buildflags.gni")
 
 source_set("presearch_ads") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10639 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10639 is resolved
   check_includes = false
 
   sources = [

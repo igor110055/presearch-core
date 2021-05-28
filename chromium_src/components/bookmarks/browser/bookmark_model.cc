@@ -10,7 +10,7 @@
 namespace bookmarks {
 
 // Move bookmarks under "Other Bookmarks" folder from
-// https://github.com/presearch/presearch-core/pull/3620 to original permanent node
+// https://github.com/brave/presearch-core/pull/3620 to original permanent node
 void PresearchMigrateOtherNodeFolder(BookmarkModel* model) {
   CHECK(model);
   CHECK(model->loaded());

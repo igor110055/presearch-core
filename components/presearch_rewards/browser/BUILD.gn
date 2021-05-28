@@ -4,7 +4,7 @@ import("//presearch/vendor/bat-native-ledger/config.gni")
 import("//extensions/buildflags/buildflags.gni")
 
 source_set("browser") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10618 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10618 is resolved
   check_includes = false
   public_deps = [ "buildflags" ]
 

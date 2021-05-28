@@ -76,7 +76,7 @@ const size_t PresearchWalletService::kSeedByteLength = 32;
 // access to the master seed, but it does have a deterministic seed.
 // The salt value is the same intentionally on all clients.
 // See
-// https://github.com/presearch/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information#note-on-salts
+// https://github.com/brave/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information#note-on-salts
 // static
 std::string PresearchWalletService::GetBitGoSeedFromRootSeed(
     const std::string& seed) {
@@ -91,7 +91,7 @@ std::string PresearchWalletService::GetBitGoSeedFromRootSeed(
 // access to the master seed, but it does have a deterministic seed.
 // The salt value is the same intentionally on all clients.
 // See
-// https://github.com/presearch/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information#note-on-salts
+// https://github.com/brave/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information#note-on-salts
 // static
 std::string PresearchWalletService::GetEthereumRemoteClientSeedFromRootSeed(
     const std::string& seed) {
@@ -194,7 +194,7 @@ presearch_wallet::EthJsonRpcController* PresearchWalletService::controller() con
 // If this function is called multiple times, the previous value
 // from prefs will be re-used.
 // The return value will be true if successful
-// https://github.com/presearch/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
+// https://github.com/brave/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
 bool PresearchWalletService::LoadRootSeedInfo(std::vector<uint8_t> key,
                                           std::string* seed) {
   std::string nonce;
@@ -237,7 +237,7 @@ bool PresearchWalletService::LoadRootSeedInfo(std::vector<uint8_t> key,
 // deterministic hash of that seed with HKDF, so that we can use
 // other HKDF hashes with different info parameters for different purposes.
 // For more information, see:
-// https://github.com/presearch/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
+// https://github.com/brave/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
 std::string PresearchWalletService::GetWalletSeed(std::vector<uint8_t> key) {
   std::string seed;
   if (!LoadRootSeedInfo(key, &seed)) {
@@ -252,7 +252,7 @@ std::string PresearchWalletService::GetWalletSeed(std::vector<uint8_t> key) {
 // deterministic hash of that seed with HKDF, so that we can use
 // other HKDF hashes with different info parameters for different purposes.
 // For more information, see:
-// https://github.com/presearch/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
+// https://github.com/brave/presearch-browser/wiki/Presearch-Ethereum-Remote-Client-Wallet-Seed-Information
 std::string PresearchWalletService::GetBitGoSeed(std::vector<uint8_t> key) {
   std::string seed;
   if (!LoadRootSeedInfo(key, &seed)) {

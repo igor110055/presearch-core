@@ -4,7 +4,7 @@ import { create } from '@storybook/theming'
 const presearchTheme = create({
   base: 'dark',
   brandTitle: 'Presearch Browser UI',
-  brandUrl: 'https://github.com/presearch/presearch-core'
+  brandUrl: 'https://github.com/brave/presearch-core'
 })
 
 addons.setConfig({

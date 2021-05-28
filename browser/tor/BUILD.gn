@@ -3,7 +3,7 @@ import("//presearch/components/tor/buildflags/buildflags.gni")
 import("//extensions/buildflags/buildflags.gni")
 
 source_set("tor") {
-  # Remove when https://github.com/presearch/presearch-browser/issues/10655 is resolved
+  # Remove when https://github.com/brave/presearch-browser/issues/10655 is resolved
   check_includes = false
   visibility = [
     ":*",

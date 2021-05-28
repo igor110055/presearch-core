@@ -21,4 +21,4 @@ const char kImportDataHelpURL[] =
 const char kCryptoWalletsLearnMoreURL[] =
     "https://support.presearch.org/hc/en-us/articles/360034535452";
 const char kPermissionPromptLearnMoreUrl[] =
-    "https://github.com/presearch/presearch-browser/wiki/Web-API-Permissions";
+    "https://github.com/brave/presearch-browser/wiki/Web-API-Permissions";

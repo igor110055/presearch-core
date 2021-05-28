@@ -4,4 +4,4 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 // THIS FILE IS INTENTIONALLY EMPTY TO DISABLE TESTS FROM CHROMIUM UPSTREAM.
-// See https://github.com/presearch/presearch-browser/issues/8297 for more information.
+// See https://github.com/brave/presearch-browser/issues/8297 for more information.

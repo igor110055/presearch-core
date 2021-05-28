@@ -92,7 +92,7 @@ void Publisher::CalcScoreConsts(const int min_duration_seconds) {
 }
 
 // courtesy of @dimitry-xyz:
-// https://github.com/presearch/ledger/issues/2#issuecomment-221752002
+// https://github.com/brave/ledger/issues/2#issuecomment-221752002
 double Publisher::concaveScore(const uint64_t& duration_seconds) {
   uint64_t duration_big = duration_seconds * 100;
   double a, b;

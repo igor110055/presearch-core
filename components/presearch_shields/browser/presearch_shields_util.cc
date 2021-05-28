@@ -457,7 +457,7 @@ bool MaybeChangeReferrer(bool allow_referrers,
 
   // Cap the referrer to "strict-origin-when-cross-origin". More restrictive
   // policies should be already applied.
-  // See https://github.com/presearch/presearch-browser/issues/13464
+  // See https://github.com/brave/presearch-browser/issues/13464
   *output_referrer = Referrer::SanitizeForRequest(
       target_url,
       Referrer(current_referrer.GetOrigin(),

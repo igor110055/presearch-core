@@ -17,7 +17,7 @@
 namespace component_updater {
 
 void OnCRLSetRegistered() {
-// https://github.com/presearch/browser-android-tabs/issues/857
+// https://github.com/brave/browser-android-tabs/issues/857
 #if !defined(OS_ANDROID)
   component_updater::PresearchOnDemandUpdate(crl_set_extension_id);
 #endif

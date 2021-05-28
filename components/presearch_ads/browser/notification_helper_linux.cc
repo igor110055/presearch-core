@@ -19,7 +19,7 @@ bool NotificationHelperLinux::ShouldShowNotifications() {
     return true;
   }
 
-  // TODO(https://github.com/presearch/presearch-browser/issues/5542): Investigate how
+  // TODO(https://github.com/brave/presearch-browser/issues/5542): Investigate how
   // we can detect if notifications are enabled within the Linux operating
   // system
 

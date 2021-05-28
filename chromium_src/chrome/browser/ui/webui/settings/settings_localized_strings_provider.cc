@@ -52,16 +52,16 @@ const char kWebRTCLearnMoreURL[] =
     "https://support.presearch.org/hc/en-us/articles/"
     "360017989132-How-do-I-change-my-Privacy-Settings-#webrtc";
 const char kPresearchBuildInstructionsUrl[] =
-    "https://github.com/presearch/presearch-browser/wiki";
+    "https://github.com/brave/presearch-browser/wiki";
 const char kPresearchLicenseUrl[] = "https://mozilla.org/MPL/2.0/";
 const char kPresearchReleaseTagPrefix[] =
-    "https://github.com/presearch/presearch-browser/releases/tag/v";
+    "https://github.com/brave/presearch-browser/releases/tag/v";
 const char kGoogleLoginLearnMoreURL[] =
-    "https://github.com/presearch/presearch-browser/wiki/"
+    "https://github.com/brave/presearch-browser/wiki/"
     "Allow-Google-login---Third-Parties-and-Extensions";
 const char kDNSLinkLearnMoreURL[] = "https://docs.ipfs.io/concepts/dnslink/";
 const char kUnstoppableDomainsLearnMoreURL[] =
-    "https://github.com/presearch/presearch-browser/wiki/"
+    "https://github.com/brave/presearch-browser/wiki/"
     "Resolve-Methods-for-Unstoppable-Domains";
 
 void PresearchAddCommonStrings(content::WebUIDataSource* html_source,

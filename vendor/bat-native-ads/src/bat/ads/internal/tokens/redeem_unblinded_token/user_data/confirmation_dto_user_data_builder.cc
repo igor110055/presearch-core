@@ -44,7 +44,7 @@ void Build(const std::string& creative_instance_id,
     return;
   }
 
-  // TODO(https://github.com/presearch/presearch-browser/issues/14429): Remove
+  // TODO(https://github.com/brave/presearch-browser/issues/14429): Remove
   // serialization/deserialization from DTO
   std::string user_data_as_string;
   base::JSONWriter::Write(user_data, &user_data_as_string);

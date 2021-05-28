@@ -19,7 +19,7 @@
 // HTTP_NOT_FOUND (404)
 //
 // Response body:
-// See https://github.com/presearch/presearch-core/blob/master/vendor/bat-native-ledger/src/bat/ledger/internal/publisher/protos/channel_response.proto
+// See https://github.com/brave/presearch-core/blob/master/vendor/bat-native-ledger/src/bat/ledger/internal/publisher/protos/channel_response.proto
 
 namespace ledger {
 class LedgerImpl;

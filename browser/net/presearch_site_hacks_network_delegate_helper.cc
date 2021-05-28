@@ -41,23 +41,23 @@ bool IsUAWhitelisted(const GURL& gurl) {
 const std::string& GetQueryStringTrackers() {
   static const base::NoDestructor<std::string> trackers(base::JoinString(
       std::vector<std::string>(
-          {// https://github.com/presearch/presearch-browser/issues/4239
+          {// https://github.com/brave/presearch-browser/issues/4239
            "fbclid", "gclid", "msclkid", "mc_eid",
-           // https://github.com/presearch/presearch-browser/issues/9879
+           // https://github.com/brave/presearch-browser/issues/9879
            "dclid",
-           // https://github.com/presearch/presearch-browser/issues/13644
+           // https://github.com/brave/presearch-browser/issues/13644
            "oly_anon_id", "oly_enc_id",
-           // https://github.com/presearch/presearch-browser/issues/11579
+           // https://github.com/brave/presearch-browser/issues/11579
            "_openstat",
-           // https://github.com/presearch/presearch-browser/issues/11817
+           // https://github.com/brave/presearch-browser/issues/11817
            "vero_conv", "vero_id",
-           // https://github.com/presearch/presearch-browser/issues/13647
+           // https://github.com/brave/presearch-browser/issues/13647
            "wickedid",
-           // https://github.com/presearch/presearch-browser/issues/11578
+           // https://github.com/brave/presearch-browser/issues/11578
            "yclid",
-           // https://github.com/presearch/presearch-browser/issues/8975
+           // https://github.com/brave/presearch-browser/issues/8975
            "__s",
-           // https://github.com/presearch/presearch-browser/issues/9019
+           // https://github.com/brave/presearch-browser/issues/9019
            "_hsenc", "__hssc", "__hstc", "__hsfp", "hsCtaTracking"}),
       "|"));
   return *trackers;

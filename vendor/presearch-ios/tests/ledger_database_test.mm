@@ -186,7 +186,7 @@
 {
   PublisherInfo *publisher = [self coreDataModelOfClass:PublisherInfo.self];
   publisher.publisherID = @"github#channel:12301619";
-  publisher.url = @"https://github.com/presearch";
+  publisher.url = @"https://github.com/brave";
   publisher.faviconURL = @"";
   publisher.name = @"Presearch Software";
   publisher.provider = @"github";
@@ -666,7 +666,7 @@
   
   PublisherInfo *publisher = [self coreDataModelOfClass:PublisherInfo.self];
   publisher.publisherID = @"github#channel:12301619";
-  publisher.url = @"https://github.com/presearch";
+  publisher.url = @"https://github.com/brave";
   publisher.faviconURL = @"";
   publisher.name = @"Presearch Software";
   publisher.provider = @"github";
@@ -689,7 +689,7 @@
 {
   PublisherInfo *publisher = [self coreDataModelOfClass:PublisherInfo.self];
   publisher.publisherID = @"github#channel:12301619";
-  publisher.url = @"https://github.com/presearch";
+  publisher.url = @"https://github.com/brave";
   publisher.faviconURL = @"";
   publisher.name = @"'Presearch Software'";
   publisher.provider = @"github";
@@ -755,7 +755,7 @@
 {
   PublisherInfo *publisher = [self coreDataModelOfClass:PublisherInfo.self];
   publisher.publisherID = @"github#channel:12301619";
-  publisher.url = @"https://github.com/presearch";
+  publisher.url = @"https://github.com/brave";
   publisher.faviconURL = @"";
   publisher.name = @"😲👻  ｂŕᵃ𝕧𝐄 ⓢⓞℱţ𝐖α𝓻έ  ♣✌";
   publisher.provider = @"github";

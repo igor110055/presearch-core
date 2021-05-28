@@ -66,7 +66,7 @@ def AddPresearchCredits(prune_paths, special_cases, prune_dirs, additional_paths
         },
         os.path.join('presearch', 'vendor', 'presearch-extension'): {
             "Name": "Presearch Only Extension",
-            "URL": "https://github.com/presearch/presearch-extension",
+            "URL": "https://github.com/brave/presearch-extension",
             "License": "MPL-2.0",
         },
         os.path.join('presearch', 'vendor', 'challenge_bypass_ristretto_ffi'): {
@@ -76,23 +76,23 @@ def AddPresearchCredits(prune_paths, special_cases, prune_dirs, additional_paths
         },
         os.path.join('presearch', 'vendor', 'extension-whitelist'): {
             "Name": "extension-whitelist",
-            "URL": "https://github.com/presearch/extension-whitelist",
+            "URL": "https://github.com/brave/extension-whitelist",
             "License": "MPL-2.0",
         },
         os.path.join('presearch', 'vendor', 'hashset-cpp'): {
             "Name": "Hash Set",
-            "URL": "https://github.com/presearch/hashset-cpp",
+            "URL": "https://github.com/brave/hashset-cpp",
             "License": "MPL-2.0",
         },
         os.path.join('presearch', 'vendor', 'omaha'): {
             "Name": "Omaha",
-            "URL": "https://github.com/presearch/omaha",
+            "URL": "https://github.com/brave/omaha",
             "License": "Apache-2.0",
             "License File": "/presearch/vendor/omaha/LICENSE.txt",
         },
         os.path.join('presearch', 'vendor', 'python-patch'): {
             "Name": "Python Patch",
-            "URL": "https://github.com/presearch/python-patch",
+            "URL": "https://github.com/brave/python-patch",
             "License": "MIT",
             "License File": "/presearch/vendor/python-patch/doc/LICENSE",
         },
@@ -103,7 +103,7 @@ def AddPresearchCredits(prune_paths, special_cases, prune_dirs, additional_paths
         },
         os.path.join('presearch', 'vendor', 'sparkle'): {
             "Name": "Sparkle",
-            "URL": "https://github.com/presearch/Sparkle",
+            "URL": "https://github.com/brave/Sparkle",
             "License": "MIT",
         },
     })

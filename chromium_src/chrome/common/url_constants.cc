@@ -74,7 +74,7 @@ const char kChromeSearchScheme[] = "chrome-search";
 const char kChromeUIUntrustedNewTabPageUrl[] =
     "chrome-untrusted://new-tab-page/";
 
-const char kChromiumProjectURL[] = "https://github.com/presearch/presearch-browser/";
+const char kChromiumProjectURL[] = "https://github.com/brave/presearch-browser/";
 
 const char kCloudPrintCertificateErrorLearnMoreURL[] =
     "https://support.presearch.org/hc/en-us/articles/"
