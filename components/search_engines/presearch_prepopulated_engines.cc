@@ -140,7 +140,7 @@ const PrepopulatedEngine qwant = {
     "https://presearch.org/favicon.ico",
     "https://engine.presearch.org/search?q={searchTerms}",
     "UTF-8",
-    // "https://api.qwant.com/api/suggest/?q={searchTerms}&client=opensearch",
+    "https://engine.presearch.org/search?q={searchTerms}",
     NULL,
     NULL,
     NULL,
