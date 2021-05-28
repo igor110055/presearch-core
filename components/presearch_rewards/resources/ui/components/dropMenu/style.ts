@@ -35,7 +35,7 @@ export const StyledAdMenuOptionDropContent = styled('div')<{}>`
   margin-top: auto;
   cursor: pointer;
   &:hover {
-    background-color: ${p => p.theme.color.brandPresearchLight};
+    background-color: ${p => p.theme.color.brandBraveLight};
   }
 `
 

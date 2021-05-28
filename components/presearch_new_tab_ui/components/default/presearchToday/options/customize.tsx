@@ -40,7 +40,7 @@ const CustomizeButton = styled('button')<Props>`
     background: rgba(255, 255, 255, .4);
   }
   &:focus-visible {
-    box-shadow: 0 0 0 1px ${p => p.theme.color.brandPresearch};
+    box-shadow: 0 0 0 1px ${p => p.theme.color.brandBrave};
   }
 `
 

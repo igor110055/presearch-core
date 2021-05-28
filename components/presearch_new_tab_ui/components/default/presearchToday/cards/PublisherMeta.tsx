@@ -103,7 +103,7 @@ const MenuItem = styled('li')`
   }
 
   &:focus-visible {
-    outline: solid 1px ${p => p.theme.color.brandPresearch};
+    outline: solid 1px ${p => p.theme.color.brandBrave};
   }
 `
 

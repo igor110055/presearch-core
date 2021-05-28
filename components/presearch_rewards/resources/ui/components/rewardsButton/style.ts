@@ -41,13 +41,13 @@ const getTypeStyle = (type?: Type, disabled?: boolean) => {
       typeCss = css`
         height: 56px;
         letter-spacing: .6px;
-        background: ${p => p.theme.color.brandPresearch};
+        background: ${p => p.theme.color.brandBrave};
 
         &:hover {
           background: ${p =>
             disabled
-              ? p.theme.color.brandPresearch
-              : p.theme.color.brandPresearchInteracting
+              ? p.theme.color.brandBrave
+              : p.theme.color.brandBraveInteracting
           };
         }
       `

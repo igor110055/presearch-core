@@ -81,7 +81,7 @@ export const StyledText = styled('div')<StyleProps>`
   text-align: center;
   user-select: none;
   color: ${p => p.selected
-    ? p.type === 'contribute' ? palette.blurple500 : p.theme.color.brandPresearch
+    ? p.type === 'contribute' ? palette.blurple500 : p.theme.color.brandBrave
     : p.theme.color.subtleActive
   };
   font-weight: ${p => p.selected ? '500' : 'normal'};

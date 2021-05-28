@@ -20,7 +20,7 @@ export const StyledCheckbox = styled('input')<{}>`
 
   &:focus {
     outline-style: solid;
-    outline-color: ${p => p.theme.color.brandPresearch};
+    outline-color: ${p => p.theme.color.brandBrave};
     outline-width: 1px;
     outline-offset: -1px;
   }

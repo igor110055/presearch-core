@@ -94,7 +94,7 @@ export const Bullet = styled(BaseButton as ComponentType<any>)`
 export const Link = styled('button')<{}>`
   box-sizing: border-box;
   -webkit-appearance: none;
-  color: ${p => p.theme.color.brandPresearch};
+  color: ${p => p.theme.color.brandBrave};
   border: 0;
   padding: 0;
   background: transparent;

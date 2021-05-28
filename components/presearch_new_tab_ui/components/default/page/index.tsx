@@ -411,7 +411,7 @@ export const IconButton = styled('button')<IconButtonProps>`
     opacity: 0.95;
   }
   &:focus-visible {
-    outline: 2px solid ${p => p.theme.color.brandPresearchInteracting};
+    outline: 2px solid ${p => p.theme.color.brandBraveInteracting};
   }
 `
 

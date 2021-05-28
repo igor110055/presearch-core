@@ -98,7 +98,7 @@ export const logoMask = styled.div`
 export const logoLetter = styled.div`
   background: var(--presearch-palette-white);
   height: 100%;
-  color: var(--presearch-color-brandPresearch);
+  color: var(--presearch-color-brandBrave);
   text-transform: uppercase;
   text-align: center;
   font-size: 52px;

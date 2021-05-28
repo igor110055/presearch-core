@@ -60,7 +60,7 @@ export const RewardsTitle = styled('div')<StyleProps>`
 `
 
 export const ServiceLink = styled('a')<{}>`
-  color: ${p => p.theme.color.brandPresearch};
+  color: ${p => p.theme.color.brandBrave};
   font-weight: 600;
   text-decoration: none;
 `
@@ -89,7 +89,7 @@ export const SubTitle = styled('span')<{}>`
 `
 
 export const SubTitleLink = styled('a')<{}>`
-  color: ${p => p.theme.color.brandPresearch};
+  color: ${p => p.theme.color.brandBrave};
   text-decoration: none;
   cursor: pointer;
   &:hover {
@@ -115,7 +115,7 @@ export const TurnOnButton = styled('button')<{}>`
   justify-content: center;
   :focus {
     outline: none;
-    box-shadow: 0 0 0 1px ${p => p.theme.color.brandPresearch};
+    box-shadow: 0 0 0 1px ${p => p.theme.color.brandBrave};
   }
 `
 
@@ -275,7 +275,7 @@ export const StyledTOS = styled(TOSAndPP as React.ComponentType<TOSProps>)`
   font-size: 12px;
 
   a {
-    color: ${p => p.theme.color.brandPresearch};
+    color: ${p => p.theme.color.brandBrave};
   }
 `
 

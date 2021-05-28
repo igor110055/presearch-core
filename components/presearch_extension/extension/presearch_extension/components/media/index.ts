@@ -44,7 +44,7 @@ export const ArrowDownIcon = styled(CaratStrongDownIcon as ComponentType)`
   &:focus {
     outline-width: 2px;
     outline-offset: -6px;
-    outline-color: ${p => p.theme.color.brandPresearch};
+    outline-color: ${p => p.theme.color.brandBrave};
   }
 
   &:active {
