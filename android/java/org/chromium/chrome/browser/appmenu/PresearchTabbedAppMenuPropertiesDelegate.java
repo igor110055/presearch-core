@@ -72,7 +72,7 @@ public class PresearchTabbedAppMenuPropertiesDelegate extends TabbedAppMenuPrope
             menu.findItem(R.id.icon_row_menu_id).setVisible(false).setEnabled(false);
         }
 
-        // Presearch donesn't show help menu item in app menu.
+        // Presearch doesn't show help menu item in app menu.
         menu.findItem(R.id.help_id).setVisible(false).setEnabled(false);
 
         // Always hide share row menu item in app menu if it's not on tablet.
@@ -123,7 +123,7 @@ public class PresearchTabbedAppMenuPropertiesDelegate extends TabbedAppMenuPrope
         super.onMenuDismissed();
 
         mMenu.removeItem(R.id.set_default_browser);
-        mMenu.removeItem(R.id.presearch_rewards_id);
+        // mMenu.removeItem(R.id.presearch_rewards_id);
         mMenu.removeItem(R.id.exit_id);
     }
 

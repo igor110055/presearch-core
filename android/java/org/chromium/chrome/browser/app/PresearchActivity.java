@@ -201,8 +201,9 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
             ApplicationLifetime.terminate(false);
         } else if (id == R.id.set_default_browser) {
             handlePresearchSetDefaultBrowserDialog();
-        } else if (id == R.id.presearch_rewards_id) {
-            openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
+        }
+        // else if (id == R.id.presearch_rewards_id) {
+        //     openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
         } else {
             return false;
         }
