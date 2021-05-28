@@ -13,7 +13,7 @@
 #include "base/values.h"
 #include "presearch/components/sidebar/features.h"
 #include "presearch/components/sidebar/pref_names.h"
-#include "components/grit/presearch/components_strings.h"
+#include "components/grit/presearch_components_strings.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "components/prefs/pref_service.h"
 #include "components/prefs/scoped_user_pref_update.h"

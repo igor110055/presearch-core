@@ -15,7 +15,7 @@
 #include "presearch/components/sidebar/buildflags/buildflags.h"
 #include "chrome/browser/ui/webui/webui_util.h"
 #include "chrome/common/pref_names.h"
-#include "components/grit/presearch/components_strings.h"
+#include "components/grit/presearch_components_strings.h"
 #include "components/prefs/pref_service.h"
 
 namespace settings {
