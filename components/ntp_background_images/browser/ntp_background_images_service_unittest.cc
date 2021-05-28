@@ -7,14 +7,14 @@
 #include <string>
 
 #include "base/test/task_environment.h"
-#include "presearch.common/pref_names.h"
-#include "presearch.components/presearch_referrals/buildflags/buildflags.h"
-#include "presearch.components/presearch_referrals/browser/presearch_referrals_service.h"
-#include "presearch.components/presearch_referrals/common/pref_names.h"
-#include "presearch.components/ntp_background_images/browser/ntp_background_images_data.h"
-#include "presearch.components/ntp_background_images/browser/ntp_background_images_service.h"
-#include "presearch.components/ntp_background_images/browser/url_constants.h"
-#include "presearch.components/ntp_background_images/common/pref_names.h"
+#include "presearch/common/pref_names.h"
+#include "presearch/components/presearch_referrals/buildflags/buildflags.h"
+#include "presearch/components/presearch_referrals/browser/presearch_referrals_service.h"
+#include "presearch/components/presearch_referrals/common/pref_names.h"
+#include "presearch/components/ntp_background_images/browser/ntp_background_images_data.h"
+#include "presearch/components/ntp_background_images/browser/ntp_background_images_service.h"
+#include "presearch/components/ntp_background_images/browser/url_constants.h"
+#include "presearch/components/ntp_background_images/common/pref_names.h"
 #include "components/prefs/testing_pref_service.h"
 #include "testing/gtest/include/gtest/gtest.h"
 

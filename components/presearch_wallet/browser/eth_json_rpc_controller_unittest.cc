@@ -6,8 +6,8 @@
 #include <memory>
 #include <vector>
 
-#include "presearch.components/presearch_wallet/browser/presearch_wallet_constants.h"
-#include "presearch.components/presearch_wallet/browser/eth_json_rpc_controller.h"
+#include "presearch/components/presearch_wallet/browser/presearch_wallet_constants.h"
+#include "presearch/components/presearch_wallet/browser/eth_json_rpc_controller.h"
 #include "content/public/test/browser_task_environment.h"
 #include "content/public/test/test_browser_context.h"
 #include "testing/gtest/include/gtest/gtest.h"

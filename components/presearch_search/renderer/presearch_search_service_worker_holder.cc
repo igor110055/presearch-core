@@ -3,13 +3,13 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch.components/presearch_search/renderer/presearch_search_service_worker_holder.h"
+#include "presearch/components/presearch_search/renderer/presearch_search_service_worker_holder.h"
 
 #include <string>
 #include <utility>
 
 #include "base/no_destructor.h"
-#include "presearch.components/presearch_search/renderer/presearch_search_js_handler.h"
+#include "presearch/components/presearch_search/renderer/presearch_search_js_handler.h"
 #include "url/gurl.h"
 
 namespace {

@@ -20,9 +20,9 @@ source_set("browser") {
 
   deps = [
     "//base",
-    "//presearch.common",
-    "//presearch.components/presearch_referrals/browser",
-    "//presearch.components/presearch_stats/browser",
+    "//presearch/common",
+    "//presearch/components/presearch_referrals/browser",
+    "//presearch/components/presearch_stats/browser",
     "//content/public/browser",
     "//net",
     "//services/network/public/cpp",

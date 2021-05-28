@@ -10,9 +10,9 @@
 #include <utility>
 
 #include "base/bind.h"
-#include "presearch.components/presearch_shields/browser/presearch_shields_util.h"
-#include "presearch.components/presearch_shields/common/presearch_shield_constants.h"
-#include "presearch.components/content_settings/core/browser/presearch_content_settings_utils.h"
+#include "presearch/components/presearch_shields/browser/presearch_shields_util.h"
+#include "presearch/components/presearch_shields/common/presearch_shield_constants.h"
+#include "presearch/components/content_settings/core/browser/presearch_content_settings_utils.h"
 #include "chrome/browser/content_settings/host_content_settings_map_factory.h"
 #include "chrome/test/base/testing_profile.h"
 #include "components/content_settings/core/browser/host_content_settings_map.h"

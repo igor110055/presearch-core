@@ -3,14 +3,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this file,
 // you can obtain one at http://mozilla.org/MPL/2.0/.
 
-#include "presearch.components/presearch_today/browser/urls.h"
+#include "presearch/components/presearch_today/browser/urls.h"
 
 #include <string>
 
 #include "base/command_line.h"
-#include "presearch.components/presearch_today/common/switches.h"
-#include "presearch.components/l10n/browser/locale_helper.h"
-#include "presearch.components/l10n/common/locale_util.h"
+#include "presearch/components/presearch_today/common/switches.h"
+#include "presearch/components/l10n/browser/locale_helper.h"
+#include "presearch/components/l10n/common/locale_util.h"
 
 namespace presearch_today {
 

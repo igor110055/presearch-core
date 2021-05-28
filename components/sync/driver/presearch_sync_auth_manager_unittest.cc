@@ -3,15 +3,15 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch.components/sync/driver/presearch_sync_auth_manager.h"
+#include "presearch/components/sync/driver/presearch_sync_auth_manager.h"
 
 #include <memory>
 
 #include "base/callback_helpers.h"
 #include "base/test/mock_callback.h"
 #include "base/test/task_environment.h"
-#include "presearch.common/network_constants.h"
-#include "presearch.components/presearch_sync/network_time_helper.h"
+#include "presearch/common/network_constants.h"
+#include "presearch/components/presearch_sync/network_time_helper.h"
 #include "components/signin/public/identity_manager/identity_test_environment.h"
 #include "components/sync/engine/sync_credentials.h"
 #include "services/network/test/test_url_loader_factory.h"

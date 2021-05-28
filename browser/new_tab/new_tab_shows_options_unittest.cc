@@ -4,8 +4,8 @@
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 #include "presearch/browser/new_tab/new_tab_shows_options.h"
-#include "presearch.common/pref_names.h"
-#include "presearch.common/webui_url_constants.h"
+#include "presearch/common/pref_names.h"
+#include "presearch/common/webui_url_constants.h"
 #include "chrome/common/pref_names.h"
 #include "chrome/test/base/testing_browser_process.h"
 #include "chrome/test/base/testing_profile.h"

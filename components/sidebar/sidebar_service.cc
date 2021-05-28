@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch.components/sidebar/sidebar_service.h"
+#include "presearch/components/sidebar/sidebar_service.h"
 
 #include <algorithm>
 #include <utility>
@@ -11,9 +11,9 @@
 #include "base/feature_list.h"
 #include "base/strings/utf_string_conversions.h"
 #include "base/values.h"
-#include "presearch.components/sidebar/features.h"
-#include "presearch.components/sidebar/pref_names.h"
-#include "components/grit/presearch.components_strings.h"
+#include "presearch/components/sidebar/features.h"
+#include "presearch/components/sidebar/pref_names.h"
+#include "components/grit/presearch/components_strings.h"
 #include "components/prefs/pref_registry_simple.h"
 #include "components/prefs/pref_service.h"
 #include "components/prefs/scoped_user_pref_update.h"

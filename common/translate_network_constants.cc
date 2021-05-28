@@ -3,7 +3,7 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#include "presearch.common/translate_network_constants.h"
+#include "presearch/common/translate_network_constants.h"
 
 const char kTranslateInitiatorURL[] = "https://translate.googleapis.com/";
 const char kTranslateElementJSPattern[] = "https://translate.googleapis.com/translate_a/element.js*"; // NOLINT
