@@ -63,11 +63,11 @@
         android:key="use_custom_tabs"
         android:order="20"
         android:title="@string/prefs_use_custom_tabs"/>
-    <org.chromium.components.browser_ui.settings.ChromeBasePreference
+    <!-- <org.chromium.components.browser_ui.settings.ChromeBasePreference
         android:fragment="org.chromium.chrome.browser.settings.PresearchRewardsPreferences"
         android:key="presearch_rewards"
         android:order="21"
-        android:title="@string/presearch_ui_presearch_rewards"/>
+        android:title="@string/presearch_ui_presearch_rewards"/> -->
     <!-- <org.chromium.components.browser_ui.settings.ChromeBasePreference
         android:fragment="org.chromium.chrome.browser.settings.PresearchSyncScreensPreference"
         android:key="presearch_sync_layout"

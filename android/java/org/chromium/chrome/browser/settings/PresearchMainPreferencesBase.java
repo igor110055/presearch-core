@@ -103,10 +103,10 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
 
         rearrangePreferenceOrders();
 
-        if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) ||
-                PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-            removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
-        }
+        // if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) ||
+        //         PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+        //     removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
+        // }
 
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
             || (NTPUtil.isReferralEnabled() && NTPBackgroundImagesBridge.enableSponsoredImages())) {
@@ -142,7 +142,7 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         }
         findPreference(PREF_ADVANCED_SECTION).setOrder(++order);
         findPreference(PREF_PRIVACY).setOrder(++order);
-        findPreference(PREF_PRESEARCH_REWARDS).setOrder(++order);
+        // findPreference(PREF_PRESEARCH_REWARDS).setOrder(++order);
         // findPreference(PREF_SYNC).setOrder(++order);
         findPreference(PREF_ACCESSIBILITY).setOrder(++order);
         findPreference(PREF_CONTENT_SETTINGS).setOrder(++order);
