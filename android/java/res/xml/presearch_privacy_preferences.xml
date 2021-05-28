@@ -31,11 +31,13 @@
     <Preference
         android:fragment="org.chromium.chrome.browser.decentralized_dns.settings.UnstoppableDomainsSettingsFragment"
         android:key="unstoppable_domains"
-        android:title="@string/unstoppable_domains_title" />
+        android:title="@string/unstoppable_domains_title"
+        android:visibility="gone"/>
     <Preference
         android:fragment="org.chromium.chrome.browser.decentralized_dns.settings.ENSSettingsFragment"
         android:key="ens"
-        android:title="@string/ens_title" />
+        android:title="@string/ens_title"
+        android:visibility="gone" />
     <org.chromium.components.browser_ui.settings.ChromeBaseCheckBoxPreference
         android:key="ad_block"
         android:title="@string/ad_block_title"

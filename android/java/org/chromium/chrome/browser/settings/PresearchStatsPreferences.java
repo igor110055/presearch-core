@@ -91,14 +91,14 @@ public class PresearchStatsPreferences extends PresearchPreferenceFragment
         super.onActivityCreated(savedInstanceState);
         presearchStatsPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS);
         if (presearchStatsPref != null) {
-            presearchStatsPref.setEnabled(true);
-            presearchStatsPref.setChecked(OnboardingPrefManager.getInstance().isPresearchStatsEnabled());
+            presearchStatsPref.setEnabled(false);
+            presearchStatsPref.setChecked(false);
             presearchStatsPref.setOnPreferenceChangeListener(this);
         }
         presearchStatsNotificationPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS_NOTIFICATION);
         if (presearchStatsNotificationPref != null) {
-            presearchStatsNotificationPref.setEnabled(true);
-            presearchStatsNotificationPref.setChecked(OnboardingPrefManager.getInstance().isPresearchStatsNotificationEnabled());
+            presearchStatsNotificationPref.setEnabled(false);
+            presearchStatsNotificationPref.setChecked(false);
             presearchStatsNotificationPref.setOnPreferenceChangeListener(this);
         }
     }
