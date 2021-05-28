@@ -5,7 +5,7 @@ index 269a4897ffc73efce0d50f305cbb00a6ccf74281..dc2ee421ae98570e7bd8d42a22d9d905
 @@ -91,17 +91,6 @@
        "id": 68
      },
-
+ 
 -    "duckduckgo": {
 -      "name": "DuckDuckGo",
 -      "keyword": "duckduckgo.com",
@@ -23,22 +23,17 @@ index 269a4897ffc73efce0d50f305cbb00a6ccf74281..dc2ee421ae98570e7bd8d42a22d9d905
 @@ -156,16 +145,6 @@
        "id": 67
      },
-     
-     "qwant": {
+ 
+-    "qwant": {
 -      "name": "Qwant",
 -      "keyword": "qwant.com",
 -      "favicon_url": "https://www.qwant.com/favicon.ico",
 -      "search_url": "https://www.qwant.com/?q={searchTerms}&client=opensearch",
 -      "suggest_url": "https://api.qwant.com/api/suggest/?q={searchTerms}&client=opensearch",
-+      "name": "Presearch",
-+      "keyword": "presearch.org",
-+      "favicon_url": "https://presearch.org/favicon.ico",
-+      "search_url": "https://engine.presearch.org/search?q={searchTerms}",
-+      "suggest_url": "https://engine.presearch.org/search?q={searchTerms}",
-       "type": "SEARCH_ENGINE_QWANT",
-       "id": 94
-     },
-
+-      "type": "SEARCH_ENGINE_QWANT",
+-      "id": 94
+-    },
+-
      "seznam_cz": {
        "name": "Seznam",
        "keyword": "seznam.cz",
