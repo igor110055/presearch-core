@@ -71,7 +71,7 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         SettingsUtils.addPreferencesFromResource(this, R.xml.presearch_main_preferences);
 
         overrideChromiumPreferences();
-        initRatePresearch();
+        // initRatePresearch();
     }
 
     @Override
@@ -208,21 +208,21 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         findPreference(PREF_HOMEPAGE).setFragment(PresearchHomepageSettings.class.getName());
     }
 
-    private void initRatePresearch() {
-        findPreference(PREF_RATE_PRESEARCH).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-            @Override
-            public boolean onPreferenceClick(Preference preference) {
-                Bundle bundle = new Bundle();
-                bundle.putBoolean(RateUtils.FROM_SETTINGS, true);
-
-                RateDialogFragment mRateDialogFragment = new RateDialogFragment();
-                mRateDialogFragment.setCancelable(false);
-                mRateDialogFragment.setArguments(bundle);
-                mRateDialogFragment.show(getParentFragmentManager(), "RateDialogFragment");
-                return true;
-            }
-        });
-    }
+    // private void initRatePresearch() {
+    //     findPreference(PREF_RATE_PRESEARCH).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+    //         @Override
+    //         public boolean onPreferenceClick(Preference preference) {
+    //             Bundle bundle = new Bundle();
+    //             bundle.putBoolean(RateUtils.FROM_SETTINGS, true);
+    //
+    //             RateDialogFragment mRateDialogFragment = new RateDialogFragment();
+    //             mRateDialogFragment.setCancelable(false);
+    //             mRateDialogFragment.setArguments(bundle);
+    //             mRateDialogFragment.show(getParentFragmentManager(), "RateDialogFragment");
+    //             return true;
+    //         }
+    //     });
+    // }
 
     // TODO(simonhong): Make this static public with proper class.
     private int dp2px(int dp) {
