@@ -85,15 +85,15 @@ public class PresearchTabbedAppMenuPropertiesDelegate extends TabbedAppMenuPrope
                     AppCompatResources.getDrawable(mContext, R.drawable.presearch_menu_set_as_default));
         }
 
-        if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-            MenuItem rewards =
-                    menu.add(Menu.NONE, R.id.presearch_rewards_id, 0, R.string.menu_presearch_rewards);
-            if (shouldShowIconBeforeItem()) {
-                rewards.setIcon(
-                        AppCompatResources.getDrawable(mContext, R.drawable.presearch_menu_rewards));
-            }
-        }
+        // if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
+        //         && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+        //     MenuItem rewards =
+        //             menu.add(Menu.NONE, R.id.presearch_rewards_id, 0, R.string.menu_presearch_rewards);
+        //     if (shouldShowIconBeforeItem()) {
+        //         rewards.setIcon(
+        //                 AppCompatResources.getDrawable(mContext, R.drawable.presearch_menu_rewards));
+        //     }
+        // }
         MenuItem exit = menu.add(Menu.NONE, R.id.exit_id, 0, R.string.menu_exit);
         if (shouldShowIconBeforeItem()) {
             exit.setIcon(AppCompatResources.getDrawable(mContext, R.drawable.presearch_menu_exit));
