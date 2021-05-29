@@ -688,7 +688,7 @@ public Tab openNewOrSelectExistingTab(String url) {
         Tab tab = selectExistingTab(url);
         if (tab != null) {
                 return tab;
-        } else if (REWARDS_SETTINGS_URL.equals(url) || PRESEARCH_REWARDS_SETTINGS_URL.equals(url)) {
+        } else if (url.equals(REWARDS_SETTINGS_URL) || url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
                 return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
         } else { // Open a new tab
                 return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
