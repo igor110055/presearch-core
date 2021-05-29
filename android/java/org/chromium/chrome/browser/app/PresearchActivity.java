@@ -442,28 +442,6 @@ private void checkForNotificationData() {
         if (notifIntent != null && notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE) != null) {
                 Log.e("NTP", notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE));
                 String notificationType = notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE);
-                // switch (notificationType) {
-                // case RetentionNotificationUtil.HOUR_3:
-                // case RetentionNotificationUtil.HOUR_24:
-                // case RetentionNotificationUtil.EVERY_SUNDAY:
-                //     checkForPresearchStats();
-                //     break;
-                // case RetentionNotificationUtil.DAY_6:
-                // case RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS:
-                // case RetentionNotificationUtil.PRESEARCH_STATS_DATA:
-                // case RetentionNotificationUtil.PRESEARCH_STATS_TIME:
-                //     if (getActivityTab() != null
-                //         && getActivityTab().getUrlString() != null
-                //         && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
-                //         getTabCreator(false).launchUrl(UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
-                //     }
-                //     break;
-                // case RetentionNotificationUtil.DAY_10:
-                // case RetentionNotificationUtil.DAY_30:
-                // case RetentionNotificationUtil.DAY_35:
-                //     openRewardsPanel();
-                //     break;
-                // }
         }
 }
 
