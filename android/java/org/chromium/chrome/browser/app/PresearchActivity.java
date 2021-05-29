@@ -201,11 +201,7 @@ public boolean onMenuOrKeyboardAction(int id, boolean fromMenu) {
                 ApplicationLifetime.terminate(false);
         } else if (id == R.id.set_default_browser) {
                 handlePresearchSetDefaultBrowserDialog();
-        }
-        // else if (id == R.id.presearch_rewards_id) {
-        //     openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
-        //
-        else {
+        } else {
                 return false;
         }
 
@@ -314,32 +310,6 @@ public void finishNativeInitialization() {
         if (RateUtils.getInstance(this).shouldShowRateDialog())
                 showPresearchRateDialog();
 
-        // TODO commenting out below code as we may use it in next release
-
-        // if (PackageUtils.isFirstInstall(this)
-        //         &&
-        //         SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT)
-        //         == 1) {
-        //     Calendar calender = Calendar.getInstance();
-        //     calender.setTime(new Date());
-        //     calender.add(Calendar.DATE, DAYS_4);
-        //     OnboardingPrefManager.getInstance().setNextOnboardingDate(
-        //         calender.getTimeInMillis());
-        // }
-
-        // OnboardingActivity onboardingActivity = null;
-        // for (Activity ref : ApplicationStatus.getRunningActivities()) {
-        //     if (!(ref instanceof OnboardingActivity)) continue;
-
-        //     onboardingActivity = (OnboardingActivity) ref;
-        // }
-
-        // if (onboardingActivity == null
-        //         && OnboardingPrefManager.getInstance().showOnboardingForSkip(this)) {
-        //     OnboardingPrefManager.getInstance().showOnboarding(this);
-        //     OnboardingPrefManager.getInstance().setOnboardingShownForSkip(true);
-        // }
-
         if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) == 1) {
                 Calendar calender = Calendar.getInstance();
                 calender.setTime(new Date());
@@ -370,12 +340,6 @@ public void finishNativeInitialization() {
 
         if (!OnboardingPrefManager.getInstance().isOneTimeNotificationStarted()
             && PackageUtils.isFirstInstall(this)) {
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_3);
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_24);
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_6);
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_10);
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_30);
-                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_35);
                 RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_1);
                 RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
                 RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
@@ -422,13 +386,7 @@ public void finishNativeInitialization() {
 }
 
 @Override
-public void OnRewardsParameters(int errorCode) {
-        // if (errorCode == PresearchRewardsNativeWorker.LEDGER_OK && mPresearchRewardsNativeWorker != null
-        //         && mPresearchRewardsNativeWorker.GetWalletBalance() != null
-        //         && mPresearchRewardsNativeWorker.GetWalletBalance().getTotal() > 0) {
-        //     checkForDeprecateBAPDialog();
-        // }
-}
+public void OnRewardsParameters(int errorCode) {}
 
 @Override
 public void OnStartProcess() {
@@ -559,10 +517,10 @@ public void hideRewardsOnboardingIcon() {
 
 public void showRewardsTooltip() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout) findViewById(R.id.toolbar);
-        // assert layout != null;
-        // if (layout != null) {
-        //     layout.showRewardsTooltip();
-        // }
+        assert layout != null;
+        if (layout != null) {
+            layout.showRewardsTooltip();
+        }
 }
 
 private void createNotificationChannel() {
