@@ -20,12 +20,12 @@ public class DesktopModePreferences
 
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
-        getActivity().setTitle(R.string.settings_desktop_mode_title);
-        SettingsUtils.addPreferencesFromResource(this, R.xml.desktop_mode_preferences);
+        //getActivity().setTitle(R.string.settings_desktop_mode_title);
+        //SettingsUtils.addPreferencesFromResource(this, R.xml.desktop_mode_preferences);
 
-        ChromeSwitchPreference desktopModePref =
-                (ChromeSwitchPreference) findPreference(DESKTOP_MODE_KEY);
-        desktopModePref.setVisibility(View.GONE);
+        //ChromeSwitchPreference desktopModePref =
+          //      (ChromeSwitchPreference) findPreference(DESKTOP_MODE_KEY);
+        //desktopModePref.setVisibility(View.GONE);
         // desktopModePref.setChecked(false);
         // desktopModePref.setOnPreferenceChangeListener(this);
     }
