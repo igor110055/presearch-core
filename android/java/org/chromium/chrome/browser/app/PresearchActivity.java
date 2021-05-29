@@ -215,7 +215,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         CommandLine.getInstance().appendSwitch(ChromeSwitches.NO_RESTORE_STATE);
       }
 
-      setDSEToPresearch();
+      // setDSEToPresearch();
 
       PresearchSearchEngineUtils.initializePresearchSearchEngineStates(getTabModelSelector());
     }
