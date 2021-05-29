@@ -204,7 +204,7 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         }
         // else if (id == R.id.presearch_rewards_id) {
         //     openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
-        // 
+        //
 	else {
             return false;
         }
@@ -434,7 +434,7 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
     public void OnStartProcess() {
         mPresearchRewardsNativeWorker.GetRewardsParameters();
     }
-    
+
     private void checkForDeprecateBAPDialog() {
         String countryCode = Locale.getDefault().getCountry();
         if (countryCode.equals(JAPAN_COUNTRY_CODE) && !isRewardsPanelOpened()
@@ -521,7 +521,6 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
                 PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, false);
                 PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, true);
             }
-        }
     }
 
     private void checkForNotificationData() {
