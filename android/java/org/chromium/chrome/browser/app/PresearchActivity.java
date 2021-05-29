@@ -435,50 +435,6 @@ public void OnStartProcess() {
         mPresearchRewardsNativeWorker.GetRewardsParameters();
 }
 
-private void checkForDeprecateBAPDialog() {
-        String countryCode = Locale.getDefault().getCountry();
-        if (countryCode.equals(JAPAN_COUNTRY_CODE) && !isRewardsPanelOpened()
-            && System.currentTimeMillis() > PresearchRewardsHelper.getNextBAPModalDate()) {
-                Calendar toDayCalendar = Calendar.getInstance();
-                Date todayDate = toDayCalendar.getTime();
-
-                Calendar march6Calendar = Calendar.getInstance();
-                march6Calendar.set(Calendar.DAY_OF_MONTH, 6);
-                march6Calendar.set(Calendar.YEAR, 2021);
-                march6Calendar.set(Calendar.MONTH, 2);
-                march6Calendar.set(Calendar.HOUR_OF_DAY, 0);
-                march6Calendar.set(Calendar.MINUTE, 0);
-                march6Calendar.set(Calendar.SECOND, 0);
-                march6Calendar.set(Calendar.MILLISECOND, 0);
-                Date march6Date = march6Calendar.getTime();
-
-                Calendar march13Calendar = Calendar.getInstance();
-                march13Calendar.set(Calendar.DAY_OF_MONTH, 13);
-                march13Calendar.set(Calendar.YEAR, 2021);
-                march13Calendar.set(Calendar.MONTH, 2);
-                march13Calendar.set(Calendar.HOUR_OF_DAY, 0);
-                march13Calendar.set(Calendar.MINUTE, 0);
-                march13Calendar.set(Calendar.SECOND, 0);
-                march13Calendar.set(Calendar.MILLISECOND, 0);
-                Date march13Date = march13Calendar.getTime();
-
-                boolean shouldSetNextDate = false;
-                if (todayDate.compareTo(march6Date) < 0) {
-                        // showRewardsTooltip();
-                        shouldSetNextDate = true;
-                } else if (todayDate.compareTo(march6Date) > 0
-                           && todayDate.compareTo(march13Date) < 0) {
-                        // showDeprecateBAPDialog();
-                        shouldSetNextDate = true;
-                }
-                if (shouldSetNextDate) {
-                        Calendar calender = toDayCalendar;
-                        calender.add(Calendar.DATE, DAYS_1);
-                        PresearchRewardsHelper.setNextBAPModalDate(calender.getTimeInMillis());
-                }
-        }
-}
-
 private void checkSetDefaultBrowserModal() {
         boolean shouldShowDefaultBrowserModal =
                 (OnboardingPrefManager.getInstance().getNextSetDefaultBrowserModalDate() > 0
@@ -774,7 +730,7 @@ public Tab openNewOrSelectExistingTab(String url) {
         Tab tab = selectExistingTab(url);
         if (tab != null) {
                 return tab;
-        } else if (url == REWARDS_SETTINGS_URL || url == PRESEARCH_REWARDS_SETTINGS_URL) {
+        } else if (REWARDS_SETTINGS_URL.equals(url) || PRESEARCH_REWARDS_SETTINGS_URL.equals(url)) {
                 return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
         } else { // Open a new tab
                 return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
@@ -793,13 +749,13 @@ private void showCrossPromotionalDialog() {
         mCrossPromotionalModalDialogFragment.show(getSupportFragmentManager(), "CrossPromotionalModalDialogFragment");
 }
 
-public void showDeprecateBAPDialog() {
-        DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
-                new DeprecateBAPModalDialogFragment();
-        mDeprecateBAPModalDialogFragment.setCancelable(false);
-        mDeprecateBAPModalDialogFragment.show(
-                getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
-}
+// public void showDeprecateBAPDialog() {
+//         DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
+//                 new DeprecateBAPModalDialogFragment();
+//         mDeprecateBAPModalDialogFragment.setCancelable(false);
+//         mDeprecateBAPModalDialogFragment.show(
+//                 getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
+// }
 
 static public ChromeTabbedActivity getChromeTabbedActivity() {
         for (Activity ref : ApplicationStatus.getRunningActivities()) {
