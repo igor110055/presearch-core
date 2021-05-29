@@ -204,7 +204,8 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         }
         // else if (id == R.id.presearch_rewards_id) {
         //     openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
-        } else {
+        // 
+	else {
             return false;
         }
 
