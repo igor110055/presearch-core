@@ -434,8 +434,8 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
     public void OnStartProcess() {
         mPresearchRewardsNativeWorker.GetRewardsParameters();
     }
-
-    // private void checkForDeprecateBAPDialog() {
+    
+    private void checkForDeprecateBAPDialog() {
         String countryCode = Locale.getDefault().getCountry();
         if (countryCode.equals(JAPAN_COUNTRY_CODE) && !isRewardsPanelOpened()
                 && System.currentTimeMillis() > PresearchRewardsHelper.getNextBAPModalDate()) {
