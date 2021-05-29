@@ -294,24 +294,10 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         mPresearchShieldsContentSettings.addObserver(mPresearchShieldsContentSettingsObserver);
 
         SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
-        if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()
-                && !sharedPreferences.getBoolean(
-                        AppearancePreferences.PREF_HIDE_PRESEARCH_REWARDS_ICON, false)
-                && mRewardsLayout != null) {
-            mRewardsLayout.setVisibility(View.VISIBLE);
-        }
+
         if (mShieldsLayout != null) {
-            updateShieldsLayoutBackground(
-                    !(mRewardsLayout != null && mRewardsLayout.getVisibility() == View.VISIBLE));
+            updateShieldsLayoutBackground(true);
             mShieldsLayout.setVisibility(View.VISIBLE);
-        }
-        mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
-        if (mPresearchRewardsNativeWorker != null) {
-            mPresearchRewardsNativeWorker.AddObserver(this);
-            mPresearchRewardsNativeWorker.AddPublisherObserver(this);
-            mPresearchRewardsNativeWorker.TriggerOnNotifyFrontTabUrlChanged();
-            mPresearchRewardsNativeWorker.GetAllNotifications();
         }
     }
 
@@ -733,7 +719,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                 dialog.findViewById(R.id.presearch_rewards_onboarding_modal_layout);
         presearchRewardsOnboardingModalView.setBackgroundColor(
                 context.getResources().getColor(android.R.color.white));
-        presearchRewardsOnboardingModalView.setVisibility(View.VISIBLE);
+        // presearchRewardsOnboardingModalView.setVisibility(View.VISIBLE);
 
         String tosText =
                 String.format(context.getResources().getString(R.string.presearch_rewards_tos_text),
@@ -928,7 +914,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                 editor.putBoolean(
                         PresearchRewardsPanelPopup.PREF_WAS_TOOLBAR_BAT_LOGO_BUTTON_PRESSED, true);
                 editor.apply();
-                mPresearchRewardsNotificationsCount.setVisibility(View.INVISIBLE);
+                mPresearchRewardsNotificationsCount.setVisibility(View.GONE);
                 mIsInitialNotificationPosted = false;
             }
         }
@@ -1096,7 +1082,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                 && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()
                 && !sharedPreferences.getBoolean(
                         AppearancePreferences.PREF_HIDE_PRESEARCH_REWARDS_ICON, false)) {
-            mRewardsLayout.setVisibility(View.VISIBLE);
+            // mRewardsLayout.setVisibility(View.VISIBLE);
             updateShieldsLayoutBackground(false);
         }
     }
@@ -1200,12 +1186,12 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                                     R.drawable.presearch_rewards_circle, /* theme= */ null));
                 }
                 mPresearchRewardsNotificationsCount.setText(value);
-                mPresearchRewardsNotificationsCount.setVisibility(View.VISIBLE);
+                mPresearchRewardsNotificationsCount.setVisibility(View.GONE); // VISIBLE changed to GONE by Mamy
                 mIsNotificationPosted = true;
             } else {
                 mPresearchRewardsNotificationsCount.setText("");
                 mPresearchRewardsNotificationsCount.setBackgroundResource(0);
-                mPresearchRewardsNotificationsCount.setVisibility(View.INVISIBLE);
+                mPresearchRewardsNotificationsCount.setVisibility(View.GONE); // INVISIBLE changed to GONE by Mamy
                 mIsNotificationPosted = false;
                 updateVerifiedPublisherMark();
             }
@@ -1219,7 +1205,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
 
         if (checkForRewardsOnboarding()) {
             if (mPresearchRewardsOnboardingIcon != null) {
-                mPresearchRewardsOnboardingIcon.setVisibility(View.VISIBLE);
+                mPresearchRewardsOnboardingIcon.setVisibility(View.GONE); // VISIBLE changed to GONE by Mamy
             }
             if (mPresearchRewardsNotificationsCount != null) {
                 mPresearchRewardsNotificationsCount.setVisibility(View.GONE);
@@ -1239,7 +1225,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         mPresearchRewardsNotificationsCount.setText("");
         mPresearchRewardsNotificationsCount.setBackground(ResourcesCompat.getDrawable(
                 getContext().getResources(), R.drawable.presearch_rewards_circle, /* theme= */ null));
-        mPresearchRewardsNotificationsCount.setVisibility(View.VISIBLE);
+        mPresearchRewardsNotificationsCount.setVisibility(View.GONE);
     }
 
     @Override
@@ -1269,12 +1255,12 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
             return;
         } else if (!mIsNotificationPosted) {
             if (mIsPublisherVerified) {
-                mPresearchRewardsNotificationsCount.setVisibility(View.VISIBLE);
+                mPresearchRewardsNotificationsCount.setVisibility(View.GONE); // VISIBLE changed to GONE by Mamy
                 mPresearchRewardsNotificationsCount.setBackground(ResourcesCompat.getDrawable(
                         getContext().getResources(), R.drawable.bat_verified, /* theme= */ null));
             } else {
                 mPresearchRewardsNotificationsCount.setBackgroundResource(0);
-                mPresearchRewardsNotificationsCount.setVisibility(View.INVISIBLE);
+                mPresearchRewardsNotificationsCount.setVisibility(View.GONE); // INVISIBLE changed to GONE by Mamy
             }
         }
     }

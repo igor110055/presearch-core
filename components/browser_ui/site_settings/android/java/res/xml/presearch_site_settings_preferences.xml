@@ -11,6 +11,7 @@
         android:key="desktop_mode_category"
         android:icon="@drawable/settings_desktop_mode"
         android:title="@string/settings_desktop_mode_title"
+        android:visibility="gone"
         app:iconTint="@color/default_icon_color" />
     <org.chromium.components.browser_ui.settings.ChromeBasePreference
         android:fragment="org.chromium.chrome.browser.site_settings.PlayYTVideoInBrowserPreferences"

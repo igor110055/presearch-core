@@ -69,14 +69,14 @@ public class AppearancePreferences extends PresearchPreferenceFragment
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        ChromeSwitchPreference hidePresearchRewardsIconPref =
-                (ChromeSwitchPreference) findPreference(PREF_HIDE_PRESEARCH_REWARDS_ICON);
-        if (hidePresearchRewardsIconPref != null) {
-            SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
-            hidePresearchRewardsIconPref.setChecked(
-                    sharedPreferences.getBoolean(PREF_HIDE_PRESEARCH_REWARDS_ICON, false));
-            hidePresearchRewardsIconPref.setOnPreferenceChangeListener(this);
-        }
+        // ChromeSwitchPreference hidePresearchRewardsIconPref =
+        //         (ChromeSwitchPreference) findPreference(PREF_HIDE_PRESEARCH_REWARDS_ICON);
+        // if (hidePresearchRewardsIconPref != null) {
+        //     SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
+        //     hidePresearchRewardsIconPref.setChecked(
+        //             sharedPreferences.getBoolean(PREF_HIDE_PRESEARCH_REWARDS_ICON, false));
+        //     hidePresearchRewardsIconPref.setOnPreferenceChangeListener(this);
+        // }
 
         Preference nightModeEnabled = findPreference(PREF_PRESEARCH_NIGHT_MODE_ENABLED);
         nightModeEnabled.setOnPreferenceChangeListener(this);

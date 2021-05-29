@@ -25,8 +25,9 @@ public class DesktopModePreferences
 
         ChromeSwitchPreference desktopModePref =
                 (ChromeSwitchPreference) findPreference(DESKTOP_MODE_KEY);
-        desktopModePref.setChecked(false);
-        desktopModePref.setOnPreferenceChangeListener(this);
+        desktopModePref.setVisibility(View.GONE);
+        // desktopModePref.setChecked(false);
+        // desktopModePref.setOnPreferenceChangeListener(this);
     }
 
     @Override

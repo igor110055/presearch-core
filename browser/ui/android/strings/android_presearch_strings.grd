@@ -1048,7 +1048,7 @@ until they verify, or until 90 days have passed.
         DOWN
       </message>
       <message name="IDS_PRESEARCH_SHIELDS_DOWN_TEXT" desc="Text for presearch adblocks down.">
-        You're browsing this site without Presearch's privacy protections. Does it not work right with Adblocker up?
+        You're browsing this site without Presearch's privacy protections.
       </message>
       <message name="IDS_SITE_BROKEN_TEXT" desc="Shields text for broken text warning message.">
         If this site appears broken, try Adblocker down.
@@ -1546,7 +1546,7 @@ until they verify, or until 90 days have passed.
         Private and no tracking
       </message>
       <message name="IDS_QWANT_DESC" desc="Onboarding SE text">
-        Private and no tracking, EU-based
+        Private and no tracking, blockchain based
       </message>
       <message name="IDS_STARTPAGE_DESC" desc="Onboarding SE text">
         Google results without trackers

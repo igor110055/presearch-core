@@ -11,12 +11,14 @@
         android:key="presearch_stats"
         android:title="@string/presearch_stats"
         android:summary="@string/allows_presearch_to_show"
+        android:checked="false"
         android:visibility="gone" /><!-- added by Mamy -->
 
     <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
         android:key="presearch_stats_notification"
         android:title="@string/presearch_stats_notification"
         android:summary="@string/sends_a_weekly"
+        android:checked="false"
         android:visibility="gone" /><!-- added by Mamy -->
 
     <Preference

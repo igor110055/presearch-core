@@ -69,6 +69,7 @@ public class PresearchSiteSettingsPreferencesBase extends SiteSettingsPreference
         removePreferenceIfPresent(IDLE_DETECTION);
         removePreferenceIfPresent(ADS_KEY);
         removePreferenceIfPresent(BACKGROUND_SYNC_KEY);
+        removePreferenceIfPresent(DESKTOP_MODE_CATEGORY_KEY);
     }
 
     private void updatePresearchPreferenceStates() {
@@ -78,12 +79,12 @@ public class PresearchSiteSettingsPreferencesBase extends SiteSettingsPreference
                 PLAY_YT_VIDEO_IN_BROWSER_KEY, true);
             p.setSummary(enabled ? R.string.text_enabled : R.string.text_disabled);
         }
-        {
-            Preference p = findPreference(DESKTOP_MODE_CATEGORY_KEY);
-            boolean enabled = ContextUtils.getAppSharedPreferences().getBoolean(
-                DESKTOP_MODE_KEY, false);
-            p.setSummary(enabled ? R.string.settings_desktop_mode_enabled_summary
-                                 : R.string.settings_desktop_mode_disabled_summary);
-        }
+        // {
+        //     Preference p = findPreference(DESKTOP_MODE_CATEGORY_KEY);
+        //     boolean enabled = ContextUtils.getAppSharedPreferences().getBoolean(
+        //         DESKTOP_MODE_KEY, false);
+        //     p.setSummary(enabled ? R.string.settings_desktop_mode_enabled_summary
+        //                          : R.string.settings_desktop_mode_disabled_summary);
+        // }
     }
 }

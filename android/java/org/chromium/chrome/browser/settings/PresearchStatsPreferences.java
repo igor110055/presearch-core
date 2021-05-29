@@ -89,18 +89,18 @@ public class PresearchStatsPreferences extends PresearchPreferenceFragment
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        presearchStatsPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS);
-        if (presearchStatsPref != null) {
-            presearchStatsPref.setEnabled(false);
-            presearchStatsPref.setChecked(false);
-            presearchStatsPref.setOnPreferenceChangeListener(this);
-        }
-        presearchStatsNotificationPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS_NOTIFICATION);
-        if (presearchStatsNotificationPref != null) {
-            presearchStatsNotificationPref.setEnabled(false);
-            presearchStatsNotificationPref.setChecked(false);
-            presearchStatsNotificationPref.setOnPreferenceChangeListener(this);
-        }
+        // presearchStatsPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS);
+        // if (presearchStatsPref != null) {
+        //     presearchStatsPref.setEnabled(false);
+        //     presearchStatsPref.setChecked(false);
+        //     presearchStatsPref.setOnPreferenceChangeListener(this);
+        // }
+        // presearchStatsNotificationPref = (ChromeSwitchPreference) findPreference(PREF_PRESEARCH_STATS_NOTIFICATION);
+        // if (presearchStatsNotificationPref != null) {
+        //     presearchStatsNotificationPref.setEnabled(false);
+        //     presearchStatsNotificationPref.setChecked(false);
+        //     presearchStatsNotificationPref.setOnPreferenceChangeListener(this);
+        // }
     }
 
     @Override

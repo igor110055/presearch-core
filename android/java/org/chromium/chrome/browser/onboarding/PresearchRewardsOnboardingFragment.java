@@ -47,7 +47,7 @@ public class PresearchRewardsOnboardingFragment extends Fragment {
     private Button btnNext;
 
     private static final String PRESEARCH_TERMS_PAGE =
-        "https://basicattentiontoken.org/user-terms-of-service/";
+        "https://presearch.io/";
 
     private boolean isAdsAvailable;
 
@@ -67,9 +67,9 @@ public class PresearchRewardsOnboardingFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_presearch_rewards_onboarding, container, false);
 
-        initializeViews(root);
+        // initializeViews(root);
 
-        setActions();
+        // setActions();
 
         return root;
     }
