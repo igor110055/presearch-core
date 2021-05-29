@@ -749,13 +749,13 @@ private void showCrossPromotionalDialog() {
         mCrossPromotionalModalDialogFragment.show(getSupportFragmentManager(), "CrossPromotionalModalDialogFragment");
 }
 
-// public void showDeprecateBAPDialog() {
-//         DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
-//                 new DeprecateBAPModalDialogFragment();
-//         mDeprecateBAPModalDialogFragment.setCancelable(false);
-//         mDeprecateBAPModalDialogFragment.show(
-//                 getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
-// }
+public void showDeprecateBAPDialog() {
+        DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
+                new DeprecateBAPModalDialogFragment();
+        mDeprecateBAPModalDialogFragment.setCancelable(false);
+        mDeprecateBAPModalDialogFragment.show(
+                getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
+}
 
 static public ChromeTabbedActivity getChromeTabbedActivity() {
         for (Activity ref : ApplicationStatus.getRunningActivities()) {
