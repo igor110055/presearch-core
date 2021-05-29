@@ -657,9 +657,10 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       Tab tab = selectExistingTab(url);
       if (tab != null) {
         return tab;
-      } else if (url.equals(REWARDS_SETTINGS_URL) || url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
-        return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
       } else { // Open a new tab
+        if (url.equals(REWARDS_SETTINGS_URL) || url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
+          url = UrlConstants.CHROME_BLANK_URL;
+        }
         return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
       }
     }

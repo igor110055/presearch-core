@@ -514,7 +514,7 @@ export const StyledTopSitesCustomizationImageBorder = styled('div')<Customizatio
   border-radius: 11px;
 
   ${p => p.selected && css`
-    background: ${p => isDarkTheme(p) ? 'linear-gradient(314.42deg, #FA7250 6.04%, #FF1893 44.31%, #A78AFF 100%)'
+    background: ${p => isDarkTheme(p) ? 'linear-gradient(314.42deg, #2d8eff 6.04%, #FF1893 44.31%, #A78AFF 100%)'
                                       : 'linear-gradient(122.53deg, #4C54D2 0%, #BF14A2 56.25%, #F73A1C 100%)'};
     padding: 3px;
   `}

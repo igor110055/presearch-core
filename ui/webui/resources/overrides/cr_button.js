@@ -10,7 +10,7 @@ export default html`
     /* Default/light theme button colors */
     :host(:not([style])) {
       --presearch-text-color: #3b3e4f; /* grey800 */
-      --presearch-brand-color: #ff7654; /* orange400 */
+      --presearch-brand-color: #2d8eff; /* orange400 */
       --presearch-primary-hover: #ff977d; /* orange300 */
       --presearch-default-hover: rgba(45, 142, 255, 0.1); /* orange400 */
       --presearch-focus-outline: rgba(45, 142, 255, 0.4); /* orange400 */

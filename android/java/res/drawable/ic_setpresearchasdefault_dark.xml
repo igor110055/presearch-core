@@ -115,7 +115,7 @@
           android:endY="147.7623"
           android:endX="113.4795"
           android:type="linear">
-        <item android:offset="0" android:color="#FFFA7250"/>
+        <item android:offset="0" android:color="#FF2d8eff"/>
         <item android:offset="0.4072" android:color="#FFFF1893"/>
         <item android:offset="1" android:color="#FFA78AFF"/>
       </gradient>

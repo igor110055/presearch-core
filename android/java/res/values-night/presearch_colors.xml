@@ -11,7 +11,7 @@
     <color name="onboarding_bg_color">#1E2029</color>
     <color name="onboarding_timer_color">#478AFF</color>
 
-    <color name="onboarding_progress_start_color">#FA7250</color>
+    <color name="onboarding_progress_start_color">#2d8eff</color>
     <color name="onboarding_progress_mid_color">#FF1893</color>
     <color name="onboarding_progress_end_color">#A78AFF</color>
 
@@ -32,14 +32,14 @@
 
     <color name="shield_divider_color">#3B3E4F</color>
     <color name="shield_bg_color">#17171F</color>
-    <color name="shield_back_button_tint">#FF7654</color>
+    <color name="shield_back_button_tint">#2d8eff</color>
 
     <color name="shield_toggle_button_tint">#F0F2FF</color>
     <color name="shield_toggle_bg_color">#1E2029</color>
     
     <color name="shield_thank_you_icon_color">#F0F2FF</color>
 
-    <color name="presearch_stats_ads_color">#FF7654</color>
+    <color name="presearch_stats_ads_color">#2d8eff</color>
     <color name="presearch_stats_data_saved_color">#737ADE</color>
 
     <color name="presearch_stats_title_color">#84889C</color>
