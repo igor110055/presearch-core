@@ -113,185 +113,185 @@ import java.util.Locale;
 @JNINamespace("chrome::android")
 public abstract class PresearchActivity<C extends ChromeActivityComponent>
         extends ChromeActivity implements PresearchRewardsObserver {
-    public static final int SITE_BANNER_REQUEST_CODE = 33;
-    public static final int VERIFY_WALLET_ACTIVITY_REQUEST_CODE = 34;
-    public static final int USER_WALLET_ACTIVITY_REQUEST_CODE = 35;
-    public static final String ADD_FUNDS_URL = "chrome://rewards/";
-    public static final String REWARDS_SETTINGS_URL = "chrome://rewards/";
-    public static final String PRESEARCH_REWARDS_SETTINGS_URL = "presearch://rewards/";
-    public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/";
-    public static final String REWARDS_LEARN_MORE_URL = "https://presearch.io/";
-    public static final String PRESEARCH_TERMS_PAGE =
-            "https://presearch.org/privacy/user-terms-of-service/";
-    public static final String P3A_URL = "https://presearch.org/privacy";
-    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/";
-    private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
-    public static final String OPEN_URL = "open_url";
+public static final int SITE_BANNER_REQUEST_CODE = 33;
+public static final int VERIFY_WALLET_ACTIVITY_REQUEST_CODE = 34;
+public static final int USER_WALLET_ACTIVITY_REQUEST_CODE = 35;
+public static final String ADD_FUNDS_URL = "chrome://rewards/";
+public static final String REWARDS_SETTINGS_URL = "chrome://rewards/";
+public static final String PRESEARCH_REWARDS_SETTINGS_URL = "presearch://rewards/";
+public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/";
+public static final String REWARDS_LEARN_MORE_URL = "https://presearch.io/";
+public static final String PRESEARCH_TERMS_PAGE =
+        "https://presearch.org/privacy/user-terms-of-service/";
+public static final String P3A_URL = "https://presearch.org/privacy";
+public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/";
+private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
+public static final String OPEN_URL = "open_url";
 
-    public static final String PRESEARCH_PRODUCTION_PACKAGE_NAME = "com.presearch.browser";
-    public static final String PRESEARCH_BETA_PACKAGE_NAME = "com.presearch.browser_beta";
-    public static final String PRESEARCH_NIGHTLY_PACKAGE_NAME = "com.presearch.browser_nightly";
+public static final String PRESEARCH_PRODUCTION_PACKAGE_NAME = "com.presearch.browser";
+public static final String PRESEARCH_BETA_PACKAGE_NAME = "com.presearch.browser_beta";
+public static final String PRESEARCH_NIGHTLY_PACKAGE_NAME = "com.presearch.browser_nightly";
 
-    private static final int DAYS_1 = 1;
-    private static final int DAYS_4 = 4;
-    private static final int DAYS_5 = 5;
-    private static final int DAYS_12 = 12;
+private static final int DAYS_1 = 1;
+private static final int DAYS_4 = 4;
+private static final int DAYS_5 = 5;
+private static final int DAYS_12 = 12;
 
-    /**
-     * Settings for sending local notification reminders.
-     */
-    public static final String CHANNEL_ID = "com.presearch.browser";
-    public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
-    public static final String ANDROID_PACKAGE_NAME = "android";
-    public static final String PRESEARCH_BLOG_URL = "http://www.presearch.org/blog";
+/**
+ * Settings for sending local notification reminders.
+ */
+public static final String CHANNEL_ID = "com.presearch.browser";
+public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
+public static final String ANDROID_PACKAGE_NAME = "android";
+public static final String PRESEARCH_BLOG_URL = "http://www.presearch.org/blog";
 
-    private static final String JAPAN_COUNTRY_CODE = "JP";
+private static final String JAPAN_COUNTRY_CODE = "JP";
 
-    // Explicitly declare this variable to avoid build errors.
-    // It will be removed in asm and parent variable will be used instead.
-    protected ObservableSupplier<Profile> mTabModelProfileSupplier;
-    private PresearchRewardsNativeWorker mPresearchRewardsNativeWorker;
+// Explicitly declare this variable to avoid build errors.
+// It will be removed in asm and parent variable will be used instead.
+protected ObservableSupplier<Profile> mTabModelProfileSupplier;
+private PresearchRewardsNativeWorker mPresearchRewardsNativeWorker;
 
-    private static final List<String> yandexRegions =
-            Arrays.asList("AM", "AZ", "BY", "KG", "KZ", "MD", "RU", "TJ", "TM", "UZ");
+private static final List<String> yandexRegions =
+        Arrays.asList("AM", "AZ", "BY", "KG", "KZ", "MD", "RU", "TJ", "TM", "UZ");
 
-    public PresearchActivity() {
+public PresearchActivity() {
         // Disable key checker to avoid asserts on Presearch keys in debug
         SharedPreferencesManager.getInstance().disableKeyCheckerForTesting();
-    }
+}
 
-    @Override
-    public void onResumeWithNative() {
+@Override
+public void onResumeWithNative() {
         super.onResumeWithNative();
         PresearchActivityJni.get().restartStatsUpdater();
         if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-            if (mPresearchRewardsNativeWorker == null)
-                mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
-            mPresearchRewardsNativeWorker.AddObserver(this);
+            && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+                if (mPresearchRewardsNativeWorker == null)
+                        mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
+                mPresearchRewardsNativeWorker.AddObserver(this);
         }
-    }
+}
 
-    @Override
-    public void onPauseWithNative() {
+@Override
+public void onPauseWithNative() {
         super.onPauseWithNative();
         if (mPresearchRewardsNativeWorker != null) {
-            mPresearchRewardsNativeWorker.RemoveObserver(this);
+                mPresearchRewardsNativeWorker.RemoveObserver(this);
         }
-    }
+}
 
-    @Override
-    public boolean onMenuOrKeyboardAction(int id, boolean fromMenu) {
+@Override
+public boolean onMenuOrKeyboardAction(int id, boolean fromMenu) {
         final TabImpl currentTab = (TabImpl) getActivityTab();
         // Handle items replaced by Presearch.
         if (id == R.id.info_menu_id && currentTab != null) {
-            ShareDelegate shareDelegate = (ShareDelegate) getShareDelegateSupplier().get();
-            shareDelegate.share(currentTab, false, ShareOrigin.OVERFLOW_MENU);
-            return true;
+                ShareDelegate shareDelegate = (ShareDelegate) getShareDelegateSupplier().get();
+                shareDelegate.share(currentTab, false, ShareOrigin.OVERFLOW_MENU);
+                return true;
         }
 
         if (super.onMenuOrKeyboardAction(id, fromMenu)) {
-            return true;
+                return true;
         }
 
         // Handle items added by Presearch.
         if (currentTab == null) {
-            return false;
+                return false;
         } else if (id == R.id.exit_id) {
-            ApplicationLifetime.terminate(false);
+                ApplicationLifetime.terminate(false);
         } else if (id == R.id.set_default_browser) {
-            handlePresearchSetDefaultBrowserDialog();
+                handlePresearchSetDefaultBrowserDialog();
         }
         // else if (id == R.id.presearch_rewards_id) {
         //     openNewOrSelectExistingTab(REWARDS_SETTINGS_URL);
         //
-	else {
-            return false;
+        else {
+                return false;
         }
 
         return true;
-    }
+}
 
-    @Override
-    public void initializeState() {
+@Override
+public void initializeState() {
         super.initializeState();
         if (isNoRestoreState()) {
-            CommandLine.getInstance().appendSwitch(ChromeSwitches.NO_RESTORE_STATE);
+                CommandLine.getInstance().appendSwitch(ChromeSwitches.NO_RESTORE_STATE);
         }
 
         setDSEToPresearch();
 
         PresearchSearchEngineUtils.initializePresearchSearchEngineStates(getTabModelSelector());
-    }
+}
 
-    @Override
-    public void onResume() {
+@Override
+public void onResume() {
         super.onResume();
 
         Tab tab = getActivityTab();
         if (tab == null)
-            return;
+                return;
 
         // Set proper active DSE whenever presearch returns to foreground.
         // If active tab is private, set private DSE as an active DSE.
         PresearchSearchEngineUtils.updateActiveDSE(tab.isIncognito());
-    }
+}
 
-    @Override
-    public void onPause() {
+@Override
+public void onPause() {
         super.onPause();
 
         Tab tab = getActivityTab();
         if (tab == null)
-            return;
+                return;
 
         // Set normal DSE as an active DSE when presearch goes in background
         // because currently set DSE is used by outside of presearch(ex, presearch search widget).
         if (tab.isIncognito()) {
-            PresearchSearchEngineUtils.updateActiveDSE(false);
+                PresearchSearchEngineUtils.updateActiveDSE(false);
         }
-    }
+}
 
-    @Override
-    public void performPostInflationStartup() {
+@Override
+public void performPostInflationStartup() {
         super.performPostInflationStartup();
 
         PresearchReferrer.getInstance().initReferrer(this);
         createNotificationChannel();
         setupPresearchSetDefaultBrowserNotification();
-    }
+}
 
-    @Override
-    protected void initializeStartupMetrics() {
+@Override
+protected void initializeStartupMetrics() {
         super.initializeStartupMetrics();
 
         // Disable FRE for arm64 builds where ChromeActivity is the one that
         // triggers FRE instead of ChromeLauncherActivity on arm32 build.
         PresearchHelper.DisableFREDRP();
-    }
+}
 
-    @Override
-    public void finishNativeInitialization() {
+@Override
+public void finishNativeInitialization() {
         super.finishNativeInitialization();
 
         if (SharedPreferencesManager.getInstance().readBoolean(
                     PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false)) {
-            SharedPreferencesManager.getInstance().writeBoolean(
-                    PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false);
-            PresearchRelaunchUtils.restart();
-            return;
+                SharedPreferencesManager.getInstance().writeBoolean(
+                        PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false);
+                PresearchRelaunchUtils.restart();
+                return;
         }
 
         if (PresearchRewardsHelper.hasRewardsEnvChange()) {
-            PresearchPrefServiceBridge.getInstance().resetPromotionLastFetchStamp();
-            PresearchRewardsHelper.setRewardsEnvChange(false);
+                PresearchPrefServiceBridge.getInstance().resetPromotionLastFetchStamp();
+                PresearchRewardsHelper.setRewardsEnvChange(false);
         }
 
         int appOpenCount = SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT);
         SharedPreferencesManager.getInstance().writeInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT, appOpenCount + 1);
 
         if (PackageUtils.isFirstInstall(this)) {
-            setDSEToPresearch();
+                setDSEToPresearch();
         }
 
         //set bg ads to off for existing and new installations
@@ -299,20 +299,20 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
         Context app = ContextUtils.getApplicationContext();
         if (null != app
-                && PresearchReflectionUtil.EqualTypes(this.getClass(), ChromeTabbedActivity.class)) {
-            // Trigger PresearchSyncWorker CTOR to make migration from sync v1 if sync is enabled
-            PresearchSyncReflectionUtils.getSyncWorker();
+            && PresearchReflectionUtil.EqualTypes(this.getClass(), ChromeTabbedActivity.class)) {
+                // Trigger PresearchSyncWorker CTOR to make migration from sync v1 if sync is enabled
+                PresearchSyncReflectionUtils.getSyncWorker();
         }
 
         checkForNotificationData();
 
         if (!RateUtils.getInstance(this).getPrefRateEnabled()) {
-            RateUtils.getInstance(this).setPrefRateEnabled(true);
-            RateUtils.getInstance(this).setNextRateDateAndCount();
+                RateUtils.getInstance(this).setPrefRateEnabled(true);
+                RateUtils.getInstance(this).setNextRateDateAndCount();
         }
 
         if (RateUtils.getInstance(this).shouldShowRateDialog())
-            showPresearchRateDialog();
+                showPresearchRateDialog();
 
         // TODO commenting out below code as we may use it in next release
 
@@ -341,416 +341,416 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
         // }
 
         if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) == 1) {
-            Calendar calender = Calendar.getInstance();
-            calender.setTime(new Date());
-            calender.add(Calendar.DATE, DAYS_12);
-            OnboardingPrefManager.getInstance().setNextCrossPromoModalDate(
-                calender.getTimeInMillis());
+                Calendar calender = Calendar.getInstance();
+                calender.setTime(new Date());
+                calender.add(Calendar.DATE, DAYS_12);
+                OnboardingPrefManager.getInstance().setNextCrossPromoModalDate(
+                        calender.getTimeInMillis());
         }
 
         if (OnboardingPrefManager.getInstance().showCrossPromoModal()) {
-            showCrossPromotionalDialog();
-            OnboardingPrefManager.getInstance().setCrossPromoModalShown(true);
+                showCrossPromotionalDialog();
+                OnboardingPrefManager.getInstance().setCrossPromoModalShown(true);
         }
         PresearchSyncReflectionUtils.showInformers();
         PresearchAndroidSyncDisabledInformer.showInformers();
 
         if (!PackageUtils.isFirstInstall(this)
-                && !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
-            PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
-            OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
+            && !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
+                PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
+                OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
         }
 
         if (PresearchConfig.P3A_ENABLED
-                && !OnboardingPrefManager.getInstance().isP3aOnboardingShown()) {
-            Intent p3aOnboardingIntent = new Intent(this, P3aOnboardingActivity.class);
-            p3aOnboardingIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(p3aOnboardingIntent);
+            && !OnboardingPrefManager.getInstance().isP3aOnboardingShown()) {
+                Intent p3aOnboardingIntent = new Intent(this, P3aOnboardingActivity.class);
+                p3aOnboardingIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(p3aOnboardingIntent);
         }
 
         if (!OnboardingPrefManager.getInstance().isOneTimeNotificationStarted()
-                && PackageUtils.isFirstInstall(this)) {
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_3);
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_24);
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_6);
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_10);
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_30);
-            // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_35);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_1);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
-            RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
-            OnboardingPrefManager.getInstance().setOneTimeNotificationStarted(true);
+            && PackageUtils.isFirstInstall(this)) {
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_3);
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.HOUR_24);
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_6);
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_10);
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_30);
+                // RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DAY_35);
+                RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_1);
+                RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
+                RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
+                OnboardingPrefManager.getInstance().setOneTimeNotificationStarted(true);
         }
         if (!TextUtils.isEmpty(BinanceWidgetManager.getInstance().getBinanceAccountBalance())) {
-            try {
-                BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
-                        BinanceWidgetManager.getInstance().getBinanceAccountBalance());
-            } catch (JSONException e) {
-                Log.e("NTP", e.getMessage());
-            }
+                try {
+                        BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
+                                BinanceWidgetManager.getInstance().getBinanceAccountBalance());
+                } catch (JSONException e) {
+                        Log.e("NTP", e.getMessage());
+                }
         }
 
         if (PackageUtils.isFirstInstall(this)
-                && SharedPreferencesManager.getInstance().readInt(
-                           PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT)
-                        == 1) {
-            Calendar calender = Calendar.getInstance();
-            calender.setTime(new Date());
-            calender.add(Calendar.DATE, DAYS_4);
-            PresearchRewardsHelper.setNextRewardsOnboardingModalDate(calender.getTimeInMillis());
+            && SharedPreferencesManager.getInstance().readInt(
+                    PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT)
+            == 1) {
+                Calendar calender = Calendar.getInstance();
+                calender.setTime(new Date());
+                calender.add(Calendar.DATE, DAYS_4);
+                PresearchRewardsHelper.setNextRewardsOnboardingModalDate(calender.getTimeInMillis());
         }
         if (PresearchRewardsHelper.shouldShowRewardsOnboardingModalOnDay4()) {
-            PresearchRewardsHelper.setShowPresearchRewardsOnboardingModal(true);
-            openRewardsPanel();
-            PresearchRewardsHelper.setRewardsOnboardingModalShown(true);
+                PresearchRewardsHelper.setShowPresearchRewardsOnboardingModal(true);
+                openRewardsPanel();
+                PresearchRewardsHelper.setRewardsOnboardingModalShown(true);
         }
 
         if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT)
-                == 1) {
-            Calendar calender = Calendar.getInstance();
-            calender.setTime(new Date());
-            calender.add(Calendar.DATE, DAYS_5);
-            OnboardingPrefManager.getInstance().setNextSetDefaultBrowserModalDate(
-                    calender.getTimeInMillis());
+            == 1) {
+                Calendar calender = Calendar.getInstance();
+                calender.setTime(new Date());
+                calender.add(Calendar.DATE, DAYS_5);
+                OnboardingPrefManager.getInstance().setNextSetDefaultBrowserModalDate(
+                        calender.getTimeInMillis());
         }
         checkSetDefaultBrowserModal();
         if (mPresearchRewardsNativeWorker != null && mPresearchRewardsNativeWorker.isRewardsEnabled()
-                && ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-            mPresearchRewardsNativeWorker.StartProcess();
+            && ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
+            && !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+                mPresearchRewardsNativeWorker.StartProcess();
         }
-    }
+}
 
-    @Override
-    public void OnRewardsParameters(int errorCode) {
+@Override
+public void OnRewardsParameters(int errorCode) {
         // if (errorCode == PresearchRewardsNativeWorker.LEDGER_OK && mPresearchRewardsNativeWorker != null
         //         && mPresearchRewardsNativeWorker.GetWalletBalance() != null
         //         && mPresearchRewardsNativeWorker.GetWalletBalance().getTotal() > 0) {
         //     checkForDeprecateBAPDialog();
         // }
-    }
+}
 
-    @Override
-    public void OnStartProcess() {
+@Override
+public void OnStartProcess() {
         mPresearchRewardsNativeWorker.GetRewardsParameters();
-    }
+}
 
-    private void checkForDeprecateBAPDialog() {
+private void checkForDeprecateBAPDialog() {
         String countryCode = Locale.getDefault().getCountry();
         if (countryCode.equals(JAPAN_COUNTRY_CODE) && !isRewardsPanelOpened()
-                && System.currentTimeMillis() > PresearchRewardsHelper.getNextBAPModalDate()) {
-            Calendar toDayCalendar = Calendar.getInstance();
-            Date todayDate = toDayCalendar.getTime();
+            && System.currentTimeMillis() > PresearchRewardsHelper.getNextBAPModalDate()) {
+                Calendar toDayCalendar = Calendar.getInstance();
+                Date todayDate = toDayCalendar.getTime();
 
-            Calendar march6Calendar = Calendar.getInstance();
-            march6Calendar.set(Calendar.DAY_OF_MONTH, 6);
-            march6Calendar.set(Calendar.YEAR, 2021);
-            march6Calendar.set(Calendar.MONTH, 2);
-            march6Calendar.set(Calendar.HOUR_OF_DAY, 0);
-            march6Calendar.set(Calendar.MINUTE, 0);
-            march6Calendar.set(Calendar.SECOND, 0);
-            march6Calendar.set(Calendar.MILLISECOND, 0);
-            Date march6Date = march6Calendar.getTime();
+                Calendar march6Calendar = Calendar.getInstance();
+                march6Calendar.set(Calendar.DAY_OF_MONTH, 6);
+                march6Calendar.set(Calendar.YEAR, 2021);
+                march6Calendar.set(Calendar.MONTH, 2);
+                march6Calendar.set(Calendar.HOUR_OF_DAY, 0);
+                march6Calendar.set(Calendar.MINUTE, 0);
+                march6Calendar.set(Calendar.SECOND, 0);
+                march6Calendar.set(Calendar.MILLISECOND, 0);
+                Date march6Date = march6Calendar.getTime();
 
-            Calendar march13Calendar = Calendar.getInstance();
-            march13Calendar.set(Calendar.DAY_OF_MONTH, 13);
-            march13Calendar.set(Calendar.YEAR, 2021);
-            march13Calendar.set(Calendar.MONTH, 2);
-            march13Calendar.set(Calendar.HOUR_OF_DAY, 0);
-            march13Calendar.set(Calendar.MINUTE, 0);
-            march13Calendar.set(Calendar.SECOND, 0);
-            march13Calendar.set(Calendar.MILLISECOND, 0);
-            Date march13Date = march13Calendar.getTime();
+                Calendar march13Calendar = Calendar.getInstance();
+                march13Calendar.set(Calendar.DAY_OF_MONTH, 13);
+                march13Calendar.set(Calendar.YEAR, 2021);
+                march13Calendar.set(Calendar.MONTH, 2);
+                march13Calendar.set(Calendar.HOUR_OF_DAY, 0);
+                march13Calendar.set(Calendar.MINUTE, 0);
+                march13Calendar.set(Calendar.SECOND, 0);
+                march13Calendar.set(Calendar.MILLISECOND, 0);
+                Date march13Date = march13Calendar.getTime();
 
-            boolean shouldSetNextDate = false;
-            if (todayDate.compareTo(march6Date) < 0) {
-                // showRewardsTooltip();
-                shouldSetNextDate = true;
-            } else if (todayDate.compareTo(march6Date) > 0
-                    && todayDate.compareTo(march13Date) < 0) {
-                // showDeprecateBAPDialog();
-                shouldSetNextDate = true;
-            }
-            if (shouldSetNextDate) {
-                Calendar calender = toDayCalendar;
-                calender.add(Calendar.DATE, DAYS_1);
-                PresearchRewardsHelper.setNextBAPModalDate(calender.getTimeInMillis());
-            }
+                boolean shouldSetNextDate = false;
+                if (todayDate.compareTo(march6Date) < 0) {
+                        // showRewardsTooltip();
+                        shouldSetNextDate = true;
+                } else if (todayDate.compareTo(march6Date) > 0
+                           && todayDate.compareTo(march13Date) < 0) {
+                        // showDeprecateBAPDialog();
+                        shouldSetNextDate = true;
+                }
+                if (shouldSetNextDate) {
+                        Calendar calender = toDayCalendar;
+                        calender.add(Calendar.DATE, DAYS_1);
+                        PresearchRewardsHelper.setNextBAPModalDate(calender.getTimeInMillis());
+                }
         }
-    }
+}
 
-    private void checkSetDefaultBrowserModal() {
+private void checkSetDefaultBrowserModal() {
         boolean shouldShowDefaultBrowserModal =
                 (OnboardingPrefManager.getInstance().getNextSetDefaultBrowserModalDate() > 0
-                        && System.currentTimeMillis()
-                                > OnboardingPrefManager.getInstance()
-                                          .getNextSetDefaultBrowserModalDate());
+                 && System.currentTimeMillis()
+                 > OnboardingPrefManager.getInstance()
+                 .getNextSetDefaultBrowserModalDate());
         boolean shouldShowDefaultBrowserModalAfterP3A =
                 OnboardingPrefManager.getInstance().shouldShowDefaultBrowserModalAfterP3A();
         if (!PresearchSetDefaultBrowserNotificationService.isPresearchSetAsDefaultBrowser(this)
-                && (shouldShowDefaultBrowserModalAfterP3A || shouldShowDefaultBrowserModal)) {
-            Intent setDefaultBrowserIntent = new Intent(this, SetDefaultBrowserActivity.class);
-            setDefaultBrowserIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            startActivity(setDefaultBrowserIntent);
-            if (shouldShowDefaultBrowserModal) {
-                OnboardingPrefManager.getInstance().setNextSetDefaultBrowserModalDate(0);
-            }
-            if (shouldShowDefaultBrowserModalAfterP3A) {
-                OnboardingPrefManager.getInstance().setShowDefaultBrowserModalAfterP3A(false);
-            }
+            && (shouldShowDefaultBrowserModalAfterP3A || shouldShowDefaultBrowserModal)) {
+                Intent setDefaultBrowserIntent = new Intent(this, SetDefaultBrowserActivity.class);
+                setDefaultBrowserIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(setDefaultBrowserIntent);
+                if (shouldShowDefaultBrowserModal) {
+                        OnboardingPrefManager.getInstance().setNextSetDefaultBrowserModalDate(0);
+                }
+                if (shouldShowDefaultBrowserModalAfterP3A) {
+                        OnboardingPrefManager.getInstance().setShowDefaultBrowserModalAfterP3A(false);
+                }
         }
-    }
+}
 
-    private void checkForYandexSE() {
+private void checkForYandexSE() {
         String countryCode = Locale.getDefault().getCountry();
         if (yandexRegions.contains(countryCode)) {
-            TemplateUrl yandexTemplateUrl =
-                    PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.YANDEX);
-            if (yandexTemplateUrl != null) {
-                PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, false);
-                PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, true);
-            }
+                TemplateUrl yandexTemplateUrl =
+                        PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.YANDEX);
+                if (yandexTemplateUrl != null) {
+                        PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, false);
+                        PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, true);
+                }
         }
-    }
+}
 
-    private void setDSEToPresearch() {
-      // Set the default search engine to engine.presearch.org. Added by Mamy
-      TemplateUrl presearchTemplateUrl =
-      PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.QWANT);
-            if (presearchTemplateUrl != null) {
+private void setDSEToPresearch() {
+        // Set the default search engine to engine.presearch.org. Added by Mamy
+        TemplateUrl presearchTemplateUrl =
+                PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.QWANT);
+        if (presearchTemplateUrl != null) {
                 PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, false);
                 PresearchSearchEngineUtils.setDSEPrefs(presearchTemplateUrl, true);
-            }
-    }
+        }
+}
 
-    private void checkForNotificationData() {
+private void checkForNotificationData() {
         Intent notifIntent = getIntent();
         if (notifIntent != null && notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE) != null) {
-            Log.e("NTP", notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE));
-            String notificationType = notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE);
-            // switch (notificationType) {
-            // case RetentionNotificationUtil.HOUR_3:
-            // case RetentionNotificationUtil.HOUR_24:
-            // case RetentionNotificationUtil.EVERY_SUNDAY:
-            //     checkForPresearchStats();
-            //     break;
-            // case RetentionNotificationUtil.DAY_6:
-            // case RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS:
-            // case RetentionNotificationUtil.PRESEARCH_STATS_DATA:
-            // case RetentionNotificationUtil.PRESEARCH_STATS_TIME:
-            //     if (getActivityTab() != null
-            //         && getActivityTab().getUrlString() != null
-            //         && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
-            //         getTabCreator(false).launchUrl(UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
-            //     }
-            //     break;
-            // case RetentionNotificationUtil.DAY_10:
-            // case RetentionNotificationUtil.DAY_30:
-            // case RetentionNotificationUtil.DAY_35:
-            //     openRewardsPanel();
-            //     break;
-            // }
+                Log.e("NTP", notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE));
+                String notificationType = notifIntent.getStringExtra(RetentionNotificationUtil.NOTIFICATION_TYPE);
+                // switch (notificationType) {
+                // case RetentionNotificationUtil.HOUR_3:
+                // case RetentionNotificationUtil.HOUR_24:
+                // case RetentionNotificationUtil.EVERY_SUNDAY:
+                //     checkForPresearchStats();
+                //     break;
+                // case RetentionNotificationUtil.DAY_6:
+                // case RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS:
+                // case RetentionNotificationUtil.PRESEARCH_STATS_DATA:
+                // case RetentionNotificationUtil.PRESEARCH_STATS_TIME:
+                //     if (getActivityTab() != null
+                //         && getActivityTab().getUrlString() != null
+                //         && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
+                //         getTabCreator(false).launchUrl(UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
+                //     }
+                //     break;
+                // case RetentionNotificationUtil.DAY_10:
+                // case RetentionNotificationUtil.DAY_30:
+                // case RetentionNotificationUtil.DAY_35:
+                //     openRewardsPanel();
+                //     break;
+                // }
         }
-    }
+}
 
-    public void checkForPresearchStats() {
+public void checkForPresearchStats() {
         if (OnboardingPrefManager.getInstance().isPresearchStatsEnabled()) {
-            PresearchStatsUtil.showPresearchStats();
+                PresearchStatsUtil.showPresearchStats();
         } else {
-            if (getActivityTab() != null && getActivityTab().getUrlString() != null
+                if (getActivityTab() != null && getActivityTab().getUrlString() != null
                     && !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
-                OnboardingPrefManager.getInstance().setFromNotification(true);
-                if (getTabCreator(false) != null) {
-                    getTabCreator(false).launchUrl(
-                            UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
+                        OnboardingPrefManager.getInstance().setFromNotification(true);
+                        if (getTabCreator(false) != null) {
+                                getTabCreator(false).launchUrl(
+                                        UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
+                        }
+                } else {
+                        showOnboardingV2(false);
                 }
-            } else {
-                showOnboardingV2(false);
-            }
         }
-    }
+}
 
-    public void showOnboardingV2(boolean fromStats) {
+public void showOnboardingV2(boolean fromStats) {
         try {
-            OnboardingPrefManager.getInstance().setNewOnboardingShown(true);
-            FragmentManager fm = getSupportFragmentManager();
-            HighlightDialogFragment fragment = (HighlightDialogFragment) fm
-                                               .findFragmentByTag(HighlightDialogFragment.TAG_FRAGMENT);
-            FragmentTransaction transaction = fm.beginTransaction();
+                OnboardingPrefManager.getInstance().setNewOnboardingShown(true);
+                FragmentManager fm = getSupportFragmentManager();
+                HighlightDialogFragment fragment = (HighlightDialogFragment) fm
+                                                   .findFragmentByTag(HighlightDialogFragment.TAG_FRAGMENT);
+                FragmentTransaction transaction = fm.beginTransaction();
 
-            if (fragment != null) {
-                transaction.remove(fragment);
-            }
+                if (fragment != null) {
+                        transaction.remove(fragment);
+                }
 
-            fragment = new HighlightDialogFragment();
-            Bundle fragmentBundle = new Bundle();
-            fragmentBundle.putBoolean(OnboardingPrefManager.FROM_STATS, fromStats);
-            fragment.setArguments(fragmentBundle);
-            transaction.add(fragment, HighlightDialogFragment.TAG_FRAGMENT);
-            transaction.commitAllowingStateLoss();
+                fragment = new HighlightDialogFragment();
+                Bundle fragmentBundle = new Bundle();
+                fragmentBundle.putBoolean(OnboardingPrefManager.FROM_STATS, fromStats);
+                fragment.setArguments(fragmentBundle);
+                transaction.add(fragment, HighlightDialogFragment.TAG_FRAGMENT);
+                transaction.commitAllowingStateLoss();
         } catch (IllegalStateException e) {
-            Log.e("HighlightDialogFragment", e.getMessage());
+                Log.e("HighlightDialogFragment", e.getMessage());
         }
-    }
+}
 
-    public void hideRewardsOnboardingIcon() {
+public void hideRewardsOnboardingIcon() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout)findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            layout.hideRewardsOnboardingIcon();
+                layout.hideRewardsOnboardingIcon();
         }
-    }
+}
 
-    public void showRewardsTooltip() {
+public void showRewardsTooltip() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout) findViewById(R.id.toolbar);
         // assert layout != null;
         // if (layout != null) {
         //     layout.showRewardsTooltip();
         // }
-    }
+}
 
-    private void createNotificationChannel() {
+private void createNotificationChannel() {
         Context context = ContextUtils.getApplicationContext();
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            CharSequence name = "Presearch Browser";
-            String description = "Notification channel for Presearch Browser";
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
-            channel.setDescription(description);
-            // Register the channel with the system; you can't change the importance
-            // or other notification behaviors after this
-            NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel);
+                CharSequence name = "Presearch Browser";
+                String description = "Notification channel for Presearch Browser";
+                int importance = NotificationManager.IMPORTANCE_DEFAULT;
+                NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+                channel.setDescription(description);
+                // Register the channel with the system; you can't change the importance
+                // or other notification behaviors after this
+                NotificationManager notificationManager = getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
         }
-    }
+}
 
-    private void setupPresearchSetDefaultBrowserNotification() {
+private void setupPresearchSetDefaultBrowserNotification() {
         // Post task to IO thread because isPresearchSetAsDefaultBrowser may cause
         // sqlite file IO operation underneath
-        PostTask.postTask(TaskTraits.BEST_EFFORT_MAY_BLOCK, () -> {
-            Context context = ContextUtils.getApplicationContext();
-            if (PresearchSetDefaultBrowserNotificationService.isPresearchSetAsDefaultBrowser(this)) {
-                // Don't ask again
-                return;
-            }
-            Intent intent = new Intent(context, PresearchSetDefaultBrowserNotificationService.class);
-            context.sendBroadcast(intent);
-        });
-    }
+        PostTask.postTask(TaskTraits.BEST_EFFORT_MAY_BLOCK, ()->{
+                        Context context = ContextUtils.getApplicationContext();
+                        if (PresearchSetDefaultBrowserNotificationService.isPresearchSetAsDefaultBrowser(this)) {
+                                // Don't ask again
+                                return;
+                        }
+                        Intent intent = new Intent(context, PresearchSetDefaultBrowserNotificationService.class);
+                        context.sendBroadcast(intent);
+                });
+}
 
-    private boolean isNoRestoreState() {
+private boolean isNoRestoreState() {
         return ContextUtils.getAppSharedPreferences().getBoolean(PREF_CLOSE_TABS_ON_EXIT, false);
-    }
+}
 
-    public void handlePresearchSetDefaultBrowserDialog() {
+public void handlePresearchSetDefaultBrowserDialog() {
         /* (Albert Wang): Default app settings didn't get added until API 24
          * https://developer.android.com/reference/android/provider/Settings#ACTION_MANAGE_DEFAULT_APPS_SETTINGS
          */
         Intent browserIntent =
-            new Intent(Intent.ACTION_VIEW, Uri.parse(UrlConstants.HTTP_URL_PREFIX));
+                new Intent(Intent.ACTION_VIEW, Uri.parse(UrlConstants.HTTP_URL_PREFIX));
         boolean supportsDefault = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
         ResolveInfo resolveInfo = getPackageManager().resolveActivity(
-                                      browserIntent, supportsDefault ? PackageManager.MATCH_DEFAULT_ONLY : 0);
+                browserIntent, supportsDefault ? PackageManager.MATCH_DEFAULT_ONLY : 0);
         Context context = ContextUtils.getApplicationContext();
         if (PresearchSetDefaultBrowserNotificationService.isPresearchSetAsDefaultBrowser(this)) {
-            Toast toast = Toast.makeText(
-                              context, R.string.presearch_already_set_as_default_browser, Toast.LENGTH_LONG);
-            toast.show();
-            return;
-        }
-        if (supportsDefault) {
-            if (resolveInfo.activityInfo.packageName.equals(ANDROID_SETUPWIZARD_PACKAGE_NAME)
-                    || resolveInfo.activityInfo.packageName.equals(ANDROID_PACKAGE_NAME)) {
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.presearch_set_default_browser_dialog,
-                                               (ViewGroup) findViewById(R.id.presearch_set_default_browser_toast_container));
-
-                Toast toast = new Toast(context, layout);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setGravity(Gravity.TOP, 0, 40);
-                toast.show();
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRESEARCH_BLOG_URL));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            } else {
-                Intent intent = new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            }
-        } else {
-            if (resolveInfo.activityInfo.packageName.equals(ANDROID_SETUPWIZARD_PACKAGE_NAME)
-                    || resolveInfo.activityInfo.packageName.equals(ANDROID_PACKAGE_NAME)) {
-                // (Albert Wang): From what I've experimented on 6.0,
-                // default browser popup is in the middle of the screen for
-                // these versions. So we shouldn't show the toast.
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRESEARCH_BLOG_URL));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            } else {
                 Toast toast = Toast.makeText(
-                                  context, R.string.presearch_default_browser_go_to_settings, Toast.LENGTH_LONG);
+                        context, R.string.presearch_already_set_as_default_browser, Toast.LENGTH_LONG);
                 toast.show();
                 return;
-            }
         }
-    }
+        if (supportsDefault) {
+                if (resolveInfo.activityInfo.packageName.equals(ANDROID_SETUPWIZARD_PACKAGE_NAME)
+                    || resolveInfo.activityInfo.packageName.equals(ANDROID_PACKAGE_NAME)) {
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layout = inflater.inflate(R.layout.presearch_set_default_browser_dialog,
+                                                       (ViewGroup) findViewById(R.id.presearch_set_default_browser_toast_container));
 
-    public void OnRewardsPanelDismiss() {
+                        Toast toast = new Toast(context, layout);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.TOP, 0, 40);
+                        toast.show();
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRESEARCH_BLOG_URL));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                } else {
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_DEFAULT_APPS_SETTINGS);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                }
+        } else {
+                if (resolveInfo.activityInfo.packageName.equals(ANDROID_SETUPWIZARD_PACKAGE_NAME)
+                    || resolveInfo.activityInfo.packageName.equals(ANDROID_PACKAGE_NAME)) {
+                        // (Albert Wang): From what I've experimented on 6.0,
+                        // default browser popup is in the middle of the screen for
+                        // these versions. So we shouldn't show the toast.
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(PRESEARCH_BLOG_URL));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                } else {
+                        Toast toast = Toast.makeText(
+                                context, R.string.presearch_default_browser_go_to_settings, Toast.LENGTH_LONG);
+                        toast.show();
+                        return;
+                }
+        }
+}
+
+public void OnRewardsPanelDismiss() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout)findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            layout.onRewardsPanelDismiss();
+                layout.onRewardsPanelDismiss();
         }
-    }
+}
 
-    public void dismissRewardsPanel() {
+public void dismissRewardsPanel() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout)findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            layout.dismissRewardsPanel();
+                layout.dismissRewardsPanel();
         }
-    }
+}
 
-    public void dismissShieldsTooltip() {
+public void dismissShieldsTooltip() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout)findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            layout.dismissShieldsTooltip();
+                layout.dismissShieldsTooltip();
         }
-    }
+}
 
-    public void openRewardsPanel() {
+public void openRewardsPanel() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout)findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            layout.openRewardsPanel();
+                layout.openRewardsPanel();
         }
-    }
+}
 
-    public boolean isRewardsPanelOpened() {
+public boolean isRewardsPanelOpened() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout) findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            return layout.isRewardsPanelOpened();
+                return layout.isRewardsPanelOpened();
         }
         return false;
-    }
+}
 
-    public boolean isShieldsTooltipShown() {
+public boolean isShieldsTooltipShown() {
         PresearchToolbarLayout layout = (PresearchToolbarLayout) findViewById(R.id.toolbar);
         assert layout != null;
         if (layout != null) {
-            return layout.isShieldsTooltipShown();
+                return layout.isShieldsTooltipShown();
         }
         return false;
-    }
+}
 
-    public Tab selectExistingTab(String url) {
+public Tab selectExistingTab(String url) {
         Tab tab = getActivityTab();
         if (tab != null && tab.getUrlString().equals(url)) {
-            return tab;
+                return tab;
         }
 
         TabModel tabModel = getCurrentTabModel();
@@ -758,164 +758,164 @@ public abstract class PresearchActivity<C extends ChromeActivityComponent>
 
         // Find if tab exists
         if (tabIndex != TabModel.INVALID_TAB_INDEX) {
-            tab = tabModel.getTabAt(tabIndex);
-            // Set active tab
-            tabModel.setIndex(tabIndex, TabSelectionType.FROM_USER);
-            return tab;
+                tab = tabModel.getTabAt(tabIndex);
+                // Set active tab
+                tabModel.setIndex(tabIndex, TabSelectionType.FROM_USER);
+                return tab;
         } else {
-            return null;
+                return null;
         }
-    }
+}
 
-    public Tab openNewOrSelectExistingTab(String url) {
+public Tab openNewOrSelectExistingTab(String url) {
         TabModel tabModel = getCurrentTabModel();
         int tabRewardsIndex = TabModelUtils.getTabIndexByUrl(tabModel, url);
 
         Tab tab = selectExistingTab(url);
         if (tab != null) {
-            return tab;
-        } else if (url == REWARDS_SETTINGS_URL || url == PRESEARCH_REWARDS_SETTINGS_URL){
-          return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
+                return tab;
+        } else if (url == REWARDS_SETTINGS_URL || url == PRESEARCH_REWARDS_SETTINGS_URL) {
+                return getTabCreator(false).launchUrl(UrlConstants.CHROME_BLANK_URL, TabLaunchType.FROM_CHROME_UI);
         } else { // Open a new tab
-            return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
+                return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
         }
-    }
+}
 
-    private void showPresearchRateDialog() {
+private void showPresearchRateDialog() {
         RateDialogFragment mRateDialogFragment = new RateDialogFragment();
         mRateDialogFragment.setCancelable(false);
         mRateDialogFragment.show(getSupportFragmentManager(), "RateDialogFragment");
-    }
+}
 
-    private void showCrossPromotionalDialog() {
+private void showCrossPromotionalDialog() {
         CrossPromotionalModalDialogFragment mCrossPromotionalModalDialogFragment = new CrossPromotionalModalDialogFragment();
         mCrossPromotionalModalDialogFragment.setCancelable(false);
         mCrossPromotionalModalDialogFragment.show(getSupportFragmentManager(), "CrossPromotionalModalDialogFragment");
-    }
+}
 
-    public void showDeprecateBAPDialog() {
+public void showDeprecateBAPDialog() {
         DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
                 new DeprecateBAPModalDialogFragment();
         mDeprecateBAPModalDialogFragment.setCancelable(false);
         mDeprecateBAPModalDialogFragment.show(
                 getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
-    }
+}
 
-    static public ChromeTabbedActivity getChromeTabbedActivity() {
+static public ChromeTabbedActivity getChromeTabbedActivity() {
         for (Activity ref : ApplicationStatus.getRunningActivities()) {
-            if (!(ref instanceof ChromeTabbedActivity)) continue;
+                if (!(ref instanceof ChromeTabbedActivity)) continue;
 
-            return (ChromeTabbedActivity)ref;
+                return (ChromeTabbedActivity)ref;
         }
 
         return null;
-    }
+}
 
-    static public PresearchActivity getPresearchActivity() {
+static public PresearchActivity getPresearchActivity() {
         for (Activity ref : ApplicationStatus.getRunningActivities()) {
-            if (!(ref instanceof PresearchActivity)) continue;
+                if (!(ref instanceof PresearchActivity)) continue;
 
-            return (PresearchActivity)ref;
+                return (PresearchActivity)ref;
         }
 
         return null;
-    }
+}
 
-    @Override
-    public void onActivityResult (int requestCode, int resultCode,
-                                  Intent data) {
+@Override
+public void onActivityResult (int requestCode, int resultCode,
+                              Intent data) {
         if (resultCode == RESULT_OK &&
-                (requestCode == VERIFY_WALLET_ACTIVITY_REQUEST_CODE ||
-                 requestCode == USER_WALLET_ACTIVITY_REQUEST_CODE ||
-                 requestCode == SITE_BANNER_REQUEST_CODE) ) {
-            dismissRewardsPanel();
-            String open_url = data.getStringExtra(PresearchActivity.OPEN_URL);
-            if (! TextUtils.isEmpty(open_url)) {
-                openNewOrSelectExistingTab(open_url);
-            }
+            (requestCode == VERIFY_WALLET_ACTIVITY_REQUEST_CODE ||
+             requestCode == USER_WALLET_ACTIVITY_REQUEST_CODE ||
+             requestCode == SITE_BANNER_REQUEST_CODE) ) {
+                dismissRewardsPanel();
+                String open_url = data.getStringExtra(PresearchActivity.OPEN_URL);
+                if (!TextUtils.isEmpty(open_url)) {
+                        openNewOrSelectExistingTab(open_url);
+                }
         }
         super.onActivityResult(requestCode, resultCode, data);
-    }
+}
 
-    @Override
-    public void onRequestPermissionsResult(
-            int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+@Override
+public void onRequestPermissionsResult(
+        int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == PresearchStatsUtil.SHARE_STATS_WRITE_EXTERNAL_STORAGE_PERM
-                && grantResults.length != 0
-                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
+            && grantResults.length != 0
+            && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    }
+}
 
-    /**
-     * Disable background ads on Android. Issue #8641.
-     */
-    private void setBgPresearchAdsDefaultOff() {
+/**
+ * Disable background ads on Android. Issue #8641.
+ */
+private void setBgPresearchAdsDefaultOff() {
         SharedPreferences sharedPreferences =
-            ContextUtils.getAppSharedPreferences();
+                ContextUtils.getAppSharedPreferences();
         boolean exists = sharedPreferences.contains(
-                             PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET);
+                PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET);
         if (!exists) {
-            SharedPreferences.Editor sharedPreferencesEditor =
-                sharedPreferences.edit();
-            sharedPreferencesEditor.putBoolean(
-                PresearchRewardsPreferences.PREF_ADS_SWITCH, false);
-            sharedPreferencesEditor.putBoolean(
-                PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET, true);
-            sharedPreferencesEditor.apply();
+                SharedPreferences.Editor sharedPreferencesEditor =
+                        sharedPreferences.edit();
+                sharedPreferencesEditor.putBoolean(
+                        PresearchRewardsPreferences.PREF_ADS_SWITCH, false);
+                sharedPreferencesEditor.putBoolean(
+                        PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET, true);
+                sharedPreferencesEditor.apply();
         }
-    }
+}
 
-    @Override
-    public void performPreInflationStartup() {
+@Override
+public void performPreInflationStartup() {
         PresearchDbUtil dbUtil = PresearchDbUtil.getInstance();
         if (dbUtil.dbOperationRequested()) {
-            AlertDialog dialog = new AlertDialog.Builder(this)
-            .setMessage(dbUtil.performDbExportOnStart() ? "Exporting database, please wait..."
-                        : "Importing database, please wait...")
-            .setCancelable(false)
-            .create();
-            dialog.setCanceledOnTouchOutside(false);
-            if (dbUtil.performDbExportOnStart()) {
-                dbUtil.setPerformDbExportOnStart(false);
-                dbUtil.ExportRewardsDb(dialog);
-            } else if (dbUtil.performDbImportOnStart() && !dbUtil.dbImportFile().isEmpty()) {
-                dbUtil.setPerformDbImportOnStart(false);
-                dbUtil.ImportRewardsDb(dialog, dbUtil.dbImportFile());
-            }
-            dbUtil.cleanUpDbOperationRequest();
+                AlertDialog dialog = new AlertDialog.Builder(this)
+                                     .setMessage(dbUtil.performDbExportOnStart() ? "Exporting database, please wait..."
+                                                 : "Importing database, please wait...")
+                                     .setCancelable(false)
+                                     .create();
+                dialog.setCanceledOnTouchOutside(false);
+                if (dbUtil.performDbExportOnStart()) {
+                        dbUtil.setPerformDbExportOnStart(false);
+                        dbUtil.ExportRewardsDb(dialog);
+                } else if (dbUtil.performDbImportOnStart() && !dbUtil.dbImportFile().isEmpty()) {
+                        dbUtil.setPerformDbImportOnStart(false);
+                        dbUtil.ImportRewardsDb(dialog, dbUtil.dbImportFile());
+                }
+                dbUtil.cleanUpDbOperationRequest();
         }
         super.performPreInflationStartup();
-    }
+}
 
-    @Override
-    protected @LaunchIntentDispatcher.Action int maybeDispatchLaunchIntent(
+@Override
+protected @LaunchIntentDispatcher.Action int maybeDispatchLaunchIntent(
         Intent intent, Bundle savedInstanceState) {
         boolean notificationUpdate = IntentUtils.safeGetBooleanExtra(
-                                         intent, PresearchPreferenceKeys.PRESEARCH_UPDATE_EXTRA_PARAM, false);
+                intent, PresearchPreferenceKeys.PRESEARCH_UPDATE_EXTRA_PARAM, false);
         if (notificationUpdate) {
-            SetUpdatePreferences();
+                SetUpdatePreferences();
         }
 
         return super.maybeDispatchLaunchIntent(intent, savedInstanceState);
-    }
+}
 
-    private void SetUpdatePreferences() {
+private void SetUpdatePreferences() {
         Calendar currentTime = Calendar.getInstance();
         long milliSeconds = currentTime.getTimeInMillis();
 
         SharedPreferences sharedPref =
-            getApplicationContext().getSharedPreferences(
-                PresearchPreferenceKeys.PRESEARCH_NOTIFICATION_PREF_NAME, 0);
+                getApplicationContext().getSharedPreferences(
+                        PresearchPreferenceKeys.PRESEARCH_NOTIFICATION_PREF_NAME, 0);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         editor.putLong(PresearchPreferenceKeys.PRESEARCH_MILLISECONDS_NAME, milliSeconds);
         editor.apply();
-    }
+}
 
-    @NativeMethods
-    interface Natives {
-        void restartStatsUpdater();
-    }
+@NativeMethods
+interface Natives {
+void restartStatsUpdater();
+}
 }
