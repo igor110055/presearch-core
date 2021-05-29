@@ -214,9 +214,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       if (isNoRestoreState()) {
         CommandLine.getInstance().appendSwitch(ChromeSwitches.NO_RESTORE_STATE);
       }
-
-      // setDSEToPresearch();
-
       PresearchSearchEngineUtils.initializePresearchSearchEngineStates(getTabModelSelector());
     }
 
@@ -278,10 +275,10 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         return;
       }
 
-      if (PresearchRewardsHelper.hasRewardsEnvChange()) {
-        PresearchPrefServiceBridge.getInstance().resetPromotionLastFetchStamp();
-        PresearchRewardsHelper.setRewardsEnvChange(false);
-      }
+      // if (PresearchRewardsHelper.hasRewardsEnvChange()) {
+      //   PresearchPrefServiceBridge.getInstance().resetPromotionLastFetchStamp();
+      //   PresearchRewardsHelper.setRewardsEnvChange(false);
+      // }
 
       int appOpenCount = SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT);
       SharedPreferencesManager.getInstance().writeInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT, appOpenCount + 1);
@@ -302,13 +299,13 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       checkForNotificationData();
 
-      if (!RateUtils.getInstance(this).getPrefRateEnabled()) {
-        RateUtils.getInstance(this).setPrefRateEnabled(true);
-        RateUtils.getInstance(this).setNextRateDateAndCount();
-      }
+      // if (!RateUtils.getInstance(this).getPrefRateEnabled()) {
+      //   RateUtils.getInstance(this).setPrefRateEnabled(true);
+      //   RateUtils.getInstance(this).setNextRateDateAndCount();
+      // }
 
-      if (RateUtils.getInstance(this).shouldShowRateDialog())
-        showPresearchRateDialog();
+      // if (RateUtils.getInstance(this).shouldShowRateDialog())
+      //   showPresearchRateDialog();
 
       if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) == 1) {
         Calendar calender = Calendar.getInstance();
@@ -318,28 +315,27 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           calender.getTimeInMillis());
       }
 
-      if (OnboardingPrefManager.getInstance().showCrossPromoModal()) {
-        showCrossPromotionalDialog();
-        OnboardingPrefManager.getInstance().setCrossPromoModalShown(true);
-      }
+      // if (OnboardingPrefManager.getInstance().showCrossPromoModal()) {
+      //   showCrossPromotionalDialog();
+      //   OnboardingPrefManager.getInstance().setCrossPromoModalShown(true);
+      // }
       PresearchSyncReflectionUtils.showInformers();
       PresearchAndroidSyncDisabledInformer.showInformers();
 
       if (!PackageUtils.isFirstInstall(this) &&
         !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
-        PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
-        OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
+          PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
+          OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
       }
 
       if (PresearchConfig.P3A_ENABLED &&
         !OnboardingPrefManager.getInstance().isP3aOnboardingShown()) {
-        Intent p3aOnboardingIntent = new Intent(this, P3aOnboardingActivity.class);
-        p3aOnboardingIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        startActivity(p3aOnboardingIntent);
+          Intent p3aOnboardingIntent = new Intent(this, P3aOnboardingActivity.class);
+          p3aOnboardingIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+          startActivity(p3aOnboardingIntent);
       }
 
-      if (!OnboardingPrefManager.getInstance().isOneTimeNotificationStarted() &&
-        PackageUtils.isFirstInstall(this)) {
+      if (!OnboardingPrefManager.getInstance().isOneTimeNotificationStarted() && PackageUtils.isFirstInstall(this)) {
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_1);
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
@@ -363,11 +359,11 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         calender.add(Calendar.DATE, DAYS_4);
         PresearchRewardsHelper.setNextRewardsOnboardingModalDate(calender.getTimeInMillis());
       }
-      if (PresearchRewardsHelper.shouldShowRewardsOnboardingModalOnDay4()) {
-        PresearchRewardsHelper.setShowPresearchRewardsOnboardingModal(true);
-        openRewardsPanel();
-        PresearchRewardsHelper.setRewardsOnboardingModalShown(true);
-      }
+      // if (PresearchRewardsHelper.shouldShowRewardsOnboardingModalOnDay4()) {
+      //   PresearchRewardsHelper.setShowPresearchRewardsOnboardingModal(true);
+      //   openRewardsPanel();
+      //   PresearchRewardsHelper.setRewardsOnboardingModalShown(true);
+      // }
 
       if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) ==
         1) {
@@ -378,11 +374,11 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           calender.getTimeInMillis());
       }
       checkSetDefaultBrowserModal();
-      if (mPresearchRewardsNativeWorker != null && mPresearchRewardsNativeWorker.isRewardsEnabled() &&
-        ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
-        !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-        mPresearchRewardsNativeWorker.StartProcess();
-      }
+      // if (mPresearchRewardsNativeWorker != null && mPresearchRewardsNativeWorker.isRewardsEnabled() &&
+      //   ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
+      //   !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+      //   mPresearchRewardsNativeWorker.StartProcess();
+      // }
     }
 
     @Override
@@ -540,15 +536,12 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       /* (Albert Wang): Default app settings didn't get added until API 24
        * https://developer.android.com/reference/android/provider/Settings#ACTION_MANAGE_DEFAULT_APPS_SETTINGS
        */
-      Intent browserIntent =
-        new Intent(Intent.ACTION_VIEW, Uri.parse(UrlConstants.HTTP_URL_PREFIX));
+      Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(UrlConstants.HTTP_URL_PREFIX));
       boolean supportsDefault = Build.VERSION.SDK_INT >= Build.VERSION_CODES.N;
-      ResolveInfo resolveInfo = getPackageManager().resolveActivity(
-        browserIntent, supportsDefault ? PackageManager.MATCH_DEFAULT_ONLY : 0);
+      ResolveInfo resolveInfo = getPackageManager().resolveActivity( browserIntent, supportsDefault ? PackageManager.MATCH_DEFAULT_ONLY : 0);
       Context context = ContextUtils.getApplicationContext();
       if (PresearchSetDefaultBrowserNotificationService.isPresearchSetAsDefaultBrowser(this)) {
-        Toast toast = Toast.makeText(
-          context, R.string.presearch_already_set_as_default_browser, Toast.LENGTH_LONG);
+        Toast toast = Toast.makeText(context, R.string.presearch_already_set_as_default_browser, Toast.LENGTH_LONG);
         toast.show();
         return;
       }
@@ -556,8 +549,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         if (resolveInfo.activityInfo.packageName.equals(ANDROID_SETUPWIZARD_PACKAGE_NAME) ||
           resolveInfo.activityInfo.packageName.equals(ANDROID_PACKAGE_NAME)) {
           LayoutInflater inflater = getLayoutInflater();
-          View layout = inflater.inflate(R.layout.presearch_set_default_browser_dialog,
-            (ViewGroup) findViewById(R.id.presearch_set_default_browser_toast_container));
+          View layout = inflater.inflate(R.layout.presearch_set_default_browser_dialog, (ViewGroup) findViewById(R.id.presearch_set_default_browser_toast_container));
 
           Toast toast = new Toast(context, layout);
           toast.setDuration(Toast.LENGTH_LONG);
@@ -581,8 +573,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
           context.startActivity(intent);
         } else {
-          Toast toast = Toast.makeText(
-            context, R.string.presearch_default_browser_go_to_settings, Toast.LENGTH_LONG);
+          Toast toast = Toast.makeText(context, R.string.presearch_default_browser_go_to_settings, Toast.LENGTH_LONG);
           toast.show();
           return;
         }
@@ -689,37 +680,31 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       DeprecateBAPModalDialogFragment mDeprecateBAPModalDialogFragment =
         new DeprecateBAPModalDialogFragment();
       mDeprecateBAPModalDialogFragment.setCancelable(false);
-      mDeprecateBAPModalDialogFragment.show(
-        getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
+      mDeprecateBAPModalDialogFragment.show(getSupportFragmentManager(), "DeprecateBAPModalDialogFragment");
     }
 
     static public ChromeTabbedActivity getChromeTabbedActivity() {
       for (Activity ref: ApplicationStatus.getRunningActivities()) {
         if (!(ref instanceof ChromeTabbedActivity)) continue;
-
         return (ChromeTabbedActivity) ref;
       }
-
       return null;
     }
 
     static public PresearchActivity getPresearchActivity() {
       for (Activity ref: ApplicationStatus.getRunningActivities()) {
         if (!(ref instanceof PresearchActivity)) continue;
-
         return (PresearchActivity) ref;
       }
-
       return null;
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode,
-      Intent data) {
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
       if (resultCode == RESULT_OK &&
-        (requestCode == VERIFY_WALLET_ACTIVITY_REQUEST_CODE ||
-          requestCode == USER_WALLET_ACTIVITY_REQUEST_CODE ||
-          requestCode == SITE_BANNER_REQUEST_CODE)) {
+      (requestCode == VERIFY_WALLET_ACTIVITY_REQUEST_CODE ||
+      requestCode == USER_WALLET_ACTIVITY_REQUEST_CODE ||
+      requestCode == SITE_BANNER_REQUEST_CODE)){
         dismissRewardsPanel();
         String open_url = data.getStringExtra(PresearchActivity.OPEN_URL);
         if (!TextUtils.isEmpty(open_url)) {
@@ -744,17 +729,12 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
      * Disable background ads on Android. Issue #8641.
      */
     private void setBgPresearchAdsDefaultOff() {
-      SharedPreferences sharedPreferences =
-        ContextUtils.getAppSharedPreferences();
-      boolean exists = sharedPreferences.contains(
-        PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET);
+      SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
+      boolean exists = sharedPreferences.contains(PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET);
       if (!exists) {
-        SharedPreferences.Editor sharedPreferencesEditor =
-          sharedPreferences.edit();
-        sharedPreferencesEditor.putBoolean(
-          PresearchRewardsPreferences.PREF_ADS_SWITCH, false);
-        sharedPreferencesEditor.putBoolean(
-          PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET, true);
+        SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        sharedPreferencesEditor.putBoolean(PresearchRewardsPreferences.PREF_ADS_SWITCH, false);
+        sharedPreferencesEditor.putBoolean(PresearchRewardsPreferences.PREF_ADS_SWITCH_DEFAULT_HAS_BEEN_SET, true);
         sharedPreferencesEditor.apply();
       }
     }
@@ -797,9 +777,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       Calendar currentTime = Calendar.getInstance();
       long milliSeconds = currentTime.getTimeInMillis();
 
-      SharedPreferences sharedPref =
-        getApplicationContext().getSharedPreferences(
-          PresearchPreferenceKeys.PRESEARCH_NOTIFICATION_PREF_NAME, 0);
+      SharedPreferences sharedPref =    getApplicationContext().getSharedPreferences(PresearchPreferenceKeys.PRESEARCH_NOTIFICATION_PREF_NAME, 0);
       SharedPreferences.Editor editor = sharedPref.edit();
 
       editor.putLong(PresearchPreferenceKeys.PRESEARCH_MILLISECONDS_NAME, milliSeconds);
