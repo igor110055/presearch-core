@@ -70,6 +70,7 @@ public class PresearchRewardsOnboardingFragment extends Fragment {
         // initializeViews(root);
 
         // setActions();
+        root.setVisibility(View.GONE);
 
         return root;
     }
