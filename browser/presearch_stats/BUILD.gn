@@ -4,9 +4,9 @@ declare_args() {
   presearch_stats_updater_url = ""
 }
 
-if (is_official_build) {
-  assert(presearch_stats_updater_url != "")
-}
+#if (is_official_build) {
+#  assert(presearch_stats_updater_url != "")
+#}
 
 source_set("stats_updater") {
   # Remove when https://github.com/brave/presearch-browser/issues/10657 is resolved
