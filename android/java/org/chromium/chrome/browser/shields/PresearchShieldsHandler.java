@@ -411,7 +411,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         Switch mShieldMainSwitch = mMainLayout.findViewById(R.id.site_switch);
 
         ImageView helpImage = (ImageView) mMainLayout.findViewById(R.id.help);
-        ImageView shareImage = (ImageView) mMainLayout.findViewById(R.id.share);
+        // ImageView shareImage = (ImageView) mMainLayout.findViewById(R.id.share);
 
         helpImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,16 +419,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
                 mMainLayout.setVisibility(View.GONE);
                 mAboutLayout.setVisibility(View.VISIBLE);
                 setUpAboutLayout();
-            }
-        });
-
-        shareImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMainLayout.setVisibility(View.GONE);
-                if (PresearchStatsUtil.hasWritePermission(PresearchActivity.getPresearchActivity())) {
-                    PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
-                }
             }
         });
 
