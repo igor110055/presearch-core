@@ -212,11 +212,11 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
             mPresearchShieldsButton.setOnLongClickListener(this);
         }
 
-        if (mPresearchRewardsButton != null) {
-            mPresearchRewardsButton.setClickable(false);
-            // mPresearchRewardsButton.setOnClickListener(this);
-            // mPresearchRewardsButton.setOnLongClickListener(this);
-        }
+        // if (mPresearchRewardsButton != null) {
+        //     mPresearchRewardsButton.setClickable(false);
+        //     mPresearchRewardsButton.setOnClickListener(this);
+        //     mPresearchRewardsButton.setOnLongClickListener(this);
+        // }
 
         mPresearchShieldsHandler = new PresearchShieldsHandler(getContext());
         mPresearchShieldsHandler.addObserver(new PresearchShieldsMenuObserver() {
@@ -338,28 +338,28 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                     long estimatedMillisecondsSaved = (trackersBlockedCount + adsBlockedCount)
                             * PresearchStatsUtil.MILLISECONDS_PER_ITEM;
 
-                    if (!OnboardingPrefManager.getInstance().isAdsTrackersNotificationStarted()
-                            && (trackersBlockedCount + adsBlockedCount) > 250
-                            && PackageUtils.isFirstInstall(getContext())) {
-                        RetentionNotificationUtil.scheduleNotification(
-                                getContext(), RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS);
-                        OnboardingPrefManager.getInstance().setAdsTrackersNotificationStarted(true);
-                    }
+                    // if (!OnboardingPrefManager.getInstance().isAdsTrackersNotificationStarted()
+                    //         && (trackersBlockedCount + adsBlockedCount) > 250
+                    //         && PackageUtils.isFirstInstall(getContext())) {
+                    //     RetentionNotificationUtil.scheduleNotification(
+                    //             getContext(), RetentionNotificationUtil.PRESEARCH_STATS_ADS_TRACKERS);
+                    //     OnboardingPrefManager.getInstance().setAdsTrackersNotificationStarted(true);
+                    // }
 
-                    if (!OnboardingPrefManager.getInstance().isDataSavedNotificationStarted()
-                            && dataSaved > MB_10 && PackageUtils.isFirstInstall(getContext())) {
-                        RetentionNotificationUtil.scheduleNotification(
-                                getContext(), RetentionNotificationUtil.PRESEARCH_STATS_DATA);
-                        OnboardingPrefManager.getInstance().setDataSavedNotificationStarted(true);
-                    }
+                    // if (!OnboardingPrefManager.getInstance().isDataSavedNotificationStarted()
+                    //         && dataSaved > MB_10 && PackageUtils.isFirstInstall(getContext())) {
+                    //     RetentionNotificationUtil.scheduleNotification(
+                    //             getContext(), RetentionNotificationUtil.PRESEARCH_STATS_DATA);
+                    //     OnboardingPrefManager.getInstance().setDataSavedNotificationStarted(true);
+                    // }
 
-                    if (!OnboardingPrefManager.getInstance().isTimeSavedNotificationStarted()
-                            && estimatedMillisecondsSaved > MINUTES_10
-                            && PackageUtils.isFirstInstall(getContext())) {
-                        RetentionNotificationUtil.scheduleNotification(
-                                getContext(), RetentionNotificationUtil.PRESEARCH_STATS_TIME);
-                        OnboardingPrefManager.getInstance().setTimeSavedNotificationStarted(true);
-                    }
+                    // if (!OnboardingPrefManager.getInstance().isTimeSavedNotificationStarted()
+                    //         && estimatedMillisecondsSaved > MINUTES_10
+                    //         && PackageUtils.isFirstInstall(getContext())) {
+                    //     RetentionNotificationUtil.scheduleNotification(
+                    //             getContext(), RetentionNotificationUtil.PRESEARCH_STATS_TIME);
+                    //     OnboardingPrefManager.getInstance().setTimeSavedNotificationStarted(true);
+                    // }
                     if (mPresearchShieldsButton != null && mPresearchShieldsButton.isShown()
                             && mPresearchShieldsHandler != null && !mPresearchShieldsHandler.isShowing()
                             && !isRewardsTooltipShown() && !isRewardsPanelOpened()) {
@@ -966,22 +966,22 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         return Toast.showAnchoredToast(context, v, description);
     }
 
-    @Override
-    public void onUrlFocusChange(boolean hasFocus) {
-        Context context = getContext();
-        if (hasFocus && PackageUtils.isFirstInstall(context)
-                && PresearchActivity.getPresearchActivity() != null
-                && PresearchActivity.getPresearchActivity().getActivityTab() != null
-                && UrlUtilities.isNTPUrl(
-                        PresearchActivity.getPresearchActivity().getActivityTab().getUrlString())
-                && !OnboardingPrefManager.getInstance().hasSearchEngineOnboardingShown()
-                && !PresearchSearchEngineUtils.getDSEShortName(true).equals(
-                        OnboardingPrefManager.DUCKDUCKGO)) {
-            Intent searchActivityIntent = new Intent(context, SearchActivity.class);
-            context.startActivity(searchActivityIntent);
-        }
-        super.onUrlFocusChange(hasFocus);
-    }
+    // @Override
+    // public void onUrlFocusChange(boolean hasFocus) {
+    //     Context context = getContext();
+    //     if (hasFocus && PackageUtils.isFirstInstall(context)
+    //             && PresearchActivity.getPresearchActivity() != null
+    //             && PresearchActivity.getPresearchActivity().getActivityTab() != null
+    //             && UrlUtilities.isNTPUrl(
+    //                     PresearchActivity.getPresearchActivity().getActivityTab().getUrlString())
+    //             && !OnboardingPrefManager.getInstance().hasSearchEngineOnboardingShown()
+    //             && !PresearchSearchEngineUtils.getDSEShortName(true).equals(
+    //                     OnboardingPrefManager.DUCKDUCKGO)) {
+    //         Intent searchActivityIntent = new Intent(context, SearchActivity.class);
+    //         context.startActivity(searchActivityIntent);
+    //     }
+    //     super.onUrlFocusChange(hasFocus);
+    // }
 
     public void populateUrlAnimatorSet(boolean showExpandedState,
             int urlFocusToolbarButtonsDuration, int urlClearFocusTabStackDelayMs,
