@@ -135,7 +135,7 @@ public class PresearchPrefServiceBridge {
     }
 
     public void setUseRewardsStagingServer(boolean enabled) {
-        PresearchPrefServiceBridgeJni.get().setUseRewardsStagingServer(enabled);
+        PresearchPrefServiceBridgeJni.get().setUseRewardsStagingServer(false);
     }
 
     public void resetPromotionLastFetchStamp() {
