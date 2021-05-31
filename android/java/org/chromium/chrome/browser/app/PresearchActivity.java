@@ -88,6 +88,7 @@ import org.chromium.chrome.browser.tab.TabSelectionType;
 import org.chromium.chrome.browser.tabmodel.TabModel;
 import org.chromium.chrome.browser.tabmodel.TabModelUtils;
 import org.chromium.chrome.browser.toolbar.top.PresearchToolbarLayout;
+import org.chromium.chrome.browser.preferences.PresearchPref;
 import org.chromium.chrome.browser.util.PresearchDbUtil;
 import org.chromium.chrome.browser.util.PresearchReferrer;
 import org.chromium.chrome.browser.util.PackageUtils;
