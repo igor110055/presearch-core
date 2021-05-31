@@ -11,7 +11,7 @@ export default html`
     :host(:not([style])) {
       --presearch-text-color: #3b3e4f; /* grey800 */
       --presearch-brand-color: #2d8eff; /* orange400 */
-      --presearch-primary-hover: #ff977d; /* orange300 */
+      --presearch-primary-hover: #2D8EFF; /* orange300 */
       --presearch-default-hover: rgba(45, 142, 255, 0.1); /* orange400 */
       --presearch-focus-outline: rgba(45, 142, 255, 0.4); /* orange400 */
       --ink-color: var(--presearch-brand-color) !important;
