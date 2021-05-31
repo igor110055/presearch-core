@@ -33,7 +33,7 @@
 
 namespace {
 
-constexpr SkColor kRewardsBadgeBg = SkColorSetRGB(0xfb, 0x54, 0x2b);
+constexpr SkColor kRewardsBadgeBg = SkColorSetRGB(0x2d, 0x8e, 0xff);
 
 class PresearchRewardsActionStubViewHighlightPathGenerator
       : public views::HighlightPathGenerator {

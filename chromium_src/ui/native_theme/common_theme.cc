@@ -10,8 +10,8 @@
 #undef GetAuraColor
 
 namespace {
-  const SkColor kPresearchColorBrand = SkColorSetRGB(0xfb, 0x54, 0x2b);
-  const SkColor kPresearchColorOrange300 = SkColorSetRGB(0xFF, 0x97, 0x7D);
+  const SkColor kPresearchColorBrand = SkColorSetRGB(0x2d, 0x8e, 0xff);
+  const SkColor kPresearchColorOrange300 = SkColorSetRGB(0x2d, 0x8e, 0xff);
 }  // namespace
 
 

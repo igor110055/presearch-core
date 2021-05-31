@@ -57,7 +57,7 @@ void MdTextButton::OnPaintBackground(gfx::Canvas* canvas) {
   if (GetProminent() && (
         hover_animation().is_animating() || GetState() == STATE_HOVERED)) {
     constexpr SkColor normal_color = kPresearchBrandColor;
-    constexpr SkColor hover_color = SkColorSetRGB(0xff, 0x97, 0x7d);
+    constexpr SkColor hover_color = SkColorSetRGB(0x2d, 0x8e, 0xff);
     const SkAlpha alpha = hover_animation().CurrentValueBetween(0x00, 0xff);
     const SkColor current_color = color_utils::AlphaBlend(
         hover_color, normal_color, alpha);
