@@ -267,6 +267,9 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void finishNativeInitialization() {
       super.finishNativeInitialization();
 
+      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, false);
+      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE, false);
+
       if (SharedPreferencesManager.getInstance().readBoolean(
           PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false)) {
         SharedPreferencesManager.getInstance().writeBoolean(
@@ -274,11 +277,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         PresearchRelaunchUtils.restart();
         return;
       }
-
-      // if (PresearchRewardsHelper.hasRewardsEnvChange()) {
-      //   PresearchPrefServiceBridge.getInstance().resetPromotionLastFetchStamp();
-      //   PresearchRewardsHelper.setRewardsEnvChange(false);
-      // }
 
       int appOpenCount = SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT);
       SharedPreferencesManager.getInstance().writeInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT, appOpenCount + 1);
