@@ -124,6 +124,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String REWARDS_LEARN_MORE_URL = "https://presearch.io/";
     public static final String PRESEARCH_TERMS_PAGE =
       "https://presearch.org/privacy/user-terms-of-service/";
+    public static final String PRESEARCH_SE_URL = "https://engine.presearch.org";
     public static final String P3A_URL = "https://presearch.org/privacy";
     public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/";
     private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
@@ -655,7 +656,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = selectExistingTab(url);
       if (tab != null) {
-        return tab;
+        // return tab;
+        return getTabCreator(false).launchUrl(PRESEARCH_SE_URL, TabLaunchType.FROM_CHROME_UI);
       } else { // Open a new tab
         if (url.equals(REWARDS_SETTINGS_URL) || url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
           url = UrlConstants.CHROME_BLANK_URL;
