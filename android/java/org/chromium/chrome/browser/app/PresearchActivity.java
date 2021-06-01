@@ -73,6 +73,7 @@ import org.chromium.chrome.browser.onboarding.v2.HighlightDialogFragment;
 import org.chromium.chrome.browser.preferences.PresearchPrefServiceBridge;
 import org.chromium.chrome.browser.preferences.PresearchPreferenceKeys;
 import org.chromium.chrome.browser.preferences.Pref;
+import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
 import org.chromium.chrome.browser.profiles.Profile;
 import org.chromium.chrome.browser.rate.RateDialogFragment;
@@ -160,6 +161,10 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public PresearchActivity() {
       // Disable key checker to avoid asserts on Presearch keys in debug
       SharedPreferencesManager.getInstance().disableKeyCheckerForTesting();
+      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, false);
+      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE, false);
+      SharedPreferencesManager.getInstance().writeBoolean(
+                ChromePreferenceKeys.SETTINGS_DEVELOPER_ENABLED, false);
     }
 
     @Override
@@ -268,9 +273,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     @Override
     public void finishNativeInitialization() {
       super.finishNativeInitialization();
-
-      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, false);
-      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE, false);
 
       if (SharedPreferencesManager.getInstance().readBoolean(
           PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false)) {
