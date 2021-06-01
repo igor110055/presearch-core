@@ -41,7 +41,7 @@ const getTypeStyle = (type?: Type, disabled?: boolean) => {
       typeCss = css`
         height: 56px;
         letter-spacing: .6px;
-        background: ${p => p.theme.color.brandBrave};
+        background: #174780;
 
         &:hover {
           background: ${p =>

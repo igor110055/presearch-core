@@ -128,7 +128,7 @@ export const BlockedListItemHeaderStats = styled('span')<{}>`
 export const Link = styled('button')<{}>`
   box-sizing: border-box;
   -webkit-appearance: none;
-  color: ${p => p.theme.color.brandBrave};
+  color: #174780;
   border: 0;
   padding: 0;
   background: transparent;
@@ -144,7 +144,7 @@ export const Link = styled('button')<{}>`
   }
 
   &:focus {
-    outline-color: ${p => p.theme.color.brandBrave};
+    outline-color: #174780;
     outline-width: 2px;
   }
 
@@ -158,7 +158,7 @@ interface LinkActionProps {
 
 export const LinkAction = styled(Link)<LinkActionProps>`
   box-sizing: border-box;
-  color: ${p => p.theme.color.brandBrave};
+  color: #174780;
   font-size: ${p => p.size === 'small' && '12px' || 'inherit'};
   line-height: ${p => p.size === 'small' && '1'};
   font-weight: 500;
@@ -200,7 +200,7 @@ export const DisabledContentText = styled('div')<{}>`
 export const ShieldsButton = styled(Button as ComponentType<ButtonProps>)`
   &:focus {
     outline-offset: 2px;
-    outline-color: ${p => p.theme.color.brandBrave};
+    outline-color: #174780;
     outline-width: 2px;
   }
 

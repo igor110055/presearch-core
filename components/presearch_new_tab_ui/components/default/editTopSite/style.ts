@@ -141,7 +141,7 @@ export const StyledButtonsContainer = styled('div')<{}>`
 export const StyledButton = styled(Button as React.ComponentType<ButtonProps>)`
   &:focus {
     outline-offset: 2px;
-    outline-color: ${p => p.theme.color.brandBrave};
+    outline-color: #174780;
     outline-width: 2px;
   }
 
