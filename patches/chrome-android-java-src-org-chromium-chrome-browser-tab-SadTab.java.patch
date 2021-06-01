@@ -1,0 +1,13 @@
+diff --git a/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java b/chro$
+index 372d37bd3c50..c7a7686314f9 100644
+--- a/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java
++++ b/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java
+@@ -170,6 +170,7 @@ public class SadTab extends EmptyTabObserver implements UserData, T$
+     protected View createView(final Runnable suggestionAction, Runnable buttonAction,
+             boolean showSendFeedbackView, boolean isIncognito) {
+         Context context = mTab.getThemedApplicationContext();
++       showSendFeedbackView = false;
+ 
+         // Inflate Sad tab and initialize.
+         LayoutInflater inflater =
+
