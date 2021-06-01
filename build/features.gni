@@ -1,5 +1,5 @@
 declare_args() {
-  presearch_services_key = ""
+  presearch_services_key = "XXXXX-XXxX"
 }
 
 presearch_service_key_defines = []
