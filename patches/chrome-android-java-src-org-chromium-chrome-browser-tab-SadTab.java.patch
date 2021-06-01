@@ -1,13 +1,41 @@
-diff --git a/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java b/chro$
-index 372d37bd3c50..c7a7686314f9 100644
+diff --git a/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java b/chrome/android/java/src/org/ch
+romium/chrome/browser/tab/SadTab.java
+index 372d37bd3c50..c97d88a204ec 100644
 --- a/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java
 +++ b/chrome/android/java/src/org/chromium/chrome/browser/tab/SadTab.java
-@@ -170,6 +170,7 @@ public class SadTab extends EmptyTabObserver implements UserData, T$
-     protected View createView(final Runnable suggestionAction, Runnable buttonAction,
-             boolean showSendFeedbackView, boolean isIncognito) {
-         Context context = mTab.getThemedApplicationContext();
-+       showSendFeedbackView = false;
+@@ -179,30 +179,26 @@ public class SadTab extends EmptyTabObserver implements UserData, TabViewProvide
+                 new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
  
-         // Inflate Sad tab and initialize.
-         LayoutInflater inflater =
+         TextView titleText = (TextView) sadTabView.findViewById(R.id.sad_tab_title);
+-        int titleTextId =
+-                showSendFeedbackView ? R.string.sad_tab_reload_title : R.string.sad_tab_title;
++        int titleTextId = R.string.sad_tab_title;
++
+         titleText.setText(titleTextId);
+
+-        if (showSendFeedbackView) intializeSuggestionsViews(context, sadTabView, isIncognito);
+ 
+         TextView messageText = (TextView) sadTabView.findViewById(R.id.sad_tab_message);
+-        messageText.setText(getHelpMessage(context, suggestionAction, showSendFeedbackView));
++        messageText.setText(getHelpMessage(context, suggestionAction,false));
+         messageText.setMovementMethod(LinkMovementMethod.getInstance());
+ 
+         Button button = (Button) sadTabView.findViewById(R.id.sad_tab_button);
+-        int buttonTextId = showSendFeedbackView ? R.string.sad_tab_send_feedback_label
+-                                                : R.string.sad_tab_reload_label;
++        int buttonTextId = R.string.sad_tab_reload_label;
++
+         button.setText(buttonTextId);
+         button.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+-                recordEvent(showSendFeedbackView, SadTabEvent.BUTTON_CLICKED);
+                 buttonAction.run();
+             }
+         });
+ 
+-        recordEvent(showSendFeedbackView, SadTabEvent.DISPLAYED);
+-
+         return sadTabView;
+     }
 
