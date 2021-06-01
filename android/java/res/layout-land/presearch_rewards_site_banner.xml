@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:background="#AA3b3b3b"
     android:orientation="vertical"
+    android:visibility="gone"
     android:id="@+id/site_banner_id">
 
     <!-- Header-->
@@ -62,7 +63,7 @@
                             android:layout_height="16dp"
                             android:layout_alignParentEnd="true"
                             android:layout_marginEnd="12dp"
-                            android:src="@drawable/icn_twitch" 
+                            android:src="@drawable/icn_twitch"
                             android:contentDescription="@null"/>
 
                         <ImageView

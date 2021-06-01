@@ -18,8 +18,8 @@ export default html`
       --text-color: var(--presearch-text-color) !important;
       --text-color-action: white !important;
       --border-color: #c2c4cf !important; /* grey 400 */
-      --active-shadow-rgb: 255,118,84 !important;
-      --active-shadow-action-rgb: 255,118,84 !important;
+      --active-shadow-rgb: 45,142,255 !important;
+      --active-shadow-action-rgb: 45,142,255 !important;
       --bg-action: var(--presearch-brand-color) !important;
       /* TODO: Disabled colors:
       --disabled-bg-action: var(--google-grey-refresh-100);
@@ -28,7 +28,7 @@ export default html`
       --hover-bg-action: var(--presearch-primary-hover) !important;
       --hover-bg-color: none !important;
       --hover-border-color: var(--presearch-brand-color) !important;
-      --hover-shadow-action-rgb: 255, 118, 84 !important;
+      --hover-shadow-action-rgb: 45,142,255 !important;
       --ink-color-action: white !important;
       font-family: Muli !important;
       outline: none !important;

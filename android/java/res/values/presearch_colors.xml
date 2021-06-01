@@ -67,7 +67,7 @@
     <color name="new_tab_menu_text_dark_color">@android:color/white</color>
     <color name="new_tab_menu_bg_dark_color">@color/modern_grey_800</color>
     <color name="ntp_non_disruptive_banner_bg_color">#E6343a40</color>
-    <color name="translucent_activity_background_color">#AA3B3B3B</color>
+    <color name="translucent_activity_background_color">#2D8EFF3B</color>
     <color name="user_wallet_background">#F1F3F5</color>
     <color name="user_wallet_status">#49CC69</color>
 
@@ -84,7 +84,7 @@
 
     <color name="shield_toggle_button_tint">#5E6175</color>
     <color name="shield_toggle_bg_color">#F8F9FA</color>
-    
+
     <color name="shield_secondary_color">#868E96</color>
     <color name="shield_divider_color">#c8c7cc</color>
     <color name="shield_option_text_color">#777777</color>
@@ -138,5 +138,5 @@
     <color name="shields_tooltip_arrow_color_1">#DD295B</color>
     <color name="shields_tooltip_arrow_color_2">#2673DD</color>
     <color name="rewards_tooltip_arrow_color">#A1A9F3</color>
-    
+
 </resources>

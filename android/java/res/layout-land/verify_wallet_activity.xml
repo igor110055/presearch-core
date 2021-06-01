@@ -13,6 +13,7 @@
     android:background="@drawable/bat_panel_gradient"
     android:padding="20dp"
     android:paddingTop="20dp"
+    android:visibility="gone"
     android:paddingBottom="10dp">
 
     <!--header-->
