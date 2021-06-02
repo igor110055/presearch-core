@@ -16,7 +16,7 @@ import org.chromium.chrome.browser.settings.PresearchPreferenceFragment;
 
 public class DesktopModePreferences
         extends PresearchPreferenceFragment implements Preference.OnPreferenceChangeListener {
-    public static final String DESKTOP_MODE_KEY = "desktop_mode";
+//    public static final String DESKTOP_MODE_KEY = "desktop_mode";
 
 //    @Override
 //   public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
