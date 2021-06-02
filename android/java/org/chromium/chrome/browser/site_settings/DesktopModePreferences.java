@@ -18,8 +18,8 @@ public class DesktopModePreferences
         extends PresearchPreferenceFragment implements Preference.OnPreferenceChangeListener {
     public static final String DESKTOP_MODE_KEY = "desktop_mode";
 
-    @Override
-    public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
+//    @Override
+//   public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         //getActivity().setTitle(R.string.settings_desktop_mode_title);
         //SettingsUtils.addPreferencesFromResource(this, R.xml.desktop_mode_preferences);
 
@@ -28,7 +28,7 @@ public class DesktopModePreferences
         //desktopModePref.setVisibility(View.GONE);
         // desktopModePref.setChecked(false);
         // desktopModePref.setOnPreferenceChangeListener(this);
-    }
+//    }
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
