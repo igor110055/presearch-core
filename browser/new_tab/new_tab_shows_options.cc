@@ -90,13 +90,14 @@ bool ShouldUseNewTabURLForNewTab(Profile* profile) {
 }
 
 bool ShouldNewTabShowDashboard(Profile* profile) {
-  auto* prefs = profile->GetPrefs();
-  if (static_cast<NewTabPageShowsOptions>(
-          prefs->GetInteger(kNewTabPageShowsOptions)) ==
-      NewTabPageShowsOptions::kBlankpage)
-    return false;
+  // auto* prefs = profile->GetPrefs();
+  // if (static_cast<NewTabPageShowsOptions>(
+  //         prefs->GetInteger(kNewTabPageShowsOptions)) ==
+  //     NewTabPageShowsOptions::kBlankpage)
+  //   return false;
 
-  return ShouldUseNewTabURLForNewTab(profile);
+  // return ShouldUseNewTabURLForNewTab(profile);
+  return false;
 }
 
 bool ShouldNewTabShowBlankpage(Profile* profile) {

@@ -175,21 +175,14 @@ RegisterPolymerTemplateModifications({
       'newTab'
     )
     appearanceBrowserEl.insertAdjacentElement('afterend', newTabEl)
-    // Add Sync and Help Tips item
+    // Add Help Tips item
     const helpTipsEl = createMenuElement(
       loadTimeData.getString('presearchHelpTips'),
       '/presearchHelpTips',
       'presearch_settings:help',
       'presearchHelpTips',
     )
-    const syncEl = createMenuElement(
-      loadTimeData.getString('presearchSync'),
-      '/presearchSync',
-      'presearch_settings:sync',
-      'presearchSync',
-    )
-    newTabEl.insertAdjacentElement('afterend', syncEl)
-    syncEl.insertAdjacentElement('afterend', helpTipsEl)
+    
     // Add Shields item
     const shieldsEl = createMenuElement(
       loadTimeData.getString('presearchShieldsTitle'),
@@ -218,21 +211,12 @@ RegisterPolymerTemplateModifications({
     )
     searchEl.insertAdjacentElement('afterend', extensionEl)
 
-    const walletEl = createMenuElement(
-      loadTimeData.getString('presearchWallet'),
-      '/wallet',
-      'presearch_settings:wallet',
-      'wallet',
-    )
-    extensionEl.insertAdjacentElement('afterend', walletEl)
-
     const ipfsEl = createMenuElement(
       loadTimeData.getString('presearchIPFS'),
       '/ipfs',
       'presearch_settings:ipfs',
       'ipfs',
     )
-    walletEl.insertAdjacentElement('afterend', ipfsEl)
 
     // Move autofill to advanced
     const autofillEl = getMenuElement(templateContent, '/autofill')

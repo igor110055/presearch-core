@@ -15,7 +15,7 @@ const base::Feature kPresearchRewards{"PresearchRewards",
                                   base::FEATURE_DISABLED_BY_DEFAULT};
 #else
 const base::Feature kPresearchRewards{"PresearchRewards",
-                                  base::FEATURE_ENABLED_BY_DEFAULT};
+                                  base::FEATURE_DISABLED_BY_DEFAULT};
 #endif
 #endif  // defined(OS_ANDROID)
 

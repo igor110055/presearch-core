@@ -47,7 +47,7 @@ export default class WelcomePage extends React.PureComponent<Props, State> {
   }
 
   onClickLetsGo = () => {
-    this.setState({ currentScreen: this.state.currentScreen + 1 })
+    // this.setState({ currentScreen: this.state.currentScreen + 1 })
   }
 
   onClickSlideBullet = (nextScreen: number) => {
@@ -86,8 +86,8 @@ export default class WelcomePage extends React.PureComponent<Props, State> {
     console.log('CONFIRMED DEFAULT SEARCH ENGINE!')
   }
 
-  onClickRewardsGetStarted = () => {
-    console.log('SENT TO REWARDS PAGE')
+  // onClickRewardsGetStarted = () => {
+  //   console.log('SENT TO REWARDS PAGE')
   }
 
   get backgroundPosition () {
@@ -125,20 +125,20 @@ export default class WelcomePage extends React.PureComponent<Props, State> {
           <Panel>
             <SlideContent>
               <WelcomeBox index={1} currentScreen={currentScreen} onClick={this.onClickLetsGo} />
-              <ImportBox index={2} currentScreen={currentScreen} onClick={this.onClickImport} />
-              <ShieldsBox index={3} currentScreen={currentScreen} />
-              <SearchBox index={4} currentScreen={currentScreen} onClick={this.onClickConfirmDefaultSearchEngine} fakeOnChange={this.onChangeDefaultSearchEngine} isDefaultSearchGoogle={isDefaultSearchGoogle}/>
-              <RewardsBox index={5} currentScreen={currentScreen} onClick={this.onClickRewardsGetStarted} />
+              // <ImportBox index={2} currentScreen={currentScreen} onClick={this.onClickImport} />
+              // <ShieldsBox index={3} currentScreen={currentScreen} />
+              // <SearchBox index={4} currentScreen={currentScreen} onClick={this.onClickConfirmDefaultSearchEngine} fakeOnChange={this.onChangeDefaultSearchEngine} isDefaultSearchGoogle={isDefaultSearchGoogle}/>
+              // <RewardsBox index={5} currentScreen={currentScreen} onClick={this.onClickRewardsGetStarted} />
             </SlideContent>
-            <FooterBox
-              totalScreensSize={this.totalScreensSize}
-              currentScreen={currentScreen}
-              onClickSkip={this.onClickSkip}
-              onClickSlideBullet={this.onClickSlideBullet}
-              onClickNext={this.onClickNext}
-              onClickDone={this.onClickDone}
-            />
-          </Panel>
+          //   <FooterBox
+          //     totalScreensSize={this.totalScreensSize}
+          //     currentScreen={currentScreen}
+          //     onClickSkip={this.onClickSkip}
+          //     onClickSlideBullet={this.onClickSlideBullet}
+          //     onClickNext={this.onClickNext}
+          //     onClickDone={this.onClickDone}
+          //   />
+          // </Panel>
           <BackgroundContainer>
             <Background />
           </BackgroundContainer>

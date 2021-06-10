@@ -28,7 +28,7 @@ class PresearchAppMenuModel : public AppMenuModel {
   // AppMenuModel overrides:
   void Build() override;
 
-  void InsertPresearchMenuItems();
+  // void InsertPresearchMenuItems();
   void InsertAlternateProfileItems();
   int GetIndexOfPresearchRewardsItem() const;
   int GetIndexOfPresearchAdBlockItem() const;

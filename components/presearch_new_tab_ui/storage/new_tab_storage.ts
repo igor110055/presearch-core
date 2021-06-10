@@ -151,20 +151,6 @@ const getMigratedWidgetOrder = (state: NewTab.State) => {
     }
   }
 
-  if (showRewards && !showBinance) {
-    return {
-      widgetStackOrder: ['rewards'],
-      removedStackWidgets: ['binance']
-    }
-  }
-
-  if (!showRewards && showBinance) {
-    return {
-      widgetStackOrder: ['binance'],
-      removedStackWidgets: ['rewards']
-    }
-  }
-
   const widgetStackOrder = []
   const nonCurrentWidget = currentStackWidget === 'rewards'
     ? 'binance'

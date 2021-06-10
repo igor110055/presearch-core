@@ -14,7 +14,7 @@ const char kGeminiScheme[] = "com.presearch.gemini";
 const char kWidevineMoreInfoURL[] = "https://www.eff.org/issues/drm";
 const char kWidevineTOS[] = "https://policies.google.com/terms";
 const char kRewardsUpholdSupport[] = "https://uphold.com/en/presearch/support";
-const char kP3ALearnMoreURL[] = "https://presearch.org/P3A";
+const char kP3ALearnMoreURL[] = "https://engine.presearch.org/";
 const char kP3ASettingsLink[] = "chrome://settings/privacy";
 const char kImportDataHelpURL[] =
     "https://support.presearch.org/hc/en-us/articles/360019782291#safari";

@@ -15,9 +15,9 @@
 #include "chrome/browser/ui/browser.h"
 #include "extensions/buildflags/buildflags.h"
 
-#if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
-#include "presearch/components/presearch_wallet/browser/presearch_wallet_constants.h"
-#endif
+// #if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
+// #include "presearch/components/presearch_wallet/browser/presearch_wallet_constants.h"
+// #endif
 
 PresearchLocationBarModelDelegate::PresearchLocationBarModelDelegate(Browser* browser) :
     BrowserLocationBarModelDelegate(browser) {}
@@ -34,27 +34,6 @@ void PresearchLocationBarModelDelegate::FormattedStringFromURL(const GURL& url,
         base::UTF8ToUTF16("chrome://"),
         base::UTF8ToUTF16("presearch://"));
   }
-
-#if BUILDFLAG(PRESEARCH_WALLET_ENABLED)
-  if (url.SchemeIs(kChromeExtensionScheme) &&
-      url.host() == ethereum_remote_client_extension_id) {
-    base::ReplaceFirstSubstringAfterOffset(
-        new_formatted_url,
-        0,
-        base::UTF8ToUTF16(ethereum_remote_client_base_url),
-        base::UTF8ToUTF16("presearch://wallet"));
-    base::ReplaceFirstSubstringAfterOffset(
-        new_formatted_url,
-        0,
-        base::UTF8ToUTF16(ethereum_remote_client_phishing_url),
-        base::UTF8ToUTF16("presearch://wallet"));
-    base::ReplaceFirstSubstringAfterOffset(
-        new_formatted_url,
-        0,
-        base::UTF8ToUTF16(ethereum_remote_client_ens_redirect_url),
-        base::UTF8ToUTF16("presearch://wallet"));
-  }
-#endif
 }
 
 base::string16

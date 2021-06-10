@@ -17,8 +17,8 @@ export const defaultTopSitesData = [
     background: 'rgba(255,255,255,0.8)'
   },
   {
-    name: 'Presearch Software',
-    url: 'https://presearch.org',
+    name: 'Presearch Search Engine',
+    url: 'https://engine.presearch.org',
     favicon: PresearchFavicon,
     background: 'rgba(255,255,255,0.8)'
   },

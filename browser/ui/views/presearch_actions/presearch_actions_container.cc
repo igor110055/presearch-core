@@ -455,5 +455,5 @@ void PresearchActionsContainer::ChildPreferredSizeChanged(views::View* child) {
 
 // Presearch Rewards preferences change observers callback
 void PresearchActionsContainer::OnPresearchRewardsPreferencesChanged() {
-  ShowAction(presearch_rewards_extension_id, ShouldAddPresearchRewardsAction());
+  ShowAction(presearch_rewards_extension_id, false);
 }

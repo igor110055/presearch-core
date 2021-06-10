@@ -110,118 +110,118 @@ PresearchAppMenuModel::~PresearchAppMenuModel() = default;
 void PresearchAppMenuModel::Build() {
   // Insert presearch items after build chromium items.
   AppMenuModel::Build();
-  InsertPresearchMenuItems();
+  // InsertPresearchMenuItems(); //Removed by Mamy Linx
   InsertAlternateProfileItems();
 }
 
-void PresearchAppMenuModel::InsertPresearchMenuItems() {
-  // Insert & reorder presearch menus based on corresponding commands enable status.
-  // If we you want to add/remove from app menu, adjust commands enable status
-  // at PresearchBrowserCommandController.
-
-  // Step 1. Configure tab & windows section.
-  if (IsCommandIdEnabled(IDC_NEW_TOR_CONNECTION_FOR_SITE)) {
-    InsertItemWithStringIdAt(
-        GetIndexOfCommandId(IDC_NEW_WINDOW),
-        IDC_NEW_TOR_CONNECTION_FOR_SITE,
-        IDS_NEW_TOR_CONNECTION_FOR_SITE);
-  }
-  if (IsCommandIdEnabled(IDC_NEW_OFFTHERECORD_WINDOW_TOR)) {
-    InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_NEW_INCOGNITO_WINDOW) + 1,
-                             IDC_NEW_OFFTHERECORD_WINDOW_TOR,
-                             IDS_NEW_OFFTHERECORD_WINDOW_TOR);
-  }
-
-  // Step 2. Configure second section that includes history, downloads and
-  // bookmark. Then, insert presearch items.
-
-  // First, reorder original menus We want to move them in order of bookmark,
-  // download and extensions.
-  const int bookmark_item_index = GetIndexOfCommandId(IDC_BOOKMARKS_MENU);
-  // If bookmark is not used, we don't need to adjust download item.
-  if (bookmark_item_index != -1) {
-    // Place download menu under bookmark.
-    DCHECK(IsCommandIdEnabled(IDC_SHOW_DOWNLOADS));
-    RemoveItemAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS));
-    InsertItemWithStringIdAt(bookmark_item_index,
-                             IDC_SHOW_DOWNLOADS,
-                             IDS_SHOW_DOWNLOADS);
-  }
-  // Move extensions menu under download.
-  ui::SimpleMenuModel* model = static_cast<ui::SimpleMenuModel*>(
-      GetSubmenuModelAt(GetIndexOfCommandId(IDC_MORE_TOOLS_MENU)));
-  DCHECK(model);
-  // More tools menu adds extensions item always.
-  DCHECK_NE(-1, model->GetIndexOfCommandId(IDC_MANAGE_EXTENSIONS));
-  model->RemoveItemAt(model->GetIndexOfCommandId(IDC_MANAGE_EXTENSIONS));
-
-  if (IsCommandIdEnabled(IDC_MANAGE_EXTENSIONS)) {
-    InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS) + 1,
-                             IDC_MANAGE_EXTENSIONS,
-                             IDS_SHOW_EXTENSIONS);
-  }
-
-  if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_REWARDS)) {
-    InsertItemWithStringIdAt(GetIndexOfPresearchRewardsItem(),
-                             IDC_SHOW_PRESEARCH_REWARDS,
-                             IDS_SHOW_PRESEARCH_REWARDS);
-  }
-
-  // Insert wallet menu after download menu.
-  if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_WALLET)) {
-    InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS) + 1,
-                             IDC_SHOW_PRESEARCH_WALLET,
-                             IDS_SHOW_PRESEARCH_WALLET);
-  }
-
-  // Insert sync menu
-  if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_SYNC)) {
-    InsertItemWithStringIdAt(GetIndexOfPresearchSyncItem(),
-                             IDC_SHOW_PRESEARCH_SYNC,
-                             IDS_SHOW_PRESEARCH_SYNC);
-  }
-
-#if BUILDFLAG(ENABLE_SIDEBAR)
-  if (sidebar::CanUseSidebar(browser()->profile())) {
-    sub_menus_.push_back(std::make_unique<SidebarMenuModel>(browser()));
-    InsertSubMenuWithStringIdAt(
-        GetIndexOfPresearchSidebarItem(), IDC_SIDEBAR_SHOW_OPTION_MENU,
-        IDS_SIDEBAR_SHOW_OPTION_TITLE, sub_menus_.back().get());
-  }
-#endif
-
-  // Insert adblock menu at last. Assumed this is always enabled.
-  DCHECK(IsCommandIdEnabled(IDC_SHOW_PRESEARCH_ADBLOCK));
-  InsertItemWithStringIdAt(GetIndexOfPresearchAdBlockItem(),
-                           IDC_SHOW_PRESEARCH_ADBLOCK,
-                           IDS_SHOW_PRESEARCH_ADBLOCK);
-
-  // Insert webcompat reporter item.
-  InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_ABOUT),
-                           IDC_SHOW_PRESEARCH_WEBCOMPAT_REPORTER,
-                           IDS_SHOW_PRESEARCH_WEBCOMPAT_REPORTER);
-
-#if BUILDFLAG(IPFS_ENABLED)
-  if (IsCommandIdEnabled(IDC_APP_MENU_IPFS)) {
-    ipfs_submenu_model_.AddItemWithStringId(
-        IDC_APP_MENU_IPFS_IMPORT_LOCAL_FILE,
-        IDS_APP_MENU_IPFS_IMPORT_LOCAL_FILE);
-    ipfs_submenu_model_.AddItemWithStringId(
-        IDC_APP_MENU_IPFS_IMPORT_LOCAL_FOLDER,
-        IDS_APP_MENU_IPFS_IMPORT_LOCAL_FOLDER);
-    const int zoom_index = GetIndexOfCommandId(IDC_ZOOM_MENU);
-    const int index = zoom_index - 1;
-    InsertSubMenuWithStringIdAt(index, IDC_APP_MENU_IPFS, IDS_APP_MENU_IPFS,
-                                &ipfs_submenu_model_);
-    auto& bundle = ui::ResourceBundle::GetSharedInstance();
-    const auto& ipfs_logo = *bundle.GetImageSkiaNamed(IDR_PRESEARCH_IPFS_LOGO);
-    ui::ImageModel model = ui::ImageModel::FromImageSkia(ipfs_logo);
-    SetIcon(index, model);
-
-    InsertSeparatorAt(index, ui::MenuSeparatorType::NORMAL_SEPARATOR);
-  }
-#endif
-}
+// void PresearchAppMenuModel::InsertPresearchMenuItems() {
+//   // Insert & reorder presearch menus based on corresponding commands enable status.
+//   // If we you want to add/remove from app menu, adjust commands enable status
+//   // at PresearchBrowserCommandController.
+//
+//   // Step 1. Configure tab & windows section.
+//   if (IsCommandIdEnabled(IDC_NEW_TOR_CONNECTION_FOR_SITE)) {
+//     InsertItemWithStringIdAt(
+//         GetIndexOfCommandId(IDC_NEW_WINDOW),
+//         IDC_NEW_TOR_CONNECTION_FOR_SITE,
+//         IDS_NEW_TOR_CONNECTION_FOR_SITE);
+//   }
+//   if (IsCommandIdEnabled(IDC_NEW_OFFTHERECORD_WINDOW_TOR)) {
+//     InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_NEW_INCOGNITO_WINDOW) + 1,
+//                              IDC_NEW_OFFTHERECORD_WINDOW_TOR,
+//                              IDS_NEW_OFFTHERECORD_WINDOW_TOR);
+//   }
+//
+//   // Step 2. Configure second section that includes history, downloads and
+//   // bookmark. Then, insert presearch items.
+//
+//   // First, reorder original menus We want to move them in order of bookmark,
+//   // download and extensions.
+//   const int bookmark_item_index = GetIndexOfCommandId(IDC_BOOKMARKS_MENU);
+//   // If bookmark is not used, we don't need to adjust download item.
+//   if (bookmark_item_index != -1) {
+//     // Place download menu under bookmark.
+//     DCHECK(IsCommandIdEnabled(IDC_SHOW_DOWNLOADS));
+//     RemoveItemAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS));
+//     InsertItemWithStringIdAt(bookmark_item_index,
+//                              IDC_SHOW_DOWNLOADS,
+//                              IDS_SHOW_DOWNLOADS);
+//   }
+//   // Move extensions menu under download.
+//   ui::SimpleMenuModel* model = static_cast<ui::SimpleMenuModel*>(
+//       GetSubmenuModelAt(GetIndexOfCommandId(IDC_MORE_TOOLS_MENU)));
+//   DCHECK(model);
+//   // More tools menu adds extensions item always.
+//   DCHECK_NE(-1, model->GetIndexOfCommandId(IDC_MANAGE_EXTENSIONS));
+//   model->RemoveItemAt(model->GetIndexOfCommandId(IDC_MANAGE_EXTENSIONS));
+//
+//   if (IsCommandIdEnabled(IDC_MANAGE_EXTENSIONS)) {
+//     InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS) + 1,
+//                              IDC_MANAGE_EXTENSIONS,
+//                              IDS_SHOW_EXTENSIONS);
+//   }
+//
+//   if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_REWARDS)) {
+//     InsertItemWithStringIdAt(GetIndexOfPresearchRewardsItem(),
+//                              IDC_SHOW_PRESEARCH_REWARDS,
+//                              IDS_SHOW_PRESEARCH_REWARDS);
+//   }
+//
+//   // Insert wallet menu after download menu.
+//   if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_WALLET)) {
+//     InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_SHOW_DOWNLOADS) + 1,
+//                              IDC_SHOW_PRESEARCH_WALLET,
+//                              IDS_SHOW_PRESEARCH_WALLET);
+//   }
+//
+//   // Insert sync menu
+//   if (IsCommandIdEnabled(IDC_SHOW_PRESEARCH_SYNC)) {
+//     InsertItemWithStringIdAt(GetIndexOfPresearchSyncItem(),
+//                              IDC_SHOW_PRESEARCH_SYNC,
+//                              IDS_SHOW_PRESEARCH_SYNC);
+//   }
+//
+// #if BUILDFLAG(ENABLE_SIDEBAR)
+//   if (sidebar::CanUseSidebar(browser()->profile())) {
+//     sub_menus_.push_back(std::make_unique<SidebarMenuModel>(browser()));
+//     InsertSubMenuWithStringIdAt(
+//         GetIndexOfPresearchSidebarItem(), IDC_SIDEBAR_SHOW_OPTION_MENU,
+//         IDS_SIDEBAR_SHOW_OPTION_TITLE, sub_menus_.back().get());
+//   }
+// #endif
+//
+//   // Insert adblock menu at last. Assumed this is always enabled.
+//   DCHECK(IsCommandIdEnabled(IDC_SHOW_PRESEARCH_ADBLOCK));
+//   InsertItemWithStringIdAt(GetIndexOfPresearchAdBlockItem(),
+//                            IDC_SHOW_PRESEARCH_ADBLOCK,
+//                            IDS_SHOW_PRESEARCH_ADBLOCK);
+//
+//   // Insert webcompat reporter item.
+//   InsertItemWithStringIdAt(GetIndexOfCommandId(IDC_ABOUT),
+//                            IDC_SHOW_PRESEARCH_WEBCOMPAT_REPORTER,
+//                            IDS_SHOW_PRESEARCH_WEBCOMPAT_REPORTER);
+//
+// #if BUILDFLAG(IPFS_ENABLED)
+//   if (IsCommandIdEnabled(IDC_APP_MENU_IPFS)) {
+//     ipfs_submenu_model_.AddItemWithStringId(
+//         IDC_APP_MENU_IPFS_IMPORT_LOCAL_FILE,
+//         IDS_APP_MENU_IPFS_IMPORT_LOCAL_FILE);
+//     ipfs_submenu_model_.AddItemWithStringId(
+//         IDC_APP_MENU_IPFS_IMPORT_LOCAL_FOLDER,
+//         IDS_APP_MENU_IPFS_IMPORT_LOCAL_FOLDER);
+//     const int zoom_index = GetIndexOfCommandId(IDC_ZOOM_MENU);
+//     const int index = zoom_index - 1;
+//     InsertSubMenuWithStringIdAt(index, IDC_APP_MENU_IPFS, IDS_APP_MENU_IPFS,
+//                                 &ipfs_submenu_model_);
+//     auto& bundle = ui::ResourceBundle::GetSharedInstance();
+//     const auto& ipfs_logo = *bundle.GetImageSkiaNamed(IDR_PRESEARCH_IPFS_LOGO);
+//     ui::ImageModel model = ui::ImageModel::FromImageSkia(ipfs_logo);
+//     SetIcon(index, model);
+//
+//     InsertSeparatorAt(index, ui::MenuSeparatorType::NORMAL_SEPARATOR);
+//   }
+// #endif
+// }
 
 void PresearchAppMenuModel::InsertAlternateProfileItems() {
   // Insert Open Guest Window and Create New Profile items just above
