@@ -19,7 +19,7 @@ RegisterPolymerTemplateModifications({
       wrapper.setAttribute('id', 'release-notes')
       wrapper.setAttribute('target', '_blank')
       wrapper.setAttribute('rel', 'noopener noreferrer')
-      wrapper.setAttribute('href', 'https://presearch.org/latest/')
+      wrapper.setAttribute('href', 'https://engine.presearch.org/')
       parent.replaceChild(wrapper, version)
       wrapper.appendChild(version)
     }
@@ -28,11 +28,11 @@ RegisterPolymerTemplateModifications({
     const updateStatusMessageLink = section.querySelector('#updateStatusMessage a')
     if (updateStatusMessageLink) {
       // <if expr="is_win">
-      updateStatusMessageLink.href = 'https://support.presearch.org/hc/en-us/articles/360042816611-Why-isn-t-Presearch-updating-automatically-on-Windows-'
+      updateStatusMessageLink.href = 'https://engine.presearch.org'
       // </if>
 
       // <if expr="not is_win">
-      updateStatusMessageLink.href = 'https://community.presearch.org?p=update_error'
+      updateStatusMessageLink.href = 'https://engine.presearch.org'
       // </if>
     }
   }

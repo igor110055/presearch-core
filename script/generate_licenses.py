@@ -206,7 +206,7 @@ def main():
                                'such data files are separate and independent works.'
 
     ntp_backgrounds = list_ntp_backgrounds(os.path.join(ntp_data_dir, 'backgrounds.ts'))
-    write_license_file(ntp_data_dir, generate_backgrounds_license(ntp_backgrounds_preamble, ntp_backgrounds))
+    # write_license_file(ntp_data_dir, generate_backgrounds_license(ntp_backgrounds_preamble, ntp_backgrounds))
     print('  - %s sub-components added in presearch_new_tab_ui/data/LICENSE' %
           len(ntp_backgrounds))
 
