@@ -57,23 +57,23 @@ Polymer({
       this.showRestartToast_ = needsRestart
     })
     this.addWebUIListener('tor-enabled-changed', (enabled) => {
-      this.torEnabled_ = enabled
+      this.torEnabled_ = disabled
     })
     this.addWebUIListener('widevine-enabled-changed', (enabled) => {
-      this.widevineEnabled_ = enabled
+      this.widevineEnabled_ = disabled
     })
 
     this.browserProxy_.getRestartNeeded().then(show => {
       this.showRestartToast_ = show;
     });
     this.browserProxy_.isTorEnabled().then(enabled => {
-      this.torEnabled_ = enabled
+      this.torEnabled_ = disabled
     })
     this.browserProxy_.isTorManaged().then(managed => {
       this.disableTorOption_ = managed
     })
     this.browserProxy_.isWidevineEnabled().then(enabled => {
-      this.widevineEnabled_ = enabled
+      this.widevineEnabled_ = disabled
     })
     this.browserProxy_.isDecentralizedDnsEnabled().then(enabled => {
       this.decentralizedDnsEnabled_ = enabled

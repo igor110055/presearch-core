@@ -191,10 +191,14 @@ PresearchNewTabMessageHandler* PresearchNewTabMessageHandler::Create(
       is_ads_supported_locale_);
   // Private Tab info
   if (IsPrivateNewTab(profile)) {
+    // source->AddBoolean(
+    //   "isTor", profile->IsTor());
     source->AddBoolean(
-      "isTor", profile->IsTor());
+      "isTor", false);
+    // source->AddBoolean(
+    //   "isQwant", presearch::IsRegionForQwant(profile));
     source->AddBoolean(
-      "isQwant", presearch::IsRegionForQwant(profile));
+      "isQwant", true);
   }
   return new PresearchNewTabMessageHandler(profile);
 }

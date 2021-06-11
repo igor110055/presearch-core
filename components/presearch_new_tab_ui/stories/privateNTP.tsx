@@ -14,7 +14,7 @@ export default {
 
 export const PrivateWindow = () => {
   return (
-    <NewPrivateTab isQwant={boolean('Is Qwant?', false)} isTor={boolean('Enable Tor?', false)} />
+    <NewPrivateTab isQwant={boolean('Is Qwant?', true)} isTor={boolean('Enable Tor?', false)} />
   )
 }
 
@@ -26,12 +26,12 @@ export const QwantWindow = () => {
 
 export const QwantTor = () => {
   return (
-    <NewPrivateTab isQwant={boolean('Is Qwant?', true)} isTor={boolean('Enable Tor?', true)} />
+    <NewPrivateTab isQwant={boolean('Is Qwant?', true)} isTor={boolean('Enable Tor?', false)} />
   )
 }
 
 export const TorWindow = () => {
   return (
-    <NewPrivateTab isQwant={boolean('Is Qwant?', false)} isTor={boolean('Enable Tor?', true)} />
+    <NewPrivateTab isQwant={boolean('Is Qwant?', true)} isTor={boolean('Enable Tor?', false)} />
   )
 }

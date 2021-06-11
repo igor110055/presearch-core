@@ -35,41 +35,13 @@ export default class PrivateTab extends React.PureComponent<{}, {}> {
             <div>
               <SubTitle>{locale.headerLabel}</SubTitle>
               <Title>{locale.headerTitle}</Title>
-              <Text>{locale.headerText} <Link href='https://support.presearch.org/hc/en-us/articles/360017840332' target='_blank'>{locale.headerButton}</Link></Text>
+              <Text>{locale.headerText}</Text>
               {/* <FakeButton href='https://support.presearch.org/hc/en-us/articles/360017840332' target='_blank'>
                 {locale.headerButton}
               </FakeButton> */}
             </div>
           </HeaderGrid>
         </HeaderBox>
-        <Box style={{ minHeight: '475px' }}>
-          <Content>
-            <DuckDuckGoImage />
-            <SubTitle>{locale.boxDdgLabel}</SubTitle>
-            <Title>{locale.boxDdgTitle}</Title>
-            <Text>{locale.boxDdgText}</Text>
-          </Content>
-          <Separator />
-          <ButtonGroup>
-            <FakeButton>
-              <span>{locale.boxDdgButton}</span>
-              <Toggle />
-            </FakeButton>
-            <Link href='https://support.presearch.org/hc/en-us/articles/360018266171' target='_blank'>{locale.learnMore}</Link>
-          </ButtonGroup>
-        </Box>
-        <Box>
-          <Content>
-            <TorLockImage />
-            <SubTitle>{locale.boxTorLabel}</SubTitle>
-            <Title>{locale.boxTorTitle}</Title>
-            <Text>{locale.boxTorText2}</Text>
-          </Content>
-          <Separator />
-          <FakeButton href='https://support.presearch.org/hc/en-us/articles/360018121491' target='_blank'>
-            {locale.boxTorButton}
-          </FakeButton>
-        </Box>
       </Grid>
     )
   }

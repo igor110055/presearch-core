@@ -49,7 +49,7 @@ PresearchSettingsUI::PresearchSettingsUI(content::WebUI* web_ui,
   web_ui->AddMessageHandler(std::make_unique<DefaultPresearchShieldsHandler>());
   web_ui->AddMessageHandler(std::make_unique<PresearchDefaultExtensionsHandler>());
   web_ui->AddMessageHandler(std::make_unique<PresearchAppearanceHandler>());
-  web_ui->AddMessageHandler(std::make_unique<PresearchSyncHandler>());
+  // web_ui->AddMessageHandler(std::make_unique<PresearchSyncHandler>());
 #if BUILDFLAG(ENABLE_SPARKLE)
   // Use sparkle's relaunch api for browser relaunch on update.
   web_ui->AddMessageHandler(std::make_unique<PresearchRelaunchHandler>());
