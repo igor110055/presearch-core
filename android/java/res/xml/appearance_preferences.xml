@@ -5,12 +5,12 @@
      You can obtain one at http://mozilla.org/MPL/2.0/. -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
+    <!-- <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
       android:key="hide_presearch_rewards_icon"
       android:title="@string/hide_presearch_rewards_icon_title"
       android:summaryOn="@string/hide_presearch_rewards_icon_description"
       android:summaryOff="@string/hide_presearch_rewards_icon_description"
-      android:visibility="gone"/>
+      android:visibility="gone"/> -->
 
     <org.chromium.components.browser_ui.settings.ChromeSwitchPreference
         android:key="presearch_bottom_toolbar_enabled_key"

@@ -127,7 +127,7 @@ public class PresearchNewTabPageLayout
                                                     .CryptoWidgetBottomSheetDialogDismissListener {
     private static final String TAG = "PresearchNewTabPageView";
     private static final String PRESEARCH_BINANCE = "https://www.presearch.org/";
-    private static final String PRESEARCH_REF_URL = "https://www.presearch.org/";
+    private static final String PRESEARCH_REF_URL = "https://engine.presearch.org/";
 
     private View mPresearchStatsViewFallBackLayout;
 
@@ -271,18 +271,19 @@ public class PresearchNewTabPageLayout
 
         for (String widget : ntpWidgetManager.getUsedWidgets()) {
             NTPWidgetItem ntpWidgetItem = NTPWidgetManager.mWidgetsMap.get(widget);
-            if (widget.equals(NTPWidgetManager.PREF_PRIVATE_STATS)) {
-                View mPresearchStatsView = inflater.inflate(R.layout.presearch_stats_layout, null);
-                mPresearchStatsView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                        checkForPresearchStats();
-                    }
-                });
-                ntpWidgetItem.setWidgetView(mPresearchStatsView);
-                ntpWidgetMap.put(ntpWidgetManager.getPrivateStatsWidget(), ntpWidgetItem);
-            } else if (widget.equals(NTPWidgetManager.PREF_FAVORITES)) {
+            // if (widget.equals(NTPWidgetManager.PREF_PRIVATE_STATS)) {
+            //     View mPresearchStatsView = inflater.inflate(R.layout.presearch_stats_layout, null);
+            //     mPresearchStatsView.setOnClickListener(new View.OnClickListener() {
+            //         @Override
+            //         public void onClick(View v) {
+            //             mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+            //             checkForPresearchStats();
+            //         }
+            //     });
+            //     ntpWidgetItem.setWidgetView(mPresearchStatsView);
+            //     ntpWidgetMap.put(ntpWidgetManager.getPrivateStatsWidget(), ntpWidgetItem);
+            // } else
+            if (widget.equals(NTPWidgetManager.PREF_FAVORITES)) {
                 View mTopSitesLayout = inflater.inflate(R.layout.top_sites_layout, null);
                 FrameLayout mTopSitesGridLayout =
                         mTopSitesLayout.findViewById(R.id.top_sites_grid_layout);
@@ -316,55 +317,56 @@ public class PresearchNewTabPageLayout
                     ntpWidgetItem.setWidgetView(mTopSitesLayout);
                     ntpWidgetMap.put(ntpWidgetManager.getFavoritesWidget(), ntpWidgetItem);
                 }
-            } else if (widget.equals(NTPWidgetManager.PREF_BINANCE)) {
-                View binanceWidgetView = inflater.inflate(R.layout.crypto_widget_layout, null);
-                binanceWidgetLayout = binanceWidgetView.findViewById(R.id.binance_widget_layout);
-                bianceDisconnectLayout =
-                        binanceWidgetView.findViewById(R.id.binance_disconnect_layout);
-                binanceWidgetProgress =
-                        binanceWidgetView.findViewById(R.id.binance_widget_progress);
-                binanceWidgetProgress.setVisibility(View.GONE);
-                binanceWidgetView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (InternetConnection.isNetworkAvailable(mActivity)) {
-                            if (BinanceWidgetManager.getInstance()
-                                            .isUserAuthenticatedForBinance()) {
-                                cancelTimer();
-                                cryptoWidgetBottomSheetDialogFragment =
-                                        new CryptoWidgetBottomSheetDialogFragment();
-                                cryptoWidgetBottomSheetDialogFragment
-                                        .setCryptoWidgetBottomSheetDialogDismissListener(
-                                                PresearchNewTabPageLayout.this);
-                                cryptoWidgetBottomSheetDialogFragment.show(
-                                        ((PresearchActivity) mActivity).getSupportFragmentManager(),
-                                        CryptoWidgetBottomSheetDialogFragment.TAG_FRAGMENT);
-                            } else {
-                                TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
-                                bianceDisconnectLayout.setVisibility(View.GONE);
-                                binanceWidgetProgress.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            Toast.makeText(mActivity,
-                                         mActivity.getResources().getString(
-                                                 R.string.please_check_the_connection),
-                                         Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                    }
-                });
-                Button connectButton = binanceWidgetView.findViewById(R.id.btn_connect);
-                connectButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
-                        bianceDisconnectLayout.setVisibility(View.GONE);
-                        binanceWidgetProgress.setVisibility(View.VISIBLE);
-                    }
-                });
-                ntpWidgetItem.setWidgetView(binanceWidgetView);
-                ntpWidgetMap.put(ntpWidgetManager.getBinanceWidget(), ntpWidgetItem);
             }
+            // else if (widget.equals(NTPWidgetManager.PREF_BINANCE)) {
+            //     View binanceWidgetView = inflater.inflate(R.layout.crypto_widget_layout, null);
+            //     binanceWidgetLayout = binanceWidgetView.findViewById(R.id.binance_widget_layout);
+            //     bianceDisconnectLayout =
+            //             binanceWidgetView.findViewById(R.id.binance_disconnect_layout);
+            //     binanceWidgetProgress =
+            //             binanceWidgetView.findViewById(R.id.binance_widget_progress);
+            //     binanceWidgetProgress.setVisibility(View.GONE);
+            //     binanceWidgetView.setOnClickListener(new View.OnClickListener() {
+            //         @Override
+            //         public void onClick(View view) {
+            //             if (InternetConnection.isNetworkAvailable(mActivity)) {
+            //                 if (BinanceWidgetManager.getInstance()
+            //                                 .isUserAuthenticatedForBinance()) {
+            //                     cancelTimer();
+            //                     cryptoWidgetBottomSheetDialogFragment =
+            //                             new CryptoWidgetBottomSheetDialogFragment();
+            //                     cryptoWidgetBottomSheetDialogFragment
+            //                             .setCryptoWidgetBottomSheetDialogDismissListener(
+            //                                     PresearchNewTabPageLayout.this);
+            //                     cryptoWidgetBottomSheetDialogFragment.show(
+            //                             ((PresearchActivity) mActivity).getSupportFragmentManager(),
+            //                             CryptoWidgetBottomSheetDialogFragment.TAG_FRAGMENT);
+            //                 } else {
+            //                     TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
+            //                     bianceDisconnectLayout.setVisibility(View.GONE);
+            //                     binanceWidgetProgress.setVisibility(View.VISIBLE);
+            //                 }
+            //             } else {
+            //                 Toast.makeText(mActivity,
+            //                              mActivity.getResources().getString(
+            //                                      R.string.please_check_the_connection),
+            //                              Toast.LENGTH_SHORT)
+            //                         .show();
+            //             }
+            //         }
+            //     });
+            //     Button connectButton = binanceWidgetView.findViewById(R.id.btn_connect);
+            //     connectButton.setOnClickListener(new View.OnClickListener() {
+            //         @Override
+            //         public void onClick(View view) {
+            //             TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
+            //             bianceDisconnectLayout.setVisibility(View.GONE);
+            //             binanceWidgetProgress.setVisibility(View.VISIBLE);
+            //         }
+            //     });
+            //     ntpWidgetItem.setWidgetView(binanceWidgetView);
+            //     ntpWidgetMap.put(ntpWidgetManager.getBinanceWidget(), ntpWidgetItem);
+            // }
         }
 
         return new ArrayList<NTPWidgetItem>(ntpWidgetMap.values());
@@ -522,88 +524,6 @@ public class PresearchNewTabPageLayout
         ((PresearchActivity) mActivity).dismissShieldsTooltip();
     }
 
-    // private void showNTPImage(NTPImage ntpImage) {
-    //     Display display = mActivity.getWindowManager().getDefaultDisplay();
-    //     Point size = new Point();
-    //     display.getSize(size);
-    //     NTPUtil.updateOrientedUI(mActivity, this, size);
-    //     ImageView mSponsoredLogo = (ImageView) findViewById(R.id.sponsored_logo);
-    //     FloatingActionButton mSuperReferralLogo = (FloatingActionButton) findViewById(R.id.super_referral_logo);
-    //     TextView mCreditText = (TextView) findViewById(R.id.credit_text);
-    //     if (ntpImage instanceof Wallpaper
-    //             && NTPUtil.isReferralEnabled()
-    //             && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-    //         setBackgroundImage(ntpImage);
-    //         mSuperReferralLogo.setVisibility(View.VISIBLE);
-    //         mCreditText.setVisibility(View.GONE);
-    //         int floatingButtonIcon =
-    //             GlobalNightModeStateProviderHolder.getInstance().isInNightMode()
-    //             ? R.drawable.qrcode_dark
-    //             : R.drawable.qrcode_light;
-    //         mSuperReferralLogo.setImageResource(floatingButtonIcon);
-    //         mSuperReferralLogo.setOnClickListener(new View.OnClickListener() {
-    //             @Override
-    //             public void onClick(View view) {
-    //                 QRCodeShareDialogFragment mQRCodeShareDialogFragment =
-    //                         new QRCodeShareDialogFragment();
-    //                 mQRCodeShareDialogFragment.setQRCodeText(
-    //                         PRESEARCH_REF_URL + mNTPBackgroundImagesBridge.getSuperReferralCode());
-    //                 mQRCodeShareDialogFragment.show(
-    //                         ((PresearchActivity) mActivity).getSupportFragmentManager(),
-    //                         "QRCodeShareDialogFragment");
-    //             }
-    //         });
-    //     } else if (UserPrefs.get(Profile.getLastUsedRegularProfile()).getBoolean(
-    //                    PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE)
-    //                && sponsoredTab != null
-    //                && NTPUtil.shouldEnableNTPFeature()) {
-    //         setBackgroundImage(ntpImage);
-    //         if (ntpImage instanceof BackgroundImage) {
-    //             BackgroundImage backgroundImage = (BackgroundImage) ntpImage;
-    //             mSponsoredLogo.setVisibility(View.GONE);
-    //             mSuperReferralLogo.setVisibility(View.GONE);
-    //             if (backgroundImage.getImageCredit() != null) {
-    //                 String imageCreditStr = String.format(getResources().getString(R.string.photo_by, backgroundImage.getImageCredit().getName()));
-    //
-    //                 SpannableStringBuilder spannableString = new SpannableStringBuilder(imageCreditStr);
-    //                 spannableString.setSpan(
-    //                     new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
-    //                     ((imageCreditStr.length() - 1)
-    //                      - (backgroundImage.getImageCredit().getName().length() - 1)),
-    //                     imageCreditStr.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-    //
-    //                 mCreditText.setText(spannableString);
-    //                 mCreditText.setVisibility(View.VISIBLE);
-    //                 mCreditText.setOnClickListener(new View.OnClickListener() {
-    //                     @Override
-    //                     public void onClick(View view) {
-    //                         if (backgroundImage.getImageCredit() != null) {
-    //                             TabUtils.openUrlInSameTab(
-    //                                     backgroundImage.getImageCredit().getUrl());
-    //                         }
-    //                     }
-    //                 });
-    //             }
-    //         }
-    //     }
-    // }
-
-    // private void setBackgroundImage(NTPImage ntpImage) {
-    //     bgImageView = (ImageView) findViewById(R.id.bg_image_view);
-    //     bgImageView.setScaleType(ImageView.ScaleType.MATRIX);
-    //
-    //     ViewTreeObserver observer = bgImageView.getViewTreeObserver();
-    //     observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-    //         @Override
-    //         public void onGlobalLayout() {
-    //             mWorkerTask = new FetchWallpaperWorkerTask(ntpImage, bgImageView.getMeasuredWidth(), bgImageView.getMeasuredHeight(), wallpaperRetrievedCallback);
-    //             mWorkerTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-    //
-    //             bgImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    //         }
-    //     });
-    // }
-
     private void checkForNonDisruptiveBanner(NTPImage ntpImage) {
         int brOption = NTPUtil.checkForNonDisruptiveBanner(ntpImage, sponsoredTab);
         if (SponsoredImageUtil.BR_INVALID_OPTION != brOption && !NTPUtil.isReferralEnabled()
@@ -618,17 +538,6 @@ public class PresearchNewTabPageLayout
     }
 
     private void checkAndShowNTPImage(boolean isReset) {
-        // NTPImage ntpImage = sponsoredTab.getTabNTPImage(isReset);
-        // if (ntpImage == null) {
-        //     sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-        // } else if (ntpImage instanceof Wallpaper) {
-        //     Wallpaper mWallpaper = (Wallpaper) ntpImage;
-        //     if (mWallpaper == null) {
-        //         sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-        //     }
-        // }
-        // checkForNonDisruptiveBanner(ntpImage);
-        // showNTPImage(ntpImage);
     }
 
     private void initilizeSponsoredTab() {
@@ -831,21 +740,12 @@ public class PresearchNewTabPageLayout
             new NTPWidgetAdapter.NTPWidgetListener() {
                 @Override
                 public void onMenuEdit() {
-                    cancelTimer();
-                    openWidgetStack();
+                    // cancelTimer();
+                    // openWidgetStack();
                 }
 
                 @Override
                 public void onMenuRemove(int position, boolean isBinanceWidget) {
-                    if (isBinanceWidget) {
-                        mBinanceNativeWorker.revokeToken();
-                        BinanceWidgetManager.getInstance().setBinanceAccountBalance("");
-                        BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(false);
-                        if (cryptoWidgetBottomSheetDialogFragment != null) {
-                            cryptoWidgetBottomSheetDialogFragment.dismiss();
-                        }
-                    }
-
                     if (PresearchActivity.getPresearchActivity() != null
                         && PresearchActivity.getPresearchActivity().getActivityTab() != null
                         && !UserPrefs.get(Profile.getLastUsedRegularProfile())
@@ -859,22 +759,22 @@ public class PresearchNewTabPageLayout
 
                 @Override
                 public void onMenuLearnMore() {
-                    TabUtils.openUrlInSameTab(PRESEARCH_BINANCE);
+                    TabUtils.openUrlInSameTab(PRESEARCH_REF_URL);
                 }
 
                 @Override
                 public void onMenuRefreshData() {
-                    mBinanceNativeWorker.getAccountBalances();
+                    // mBinanceNativeWorker.getAccountBalances();
                 }
 
                 @Override
                 public void onMenuDisconnect() {
-                    mBinanceNativeWorker.revokeToken();
-                    BinanceWidgetManager.getInstance().setBinanceAccountBalance("");
-                    BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(false);
-                    if (cryptoWidgetBottomSheetDialogFragment != null) {
-                        cryptoWidgetBottomSheetDialogFragment.dismiss();
-                    }
+                    // mBinanceNativeWorker.revokeToken();
+                    // BinanceWidgetManager.getInstance().setBinanceAccountBalance("");
+                    // BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(false);
+                    // if (cryptoWidgetBottomSheetDialogFragment != null) {
+                    //     cryptoWidgetBottomSheetDialogFragment.dismiss();
+                    // }
                     // Reset binance widget to connect page
                     showWidgets();
                 }

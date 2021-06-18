@@ -1033,9 +1033,9 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         if (mShieldsLayout != null) {
             mShieldsLayout.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
         }
-        if (mRewardsLayout != null) {
-            mRewardsLayout.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        }
+        // if (mRewardsLayout != null) {
+        //     mRewardsLayout.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        // }
     }
 
     public int getBoundsAfterAccountingForRightButtons(ViewGroup toolbarButtonsContainer) {

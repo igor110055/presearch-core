@@ -52,9 +52,10 @@ public class AppearancePreferences extends PresearchPreferenceFragment
             removePreferenceIfPresent(PREF_UI_THEME);
         }
 
-        if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)) {
-            removePreferenceIfPresent(PREF_HIDE_PRESEARCH_REWARDS_ICON);
-        }
+        removePreferenceIfPresent(PREF_HIDE_PRESEARCH_REWARDS_ICON);
+        // if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)) {
+        //     removePreferenceIfPresent(PREF_HIDE_PRESEARCH_REWARDS_ICON);
+        // }
     }
 
     @Override
@@ -134,13 +135,15 @@ public class AppearancePreferences extends PresearchPreferenceFragment
                             PresearchPreferenceKeys.PRESEARCH_BOTTOM_TOOLBAR_ENABLED_KEY, !originalStatus)
                     .apply();
             PresearchRelaunchUtils.askForRelaunch(getActivity());
-        } else if (PREF_HIDE_PRESEARCH_REWARDS_ICON.equals(key)) {
-            SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
-            SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
-            sharedPreferencesEditor.putBoolean(PREF_HIDE_PRESEARCH_REWARDS_ICON, !(boolean) newValue);
-            sharedPreferencesEditor.apply();
-            PresearchRelaunchUtils.askForRelaunch(getActivity());
-        } else if (PREF_PRESEARCH_NIGHT_MODE_ENABLED.equals(key)) {
+        }
+        // else if (PREF_HIDE_PRESEARCH_REWARDS_ICON.equals(key)) {
+        //     SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
+        //     SharedPreferences.Editor sharedPreferencesEditor = sharedPreferences.edit();
+        //     sharedPreferencesEditor.putBoolean(PREF_HIDE_PRESEARCH_REWARDS_ICON, !(boolean) newValue);
+        //     sharedPreferencesEditor.apply();
+        //     PresearchRelaunchUtils.askForRelaunch(getActivity());
+        // }
+         else if (PREF_PRESEARCH_NIGHT_MODE_ENABLED.equals(key)) {
             PresearchFeatureList.enableFeature(
                     PresearchFeatureList.ENABLE_FORCE_DARK, (boolean) newValue, true);
             PresearchRelaunchUtils.askForRelaunch(getActivity());

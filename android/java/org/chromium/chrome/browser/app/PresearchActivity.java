@@ -93,6 +93,7 @@ import org.chromium.chrome.browser.preferences.PresearchPref;
 import org.chromium.chrome.browser.util.PresearchDbUtil;
 import org.chromium.chrome.browser.util.PresearchReferrer;
 import org.chromium.chrome.browser.util.PackageUtils;
+import org.chromium.chrome.browser.util.TabUtils;
 import org.chromium.chrome.browser.widget.crypto.binance.BinanceAccountBalance;
 import org.chromium.chrome.browser.widget.crypto.binance.BinanceWidgetManager;
 import org.chromium.components.bookmarks.BookmarkId;
@@ -167,12 +168,12 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void onResumeWithNative() {
       super.onResumeWithNative();
       PresearchActivityJni.get().restartStatsUpdater();
-      if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
-        !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-        if (mPresearchRewardsNativeWorker == null)
-          mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
-        mPresearchRewardsNativeWorker.AddObserver(this);
-      }
+      // if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
+      //   !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+      //   if (mPresearchRewardsNativeWorker == null)
+      //     mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
+      //   mPresearchRewardsNativeWorker.AddObserver(this);
+      // }
     }
 
     @Override
@@ -226,7 +227,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = getActivityTab();
       if (tab == null)
-        return;
+        TabUtils.openUrlInSameTab(PRESEARCH_SE_URL);
+        // return;
 
       // Set proper active DSE whenever presearch returns to foreground.
       // If active tab is private, set private DSE as an active DSE.
@@ -239,7 +241,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = getActivityTab();
       if (tab == null)
-        return;
+        TabUtils.openUrlInSameTab(PRESEARCH_SE_URL);
+        // return;
 
       // Set normal DSE as an active DSE when presearch goes in background
       // because currently set DSE is used by outside of presearch(ex, presearch search widget).
@@ -302,14 +305,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       checkForNotificationData();
 
-      // if (!RateUtils.getInstance(this).getPrefRateEnabled()) {
-      //   RateUtils.getInstance(this).setPrefRateEnabled(true);
-      //   RateUtils.getInstance(this).setNextRateDateAndCount();
-      // }
-
-      // if (RateUtils.getInstance(this).shouldShowRateDialog())
-      //   showPresearchRateDialog();
-
       if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) == 1) {
         Calendar calender = Calendar.getInstance();
         calender.setTime(new Date());
@@ -318,10 +313,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           calender.getTimeInMillis());
       }
 
-      // if (OnboardingPrefManager.getInstance().showCrossPromoModal()) {
-      //   showCrossPromotionalDialog();
-      //   OnboardingPrefManager.getInstance().setCrossPromoModalShown(true);
-      // }
       PresearchSyncReflectionUtils.showInformers();
       PresearchAndroidSyncDisabledInformer.showInformers();
 
@@ -344,14 +335,14 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
         OnboardingPrefManager.getInstance().setOneTimeNotificationStarted(true);
       }
-      if (!TextUtils.isEmpty(BinanceWidgetManager.getInstance().getBinanceAccountBalance())) {
-        try {
-          BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
-            BinanceWidgetManager.getInstance().getBinanceAccountBalance());
-        } catch (JSONException e) {
-          Log.e("NTP", e.getMessage());
-        }
-      }
+      // if (!TextUtils.isEmpty(BinanceWidgetManager.getInstance().getBinanceAccountBalance())) {
+      //   try {
+      //     BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
+      //       BinanceWidgetManager.getInstance().getBinanceAccountBalance());
+      //   } catch (JSONException e) {
+      //     Log.e("NTP", e.getMessage());
+      //   }
+      // }
 
       if (PackageUtils.isFirstInstall(this) &&
         SharedPreferencesManager.getInstance().readInt(
@@ -362,11 +353,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         calender.add(Calendar.DATE, DAYS_4);
         PresearchRewardsHelper.setNextRewardsOnboardingModalDate(calender.getTimeInMillis());
       }
-      // if (PresearchRewardsHelper.shouldShowRewardsOnboardingModalOnDay4()) {
-      //   PresearchRewardsHelper.setShowPresearchRewardsOnboardingModal(true);
-      //   openRewardsPanel();
-      //   PresearchRewardsHelper.setRewardsOnboardingModalShown(true);
-      // }
 
       if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) ==
         1) {
@@ -377,11 +363,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           calender.getTimeInMillis());
       }
       checkSetDefaultBrowserModal();
-      // if (mPresearchRewardsNativeWorker != null && mPresearchRewardsNativeWorker.isRewardsEnabled() &&
-      //   ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
-      //   !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-      //   mPresearchRewardsNativeWorker.StartProcess();
-      // }
     }
 
     @Override
@@ -414,17 +395,17 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       }
     }
 
-    private void checkForYandexSE() {
-      String countryCode = Locale.getDefault().getCountry();
-      if (yandexRegions.contains(countryCode)) {
-        TemplateUrl yandexTemplateUrl =
-          PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.YANDEX);
-        if (yandexTemplateUrl != null) {
-          PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, false);
-          PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, true);
-        }
-      }
-    }
+    // private void checkForYandexSE() {
+    //   String countryCode = Locale.getDefault().getCountry();
+    //   if (yandexRegions.contains(countryCode)) {
+    //     TemplateUrl yandexTemplateUrl =
+    //       PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.YANDEX);
+    //     if (yandexTemplateUrl != null) {
+    //       PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, false);
+    //       PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, true);
+    //     }
+    //   }
+    // }
 
     private void setDSEToPresearch() {
       // Set the default search engine to engine.presearch.org. Added by Mamy
@@ -445,20 +426,17 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     }
 
     public void checkForPresearchStats() {
-      if (OnboardingPrefManager.getInstance().isPresearchStatsEnabled()) {
-        PresearchStatsUtil.showPresearchStats();
-      } else {
         if (getActivityTab() != null && getActivityTab().getUrlString() != null &&
           !UrlUtilities.isNTPUrl(getActivityTab().getUrlString())) {
           OnboardingPrefManager.getInstance().setFromNotification(true);
           if (getTabCreator(false) != null) {
             getTabCreator(false).launchUrl(
-              UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
+              // UrlConstants.NTP_URL
+              PRESEARCH_SE_URL, TabLaunchType.FROM_CHROME_UI);
           }
         } else {
           showOnboardingV2(false);
         }
-      }
     }
 
     public void showOnboardingV2(boolean fromStats) {
@@ -658,13 +636,15 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       int tabRewardsIndex = TabModelUtils.getTabIndexByUrl(tabModel, url);
 
       Tab tab = selectExistingTab(url);
+
+      if (tab.getUrlString().equals(REWARDS_SETTINGS_URL) ||
+      tab.getUrlString().equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
+        url = PRESEARCH_SE_URL;
+      }
+
       if (tab != null) {
-        // return tab;
-        return getTabCreator(false).launchUrl(PRESEARCH_SE_URL, TabLaunchType.FROM_CHROME_UI);
+        return tab;
       } else { // Open a new tab
-        if (url.equals(REWARDS_SETTINGS_URL) || url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
-          url = UrlConstants.CHROME_BLANK_URL;
-        }
         return getTabCreator(false).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
       }
     }
@@ -706,11 +686,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-      if (resultCode == RESULT_OK &&
-      (requestCode == VERIFY_WALLET_ACTIVITY_REQUEST_CODE ||
-      requestCode == USER_WALLET_ACTIVITY_REQUEST_CODE ||
-      requestCode == SITE_BANNER_REQUEST_CODE)){
-        dismissRewardsPanel();
+      if (resultCode == RESULT_OK){
+        // dismissRewardsPanel();
         String open_url = data.getStringExtra(PresearchActivity.OPEN_URL);
         if (!TextUtils.isEmpty(open_url)) {
           openNewOrSelectExistingTab(open_url);

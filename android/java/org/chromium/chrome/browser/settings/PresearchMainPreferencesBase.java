@@ -71,7 +71,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         SettingsUtils.addPreferencesFromResource(this, R.xml.presearch_main_preferences);
 
         overrideChromiumPreferences();
-        // initRatePresearch();
     }
 
     @Override
@@ -102,16 +101,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         updateControlSectionPreferences();
 
         rearrangePreferenceOrders();
-
-        // if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) ||
-        //         PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-        //     removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
-        // }
-
-        // if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M
-        //     || (NTPUtil.isReferralEnabled() && NTPBackgroundImagesBridge.enableSponsoredImages())) {
-        //     removePreferenceIfPresent(PREF_BACKGROUND_IMAGES);
-        // }
     }
 
     /**
@@ -141,9 +130,7 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
             findPreference(PREF_USE_CUSTOM_TABS).setOrder(++order);
         }
         findPreference(PREF_ADVANCED_SECTION).setOrder(++order);
-        findPreference(PREF_PRIVACY).setOrder(++order);
-        // findPreference(PREF_PRESEARCH_REWARDS).setOrder(++order);
-        // findPreference(PREF_SYNC).setOrder(++order);
+        findPreference(PREF_PRIVACY).setOrder(++order);        
         findPreference(PREF_ACCESSIBILITY).setOrder(++order);
         findPreference(PREF_CONTENT_SETTINGS).setOrder(++order);
         findPreference(PREF_PRESEARCH_LANGUAGES).setOrder(++order);
@@ -154,11 +141,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
             findPreference(MainSettings.PREF_DEVELOPER).setOrder(++order);
         }
         findPreference(PREF_ABOUT_CHROME).setOrder(++order);
-
-        // If gn flag enable_presearch_sync is false, hide Sync pref
-        // if (PresearchConfig.SYNC_ENABLED == false) {
-        //     removePreferenceIfPresent(PREF_SYNC);
-        // }
 
         // We don't have home button on top toolbar at the moment
         if (!DeviceFormFactor.isTablet() && !BottomToolbarConfiguration.isBottomToolbarEnabled()) {
@@ -207,22 +189,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         findPreference(PREF_PRIVACY).setFragment(PresearchPrivacySettings.class.getName());
         findPreference(PREF_HOMEPAGE).setFragment(PresearchHomepageSettings.class.getName());
     }
-
-    // private void initRatePresearch() {
-    //     findPreference(PREF_RATE_PRESEARCH).setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-    //         @Override
-    //         public boolean onPreferenceClick(Preference preference) {
-    //             Bundle bundle = new Bundle();
-    //             bundle.putBoolean(RateUtils.FROM_SETTINGS, true);
-    //
-    //             RateDialogFragment mRateDialogFragment = new RateDialogFragment();
-    //             mRateDialogFragment.setCancelable(false);
-    //             mRateDialogFragment.setArguments(bundle);
-    //             mRateDialogFragment.show(getParentFragmentManager(), "RateDialogFragment");
-    //             return true;
-    //         }
-    //     });
-    // }
 
     // TODO(simonhong): Make this static public with proper class.
     private int dp2px(int dp) {
