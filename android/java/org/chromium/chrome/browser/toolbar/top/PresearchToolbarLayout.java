@@ -966,22 +966,20 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         return Toast.showAnchoredToast(context, v, description);
     }
 
-    // @Override
-    // public void onUrlFocusChange(boolean hasFocus) {
-    //     Context context = getContext();
-    //     if (hasFocus && PackageUtils.isFirstInstall(context)
-    //             && PresearchActivity.getPresearchActivity() != null
-    //             && PresearchActivity.getPresearchActivity().getActivityTab() != null
-    //             && UrlUtilities.isNTPUrl(
-    //                     PresearchActivity.getPresearchActivity().getActivityTab().getUrlString())
-    //             && !OnboardingPrefManager.getInstance().hasSearchEngineOnboardingShown()
-    //             && !PresearchSearchEngineUtils.getDSEShortName(true).equals(
-    //                     OnboardingPrefManager.DUCKDUCKGO)) {
-    //         Intent searchActivityIntent = new Intent(context, SearchActivity.class);
-    //         context.startActivity(searchActivityIntent);
-    //     }
-    //     super.onUrlFocusChange(hasFocus);
-    // }
+    @Override
+    public void onUrlFocusChange(boolean hasFocus) {
+         Context context = getContext();
+         if (hasFocus && PackageUtils.isFirstInstall(context)
+                 && PresearchActivity.getPresearchActivity() != null
+                 && PresearchActivity.getPresearchActivity().getActivityTab() != null
+                 && UrlUtilities.isNTPUrl(
+                         PresearchActivity.getPresearchActivity().getActivityTab().getUrlString())
+                 && !OnboardingPrefManager.getInstance().hasSearchEngineOnboardingShown()) {
+             Intent searchActivityIntent = new Intent(context, SearchActivity.class);
+             context.startActivity(searchActivityIntent);
+         }
+         super.onUrlFocusChange(hasFocus);
+    }
 
     public void populateUrlAnimatorSet(boolean showExpandedState,
             int urlFocusToolbarButtonsDuration, int urlClearFocusTabStackDelayMs,

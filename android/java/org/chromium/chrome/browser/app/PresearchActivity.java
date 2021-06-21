@@ -227,8 +227,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = getActivityTab();
       if (tab == null)
-        TabUtils.openUrlInSameTab(PRESEARCH_SE_URL);
-        // return;
+         return;
 
       // Set proper active DSE whenever presearch returns to foreground.
       // If active tab is private, set private DSE as an active DSE.
@@ -241,8 +240,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = getActivityTab();
       if (tab == null)
-        TabUtils.openUrlInSameTab(PRESEARCH_SE_URL);
-        // return;
+        return;
 
       // Set normal DSE as an active DSE when presearch goes in background
       // because currently set DSE is used by outside of presearch(ex, presearch search widget).
@@ -431,8 +429,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
           OnboardingPrefManager.getInstance().setFromNotification(true);
           if (getTabCreator(false) != null) {
             getTabCreator(false).launchUrl(
-              // UrlConstants.NTP_URL
-              PRESEARCH_SE_URL, TabLaunchType.FROM_CHROME_UI);
+              UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
           }
         } else {
           showOnboardingV2(false);
@@ -637,8 +634,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = selectExistingTab(url);
 
-      if (tab.getUrlString().equals(REWARDS_SETTINGS_URL) ||
-      tab.getUrlString().equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
+      if (url.equals(REWARDS_SETTINGS_URL) ||
+      	url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
         url = PRESEARCH_SE_URL;
       }
 
