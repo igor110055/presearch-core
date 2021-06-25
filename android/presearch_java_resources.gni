@@ -4,11 +4,6 @@
 
 # See 'chrome/android/chrome_java_resources.gni' on how to generate this list
 presearch_java_resources = [
-  "java/res/drawable-xxhdpi/import.png",
-  "java/res/drawable-hdpi/import.png",
-  "java/res/drawable-xxxhdpi/import.png",
-  "java/res/drawable-xhdpi/import.png",
-  "java/res/drawable-mdpi/import.png",
   "java/res/anim/activity_fade_in.xml",
   "java/res/anim/activity_fade_out.xml",
   "java/res/anim/cycle.xml",
