@@ -26,5 +26,5 @@
     tools:ignore="ContentDescription"
     android:padding="@dimen/custom_tabs_toolbar_vertical_padding"
     android:scaleType="centerInside"
-    android:background="@drawable/import"/>
+    android:background="@drawable/down_arrow"/>
 </LinearLayout>
