@@ -168,11 +168,6 @@ public class PresearchToolbarManager extends ToolbarManager {
         HomepageManager.getInstance().addListener(mPresearchHomepageStateListener);
     }
 
-    @Override
-    static String homepageUrl() {
-        String homePageUrl = UrlConstants.NTP_URL;
-        return homePageUrl;
-    }
 
     @Override
     public void enableBottomControls() {
