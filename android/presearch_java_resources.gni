@@ -8,7 +8,7 @@ presearch_java_resources = [
   "java/res/anim/activity_fade_out.xml",
   "java/res/anim/cycle.xml",
   "java/res/anim/shake.xml",
-  "java/res/drawable-hdpi/import.png"
+  "java/res/drawable-hdpi/import.png",
   "java/res/drawable-hdpi/add_funds.png",
   "java/res/drawable-hdpi/bat_logo.png",
   "java/res/drawable-hdpi/bat_unverified.png",
