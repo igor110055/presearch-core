@@ -70,6 +70,7 @@ import org.chromium.chrome.features.start_surface.StartSurface;
 import org.chromium.components.browser_ui.widget.scrim.ScrimCoordinator;
 import org.chromium.ui.base.WindowAndroid;
 import org.chromium.ui.modaldialog.ModalDialogManager;
+import org.chromium.components.embedder_support.util.UrlConstants;
 
 import java.util.List;
 
@@ -165,6 +166,12 @@ public class PresearchToolbarManager extends ToolbarManager {
             }
         };
         HomepageManager.getInstance().addListener(mPresearchHomepageStateListener);
+    }
+
+    @override
+    static String homepageUrl() {
+        String homePageUrl = UrlConstants.NTP_URL;
+        return homePageUrl;
     }
 
     @Override
