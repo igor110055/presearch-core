@@ -100,7 +100,7 @@ extern const PrepopulatedEngine duckduckgo_lite;
 extern const PrepopulatedEngine presearch_ecosia;
 extern const PrepopulatedEngine qwant;
 extern const PrepopulatedEngine startpage;
-extern const PrepopulatedEngine presearch_yandex;
+extern const PrepopulatedEngine presearch_brave;
 
 const std::map<PresearchPrepopulatedEngineID, const PrepopulatedEngine*>&
 GetPresearchEnginesMap();
