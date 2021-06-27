@@ -47,12 +47,13 @@ const std::vector<PresearchPrepopulatedEngineID> presearch_engines_default = {
 
 // Variations of the order / default options by country.
 const std::vector<PresearchPrepopulatedEngineID> presearch_engines_with_ecosia = {
+    PREPOPULATED_ENGINE_ID_QWANT,
+    PREPOPULATED_ENGINE_ID_YANDEX,
+    PREPOPULATED_ENGINE_ID_ECOSIA,
     PREPOPULATED_ENGINE_ID_GOOGLE,
     PREPOPULATED_ENGINE_ID_DUCKDUCKGO,
-    PREPOPULATED_ENGINE_ID_QWANT,
     PREPOPULATED_ENGINE_ID_BING,
     PREPOPULATED_ENGINE_ID_STARTPAGE,
-    PREPOPULATED_ENGINE_ID_ECOSIA,
 };
 
 const std::vector<PresearchPrepopulatedEngineID> presearch_engines_with_yandex = {

@@ -22,7 +22,7 @@ namespace {
 const std::map<PresearchPrepopulatedEngineID, const PrepopulatedEngine*>
     presearch_engines_map = {
         {PREPOPULATED_ENGINE_ID_GOOGLE, &google},
-        {PREPOPULATED_ENGINE_ID_YANDEX, &presearch_yandex},
+        {PREPOPULATED_ENGINE_ID_YANDEX, &presearch_brave},
         {PREPOPULATED_ENGINE_ID_BING, &bing},
         {PREPOPULATED_ENGINE_ID_DUCKDUCKGO, &duckduckgo},
         {PREPOPULATED_ENGINE_ID_DUCKDUCKGO_DE, &duckduckgo_de},
@@ -178,19 +178,12 @@ const PrepopulatedEngine startpage = {
     PREPOPULATED_ENGINE_ID_STARTPAGE,
 };
 
-const PrepopulatedEngine presearch_yandex =
+const PrepopulatedEngine presearch_brave =
     ModifyEngineParams(yandex_com,
-                       L"Yandex",
+                       L"Brave Search",
                        NULL,
-                       "https://yandex.ru/search/?clid="
-#if defined(OS_ANDROID)
-                       "2423859"
-#else
-                       "2353835"
-#endif
-                       "&text={searchTerms}",
-                       "https://suggest.yandex.ru/suggest-ff.cgi?"
-                       "part={searchTerms}&v=3&sn=5&srv=presearch_desktop",
+                       "https://search.brave.com/search?q={searchTerms}",
+                       NULL,
                        PREPOPULATED_ENGINE_ID_YANDEX);
 
 const std::map<PresearchPrepopulatedEngineID, const PrepopulatedEngine*>&

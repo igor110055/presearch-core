@@ -124,11 +124,10 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String PRESEARCH_REWARDS_SETTINGS_URL = "presearch://rewards/";
     public static final String REWARDS_AC_SETTINGS_URL = "chrome://rewards/";
     public static final String REWARDS_LEARN_MORE_URL = "https://presearch.io/";
-    public static final String PRESEARCH_TERMS_PAGE =
-      "https://presearch.org/privacy/user-terms-of-service/";
+    public static final String PRESEARCH_TERMS_PAGE = "https://presearch.org/terms";
     public static final String PRESEARCH_SE_URL = "https://engine.presearch.org";
     public static final String P3A_URL = "https://presearch.org/privacy";
-    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy/";
+    public static final String PRESEARCH_PRIVACY_POLICY = "https://presearch.org/privacy";
     private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
     public static final String OPEN_URL = "open_url";
 
@@ -147,7 +146,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String CHANNEL_ID = "com.presearch.browser";
     public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
     public static final String ANDROID_PACKAGE_NAME = "android";
-    public static final String PRESEARCH_BLOG_URL = "http://www.presearch.org/blog";
+    public static final String PRESEARCH_BLOG_URL = "http://presearch.org/blog";
 
     private static final String JAPAN_COUNTRY_CODE = "JP";
 
@@ -333,14 +332,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
         OnboardingPrefManager.getInstance().setOneTimeNotificationStarted(true);
       }
-      // if (!TextUtils.isEmpty(BinanceWidgetManager.getInstance().getBinanceAccountBalance())) {
-      //   try {
-      //     BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
-      //       BinanceWidgetManager.getInstance().getBinanceAccountBalance());
-      //   } catch (JSONException e) {
-      //     Log.e("NTP", e.getMessage());
-      //   }
-      // }
 
       if (PackageUtils.isFirstInstall(this) &&
         SharedPreferencesManager.getInstance().readInt(
@@ -392,18 +383,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         }
       }
     }
-
-    // private void checkForYandexSE() {
-    //   String countryCode = Locale.getDefault().getCountry();
-    //   if (yandexRegions.contains(countryCode)) {
-    //     TemplateUrl yandexTemplateUrl =
-    //       PresearchSearchEngineUtils.getTemplateUrlByShortName(OnboardingPrefManager.YANDEX);
-    //     if (yandexTemplateUrl != null) {
-    //       PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, false);
-    //       PresearchSearchEngineUtils.setDSEPrefs(yandexTemplateUrl, true);
-    //     }
-    //   }
-    // }
 
     private void setDSEToPresearch() {
       // Set the default search engine to engine.presearch.org. Added by Mamy
@@ -634,11 +613,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       Tab tab = selectExistingTab(url);
 
-      if (url.equals(REWARDS_SETTINGS_URL) ||
-      	url.equals(PRESEARCH_REWARDS_SETTINGS_URL)) {
-        url = PRESEARCH_SE_URL;
-      }
-
       if (tab != null) {
         return tab;
       } else { // Open a new tab
@@ -684,7 +658,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
       if (resultCode == RESULT_OK){
-        // dismissRewardsPanel();
+        dismissRewardsPanel();
         String open_url = data.getStringExtra(PresearchActivity.OPEN_URL);
         if (!TextUtils.isEmpty(open_url)) {
           openNewOrSelectExistingTab(open_url);
