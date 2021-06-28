@@ -1593,7 +1593,7 @@ Your Presearch account may have other forms of browsing history like searches an
         Open source licenses
       </message>
       <message name="IDS_OPEN_SOURCE_LICENSE_URL" desc="URL for open source license" translateable="false">
-        chrome://credits
+        presearch://credits
       </message>
       <message name="IDS_GOOGLE_TERMS_OF_SERVICE_TITLE" desc="Title for Presearch terms of service">
         Presearch Terms of Service
