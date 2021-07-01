@@ -57,15 +57,6 @@ public class PresearchPreferenceFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                || PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-            if (getPreferenceScreen() == null) return;
-            Preference presearchRewardsDebugPreference =
-                    getPreferenceScreen().findPreference(PresearchRewardsDebugPreferences.KEY);
-            if (presearchRewardsDebugPreference != null) {
-                getPreferenceScreen().removePreference(presearchRewardsDebugPreference);
-            }
-        }
     }
 
     protected boolean isStoragePermissionGranted(boolean isExport) {

@@ -36,11 +36,11 @@ public class PresearchTabCreator extends ChromeTabCreator {
     @Override
     public Tab launchUrl(String url, @TabLaunchType int type) {
         if (url.equals(UrlConstants.NTP_URL) && type == TabLaunchType.FROM_CHROME_UI) {
-            registerPageView();
+            //registerPageView();
             ChromeTabbedActivity chromeTabbedActivity = PresearchActivity.getChromeTabbedActivity();
             if(chromeTabbedActivity != null && Build.VERSION.SDK_INT <= Build.VERSION_CODES.M) {
                 TabModel tabModel = chromeTabbedActivity.getCurrentTabModel();
-                if (tabModel.getCount() >= SponsoredImageUtil.MAX_TABS && UserPrefs.get(Profile.getLastUsedRegularProfile()).getBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE)) {
+                if (tabModel.getCount() >= 10) {
                     Tab tab = PresearchActivity.class.cast(chromeTabbedActivity)
                                       .selectExistingTab(UrlConstants.NTP_URL);
                     if (tab != null) {

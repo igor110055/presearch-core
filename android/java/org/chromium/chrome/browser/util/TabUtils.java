@@ -95,6 +95,6 @@ public class TabUtils {
         if (rewardsLayout == null) {
             return;
         }
-        rewardsLayout.setVisibility(View.VISIBLE);
+        rewardsLayout.setVisibility(View.GONE);
     }
 }

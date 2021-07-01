@@ -10,22 +10,22 @@ import android.content.Intent;
 import android.net.Uri;
 
 public class PresearchIntentHandler extends IntentHandler {
-    private static final String CONNECTION_INFO_HELP_URL =
-            "https://support.google.com/chrome?p=android_connection_info";
-    private static final String PRESEARCH_CONNECTION_INFO_HELP_URL =
-            "https://support.presearch.org/hc/en-us/articles/360018185871-How-do-I-check-if-a-site-s-connection-is-secure-";
+    // private static final String CONNECTION_INFO_HELP_URL =
+    //         "https://support.google.com/chrome?p=android_connection_info";
+    // private static final String PRESEARCH_CONNECTION_INFO_HELP_URL =
+    //         "https://support.presearch.org/hc/en-us/articles/360018185871-How-do-I-check-if-a-site-s-connection-is-secure-";
 
     public PresearchIntentHandler(Activity activity, IntentHandlerDelegate delegate) {
         super(activity, delegate);
     }
 
-    @Override
-    public boolean onNewIntent(Intent intent) {
-        // Redirect requests if necessary
-        String url = getUrlFromIntent(intent);
-        if (url != null && url.equals(CONNECTION_INFO_HELP_URL)) {
-            intent.setData(Uri.parse(PRESEARCH_CONNECTION_INFO_HELP_URL));
-        }
-        return super.onNewIntent(intent);
-    }
+    // @Override
+    // public boolean onNewIntent(Intent intent) {
+    //     // Redirect requests if necessary
+    //     String url = getUrlFromIntent(intent);
+    //     if (url != null && url.equals(CONNECTION_INFO_HELP_URL)) {
+    //         intent.setData(Uri.parse(PRESEARCH_CONNECTION_INFO_HELP_URL));
+    //     }
+    //     return super.onNewIntent(intent);
+    // }
 }
