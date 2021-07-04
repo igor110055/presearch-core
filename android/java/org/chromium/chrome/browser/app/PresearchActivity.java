@@ -167,12 +167,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void onResumeWithNative() {
       super.onResumeWithNative();
       PresearchActivityJni.get().restartStatsUpdater();
-      // if (ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS) &&
-      //   !PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
-      //   if (mPresearchRewardsNativeWorker == null)
-      //     mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
-      //   mPresearchRewardsNativeWorker.AddObserver(this);
-      // }
     }
 
     @Override
