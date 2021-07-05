@@ -18,15 +18,11 @@ module.exports = [
   'https://crlsets.presearch.org/',
   'https://crxdownload.presearch.org/crx/blobs/',
   'https://updates.presearchsoftware.com/',
-  'https://p3a.presearch.org/',
+  'https://engine.presearch.org/',
+  'https://presearch.org/',
   'https://dns.google/dns-query', // needed for DoH on Mac build machines
   'https://chrome.cloudflare-dns.com/dns-query', // needed for DoH on Mac build machines
   'https://tor.presearchsoftware.com/', // for fetching tor client updater component
   'https://redirector.presearch.org/',
-  'https://sync-v2.presearch.org/v2', // presearch sync v2 production
-  'https://sync-v2.presearchsoftware.com/v2', // presearch sync v2 staging
-  'https://sync-v2.presearch.software/v2', // presearch sync v2 dev
-  'https://variations.presearch.org/seed', // presearch A/B testing
-  'https://presearch-today-cdn.presearch.org/', // Presearch Today (production)
   'https://pcdn.presearch.org/', // Presearch's Privacy-focused CDN
 ]
