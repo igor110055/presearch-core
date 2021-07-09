@@ -6,7 +6,7 @@
 
 namespace google_apis {
 const char kPresearchAPIKeysDevelopersHowToURL[] =
-    "https://community.presearch.org";
+    "https://presearch.org";
 }  // namespace google_apis
 
 #define kAPIKeysDevelopersHowToURL kPresearchAPIKeysDevelopersHowToURL

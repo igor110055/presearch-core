@@ -8,7 +8,7 @@
 #include "chrome/browser/ui/browser.h"
 #include "chrome/browser/ui/browser_tabstrip.h"
 
-const char kPresearchCommunitySupportUrl[] = "https://community.presearch.org/";
+const char kPresearchCommunitySupportUrl[] = "https://support.presearch.org/";
 
 PresearchBrowserContentSettingBubbleModelDelegate::
 PresearchBrowserContentSettingBubbleModelDelegate(Browser* browser) :
