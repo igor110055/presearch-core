@@ -78,7 +78,6 @@ import org.chromium.chrome.browser.notifications.retention.RetentionNotification
 import org.chromium.chrome.browser.ntp.PresearchNewTabPageLayout;
 import org.chromium.chrome.browser.ntp.NewTabPage;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.onboarding.SearchActivity;
 import org.chromium.chrome.browser.preferences.PresearchPref;
 import org.chromium.chrome.browser.preferences.PresearchPrefServiceBridge;
 import org.chromium.chrome.browser.preferences.website.PresearchShieldsContentSettings;
@@ -968,16 +967,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
 
     @Override
     public void onUrlFocusChange(boolean hasFocus) {
-         Context context = getContext();
-         if (hasFocus && PackageUtils.isFirstInstall(context)
-                 && PresearchActivity.getPresearchActivity() != null
-                 && PresearchActivity.getPresearchActivity().getActivityTab() != null
-                 && UrlUtilities.isNTPUrl(
-                         PresearchActivity.getPresearchActivity().getActivityTab().getUrlString())
-                 && !OnboardingPrefManager.getInstance().hasSearchEngineOnboardingShown()) {
-             Intent searchActivityIntent = new Intent(context, SearchActivity.class);
-             context.startActivity(searchActivityIntent);
-         }
          super.onUrlFocusChange(hasFocus);
     }
 
