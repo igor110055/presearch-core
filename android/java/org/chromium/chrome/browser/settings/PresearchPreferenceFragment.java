@@ -57,8 +57,7 @@ public class PresearchPreferenceFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        if (!ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                || BravePrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+        if (BravePrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
             if (getPreferenceScreen() == null) return;
             Preference presearchRewardsDebugPreference =
                     getPreferenceScreen().findPreference(PresearchRewardsDebugPreferences.KEY);
