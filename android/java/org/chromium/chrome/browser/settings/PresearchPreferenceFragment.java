@@ -57,7 +57,7 @@ public class PresearchPreferenceFragment extends PreferenceFragmentCompat {
     @Override
     public void onResume() {
         super.onResume();
-        if (BravePrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
+        if (PresearchPrefServiceBridge.getInstance().getSafetynetCheckFailed()) {
             if (getPreferenceScreen() == null) return;
             Preference presearchRewardsDebugPreference =
                     getPreferenceScreen().findPreference(PresearchRewardsDebugPreferences.KEY);
