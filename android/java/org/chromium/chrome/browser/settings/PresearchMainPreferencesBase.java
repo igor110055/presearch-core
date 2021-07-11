@@ -148,6 +148,7 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         }
         findPreference(PREF_ABOUT_CHROME).setOrder(++order);
         removePreferenceIfPresent(PREF_SYNC);
+        removePreferenceIfPresent(PREF_RATE_PRESEARCH);
         removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
 
         // We don't have home button on top toolbar at the moment
