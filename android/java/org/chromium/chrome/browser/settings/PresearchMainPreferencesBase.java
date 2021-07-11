@@ -96,11 +96,15 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         removePreferenceIfPresent(MainSettings.PREF_DOWNLOADS);
         removePreferenceIfPresent(MainSettings.PREF_SAFETY_CHECK);
         removePreferenceIfPresent(PREF_LANGUAGES);
+        removePreferenceIfPresent(PREF_RATE_PRESEARCH);
 
         updateSearchEnginePreference();
         updateControlSectionPreferences();
 
         rearrangePreferenceOrders();
+        removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
+        removePreferenceIfPresent(PREF_BACKGROUND_IMAGES);
+
     }
 
     /**
@@ -130,7 +134,9 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
             findPreference(PREF_USE_CUSTOM_TABS).setOrder(++order);
         }
         findPreference(PREF_ADVANCED_SECTION).setOrder(++order);
-        findPreference(PREF_PRIVACY).setOrder(++order);        
+        findPreference(PREF_PRIVACY).setOrder(++order);
+        findPreference(PREF_PRESEARCH_REWARDS).setOrder(++order);
+        findPreference(PREF_SYNC).setOrder(++order);
         findPreference(PREF_ACCESSIBILITY).setOrder(++order);
         findPreference(PREF_CONTENT_SETTINGS).setOrder(++order);
         findPreference(PREF_PRESEARCH_LANGUAGES).setOrder(++order);
@@ -141,6 +147,8 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
             findPreference(MainSettings.PREF_DEVELOPER).setOrder(++order);
         }
         findPreference(PREF_ABOUT_CHROME).setOrder(++order);
+        removePreferenceIfPresent(PREF_SYNC);
+        removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
 
         // We don't have home button on top toolbar at the moment
         if (!DeviceFormFactor.isTablet() && !BottomToolbarConfiguration.isBottomToolbarEnabled()) {
