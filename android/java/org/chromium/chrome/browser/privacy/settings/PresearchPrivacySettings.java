@@ -179,12 +179,9 @@ public class PresearchPrivacySettings extends PrivacySettings {
         mSearchSuggestions.setChecked(mPrefServiceBridge.getBoolean(Pref.SEARCH_SUGGEST_ENABLED));
         int order = findPreference(PREF_DO_NOT_TRACK).getOrder();
         mCloseTabsOnExitPref.setOrder(++order);
-        if (PresearchConfig.P3A_ENABLED) {
-            mSendP3A.setOrder(++order);
-            mSendP3A.setChecked(PresearchPrefServiceBridge.getInstance().getP3AEnabled());
-        } else {
-            getPreferenceScreen().removePreference(mSendP3A);
-        }
+
+        getPreferenceScreen().removePreference(mSendP3A);
+
         mHttpsePref.setOrder(++order);
         mIpfsGatewayPref.setOrder(++order);
         mAdBlockPref.setOrder(++order);
