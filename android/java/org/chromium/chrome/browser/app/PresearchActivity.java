@@ -146,7 +146,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String CHANNEL_ID = "com.presearch.browser";
     public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
     public static final String ANDROID_PACKAGE_NAME = "android";
-    public static final String PRESEARCH_BLOG_URL = "http://presearch.org/blog";
+    public static final String PRESEARCH_BLOG_URL = "http://support.presearch.org";
 
     private static final String JAPAN_COUNTRY_CODE = "JP";
 

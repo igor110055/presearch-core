@@ -69,8 +69,7 @@
           android:layout_marginBottom="8dp"
           android:src="@drawable/btn_bat"
           android:layout_gravity="center"
-          android:contentDescription="@string/accessibility_toolbar_btn_presearch_rewards"
-          android:visibility="gone" />
+          android:contentDescription="@string/accessibility_toolbar_btn_presearch_rewards"/>
 
       <ImageView
         android:id="@+id/br_rewards_onboarding_icon"
