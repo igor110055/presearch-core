@@ -198,7 +198,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         mPresearchRewardsOnboardingIcon = findViewById(R.id.br_rewards_onboarding_icon);
         mPresearchShieldsButton = (ImageButton) findViewById(R.id.presearch_shields_button);
         mPresearchRewardsButton = (ImageButton) findViewById(R.id.presearch_rewards_button);
-        mPresearchRewardsButton.setVisibility(View.GONE); // Added by Mamy
+        // mPresearchRewardsButton.setVisibility(View.GONE); // Added by Mamy
         mHomeButton = (HomeButton) findViewById(R.id.home_button);
 
         if (mHomeButton != null) {
