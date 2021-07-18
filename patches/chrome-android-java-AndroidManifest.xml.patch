@@ -54,19 +54,6 @@ index 9d44cc4f4f99..c9a2dbbc4e4f 100644
          android:icon="@drawable/ic_launcher"
          android:roundIcon="@drawable/ic_launcher_round"
          android:label="{% block application_label %}@string/app_name{% endblock %}"
-@@ -918,10 +929,10 @@ by a child template that "extends" this file.
-                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-             </intent-filter>
-             <intent-filter>
--                <action android:name="org.chromium.chrome.browser.searchwidget.START_TEXT_QUERY" />
-+                <action android:name="com.presearch.search.TextSearchActivity" />
-             </intent-filter>
-             <intent-filter>
--                <action android:name="org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY" />
-+                <action android:name="com.presearch.search.VoiceSearchActivity" />
-             </intent-filter>
-             <intent-filter>
-                 <action android:name="org.chromium.chrome.browser.searchwidget.UPDATE_ALL_WIDGETS" />
 @@ -1121,6 +1132,7 @@ by a child template that "extends" this file.
          </activity>
          {% endif %}
