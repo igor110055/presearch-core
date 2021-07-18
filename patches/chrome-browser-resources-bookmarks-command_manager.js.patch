@@ -6,8 +6,8 @@ index ea223392a9873e0172707fdc507d3c7d403d964c..cb5c39d2be02bfe2a397d2311a900204
          chrome.bookmarks.export();
          break;
        case Command.HELP_CENTER:
--        window.open('https://support.google.com/chrome/?p=bookmarks');
-+        window.open('https://support.presearch.org');
+-window.open('https://support.google.com/chrome/?p=bookmarks');
++window.open('https://support.presearch.org');
          break;
        default:
          assert(false);
