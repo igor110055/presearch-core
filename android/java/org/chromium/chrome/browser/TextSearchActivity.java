@@ -25,6 +25,7 @@ public class TextSearchActivity extends Activity {
         }
 
         Intent intent = new Intent();
+        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         intent.setAction(ACTION_START_TEXT_QUERY);
         SearchWidgetProvider.startSearchActivity(intent, false);
         finish();
