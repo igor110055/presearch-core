@@ -131,7 +131,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     private static final String PREF_CLOSE_TABS_ON_EXIT = "close_tabs_on_exit";
     public static final String OPEN_URL = "open_url";
 
-    public static final String PRESEARCH_PRODUCTION_PACKAGE_NAME = "com.presearch.browser";
+    public static final String PRESEARCH_PRODUCTION_PACKAGE_NAME = "com.presearch";
     public static final String PRESEARCH_BETA_PACKAGE_NAME = "com.presearch.browser_beta";
     public static final String PRESEARCH_NIGHTLY_PACKAGE_NAME = "com.presearch.browser_nightly";
 
@@ -143,7 +143,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     /**
      * Settings for sending local notification reminders.
      */
-    public static final String CHANNEL_ID = "com.presearch.browser";
+    public static final String CHANNEL_ID = "com.presearch";
     public static final String ANDROID_SETUPWIZARD_PACKAGE_NAME = "com.google.android.setupwizard";
     public static final String ANDROID_PACKAGE_NAME = "android";
     public static final String PRESEARCH_BLOG_URL = "http://support.presearch.org";

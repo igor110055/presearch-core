@@ -18,13 +18,13 @@ import java.util.Set;
 
 public class PresearchChannelDefinitions {
     public class ChannelId {
-        public static final String PRESEARCH_ADS = "com.presearch.browser.ads";
-        public static final String PRESEARCH_ADS_BACKGROUND = "com.presearch.browser.ads.background";
-        public static final String PRESEARCH_BROWSER = "com.presearch.browser";
+        public static final String PRESEARCH_ADS = "com.presearch.ads";
+        public static final String PRESEARCH_ADS_BACKGROUND = "com.presearch.ads.background";
+        public static final String PRESEARCH_BROWSER = "com.presearch";
     }
 
     public class ChannelGroupId {
-        public static final String PRESEARCH_ADS = "com.presearch.browser.ads";
+        public static final String PRESEARCH_ADS = "com.presearch.ads";
     }
 
     static protected void addPresearchChannels(

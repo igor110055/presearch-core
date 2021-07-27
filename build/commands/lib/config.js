@@ -317,7 +317,7 @@ Config.prototype.buildArgs = function () {
       args.chrome_public_manifest_package = 'com.presearch.browser_default'
     } else if (this.channel === '') {
       args.android_channel = 'stable'
-      args.chrome_public_manifest_package = 'com.presearch.browser'
+      args.chrome_public_manifest_package = 'com.presearch'
     } else if (this.channel === 'beta') {
       args.chrome_public_manifest_package = 'com.presearch.browser_beta'
     } else if (this.channel === 'dev') {
