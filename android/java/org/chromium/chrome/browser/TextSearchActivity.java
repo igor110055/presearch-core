@@ -5,6 +5,7 @@
 
  package org.chromium.chrome.browser;
 
+import android.os.Bundle;
  import android.app.Activity;
  import android.content.Context;
  import android.content.Intent;
