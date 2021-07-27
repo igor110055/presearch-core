@@ -68,7 +68,7 @@
     android:exported="true">
     <intent-filter>
         <action android:name="com.presearch.search.TextSearchActivity" />
-        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.DEFAULT" />
     </intent-filter>
 </activity>
 
@@ -78,7 +78,7 @@
     android:exported="true">
     <intent-filter>
         <action android:name="com.presearch.search.VoiceSearchActivity" />
-        <category android:name="android.intent.category.LAUNCHER" />
+        <category android:name="android.intent.category.DEFAULT" />
     </intent-filter>
 </activity>
 

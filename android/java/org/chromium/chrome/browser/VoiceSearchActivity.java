@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
+
 public class VoiceSearchActivity extends Activity {
   static final String ACTION_START_VOICE_QUERY =
       "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
@@ -20,7 +22,7 @@ public class VoiceSearchActivity extends Activity {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         intent.setAction(ACTION_START_VOICE_QUERY);
-        sendBroadcast(intent);
+        SearchWidgetProvider.startSearchActivity(intent, false);
         finish();
     }
 }
