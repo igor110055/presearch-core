@@ -11,7 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.chromium.chrome.browser.util.PackageUtils;
-import org.chromium.chrome.browser.onboarding.OnboardingActivity;
+import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
 
 public class TextSearchActivity extends Activity {
@@ -21,7 +21,7 @@ public class TextSearchActivity extends Activity {
         super.onCreate(savedInstanceState);
 
         if (PackageUtils.isFirstInstall(this)) {
-          OnboardingActivity.getOnboardingActivity().finish();
+          OnboardingPrefManager.getInstance().setOnboardingShown(true);
         }
 
         Intent intent = new Intent();
