@@ -22,7 +22,7 @@ public class VoiceSearchActivity extends Activity {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         intent.setAction(ACTION_START_VOICE_QUERY);
-        SearchWidgetProvider.startSearchActivity(intent, false);
+        SearchWidgetProvider.startSearchActivity(intent, true);
         finish();
     }
 }
