@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 
+import org.chromium.chrome.browser.util.PackageUtils;
+import org.chromium.chrome.browser.onboarding.OnboardingActivity;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
 
 public class VoiceSearchActivity extends Activity {
@@ -18,6 +20,10 @@ public class VoiceSearchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (PackageUtils.isFirstInstall(this)) {
+          OnboardingActivity.getOnboardingActivity().finish();
+        }
 
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
