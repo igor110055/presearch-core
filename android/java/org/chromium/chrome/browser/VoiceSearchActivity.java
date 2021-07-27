@@ -3,19 +3,19 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
- package org.chromium.chrome.browser;
+package org.chromium.chrome.browser;
 
 import android.os.Bundle;
- import android.app.Activity;
- import android.content.Context;
- import android.content.Intent;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 
- public class VoiceSearchActivity extends Activity {
+public class VoiceSearchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         static final String ACTION_START_VOICE_QUERY =
-                "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
+            "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
 
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
