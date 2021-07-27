@@ -11,10 +11,11 @@ import android.content.Context;
 import android.content.Intent;
 
 public class TextSearchActivity extends Activity {
+  static final String ACTION_START_TEXT_QUERY = "org.chromium.chrome.browser.searchwidget.START_TEXT_QUERY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        static final String ACTION_START_TEXT_QUERY = "org.chromium.chrome.browser.searchwidget.START_TEXT_QUERY";
+
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         intent.setAction(ACTION_START_TEXT_QUERY);

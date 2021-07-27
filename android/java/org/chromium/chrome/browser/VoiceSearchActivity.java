@@ -11,11 +11,11 @@ import android.content.Context;
 import android.content.Intent;
 
 public class VoiceSearchActivity extends Activity {
+  static final String ACTION_START_VOICE_QUERY =
+      "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        static final String ACTION_START_VOICE_QUERY =
-            "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
 
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
