@@ -866,7 +866,7 @@ if (!is_android) {
 
 # All in this section is for running instrumentation java tests
 if (is_android) {
-  presearch_public_test_manifest_package = "com.presearch.browser.tests"
+  presearch_public_test_manifest_package = "com.presearch.tests"
 
   presearch_public_test_apk_manifest =
       "$root_gen_dir/presearch_public_test_apk_manifest/AndroidManifest.xml"

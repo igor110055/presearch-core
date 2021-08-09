@@ -314,17 +314,17 @@ Config.prototype.buildArgs = function () {
     args.android_channel = this.channel
     if (!this.isOfficialBuild()) {
       args.android_channel = 'default'
-      args.chrome_public_manifest_package = 'com.presearch.browser_default'
+      args.chrome_public_manifest_package = 'com.presearch'
     } else if (this.channel === '') {
       args.android_channel = 'stable'
       args.chrome_public_manifest_package = 'com.presearch'
     } else if (this.channel === 'beta') {
-      args.chrome_public_manifest_package = 'com.presearch.browser_beta'
+      args.chrome_public_manifest_package = 'com.presearch_beta'
     } else if (this.channel === 'dev') {
-      args.chrome_public_manifest_package = 'com.presearch.browser_dev'
+      args.chrome_public_manifest_package = 'com.presearch_dev'
     } else if (this.channel === 'nightly') {
       args.android_channel = 'canary'
-      args.chrome_public_manifest_package = 'com.presearch.browser_nightly'
+      args.chrome_public_manifest_package = 'com.presearch_nightly'
       args.exclude_unwind_tables = false
     }
 

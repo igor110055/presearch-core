@@ -132,8 +132,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String OPEN_URL = "open_url";
 
     public static final String PRESEARCH_PRODUCTION_PACKAGE_NAME = "com.presearch";
-    public static final String PRESEARCH_BETA_PACKAGE_NAME = "com.presearch.browser_beta";
-    public static final String PRESEARCH_NIGHTLY_PACKAGE_NAME = "com.presearch.browser_nightly";
+    public static final String PRESEARCH_BETA_PACKAGE_NAME = "com.presearch_beta";
+    public static final String PRESEARCH_NIGHTLY_PACKAGE_NAME = "com.presearch_nightly";
 
     private static final int DAYS_1 = 1;
     private static final int DAYS_4 = 4;
