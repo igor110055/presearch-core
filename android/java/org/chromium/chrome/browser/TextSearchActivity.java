@@ -11,7 +11,6 @@ import android.content.Context;
 import android.content.Intent;
 
 import org.chromium.chrome.browser.util.PackageUtils;
-import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
 
 public class TextSearchActivity extends Activity {
@@ -19,10 +18,6 @@ public class TextSearchActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        if (PackageUtils.isFirstInstall(this)) {
-          OnboardingPrefManager.getInstance().setOnboardingShown(true);
-        }
 
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);

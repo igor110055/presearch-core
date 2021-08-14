@@ -21,10 +21,6 @@ public class VoiceSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (PackageUtils.isFirstInstall(this)) {
-          OnboardingPrefManager.getInstance().setOnboardingShown(true);
-        }
-
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
         intent.setAction(ACTION_START_VOICE_QUERY);
