@@ -15,16 +15,19 @@ import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
 
 public class VoiceSearchActivity extends Activity {
-  static final String ACTION_START_VOICE_QUERY =
-      "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
+    static final String ACTION_START_VOICE_QUERY = "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        // Intent intent = new Intent();
+        // intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        // intent.setAction(ACTION_START_VOICE_QUERY);
+        // SearchWidgetProvider.startSearchActivity(intent, true);
+        // finish();
+        Intent intent = new Intent(getApplicationContext(), SearchWidgetProvider.class);
         intent.setAction(ACTION_START_VOICE_QUERY);
-        SearchWidgetProvider.startSearchActivity(intent, true);
-        finish();
+        sendBroadcast(intent);
     }
 }

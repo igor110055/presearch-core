@@ -19,10 +19,13 @@ public class TextSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent();
-        intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        // Intent intent = new Intent();
+        // intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
+        // intent.setAction(ACTION_START_TEXT_QUERY);
+        // SearchWidgetProvider.startSearchActivity(intent, false);
+        // finish();
+        Intent intent = new Intent(getApplicationContext(), SearchWidgetProvider.class);
         intent.setAction(ACTION_START_TEXT_QUERY);
-        SearchWidgetProvider.startSearchActivity(intent, false);
-        finish();
+        sendBroadcast(intent);
     }
 }
