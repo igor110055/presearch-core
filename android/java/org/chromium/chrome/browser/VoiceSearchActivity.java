@@ -7,29 +7,30 @@ package org.chromium.chrome.browser;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import org.chromium.chrome.browser.IntentHandler;
+import org.chromium.base.ContextUtils;
+import org.chromium.base.IntentUtils;
 
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
 
-public class TextSearchActivity extends Activity {
+public class VoiceSearchActivity extends Activity {
   static final String ACTION_START_VOICE_QUERY = "org.chromium.chrome.browser.searchwidget.START_VOICE_QUERY";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Context context = ContextUtils.getApplicationContext();
 
-        // Intent intent = new Intent();
-        // intent.addFlags(Intent.FLAG_INCLUDE_STOPPED_PACKAGES);
-        // intent.setAction(ACTION_START_TEXT_QUERY);
-        // SearchWidgetProvider.startSearchActivity(intent, false);
-        // finish();
-
-        Intent intent = new Intent(ACTION_START_VOICE_QUERY);
-        intent.setClass(context, SearchWidgetProvider.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Intent voiceIntent = new Intent(ACTION_START_VOICE_QUERY);
+        voiceIntent.setClass(context, SearchWidgetProvider.class);
+        voiceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         IntentHandler.addTrustedIntentExtras(intent);
-        return intent;
+
+        PendingIntent.getBroadcast(context, 0, voiceIntent,
+                        PendingIntent.FLAG_UPDATE_CURRENT
+                                | IntentUtils.getPendingIntentMutabilityFlag(false));
     }
 }
