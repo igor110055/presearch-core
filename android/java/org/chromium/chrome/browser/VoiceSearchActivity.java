@@ -43,8 +43,7 @@ public class VoiceSearchActivity extends Activity {
     }
 
     public static void startSearchActivity(Context context, Intent intent, boolean startVoiceSearch) {
-        Log.d(SearchActivity.TAG, "Launching SearchActivity: VOICE=" + startVoiceSearch);
-
+        
         // Launch the SearchActivity.
         Intent searchIntent = new Intent();
         searchIntent.setClass(context, SearchActivity.class);
