@@ -40,5 +40,6 @@ public class TextSearchActivity extends Activity {
             }
         };
         thread.start();
+        finish();
     }
 }

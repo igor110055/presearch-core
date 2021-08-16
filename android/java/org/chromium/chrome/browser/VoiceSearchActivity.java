@@ -40,10 +40,11 @@ public class VoiceSearchActivity extends Activity {
             }
         };
         thread.start();
+        finish();
     }
 
     public static void startSearchActivity(Context context, Intent intent, boolean startVoiceSearch) {
-        
+
         // Launch the SearchActivity.
         Intent searchIntent = new Intent();
         searchIntent.setClass(context, SearchActivity.class);
