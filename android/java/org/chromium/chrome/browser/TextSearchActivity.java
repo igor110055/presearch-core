@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import org.chromium.chrome.browser.IntentHandler;
 
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
@@ -25,10 +26,10 @@ public class TextSearchActivity extends Activity {
         // SearchWidgetProvider.startSearchActivity(intent, false);
         // finish();
 
-        Intent intent = new Intent();
-        intent.setAction(ACTION_START_TEXT_QUERY);
-        intent.setPackage("com.presearch");
-        sendBroadcast(intent);
-        finish();
+        Intent intent = new Intent(ACTION_START_TEXT_QUERY);
+        intent.setClass(context, SearchWidgetProvider.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        IntentHandler.addTrustedIntentExtras(intent);
+        return intent;
     }
 }
