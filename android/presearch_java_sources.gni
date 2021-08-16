@@ -13,8 +13,6 @@ import("//presearch/components/safetynet/java_sources.gni")
 import("//components/feed/features.gni")
 
 presearch_java_sources = [
-  "../../presearch/android/java/org/chromium/chrome/browser/TextSearchActivity.java",
-  "../../presearch/android/java/org/chromium/chrome/browser/VoiceSearchActivity.java",
   "../../presearch/android/feed/core/java/src/org/chromium/chrome/browser/feed/PresearchFeedSurfaceCoordinator.java",
   "../../presearch/android/java/org/chromium/chrome/browser/PresearchAppHooks.java",
   "../../presearch/android/java/org/chromium/chrome/browser/PresearchBadge.java",
