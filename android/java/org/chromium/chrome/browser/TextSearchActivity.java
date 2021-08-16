@@ -32,5 +32,6 @@ public class TextSearchActivity extends Activity {
         PendingIntent.getBroadcast(context, 0, textIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                                 | IntentUtils.getPendingIntentMutabilityFlag(false));
+        finish();
     }
 }

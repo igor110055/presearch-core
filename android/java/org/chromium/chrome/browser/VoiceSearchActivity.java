@@ -32,5 +32,6 @@ public class VoiceSearchActivity extends Activity {
         PendingIntent.getBroadcast(context, 0, voiceIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                                 | IntentUtils.getPendingIntentMutabilityFlag(false));
+        finish();
     }
 }
