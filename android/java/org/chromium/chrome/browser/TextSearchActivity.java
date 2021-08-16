@@ -24,8 +24,11 @@ public class TextSearchActivity extends Activity {
         // intent.setAction(ACTION_START_TEXT_QUERY);
         // SearchWidgetProvider.startSearchActivity(intent, false);
         // finish();
-        Intent intent = new Intent(getApplicationContext(), SearchWidgetProvider.class);
+
+        Intent intent = new Intent();
         intent.setAction(ACTION_START_TEXT_QUERY);
+        intent.setPackage("com.presearch");
         sendBroadcast(intent);
+        finish();
     }
 }

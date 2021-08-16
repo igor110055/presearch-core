@@ -26,8 +26,11 @@ public class VoiceSearchActivity extends Activity {
         // intent.setAction(ACTION_START_VOICE_QUERY);
         // SearchWidgetProvider.startSearchActivity(intent, true);
         // finish();
-        Intent intent = new Intent(getApplicationContext(), SearchWidgetProvider.class);
+        
+        Intent intent = new Intent();
         intent.setAction(ACTION_START_VOICE_QUERY);
+        intent.setPackage("com.presearch");
         sendBroadcast(intent);
+        finish();
     }
 }
