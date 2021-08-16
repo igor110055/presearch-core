@@ -27,7 +27,7 @@ public class TextSearchActivity extends Activity {
         Intent textIntent = new Intent(ACTION_START_TEXT_QUERY);
         textIntent.setClass(context, SearchWidgetProvider.class);
         textIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        IntentHandler.addTrustedIntentExtras(intent);
+        IntentHandler.addTrustedIntentExtras(textIntent);
 
         PendingIntent.getBroadcast(context, 0, textIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT

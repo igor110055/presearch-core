@@ -27,7 +27,7 @@ public class VoiceSearchActivity extends Activity {
         Intent voiceIntent = new Intent(ACTION_START_VOICE_QUERY);
         voiceIntent.setClass(context, SearchWidgetProvider.class);
         voiceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        IntentHandler.addTrustedIntentExtras(intent);
+        IntentHandler.addTrustedIntentExtras(voiceIntent);
 
         PendingIntent.getBroadcast(context, 0, voiceIntent,
                         PendingIntent.FLAG_UPDATE_CURRENT
