@@ -62,7 +62,7 @@
 
 <!-- Search trigger -->
 
-<!-- <activity
+<activity
     android:name="org.chromium.chrome.browser.TextSearchActivity"
     android:theme="@android:style/Theme.NoDisplay"
     android:exported="true">
@@ -80,7 +80,7 @@
         <action android:name="com.presearch.search.VoiceSearchActivity" />
         <category android:name="android.intent.category.DEFAULT" />
     </intent-filter>
-</activity> -->
+</activity>
 
 <!-- Upgrade related -->
 <receiver android:name="org.chromium.chrome.browser.upgrade.PresearchPackageReplacedBroadcastReceiver"
