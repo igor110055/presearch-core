@@ -31,12 +31,13 @@ public class VoiceSearchActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(ACTION_START_VOICE_QUERY);
 
-        run(new Runnable() {
+        Thread thread = new Thread() {
             @Override
             public void run() {
-                  startSearchActivity(context, intent, true);
+                startSearchActivity(context, intent, true);
             }
-        });
+        };
+        thread.start();
     }
 
     public static void startSearchActivity(Context context, Intent intent, boolean startVoiceSearch) {

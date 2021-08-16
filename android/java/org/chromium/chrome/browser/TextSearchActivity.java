@@ -33,15 +33,12 @@ public class TextSearchActivity extends Activity {
         Intent intent = new Intent();
         intent.setAction(ACTION_START_TEXT_QUERY);
 
-        run(new Runnable() {
+        Thread thread = new Thread() {
             @Override
             public void run() {
-                if (IntentHandler.wasIntentSenderChrome(intent)) {
-                    VoiceSearchActivity.startSearchActivity(context, intent, false);
-                } else {
-                    SearchWidgetProvider.super.onReceive(context, intent);
-                }
+                VoiceSearchActivity.startSearchActivity(context, intent, false);
             }
-        });
+        };
+        thread.start();
     }
 }
