@@ -31,11 +31,7 @@ public class VoiceSearchActivity extends Activity {
         run(new Runnable() {
             @Override
             public void run() {
-                if (IntentHandler.wasIntentSenderChrome(intent)) {
-                    startSearchActivity(context, intent, true);
-                } else {
-                    SearchWidgetProvider.super.onReceive(context, intent);
-                }
+                  startSearchActivity(context, intent, true);
             }
         });
     }
@@ -48,8 +44,8 @@ public class VoiceSearchActivity extends Activity {
         searchIntent.setClass(context, SearchActivity.class);
         searchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         searchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
-        searchIntent.putExtra(EXTRA_START_VOICE_SEARCH, startVoiceSearch);
-        searchIntent.putExtra(EXTRA_FROM_SEARCH_WIDGET, true);
+        searchIntent.putExtra(SearchWidgetProvider.EXTRA_START_VOICE_SEARCH, startVoiceSearch);
+        searchIntent.putExtra(SearchWidgetProvider.EXTRA_FROM_SEARCH_WIDGET, true);
 
         Bundle optionsBundle =
                 ActivityOptionsCompat.makeCustomAnimation(context, R.anim.activity_open_enter, 0)
