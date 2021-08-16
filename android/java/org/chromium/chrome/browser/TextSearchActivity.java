@@ -12,6 +12,9 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.core.app.ActivityOptionsCompat;
 
+import org.chromium.base.ThreadUtils;
+import org.chromium.base.Log;
+import org.chromium.chrome.R;
 import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
