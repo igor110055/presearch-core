@@ -10,6 +10,8 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import androidx.core.app.ActivityOptionsCompat;
+
 import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
@@ -23,15 +25,35 @@ public class VoiceSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Context context = ContextUtils.getApplicationContext();
+        Intent intent = new Intent();
+        intent.setAction(ACTION_START_VOICE_QUERY);
 
-        Intent voiceIntent = new Intent(ACTION_START_VOICE_QUERY);
-        voiceIntent.setClass(context, SearchWidgetProvider.class);
-        voiceIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        IntentHandler.addTrustedIntentExtras(voiceIntent);
+        run(new Runnable() {
+            @Override
+            public void run() {
+                if (IntentHandler.wasIntentSenderChrome(intent)) {
+                    startSearchActivity(context, intent, true);
+                } else {
+                    SearchWidgetProvider.super.onReceive(context, intent);
+                }
+            }
+        });
+    }
 
-        PendingIntent.getBroadcast(context, 0, voiceIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                                | IntentUtils.getPendingIntentMutabilityFlag(false));
-        finish();
+    public static void startSearchActivity(Context context, Intent intent, boolean startVoiceSearch) {
+        Log.d(SearchActivity.TAG, "Launching SearchActivity: VOICE=" + startVoiceSearch);
+
+        // Launch the SearchActivity.
+        Intent searchIntent = new Intent();
+        searchIntent.setClass(context, SearchActivity.class);
+        searchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        searchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_DOCUMENT);
+        searchIntent.putExtra(EXTRA_START_VOICE_SEARCH, startVoiceSearch);
+        searchIntent.putExtra(EXTRA_FROM_SEARCH_WIDGET, true);
+
+        Bundle optionsBundle =
+                ActivityOptionsCompat.makeCustomAnimation(context, R.anim.activity_open_enter, 0)
+                        .toBundle();
+        IntentUtils.safeStartActivity(context, searchIntent, optionsBundle);
     }
 }

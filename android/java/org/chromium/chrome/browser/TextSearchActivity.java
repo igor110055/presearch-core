@@ -10,9 +10,13 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import androidx.core.app.ActivityOptionsCompat;
+
 import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
+
+import org.org.chromium.chrome.browser.VoiceSearchActivity;
 
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;
@@ -23,15 +27,18 @@ public class TextSearchActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Context context = ContextUtils.getApplicationContext();
+        Intent intent = new Intent();
+        intent.setAction(ACTION_START_TEXT_QUERY);
 
-        Intent textIntent = new Intent(ACTION_START_TEXT_QUERY);
-        textIntent.setClass(context, SearchWidgetProvider.class);
-        textIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        IntentHandler.addTrustedIntentExtras(textIntent);
-
-        PendingIntent.getBroadcast(context, 0, textIntent,
-                        PendingIntent.FLAG_UPDATE_CURRENT
-                                | IntentUtils.getPendingIntentMutabilityFlag(false));
-        finish();
+        run(new Runnable() {
+            @Override
+            public void run() {
+                if (IntentHandler.wasIntentSenderChrome(intent)) {
+                    VoiceSearchActivity.startSearchActivity(context, intent, false);
+                } else {
+                    SearchWidgetProvider.super.onReceive(context, intent);
+                }
+            }
+        });
     }
 }
