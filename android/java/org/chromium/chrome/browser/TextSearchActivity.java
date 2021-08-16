@@ -19,7 +19,7 @@ import org.chromium.chrome.browser.IntentHandler;
 import org.chromium.base.ContextUtils;
 import org.chromium.base.IntentUtils;
 
-import org.org.chromium.chrome.browser.VoiceSearchActivity;
+import org.chromium.chrome.browser.VoiceSearchActivity;
 
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.chrome.browser.searchwidget.SearchWidgetProvider;

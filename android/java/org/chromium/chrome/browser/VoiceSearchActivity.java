@@ -12,6 +12,8 @@ import android.content.Context;
 import android.content.Intent;
 import androidx.core.app.ActivityOptionsCompat;
 
+import org.chromium.chrome.browser.searchwidget.SearchActivity;
+
 import org.chromium.base.ThreadUtils;
 import org.chromium.base.Log;
 import org.chromium.chrome.R;
