@@ -1,16 +1,16 @@
-/* Copyright (c) 2021 The Presearch Authors. All rights reserved.
+/* Copyright (c) 2021 The Brave Authors. All rights reserved.
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this file,
  * You can obtain one at http://mozilla.org/MPL/2.0/. */
 
-#ifndef PRESEARCH_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
-#define PRESEARCH_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
+#ifndef BRAVE_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
+#define BRAVE_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
 #include <memory>
 #include <string>
 #include <vector>
 
 extern "C" {
-#include "lib.h"
+#include "lib.h"  // NOLINT
 }
 
 #if defined(ADBLOCK_SHARED_LIBRARY)
@@ -47,7 +47,7 @@ class ADBLOCK_EXPORT FilterList {
              const std::string& component_id,
              const std::string& base64_public_key,
              const std::string& desc);
-  FilterList(const FilterList& other);
+  explicit FilterList(const FilterList& other);
   ~FilterList();
 
   const std::string uuid;
@@ -68,6 +68,7 @@ class ADBLOCK_EXPORT Engine {
  public:
   Engine();
   explicit Engine(const std::string& rules);
+  Engine(const char* data, size_t data_size);
   void matches(const std::string& url,
                const std::string& host,
                const std::string& tab_host,
@@ -105,4 +106,4 @@ class ADBLOCK_EXPORT Engine {
 
 }  // namespace adblock
 
-#endif  // PRESEARCH_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
+#endif  // BRAVE_COMPONENTS_ADBLOCK_RUST_FFI_SRC_WRAPPER_H_
