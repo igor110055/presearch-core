@@ -78,7 +78,6 @@ import org.chromium.chrome.browser.notifications.retention.RetentionNotification
 import org.chromium.chrome.browser.ntp.PresearchNewTabPageLayout;
 import org.chromium.chrome.browser.ntp.NewTabPage;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.onboarding.SearchActivity;
 import org.chromium.chrome.browser.preferences.PresearchPref;
 import org.chromium.chrome.browser.preferences.PresearchPrefServiceBridge;
 import org.chromium.chrome.browser.preferences.website.PresearchShieldsContentSettings;
