@@ -19,7 +19,6 @@ java_binary("java_bytecode_rewriter") {
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchCommandLineInitUtilClassAdapter.java",
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchEditUrlSuggestionProcessorClassAdapter.java",
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchFeedSurfaceCoordinatorClassAdapter.java",
-    "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchHomepageManagerClassAdapter.java",
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchIncognitoToggleTabLayoutClassAdapter.java",
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchLaunchIntentDispatcherClassAdapter.java",
     "//presearch/build/android/bytecode/java/org/presearch/bytecode/PresearchMainPreferenceBaseClassAdapter.java",
