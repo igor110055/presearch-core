@@ -52,33 +52,6 @@
             android:textSize="16sp"
             android:textColor="@color/onboarding_text_color"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="32dp"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <CheckBox
-                android:id="@+id/p3a_onboarding_checkbox"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:button="@drawable/presearch_checkbox"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="8dp"/>
-
-            <TextView
-                android:id="@+id/p3a_onboarding_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/private_product_analysis_text"
-                android:textSize="16sp"
-                android:textColor="@color/onboarding_text_color"/>
-
-        </LinearLayout>
-
         <Button
             android:id="@+id/btn_continue"
             android:layout_width="match_parent"

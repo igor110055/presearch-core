@@ -16,7 +16,6 @@ import org.junit.runner.RunWith;
 
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.ChromeActivity;
-import org.chromium.chrome.browser.ntp.PresearchDuckDuckGoOfferView;
 import org.chromium.chrome.browser.ntp.IncognitoNewTabPage;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
@@ -58,15 +57,6 @@ public class PresearchPrivateTabTest {
     @Test
     @SmallTest
     public void testPresearchPrivateTabDdgGone() throws Exception {
-        TestThreadUtils.runOnUiThreadBlocking(() -> {
-            TemplateUrl templateUrl = PresearchSearchEngineUtils
-                    .getTemplateUrlByShortName(PresearchDuckDuckGoOfferView.DDG_SEARCH_ENGINE_SHORT_NAME);
-            if (templateUrl != null) {
-                PresearchSearchEngineUtils.setDSEPrefs(templateUrl, true);
-                PresearchSearchEngineUtils.updateActiveDSE(true);
-            }
-        });
-
         mActivityTestRule.newIncognitoTabFromMenu();
         final IncognitoNewTabPage ntp = (IncognitoNewTabPage) mActivityTestRule.getActivity().getActivityTab()
                 .getNativePage();

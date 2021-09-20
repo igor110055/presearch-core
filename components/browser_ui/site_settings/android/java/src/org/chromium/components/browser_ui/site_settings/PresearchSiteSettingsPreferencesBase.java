@@ -14,12 +14,10 @@ import org.chromium.components.browser_ui.settings.SettingsUtils;
 import java.util.HashMap;
 
 public class PresearchSiteSettingsPreferencesBase extends SiteSettingsPreferenceFragment {
-    private static final String DESKTOP_MODE_CATEGORY_KEY = "desktop_mode_category";
     private static final String PLAY_YT_VIDEO_IN_BROWSER_CATEGORY_KEY = "play_yt_video_in_browser_category";
     private static final String ADS_KEY = "ads";
     private static final String BACKGROUND_SYNC_KEY = "background_sync";
     private static final String PLAY_YT_VIDEO_IN_BROWSER_KEY = "play_yt_video_in_browser";
-    private static final String DESKTOP_MODE_KEY = "desktop_mode";
     private static final String IDLE_DETECTION = "idle_detection";
 
     private final HashMap<String, Preference> mRemovedPreferences = new HashMap<>();
@@ -69,7 +67,6 @@ public class PresearchSiteSettingsPreferencesBase extends SiteSettingsPreference
         removePreferenceIfPresent(IDLE_DETECTION);
         removePreferenceIfPresent(ADS_KEY);
         removePreferenceIfPresent(BACKGROUND_SYNC_KEY);
-        removePreferenceIfPresent(DESKTOP_MODE_CATEGORY_KEY);
     }
 
     private void updatePresearchPreferenceStates() {
@@ -79,12 +76,5 @@ public class PresearchSiteSettingsPreferencesBase extends SiteSettingsPreference
                 PLAY_YT_VIDEO_IN_BROWSER_KEY, true);
             p.setSummary(enabled ? R.string.text_enabled : R.string.text_disabled);
         }
-        // {
-        //     Preference p = findPreference(DESKTOP_MODE_CATEGORY_KEY);
-        //     boolean enabled = ContextUtils.getAppSharedPreferences().getBoolean(
-        //         DESKTOP_MODE_KEY, false);
-        //     p.setSummary(enabled ? R.string.settings_desktop_mode_enabled_summary
-        //                          : R.string.settings_desktop_mode_disabled_summary);
-        // }
     }
 }

@@ -48,7 +48,6 @@ import org.chromium.chrome.browser.PresearchFeatureList;
 import org.chromium.chrome.browser.PresearchHelper;
 import org.chromium.chrome.browser.PresearchRelaunchUtils;
 import org.chromium.chrome.browser.PresearchRewardsHelper;
-import org.chromium.chrome.browser.PresearchRewardsNativeWorker;
 import org.chromium.chrome.browser.PresearchRewardsObserver;
 import org.chromium.chrome.browser.PresearchSyncReflectionUtils;
 import org.chromium.chrome.browser.ChromeTabbedActivity;
@@ -148,15 +147,9 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public static final String ANDROID_PACKAGE_NAME = "android";
     public static final String PRESEARCH_BLOG_URL = "http://support.presearch.org";
 
-    private static final String JAPAN_COUNTRY_CODE = "JP";
-
     // Explicitly declare this variable to avoid build errors.
     // It will be removed in asm and parent variable will be used instead.
     protected ObservableSupplier < Profile > mTabModelProfileSupplier;
-    private PresearchRewardsNativeWorker mPresearchRewardsNativeWorker;
-
-    private static final List < String > yandexRegions =
-      Arrays.asList("AM", "AZ", "BY", "KG", "KZ", "MD", "RU", "TJ", "TM", "UZ");
 
     public PresearchActivity() {
       // Disable key checker to avoid asserts on Presearch keys in debug
@@ -167,14 +160,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void onResumeWithNative() {
       super.onResumeWithNative();
       PresearchActivityJni.get().restartStatsUpdater();
-    }
-
-    @Override
-    public void onPauseWithNative() {
-      super.onPauseWithNative();
-      if (mPresearchRewardsNativeWorker != null) {
-        mPresearchRewardsNativeWorker.RemoveObserver(this);
-      }
     }
 
     @Override
@@ -287,30 +272,20 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       //set bg ads to off for existing and new installations
       setBgPresearchAdsDefaultOff();
 
-      Context app = ContextUtils.getApplicationContext();
-      if (null != app &&
-        PresearchReflectionUtil.EqualTypes(this.getClass(), ChromeTabbedActivity.class)) {
-        // Trigger PresearchSyncWorker CTOR to make migration from sync v1 if sync is enabled
-        PresearchSyncReflectionUtils.getSyncWorker();
-      }
-
       checkForNotificationData();
 
-      if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) == 1) {
-        Calendar calender = Calendar.getInstance();
-        calender.setTime(new Date());
-        calender.add(Calendar.DATE, DAYS_12);
-        OnboardingPrefManager.getInstance().setNextCrossPromoModalDate(
-          calender.getTimeInMillis());
-      }
+      if (!RateUtils.getInstance(this).getPrefRateEnabled()) {
+            RateUtils.getInstance(this).setPrefRateEnabled(true);
+            RateUtils.getInstance(this).setNextRateDateAndCount();
+        }
 
-      PresearchSyncReflectionUtils.showInformers();
-      PresearchAndroidSyncDisabledInformer.showInformers();
+      if (RateUtils.getInstance(this).shouldShowRateDialog())
+            showBraveRateDialog();
 
       if (!PackageUtils.isFirstInstall(this) &&
         !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
-          PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
-          OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
+          PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
+          OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(false);
       }
 
       if (PresearchConfig.P3A_ENABLED &&
@@ -325,16 +300,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_2);
         RetentionNotificationUtil.scheduleNotification(this, RetentionNotificationUtil.DEFAULT_BROWSER_3);
         OnboardingPrefManager.getInstance().setOneTimeNotificationStarted(true);
-      }
-
-      if (PackageUtils.isFirstInstall(this) &&
-        SharedPreferencesManager.getInstance().readInt(
-          PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) ==
-        1) {
-        Calendar calender = Calendar.getInstance();
-        calender.setTime(new Date());
-        calender.add(Calendar.DATE, DAYS_4);
-        PresearchRewardsHelper.setNextRewardsOnboardingModalDate(calender.getTimeInMillis());
       }
 
       if (SharedPreferencesManager.getInstance().readInt(PresearchPreferenceKeys.PRESEARCH_APP_OPEN_COUNT) ==
@@ -404,32 +369,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
             getTabCreator(false).launchUrl(
               UrlConstants.NTP_URL, TabLaunchType.FROM_CHROME_UI);
           }
-        } else {
-          showOnboardingV2(false);
         }
-    }
-
-    public void showOnboardingV2(boolean fromStats) {
-      try {
-        OnboardingPrefManager.getInstance().setNewOnboardingShown(true);
-        FragmentManager fm = getSupportFragmentManager();
-        HighlightDialogFragment fragment = (HighlightDialogFragment) fm
-          .findFragmentByTag(HighlightDialogFragment.TAG_FRAGMENT);
-        FragmentTransaction transaction = fm.beginTransaction();
-
-        if (fragment != null) {
-          transaction.remove(fragment);
-        }
-
-        fragment = new HighlightDialogFragment();
-        Bundle fragmentBundle = new Bundle();
-        fragmentBundle.putBoolean(OnboardingPrefManager.FROM_STATS, fromStats);
-        fragment.setArguments(fragmentBundle);
-        transaction.add(fragment, HighlightDialogFragment.TAG_FRAGMENT);
-        transaction.commitAllowingStateLoss();
-      } catch (IllegalStateException e) {
-        Log.e("HighlightDialogFragment", e.getMessage());
-      }
     }
 
     public void hideRewardsOnboardingIcon() {
@@ -618,12 +558,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
       RateDialogFragment mRateDialogFragment = new RateDialogFragment();
       mRateDialogFragment.setCancelable(false);
       mRateDialogFragment.show(getSupportFragmentManager(), "RateDialogFragment");
-    }
-
-    private void showCrossPromotionalDialog() {
-      CrossPromotionalModalDialogFragment mCrossPromotionalModalDialogFragment = new CrossPromotionalModalDialogFragment();
-      mCrossPromotionalModalDialogFragment.setCancelable(false);
-      mCrossPromotionalModalDialogFragment.show(getSupportFragmentManager(), "CrossPromotionalModalDialogFragment");
     }
 
     public void showDeprecateBAPDialog() {

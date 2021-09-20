@@ -91,10 +91,5 @@ public class TabUtils {
         if (toolbarView == null) {
             return;
         }
-        // FrameLayout rewardsLayout = toolbarView.findViewById(R.id.presearch_rewards_button_layout);
-        // if (rewardsLayout == null) {
-        //     return;
-        // }
-        // rewardsLayout.setVisibility(View.GONE);
     }
 }

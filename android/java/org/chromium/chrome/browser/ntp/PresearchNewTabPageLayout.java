@@ -243,7 +243,6 @@ public class PresearchNewTabPageLayout
             @Override
             public void onClick(View v) {
                 mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                checkForPresearchStats();
             }
         });
         PresearchStatsUtil.updatePresearchStatsLayout(mPresearchStatsViewFallBackLayout);
@@ -277,7 +276,6 @@ public class PresearchNewTabPageLayout
                     @Override
                     public void onClick(View v) {
                         mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                        checkForPresearchStats();
                     }
                 });
                 ntpWidgetItem.setWidgetView(mPresearchStatsView);
@@ -408,14 +406,6 @@ public class PresearchNewTabPageLayout
         }
     }
 
-    private void checkForPresearchStats() {
-        if (OnboardingPrefManager.getInstance().isPresearchStatsEnabled()) {
-            PresearchStatsUtil.showPresearchStats();
-        } else {
-            ((PresearchActivity)mActivity).showOnboardingV2(true);
-        }
-    }
-
     protected void insertSiteSectionView() {
         mainLayout = findViewById(R.id.ntp_main_layout);
 
@@ -440,13 +430,8 @@ public class PresearchNewTabPageLayout
         }
         checkAndShowNTPImage(false);
         mNTPBackgroundImagesBridge.addObserver(mNTPBackgroundImageServiceObserver);
-        if (PackageUtils.isFirstInstall(mActivity)
-                && !OnboardingPrefManager.getInstance().isNewOnboardingShown()
-                && OnboardingPrefManager.getInstance().isP3aOnboardingShown()) {
-            ((PresearchActivity)mActivity).showOnboardingV2(false);
-        }
+        
         if (OnboardingPrefManager.getInstance().isFromNotification() ) {
-            ((PresearchActivity)mActivity).showOnboardingV2(false);
             OnboardingPrefManager.getInstance().setFromNotification(false);
         }
         if (mBadgeAnimationView != null

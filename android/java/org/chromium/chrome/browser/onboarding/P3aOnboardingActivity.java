@@ -47,21 +47,6 @@ public class P3aOnboardingActivity extends AppCompatActivity {
           p3aOnboardingTitle.setText(getResources().getString(R.string.p3a_onboarding_title_text_1));
         }
 
-        CheckBox p3aOnboardingCheckbox = findViewById(R.id.p3a_onboarding_checkbox);
-
-        p3aOnboardingCheckbox.setChecked(false);
-        p3aOnboardingCheckbox.setOnCheckedChangeListener(
-                new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        try {
-                            PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
-                            PresearchPrefServiceBridge.getInstance().setP3ANoticeAcknowledged(true);
-                        } catch (Exception e) {
-                            Log.e("P3aOnboarding", e.getMessage());
-                        }
-                    }
-                });
         ImageView p3aOnboardingImg = findViewById(R.id.p3a_onboarding_img);
         if(isFirstInstall){
           p3aOnboardingImg.setImageResource(R.drawable.ic_presearch_logo);
@@ -72,6 +57,8 @@ public class P3aOnboardingActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
+                PresearchPrefServiceBridge.getInstance().setP3ANoticeAcknowledged(true);
                 OnboardingPrefManager.getInstance().setP3aOnboardingShown(true);
                 finish();
             }

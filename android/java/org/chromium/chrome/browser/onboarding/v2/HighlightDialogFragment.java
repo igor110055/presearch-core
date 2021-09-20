@@ -194,8 +194,6 @@ public class HighlightDialogFragment extends DialogFragment {
         @Override
         public void onLearnMore() {
             dismiss();
-            //Start from beginning
-            ((PresearchActivity)getActivity()).showOnboardingV2(false);
         }
     };
 }

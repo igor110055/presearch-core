@@ -91,14 +91,6 @@ public class PresearchPrefServiceBridge {
         return PresearchPrefServiceBridgeJni.get().getPlayYTVideoInBrowserEnabled();
     }
 
-    public void setDesktopModeEnabled(boolean enabled) {
-        PresearchPrefServiceBridgeJni.get().setDesktopModeEnabled(enabled);
-    }
-
-    public boolean getDesktopModeEnabled() {
-        return PresearchPrefServiceBridgeJni.get().getDesktopModeEnabled();
-    }
-
     public void setBackgroundVideoPlaybackEnabled(boolean enabled) {
         PresearchPrefServiceBridgeJni.get().setBackgroundVideoPlaybackEnabled(enabled);
     }
@@ -240,9 +232,6 @@ public class PresearchPrefServiceBridge {
 
         void setPlayYTVideoInBrowserEnabled(boolean enabled);
         boolean getPlayYTVideoInBrowserEnabled();
-
-        void setDesktopModeEnabled(boolean enabled);
-        boolean getDesktopModeEnabled();
 
         void setBackgroundVideoPlaybackEnabled(boolean enabled);
         boolean getBackgroundVideoPlaybackEnabled();
