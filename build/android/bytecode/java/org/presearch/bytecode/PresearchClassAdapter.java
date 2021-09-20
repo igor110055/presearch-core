@@ -18,7 +18,6 @@ public class PresearchClassAdapter {
         chain = new PresearchCommandLineInitUtilClassAdapter(chain);
         chain = new PresearchEditUrlSuggestionProcessorClassAdapter(chain);
         chain = new PresearchFeedSurfaceCoordinatorClassAdapter(chain);
-        chain = new PresearchHomepageManagerClassAdapter(chain);
         chain = new PresearchIncognitoToggleTabLayoutClassAdapter(chain);
         chain = new PresearchLaunchIntentDispatcherClassAdapter(chain);
         chain = new PresearchMainPreferenceBaseClassAdapter(chain);
