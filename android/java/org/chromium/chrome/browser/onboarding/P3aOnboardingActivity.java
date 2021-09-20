@@ -52,7 +52,6 @@ public class P3aOnboardingActivity extends AppCompatActivity {
           p3aOnboardingImg.setImageResource(R.drawable.ic_presearch_logo);
         }
 
-        TextView p3aOnboardingText = findViewById(R.id.p3a_onboarding_text);
         Button btnContinue = findViewById(R.id.btn_continue);
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override

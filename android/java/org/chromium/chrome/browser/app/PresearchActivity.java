@@ -280,7 +280,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
         }
 
       if (RateUtils.getInstance(this).shouldShowRateDialog())
-            showBraveRateDialog();
+            showPresearchRateDialog();
 
       if (!PackageUtils.isFirstInstall(this) &&
         !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
@@ -317,9 +317,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void OnRewardsParameters(int errorCode) {}
 
     @Override
-    public void OnStartProcess() {
-      mPresearchRewardsNativeWorker.GetRewardsParameters();
-    }
+    public void OnStartProcess() {}
 
     private void checkSetDefaultBrowserModal() {
       boolean shouldShowDefaultBrowserModal =
