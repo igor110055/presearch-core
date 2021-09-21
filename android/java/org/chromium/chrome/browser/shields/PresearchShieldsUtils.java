@@ -31,7 +31,7 @@ import java.util.List;
 
 public class PresearchShieldsUtils {
 	private static final String TAG = "Shields";
-	private static final String httpUrl = "https://laptop-updates.presearch.org/1/webcompat";
+	private static final String httpUrl = "https://laptop-updates.presearch.com/1/webcompat";
         public static final String PREF_SHIELDS_TOOLTIP = "shields_tooltip";
         public static final String PREF_SHIELDS_VIDEO_ADS_BLOCKED_TOOLTIP =
                 "shields_video_ads_blocked_tooltip";

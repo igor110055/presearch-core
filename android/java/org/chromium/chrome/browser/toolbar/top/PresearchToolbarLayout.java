@@ -557,18 +557,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
             shareStringBuilder.setSpan(new ImageSpan(getContext(), R.drawable.ic_share_white),
                     shareStringBuilder.length() - 1, shareStringBuilder.length(), 0);
             btnTooltip.setText(shareStringBuilder, TextView.BufferType.SPANNABLE);
-
-            btnTooltip.setVisibility(View.VISIBLE);
-
-            btnTooltip.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    dismissShieldsTooltip();
-                    if (PresearchStatsUtil.hasWritePermission(PresearchActivity.getPresearchActivity())) {
-                        PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
-                    }
-                }
-            });
+            btnTooltip.setVisibility(View.GONE);
         }
 
         TextView tooltipTitle = mShieldsPopupWindowTooltip.findViewById(R.id.txt_tooltip_title);
@@ -670,114 +659,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         dismissRewardsTooltip();
         dismissShieldsTooltip();
         reopenShieldsPanel();
-    }
-
-    private void showPresearchRewardsOnboardingModal() {
-        Context context = getContext();
-        final Dialog dialog = new Dialog(context);
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.presearch_rewards_onboarding_modal);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-
-        View presearchRewardsOnboardingModalView =
-                dialog.findViewById(R.id.presearch_rewards_onboarding_modal_layout);
-        presearchRewardsOnboardingModalView.setBackgroundColor(
-                context.getResources().getColor(android.R.color.white));
-        presearchRewardsOnboardingModalView.setVisibility(View.VISIBLE);
-
-        String tosText =
-                String.format(context.getResources().getString(R.string.presearch_rewards_tos_text),
-                        context.getResources().getString(R.string.terms_of_service),
-                        context.getResources().getString(R.string.privacy_policy));
-        int termsOfServiceIndex =
-                tosText.indexOf(context.getResources().getString(R.string.terms_of_service));
-        Spanned tosTextSpanned = PresearchRewardsHelper.spannedFromHtmlString(tosText);
-        SpannableString tosTextSS = new SpannableString(tosTextSpanned.toString());
-
-        ClickableSpan tosClickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View textView) {
-                CustomTabActivity.showInfoPage(context, PresearchActivity.PRESEARCH_TERMS_PAGE);
-            }
-            @Override
-            public void updateDrawState(@NonNull TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
-            }
-        };
-
-        tosTextSS.setSpan(tosClickableSpan, termsOfServiceIndex,
-                termsOfServiceIndex
-                        + context.getResources().getString(R.string.terms_of_service).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tosTextSS.setSpan(new ForegroundColorSpan(context.getResources().getColor(
-                                  R.color.presearch_rewards_modal_theme_color)),
-                termsOfServiceIndex,
-                termsOfServiceIndex
-                        + context.getResources().getString(R.string.terms_of_service).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        ClickableSpan privacyProtectionClickableSpan = new ClickableSpan() {
-            @Override
-            public void onClick(@NonNull View textView) {
-                CustomTabActivity.showInfoPage(context, PresearchActivity.PRESEARCH_PRIVACY_POLICY);
-            }
-            @Override
-            public void updateDrawState(@NonNull TextPaint ds) {
-                super.updateDrawState(ds);
-                ds.setUnderlineText(false);
-            }
-        };
-
-        int privacyPolicyIndex =
-                tosText.indexOf(context.getResources().getString(R.string.privacy_policy));
-        tosTextSS.setSpan(privacyProtectionClickableSpan, privacyPolicyIndex,
-                privacyPolicyIndex
-                        + context.getResources().getString(R.string.privacy_policy).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tosTextSS.setSpan(new ForegroundColorSpan(context.getResources().getColor(
-                                  R.color.presearch_rewards_modal_theme_color)),
-                privacyPolicyIndex,
-                privacyPolicyIndex
-                        + context.getResources().getString(R.string.privacy_policy).length(),
-                Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        TextView tosAndPpText = presearchRewardsOnboardingModalView.findViewById(
-                R.id.presearch_rewards_onboarding_modal_tos_pp_text);
-        tosAndPpText.setMovementMethod(LinkMovementMethod.getInstance());
-        tosAndPpText.setText(tosTextSS);
-
-        TextView takeQuickTourButton =
-                presearchRewardsOnboardingModalView.findViewById(R.id.take_quick_tour_button);
-        takeQuickTourButton.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PresearchRewardsHelper.setShowPresearchRewardsOnboardingOnce(true);
-                openRewardsPanel();
-                dialog.dismiss();
-            }
-        }));
-        Button btnPresearchRewards =
-                presearchRewardsOnboardingModalView.findViewById(R.id.btn_presearch_rewards);
-        btnPresearchRewards.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                PresearchAdsNativeHelper.nativeSetAdsEnabled(Profile.getLastUsedRegularProfile());
-                PresearchRewardsNativeWorker.getInstance().SetAutoContributeEnabled(true);
-                dialog.dismiss();
-            }
-        }));
-        AppCompatImageView modalCloseButton = presearchRewardsOnboardingModalView.findViewById(
-                R.id.presearch_rewards_onboarding_modal_close);
-        modalCloseButton.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        }));
-
-        dialog.show();
     }
 
     private void addSavedBandwidthToDb(long savings) {
