@@ -84,8 +84,6 @@ public class PresearchTabbedAppMenuPropertiesDelegate extends TabbedAppMenuPrope
             setAsDefault.setIcon(
                     AppCompatResources.getDrawable(mContext, R.drawable.presearch_menu_set_as_default));
         }
-
-        PresearchFeatureList.enableFeature(PresearchFeatureList.PRESEARCH_REWARDS, false, true);
         
         MenuItem exit = menu.add(Menu.NONE, R.id.exit_id, 0, R.string.menu_exit);
         if (shouldShowIconBeforeItem()) {
@@ -114,7 +112,6 @@ public class PresearchTabbedAppMenuPropertiesDelegate extends TabbedAppMenuPrope
     @Override
     public void onMenuDismissed() {
         super.onMenuDismissed();
-
         mMenu.removeItem(R.id.set_default_browser);
         mMenu.removeItem(R.id.exit_id);
     }
