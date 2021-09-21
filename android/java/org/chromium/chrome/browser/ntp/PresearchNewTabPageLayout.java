@@ -73,16 +73,8 @@ import org.chromium.chrome.browser.local_database.TopSiteTable;
 import org.chromium.chrome.browser.native_page.ContextMenuManager;
 import org.chromium.chrome.browser.night_mode.GlobalNightModeStateProviderHolder;
 import org.chromium.chrome.browser.ntp.NewTabPageLayout;
-import org.chromium.chrome.browser.ntp.widget.NTPWidgetItem;
-import org.chromium.chrome.browser.ntp.widget.NTPWidgetManager;
-import org.chromium.chrome.browser.ntp.widget.NTPWidgetStackActivity;
-import org.chromium.chrome.browser.ntp_background_images.NTPBackgroundImagesBridge;
-import org.chromium.chrome.browser.ntp_background_images.model.BackgroundImage;
 import org.chromium.chrome.browser.ntp_background_images.model.NTPImage;
-import org.chromium.chrome.browser.ntp_background_images.model.SponsoredTab;
 import org.chromium.chrome.browser.ntp_background_images.model.TopSite;
-import org.chromium.chrome.browser.ntp_background_images.model.Wallpaper;
-import org.chromium.chrome.browser.ntp_background_images.util.FetchWallpaperWorkerTask;
 import org.chromium.chrome.browser.ntp_background_images.util.NTPUtil;
 import org.chromium.chrome.browser.ntp_background_images.util.NewTabPageListener;
 import org.chromium.chrome.browser.ntp_background_images.util.SponsoredImageUtil;
@@ -103,11 +95,6 @@ import org.chromium.chrome.browser.tab.TabObserver;
 import org.chromium.chrome.browser.tabmodel.TabModel;
 import org.chromium.chrome.browser.util.PackageUtils;
 import org.chromium.chrome.browser.util.TabUtils;
-import org.chromium.chrome.browser.widget.crypto.binance.BinanceAccountBalance;
-import org.chromium.chrome.browser.widget.crypto.binance.BinanceNativeWorker;
-import org.chromium.chrome.browser.widget.crypto.binance.BinanceObserver;
-import org.chromium.chrome.browser.widget.crypto.binance.BinanceWidgetManager;
-import org.chromium.chrome.browser.widget.crypto.binance.CryptoWidgetBottomSheetDialogFragment;
 import org.chromium.components.browser_ui.widget.displaystyle.UiConfig;
 import org.chromium.components.user_prefs.UserPrefs;
 import org.chromium.ui.base.WindowAndroid;
@@ -122,41 +109,27 @@ import java.util.TimerTask;
 import java.util.TreeMap;
 
 public class PresearchNewTabPageLayout
-        extends NewTabPageLayout implements CryptoWidgetBottomSheetDialogFragment
-                                                    .CryptoWidgetBottomSheetDialogDismissListener {
+        extends NewTabPageLayout {
     private static final String TAG = "PresearchNewTabPageView";
     private static final String PRESEARCH_LEARN_MORE = "https://presearch.io";
     private static final String PRESEARCH_REF_URL = "https://presearch.org";
 
-    private View mPresearchStatsViewFallBackLayout;
-
     private ImageView bgImageView;
     private Profile mProfile;
 
-    private SponsoredTab sponsoredTab;
-
     private BitmapDrawable imageDrawable;
 
-    private FetchWallpaperWorkerTask mWorkerTask;
     private boolean isFromBottomSheet;
     private ViewGroup mainLayout;
     private DatabaseHelper mDatabaseHelper;
 
     private ViewGroup mSiteSectionView;
     private TileGroup mTileGroup;
-    private LottieAnimationView mBadgeAnimationView;
 
     private Tab mTab;
     private Activity mActivity;
-    private LinearLayout superReferralSitesLayout;
-    private LinearLayout bianceDisconnectLayout;
-    private LinearLayout binanceWidgetLayout;
-    private ProgressBar binanceWidgetProgress;
     private TextView mTopsiteErrorMessage;
 
-    private CryptoWidgetBottomSheetDialogFragment cryptoWidgetBottomSheetDialogFragment;
-    private Timer countDownTimer;
-    private List<NTPWidgetItem> widgetList = new ArrayList<NTPWidgetItem>();
     public static final int NTP_WIDGET_STACK_CODE = 3333;
 
     public PresearchNewTabPageLayout(Context context, AttributeSet attrs) {
@@ -168,7 +141,6 @@ public class PresearchNewTabPageLayout
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        NTPUtil.showBREBottomBanner(this);
     }
 
     protected void updateTileGridPlaceholderVisibility() {
@@ -202,41 +174,18 @@ public class PresearchNewTabPageLayout
 
     @Override
     protected void onDetachedFromWindow() {
-        if (mWorkerTask != null && mWorkerTask.getStatus() == AsyncTask.Status.RUNNING) {
-            mWorkerTask.cancel(true);
-            mWorkerTask = null;
-        }
-
         if (!isFromBottomSheet) {
             setBackgroundResource(0);
             if (imageDrawable != null && imageDrawable.getBitmap() != null && !imageDrawable.getBitmap().isRecycled()) {
                 imageDrawable.getBitmap().recycle();
             }
         }
-        cancelTimer();
         super.onDetachedFromWindow();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        if (sponsoredTab != null && NTPUtil.shouldEnableNTPFeature()) {
-            if (bgImageView != null) {
-                // We need to redraw image to fit parent properly
-                bgImageView.setImageResource(android.R.color.transparent);
-            }
-            NTPImage ntpImage = sponsoredTab.getTabNTPImage(false);
-            if (ntpImage == null) {
-                sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-            } else if (ntpImage instanceof Wallpaper) {
-                Wallpaper mWallpaper = (Wallpaper) ntpImage;
-                if (mWallpaper == null) {
-                    sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-                }
-            }
-            super.onConfigurationChanged(newConfig);
-        } else {
-            super.onConfigurationChanged(newConfig);
-        }
+        super.onConfigurationChanged(newConfig)
     }
 
     @Override
@@ -288,11 +237,6 @@ public class PresearchNewTabPageLayout
     };
 
     private void loadTopSites(List<TopSiteTable> topSites) {
-        superReferralSitesLayout = new LinearLayout(mActivity);
-        superReferralSitesLayout.setWeightSum(1f);
-        superReferralSitesLayout.setOrientation(LinearLayout.HORIZONTAL);
-        superReferralSitesLayout.setBackgroundColor(
-                mActivity.getResources().getColor(R.color.topsite_bg_color));
 
         LayoutInflater inflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -360,13 +304,11 @@ public class PresearchNewTabPageLayout
                             NTPUtil.imageCache.remove(topSite.getDestinationUrl());
                             mDatabaseHelper.deleteTopSite(topSite.getDestinationUrl());
                             NTPUtil.addToRemovedTopSite(topSite.getDestinationUrl());
-                            superReferralSitesLayout.removeView(view);
                             return true;
                         }
                     });
                 }
             });
-            superReferralSitesLayout.addView(view);
         }
     }
 
@@ -383,15 +325,6 @@ public class PresearchNewTabPageLayout
         return (TabImpl) getTab();
     }
 
-    // cancel timer
-    public void cancelTimer() {
-        if (countDownTimer != null) {
-            countDownTimer.cancel();
-            countDownTimer.purge();
-            countDownTimer = null;
-        }
-    }
-
     @Override
     public void onTileCountChanged() {
         if (mTopsiteErrorMessage == null) {
@@ -405,8 +338,5 @@ public class PresearchNewTabPageLayout
         } else {
             mTopsiteErrorMessage.setVisibility(View.VISIBLE);
         }
-    }
-    @Override
-    public void onCryptoWidgetBottomSheetDialogDismiss() {
     }
 }
