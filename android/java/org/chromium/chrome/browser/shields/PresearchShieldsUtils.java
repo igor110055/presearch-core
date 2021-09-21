@@ -31,7 +31,7 @@ import java.util.List;
 
 public class PresearchShieldsUtils {
 	private static final String TAG = "Shields";
-	private static final String httpUrl = "https://laptop-updates.presearch.com/1/webcompat";
+	private static final String httpUrl = "";
         public static final String PREF_SHIELDS_TOOLTIP = "shields_tooltip";
         public static final String PREF_SHIELDS_VIDEO_ADS_BLOCKED_TOOLTIP =
                 "shields_video_ads_blocked_tooltip";
@@ -98,8 +98,6 @@ public class PresearchShieldsUtils {
 
             @Override
             protected Void doInBackground() {
-                sendPresearchShieldsFeedback(mDomain);
-                return null;
             }
 
             @Override
@@ -107,57 +105,6 @@ public class PresearchShieldsUtils {
                 assert ThreadUtils.runningOnUiThread();
 
                 if (isCancelled()) return;
-            }
-        }
-
-        private static void sendPresearchShieldsFeedback(String domain) {
-            Context context = ContextUtils.getApplicationContext();
-            StringBuilder sb = new StringBuilder();
-
-            Profile mProfile = Profile.getLastUsedRegularProfile();
-            NTPBackgroundImagesBridge mNTPBackgroundImagesBridge =
-                    NTPBackgroundImagesBridge.getInstance(mProfile);
-
-            HttpURLConnection urlConnection = null;
-            try {
-                URL url = new URL(httpUrl);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.setDoOutput(true);
-                urlConnection.setRequestMethod("POST");
-                urlConnection.setUseCaches(false);
-                urlConnection.setRequestProperty("Content-Type", "application/json");
-                urlConnection.connect();
-
-                JSONObject jsonParam = new JSONObject();
-                jsonParam.put("domain", domain);
-                jsonParam.put("api_key", mNTPBackgroundImagesBridge.getReferralApiKey());
-
-                OutputStream outputStream = urlConnection.getOutputStream();
-                byte[] input = jsonParam.toString().getBytes(StandardCharsets.UTF_8.toString());
-                outputStream.write(input, 0, input.length);
-                outputStream.flush();
-                outputStream.close();
-
-                int HttpResult = urlConnection.getResponseCode();
-                if (HttpResult == HttpURLConnection.HTTP_OK) {
-                    BufferedReader br = new BufferedReader(new InputStreamReader(
-                            urlConnection.getInputStream(), StandardCharsets.UTF_8.toString()));
-                    String line = null;
-                    while ((line = br.readLine()) != null) {
-                        sb.append(line + "\n");
-                    }
-                    br.close();
-                } else {
-                    Log.e(TAG, urlConnection.getResponseMessage());
-                }
-            } catch (MalformedURLException e) {
-                Log.e(TAG, e.getMessage());
-            } catch (IOException e) {
-                Log.e(TAG, e.getMessage());
-            } catch (JSONException e) {
-                Log.e(TAG, e.getMessage());
-            } finally {
-                if (urlConnection != null) urlConnection.disconnect();
             }
         }
 }
