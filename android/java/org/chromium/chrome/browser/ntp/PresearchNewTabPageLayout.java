@@ -406,4 +406,7 @@ public class PresearchNewTabPageLayout
             mTopsiteErrorMessage.setVisibility(View.VISIBLE);
         }
     }
+    @Override
+    public void onCryptoWidgetBottomSheetDialogDismiss() {
+    }
 }
