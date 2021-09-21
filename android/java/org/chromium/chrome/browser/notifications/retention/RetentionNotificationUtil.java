@@ -22,7 +22,6 @@ import org.chromium.chrome.browser.local_database.DatabaseHelper;
 import org.chromium.chrome.browser.notifications.PresearchOnboardingNotification;
 import org.chromium.chrome.browser.notifications.PresearchSetDefaultBrowserNotificationService;
 import org.chromium.chrome.browser.notifications.channels.PresearchChannelDefinitions;
-import org.chromium.chrome.browser.ntp.PresearchNewTabPageLayout;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
 
 import java.util.Calendar;

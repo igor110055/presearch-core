@@ -19,7 +19,6 @@ import org.chromium.chrome.browser.PresearchConfig;
 import org.chromium.chrome.browser.PresearchFeatureList;
 import org.chromium.chrome.browser.app.PresearchActivity;
 import org.chromium.chrome.browser.flags.ChromeFeatureList;
-import org.chromium.chrome.browser.homepage.settings.PresearchHomepageSettings;
 import org.chromium.chrome.browser.ntp_background_images.NTPBackgroundImagesBridge;
 import org.chromium.chrome.browser.ntp_background_images.util.NTPUtil;
 import org.chromium.chrome.browser.preferences.PresearchPrefServiceBridge;
@@ -196,7 +195,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
     private void overrideChromiumPreferences() {
         // Replace fragment.
         findPreference(PREF_PRIVACY).setFragment(PresearchPrivacySettings.class.getName());
-        findPreference(PREF_HOMEPAGE).setFragment(PresearchHomepageSettings.class.getName());
     }
 
     // TODO(simonhong): Make this static public with proper class.
