@@ -65,7 +65,6 @@ presearch_java_sources = [
   "../../presearch/android/java/org/chromium/chrome/browser/externalnav/PresearchExternalNavigationHandler.java",
   "../../presearch/android/java/org/chromium/chrome/browser/feedback/PresearchHelpAndFeedbackLauncherImpl.java",
   "../../presearch/android/java/org/chromium/chrome/browser/help/PresearchHelpAndFeedbackLauncher.java",
-  "../../presearch/android/java/org/chromium/chrome/browser/homepage/PresearchHomepageManager.java",
   "../../presearch/android/java/org/chromium/chrome/browser/homepage/settings/PresearchHomepageSettings.java",
   "../../presearch/android/java/org/chromium/chrome/browser/informers/PresearchAndroidSyncDisabledInformer.java",
   "../../presearch/android/java/org/chromium/chrome/browser/language/settings/PresearchLanguageSettings.java",

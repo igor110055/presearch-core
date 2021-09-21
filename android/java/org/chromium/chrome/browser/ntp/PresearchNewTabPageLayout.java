@@ -73,7 +73,6 @@ import org.chromium.chrome.browser.local_database.TopSiteTable;
 import org.chromium.chrome.browser.native_page.ContextMenuManager;
 import org.chromium.chrome.browser.night_mode.GlobalNightModeStateProviderHolder;
 import org.chromium.chrome.browser.ntp.NewTabPageLayout;
-import org.chromium.chrome.browser.ntp.widget.NTPWidgetAdapter;
 import org.chromium.chrome.browser.ntp.widget.NTPWidgetItem;
 import org.chromium.chrome.browser.ntp.widget.NTPWidgetManager;
 import org.chromium.chrome.browser.ntp.widget.NTPWidgetStackActivity;
@@ -140,27 +139,21 @@ public class PresearchNewTabPageLayout
 
     private FetchWallpaperWorkerTask mWorkerTask;
     private boolean isFromBottomSheet;
-    private NTPBackgroundImagesBridge mNTPBackgroundImagesBridge;
     private ViewGroup mainLayout;
     private DatabaseHelper mDatabaseHelper;
 
     private ViewGroup mSiteSectionView;
     private TileGroup mTileGroup;
     private LottieAnimationView mBadgeAnimationView;
-    private VerticalViewPager ntpWidgetViewPager;
-    private NTPWidgetAdapter ntpWidgetAdapter;
 
     private Tab mTab;
     private Activity mActivity;
-    private LinearLayout indicatorLayout;
     private LinearLayout superReferralSitesLayout;
-    private LinearLayout ntpWidgetLayout;
     private LinearLayout bianceDisconnectLayout;
     private LinearLayout binanceWidgetLayout;
     private ProgressBar binanceWidgetProgress;
     private TextView mTopsiteErrorMessage;
 
-    private BinanceNativeWorker mBinanceNativeWorker;
     private CryptoWidgetBottomSheetDialogFragment cryptoWidgetBottomSheetDialogFragment;
     private Timer countDownTimer;
     private List<NTPWidgetItem> widgetList = new ArrayList<NTPWidgetItem>();
@@ -169,241 +162,17 @@ public class PresearchNewTabPageLayout
     public PresearchNewTabPageLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         mProfile = Profile.getLastUsedRegularProfile();
-        mNTPBackgroundImagesBridge = NTPBackgroundImagesBridge.getInstance(mProfile);
-        mBinanceNativeWorker = BinanceNativeWorker.getInstance();
-        mNTPBackgroundImagesBridge.setNewTabPageListener(newTabPageListener);
         mDatabaseHelper = DatabaseHelper.getInstance();
     }
 
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        ntpWidgetLayout = findViewById(R.id.ntp_widget_layout);
-        indicatorLayout = findViewById(R.id.indicator_layout);
-        ntpWidgetViewPager = findViewById(R.id.ntp_widget_view_pager);
-        ntpWidgetAdapter = new NTPWidgetAdapter();
-        ntpWidgetAdapter.setNTPWidgetListener(ntpWidgetListener);
-        ntpWidgetViewPager.setAdapter(ntpWidgetAdapter);
-
-        ntpWidgetViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(
-                    int position, float positionOffset, int positionOffsetPixels) {}
-
-            @Override
-            public void onPageSelected(int position) {
-                cancelTimer();
-                if (NTPWidgetManager.getInstance().getBinanceWidget() == position) {
-                    startTimer();
-                }
-                updateAndShowIndicators(position);
-                NTPWidgetManager.getInstance().setNTPWidgetOrder(position);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {}
-        });
-        showWidgetBasedOnOrder();
         NTPUtil.showBREBottomBanner(this);
-    }
-
-    private void showFallBackNTPLayout() {
-        if (mPresearchStatsViewFallBackLayout != null
-                && mPresearchStatsViewFallBackLayout.getParent() != null) {
-            ((ViewGroup) mPresearchStatsViewFallBackLayout.getParent())
-                    .removeView(mPresearchStatsViewFallBackLayout);
-        }
-        LayoutInflater inflater =
-                (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        mPresearchStatsViewFallBackLayout = inflater.inflate(R.layout.presearch_stats_layout, null);
-        LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-            new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        layoutParams.setMargins(0, dpToPx(mActivity, 16), 0, dpToPx(mActivity, 16));
-        mPresearchStatsViewFallBackLayout.setLayoutParams(layoutParams);
-        mPresearchStatsViewFallBackLayout.requestLayout();
-
-        mPresearchStatsViewFallBackLayout.findViewById(R.id.presearch_stats_title_layout)
-                .setVisibility(View.GONE);
-        ((TextView) mPresearchStatsViewFallBackLayout.findViewById(R.id.presearch_stats_text_ads))
-                .setTextColor(mActivity.getResources().getColor(R.color.shield_text_color));
-        ((TextView) mPresearchStatsViewFallBackLayout.findViewById(R.id.presearch_stats_data_saved_text))
-                .setTextColor(mActivity.getResources().getColor(R.color.shield_text_color));
-        ((TextView) mPresearchStatsViewFallBackLayout.findViewById(R.id.presearch_stats_text_time))
-                .setTextColor(mActivity.getResources().getColor(R.color.shield_text_color));
-        ((TextView) mPresearchStatsViewFallBackLayout.findViewById(R.id.presearch_stats_text_time_count))
-                .setTextColor(mActivity.getResources().getColor(R.color.shield_text_color));
-        ((TextView) mPresearchStatsViewFallBackLayout.findViewById(
-                 R.id.presearch_stats_text_time_count_text))
-                .setTextColor(mActivity.getResources().getColor(R.color.shield_text_color));
-        mPresearchStatsViewFallBackLayout.setBackgroundColor(
-                mActivity.getResources().getColor(android.R.color.transparent));
-        mPresearchStatsViewFallBackLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-            }
-        });
-        PresearchStatsUtil.updatePresearchStatsLayout(mPresearchStatsViewFallBackLayout);
-        mainLayout.addView(mPresearchStatsViewFallBackLayout, 0);
-
-        int insertionPoint = mainLayout.indexOfChild(findViewById(R.id.ntp_middle_spacer)) + 1;
-        if (mSiteSectionView.getParent() != null) {
-            ((ViewGroup) mSiteSectionView.getParent()).removeView(mSiteSectionView);
-        }
-        mainLayout.addView(mSiteSectionView, insertionPoint);
     }
 
     protected void updateTileGridPlaceholderVisibility() {
         // This function is kept empty to avoid placeholder implementation
-    }
-
-    private List<NTPWidgetItem> setWidgetList() {
-        NTPWidgetManager ntpWidgetManager = NTPWidgetManager.getInstance();
-        LayoutInflater inflater =
-                (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        Map<Integer, NTPWidgetItem> ntpWidgetMap = new TreeMap<>();
-        if (mSiteSectionView != null && mSiteSectionView.getParent() != null) {
-            ((ViewGroup) mSiteSectionView.getParent()).removeView(mSiteSectionView);
-        }
-
-        for (String widget : ntpWidgetManager.getUsedWidgets()) {
-            NTPWidgetItem ntpWidgetItem = NTPWidgetManager.mWidgetsMap.get(widget);
-            if (widget.equals(NTPWidgetManager.PREF_PRIVATE_STATS)) {
-                View mPresearchStatsView = inflater.inflate(R.layout.presearch_stats_layout, null);
-                mPresearchStatsView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        mActivity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                    }
-                });
-                ntpWidgetItem.setWidgetView(mPresearchStatsView);
-                ntpWidgetMap.put(ntpWidgetManager.getPrivateStatsWidget(), ntpWidgetItem);
-            } else if (widget.equals(NTPWidgetManager.PREF_FAVORITES)) {
-                View mTopSitesLayout = inflater.inflate(R.layout.top_sites_layout, null);
-                FrameLayout mTopSitesGridLayout =
-                        mTopSitesLayout.findViewById(R.id.top_sites_grid_layout);
-                mTopsiteErrorMessage =
-                        mTopSitesLayout.findViewById(R.id.widget_error_title);
-
-                if (shouldShowSuperReferral() && superReferralSitesLayout != null) {
-                    if (superReferralSitesLayout.getParent() != null) {
-                        ((ViewGroup) superReferralSitesLayout.getParent())
-                                .removeView(superReferralSitesLayout);
-                    }
-                    mTopSitesGridLayout.addView(superReferralSitesLayout);
-                    ntpWidgetItem.setWidgetView(mTopSitesLayout);
-                    ntpWidgetMap.put(ntpWidgetManager.getFavoritesWidget(), ntpWidgetItem);
-                } else if (!mNTPBackgroundImagesBridge.isSuperReferral()
-                        || !NTPBackgroundImagesBridge.enableSponsoredImages()
-                        || Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-                    boolean showPlaceholder = mTileGroup != null && mTileGroup.hasReceivedData()
-                            && mTileGroup.isEmpty();
-                    if (mSiteSectionView != null && !showPlaceholder) {
-                        mTopsiteErrorMessage.setVisibility(View.GONE);
-                        if (mSiteSectionView.getLayoutParams()
-                                        instanceof ViewGroup.MarginLayoutParams) {
-                            mSiteSectionView.setPadding(0, dpToPx(mActivity, 8), 0, 0);
-                            mSiteSectionView.requestLayout();
-                        }
-                        mTopSitesGridLayout.addView(mSiteSectionView);
-                    } else {
-                        mTopsiteErrorMessage.setVisibility(View.VISIBLE);
-                    }
-                    ntpWidgetItem.setWidgetView(mTopSitesLayout);
-                    ntpWidgetMap.put(ntpWidgetManager.getFavoritesWidget(), ntpWidgetItem);
-                }
-            } else if (widget.equals(NTPWidgetManager.PREF_BINANCE)) {
-                View binanceWidgetView = inflater.inflate(R.layout.crypto_widget_layout, null);
-                binanceWidgetLayout = binanceWidgetView.findViewById(R.id.binance_widget_layout);
-                bianceDisconnectLayout =
-                        binanceWidgetView.findViewById(R.id.binance_disconnect_layout);
-                binanceWidgetProgress =
-                        binanceWidgetView.findViewById(R.id.binance_widget_progress);
-                binanceWidgetProgress.setVisibility(View.GONE);
-                binanceWidgetView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (InternetConnection.isNetworkAvailable(mActivity)) {
-                            if (BinanceWidgetManager.getInstance()
-                                            .isUserAuthenticatedForBinance()) {
-                                cancelTimer();
-                                cryptoWidgetBottomSheetDialogFragment =
-                                        new CryptoWidgetBottomSheetDialogFragment();
-                                cryptoWidgetBottomSheetDialogFragment
-                                        .setCryptoWidgetBottomSheetDialogDismissListener(
-                                                PresearchNewTabPageLayout.this);
-                                cryptoWidgetBottomSheetDialogFragment.show(
-                                        ((PresearchActivity) mActivity).getSupportFragmentManager(),
-                                        CryptoWidgetBottomSheetDialogFragment.TAG_FRAGMENT);
-                            } else {
-                                TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
-                                bianceDisconnectLayout.setVisibility(View.GONE);
-                                binanceWidgetProgress.setVisibility(View.VISIBLE);
-                            }
-                        } else {
-                            Toast.makeText(mActivity,
-                                         mActivity.getResources().getString(
-                                                 R.string.please_check_the_connection),
-                                         Toast.LENGTH_SHORT)
-                                    .show();
-                        }
-                    }
-                });
-                Button connectButton = binanceWidgetView.findViewById(R.id.btn_connect);
-                connectButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        TabUtils.openUrlInSameTab(mBinanceNativeWorker.getOAuthClientUrl());
-                        bianceDisconnectLayout.setVisibility(View.GONE);
-                        binanceWidgetProgress.setVisibility(View.VISIBLE);
-                    }
-                });
-                ntpWidgetItem.setWidgetView(binanceWidgetView);
-                ntpWidgetMap.put(ntpWidgetManager.getBinanceWidget(), ntpWidgetItem);
-            }
-        }
-
-        return new ArrayList<NTPWidgetItem>(ntpWidgetMap.values());
-    }
-
-    private boolean shouldShowSuperReferral() {
-        return mNTPBackgroundImagesBridge.isSuperReferral()
-                && NTPBackgroundImagesBridge.enableSponsoredImages()
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M;
-    }
-
-    private void showWidgetBasedOnOrder() {
-        if (ntpWidgetViewPager != null) {
-            int selectedOrder = NTPWidgetManager.getInstance().getNTPWidgetOrder();
-            ntpWidgetViewPager.setCurrentItem(selectedOrder, true);
-            updateAndShowIndicators(selectedOrder);
-        }
-    }
-
-    private void showWidgets() {
-        List<NTPWidgetItem> tempList = setWidgetList();
-        if (tempList.size() > 0) {
-            ntpWidgetLayout.setVisibility(View.VISIBLE);
-            if (mPresearchStatsViewFallBackLayout != null
-                    && mPresearchStatsViewFallBackLayout.getParent() != null) {
-                ((ViewGroup) mPresearchStatsViewFallBackLayout.getParent())
-                        .removeView(mPresearchStatsViewFallBackLayout);
-            }
-        } else {
-            ntpWidgetLayout.setVisibility(View.GONE);
-            if (!UserPrefs.get(Profile.getLastUsedRegularProfile())
-                            .getBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE)) {
-                showFallBackNTPLayout();
-            }
-        }
-
-        if (ntpWidgetAdapter != null) {
-            ntpWidgetAdapter.setWidgetList(tempList);
-            ntpWidgetAdapter.notifyDataSetChanged();
-            showWidgetBasedOnOrder();
-        }
     }
 
     protected void insertSiteSectionView() {
@@ -425,28 +194,10 @@ public class PresearchNewTabPageLayout
     @Override
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
-        if (sponsoredTab == null) {
-            initilizeSponsoredTab();
-        }
-        checkAndShowNTPImage(false);
-        mNTPBackgroundImagesBridge.addObserver(mNTPBackgroundImageServiceObserver);
         
         if (OnboardingPrefManager.getInstance().isFromNotification() ) {
             OnboardingPrefManager.getInstance().setFromNotification(false);
         }
-        if (mBadgeAnimationView != null
-                && !OnboardingPrefManager.getInstance().shouldShowBadgeAnimation()) {
-            mBadgeAnimationView.setVisibility(View.INVISIBLE);
-        }
-        showWidgets();
-        if (BinanceWidgetManager.getInstance().isUserAuthenticatedForBinance()) {
-            if (binanceWidgetLayout != null) {
-                binanceWidgetLayout.setVisibility(View.GONE);
-            }
-            mBinanceNativeWorker.getAccountBalances();
-        }
-        mBinanceNativeWorker.AddObserver(mBinanaceObserver);
-        startTimer();
     }
 
     @Override
@@ -462,8 +213,6 @@ public class PresearchNewTabPageLayout
                 imageDrawable.getBitmap().recycle();
             }
         }
-        mNTPBackgroundImagesBridge.removeObserver(mNTPBackgroundImageServiceObserver);
-        mBinanceNativeWorker.RemoveObserver(mBinanaceObserver);
         cancelTimer();
         super.onDetachedFromWindow();
     }
@@ -484,9 +233,7 @@ public class PresearchNewTabPageLayout
                     sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
                 }
             }
-            checkForNonDisruptiveBanner(ntpImage);
             super.onConfigurationChanged(newConfig);
-            showNTPImage(ntpImage);
         } else {
             super.onConfigurationChanged(newConfig);
         }
@@ -508,124 +255,6 @@ public class PresearchNewTabPageLayout
         ((PresearchActivity) mActivity).dismissShieldsTooltip();
     }
 
-    private void showNTPImage(NTPImage ntpImage) {
-        Display display = mActivity.getWindowManager().getDefaultDisplay();
-        Point size = new Point();
-        display.getSize(size);
-        NTPUtil.updateOrientedUI(mActivity, this, size);
-        ImageView mSponsoredLogo = (ImageView) findViewById(R.id.sponsored_logo);
-        FloatingActionButton mSuperReferralLogo = (FloatingActionButton) findViewById(R.id.super_referral_logo);
-        TextView mCreditText = (TextView) findViewById(R.id.credit_text);
-        if (ntpImage instanceof Wallpaper
-                && NTPUtil.isReferralEnabled()
-                && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            setBackgroundImage(ntpImage);
-            mSuperReferralLogo.setVisibility(View.VISIBLE);
-            mCreditText.setVisibility(View.GONE);
-            int floatingButtonIcon =
-                GlobalNightModeStateProviderHolder.getInstance().isInNightMode()
-                ? R.drawable.qrcode_dark
-                : R.drawable.qrcode_light;
-            mSuperReferralLogo.setImageResource(floatingButtonIcon);
-            mSuperReferralLogo.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    QRCodeShareDialogFragment mQRCodeShareDialogFragment =
-                            new QRCodeShareDialogFragment();
-                    mQRCodeShareDialogFragment.setQRCodeText(
-                            PRESEARCH_REF_URL + mNTPBackgroundImagesBridge.getSuperReferralCode());
-                    mQRCodeShareDialogFragment.show(
-                            ((PresearchActivity) mActivity).getSupportFragmentManager(),
-                            "QRCodeShareDialogFragment");
-                }
-            });
-        } else if (UserPrefs.get(Profile.getLastUsedRegularProfile()).getBoolean(
-                       PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE)
-                   && sponsoredTab != null
-                   && NTPUtil.shouldEnableNTPFeature()) {
-            setBackgroundImage(ntpImage);
-            if (ntpImage instanceof BackgroundImage) {
-                BackgroundImage backgroundImage = (BackgroundImage) ntpImage;
-                mSponsoredLogo.setVisibility(View.GONE);
-                mSuperReferralLogo.setVisibility(View.GONE);
-                if (backgroundImage.getImageCredit() != null) {
-                    String imageCreditStr = String.format(getResources().getString(R.string.photo_by, backgroundImage.getImageCredit().getName()));
-
-                    SpannableStringBuilder spannableString = new SpannableStringBuilder(imageCreditStr);
-                    spannableString.setSpan(
-                        new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
-                        ((imageCreditStr.length() - 1)
-                         - (backgroundImage.getImageCredit().getName().length() - 1)),
-                        imageCreditStr.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-                    mCreditText.setText(spannableString);
-                    mCreditText.setVisibility(View.VISIBLE);
-                    mCreditText.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            if (backgroundImage.getImageCredit() != null) {
-                                TabUtils.openUrlInSameTab(
-                                        backgroundImage.getImageCredit().getUrl());
-                            }
-                        }
-                    });
-                }
-            }
-        }
-    }
-
-    private void setBackgroundImage(NTPImage ntpImage) {
-        bgImageView = (ImageView) findViewById(R.id.bg_image_view);
-        bgImageView.setScaleType(ImageView.ScaleType.MATRIX);
-
-        ViewTreeObserver observer = bgImageView.getViewTreeObserver();
-        observer.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-            @Override
-            public void onGlobalLayout() {
-                mWorkerTask = new FetchWallpaperWorkerTask(ntpImage, bgImageView.getMeasuredWidth(), bgImageView.getMeasuredHeight(), wallpaperRetrievedCallback);
-                mWorkerTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-
-                bgImageView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-            }
-        });
-    }
-
-    private void checkForNonDisruptiveBanner(NTPImage ntpImage) {
-        int brOption = NTPUtil.checkForNonDisruptiveBanner(ntpImage, sponsoredTab);
-        if (SponsoredImageUtil.BR_INVALID_OPTION != brOption && !NTPUtil.isReferralEnabled()
-                && ((!PresearchAdsNativeHelper.nativeIsPresearchAdsEnabled(
-                             Profile.getLastUsedRegularProfile())
-                            && PresearchRewardsHelper.shouldShowPresearchRewardsOnboardingModal())
-                        || PresearchAdsNativeHelper.nativeIsPresearchAdsEnabled(
-                                Profile.getLastUsedRegularProfile()))) {
-            NTPUtil.showNonDisruptiveBanner((PresearchActivity) mActivity, this, brOption,
-                                             sponsoredTab, newTabPageListener);
-        }
-    }
-
-    private void checkAndShowNTPImage(boolean isReset) {
-        NTPImage ntpImage = sponsoredTab.getTabNTPImage(isReset);
-        if (ntpImage == null) {
-            sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-        } else if (ntpImage instanceof Wallpaper) {
-            Wallpaper mWallpaper = (Wallpaper) ntpImage;
-            if (mWallpaper == null) {
-                sponsoredTab.setNTPImage(SponsoredImageUtil.getBackgroundImage());
-            }
-        }
-        checkForNonDisruptiveBanner(ntpImage);
-        showNTPImage(ntpImage);
-    }
-
-    private void initilizeSponsoredTab() {
-        if (TabAttributes.from(getTab()).get(String.valueOf(getTabImpl().getId())) == null) {
-            SponsoredTab mSponsoredTab = new SponsoredTab(mNTPBackgroundImagesBridge);
-            TabAttributes.from(getTab()).set(String.valueOf(getTabImpl().getId()), mSponsoredTab);
-        }
-        sponsoredTab = TabAttributes.from(getTab()).get(String.valueOf((getTabImpl()).getId()));
-        if (shouldShowSuperReferral()) mNTPBackgroundImagesBridge.getTopSites();
-    }
-
     private NewTabPageListener newTabPageListener = new NewTabPageListener() {
         @Override
         public void updateInteractableFlag(boolean isBottomSheet) {
@@ -634,10 +263,6 @@ public class PresearchNewTabPageLayout
 
         @Override
         public void updateNTPImage() {
-            if (sponsoredTab == null) {
-                initilizeSponsoredTab();
-            }
-            checkAndShowNTPImage(false);
         }
 
         @Override
@@ -659,46 +284,6 @@ public class PresearchNewTabPageLayout
                     loadTopSites(topSites);
                 }
             }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-        }
-    };
-
-    private NTPBackgroundImagesBridge.NTPBackgroundImageServiceObserver mNTPBackgroundImageServiceObserver = new NTPBackgroundImagesBridge.NTPBackgroundImageServiceObserver() {
-        @Override
-        public void onUpdated() {
-            if (NTPUtil.isReferralEnabled()) {
-                checkAndShowNTPImage(true);
-                if (shouldShowSuperReferral()) {
-                    mNTPBackgroundImagesBridge.getTopSites();
-                }
-            }
-        }
-    };
-
-    private FetchWallpaperWorkerTask.WallpaperRetrievedCallback wallpaperRetrievedCallback = new FetchWallpaperWorkerTask.WallpaperRetrievedCallback() {
-        @Override
-        public void bgWallpaperRetrieved(Bitmap bgWallpaper) {
-            bgImageView.setImageBitmap(bgWallpaper);
-        }
-
-        @Override
-        public void logoRetrieved(Wallpaper mWallpaper, Bitmap logoWallpaper) {
-            if (!NTPUtil.isReferralEnabled()) {
-                FloatingActionButton mSuperReferralLogo = (FloatingActionButton) findViewById(R.id.super_referral_logo);
-                mSuperReferralLogo.setVisibility(View.GONE);
-
-                ImageView sponsoredLogo = (ImageView) findViewById(R.id.sponsored_logo);
-                sponsoredLogo.setVisibility(View.VISIBLE);
-                sponsoredLogo.setImageBitmap(logoWallpaper);
-                sponsoredLogo.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (mWallpaper.getLogoDestinationUrl() != null) {
-                            TabUtils.openUrlInSameTab(mWallpaper.getLogoDestinationUrl());
-                            mNTPBackgroundImagesBridge.wallpaperLogoClicked(mWallpaper);
-                        }
-                    }
-                });
-            }
         }
     };
 
@@ -783,7 +368,6 @@ public class PresearchNewTabPageLayout
             });
             superReferralSitesLayout.addView(view);
         }
-        showWidgets();
     }
 
     public void setTab(Tab tab) {
@@ -799,136 +383,6 @@ public class PresearchNewTabPageLayout
         return (TabImpl) getTab();
     }
 
-    private void updateAndShowIndicators(int position) {
-        indicatorLayout.removeAllViews();
-        for (int i = 0; i < ntpWidgetAdapter.getCount(); i++) {
-            TextView dotTextView = new TextView(mActivity);
-            dotTextView.setText(Html.fromHtml("&#9679;"));
-            dotTextView.setTextColor(getResources().getColor(android.R.color.white));
-            dotTextView.setTextSize(8);
-            if (position == i) {
-                dotTextView.setAlpha(1.0f);
-            } else {
-                dotTextView.setAlpha(0.4f);
-            }
-            indicatorLayout.addView(dotTextView);
-        }
-    }
-
-    // NTP related methods
-    private NTPWidgetAdapter.NTPWidgetListener ntpWidgetListener =
-            new NTPWidgetAdapter.NTPWidgetListener() {
-                @Override
-                public void onMenuEdit() {
-                    cancelTimer();
-                    openWidgetStack();
-                }
-
-                @Override
-                public void onMenuRemove(int position, boolean isBinanceWidget) {
-                    if (isBinanceWidget) {
-                        mBinanceNativeWorker.revokeToken();
-                        BinanceWidgetManager.getInstance().setBinanceAccountBalance("");
-                        BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(false);
-                        if (cryptoWidgetBottomSheetDialogFragment != null) {
-                            cryptoWidgetBottomSheetDialogFragment.dismiss();
-                        }
-                    }
-
-                    if (PresearchActivity.getPresearchActivity() != null
-                        && PresearchActivity.getPresearchActivity().getActivityTab() != null
-                        && !UserPrefs.get(Profile.getLastUsedRegularProfile())
-                            .getBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE)
-                        && NTPWidgetManager.getInstance().getUsedWidgets().size() <= 0) {
-                        PresearchActivity.getPresearchActivity().getActivityTab().reloadIgnoringCache();
-                    } else {
-                        showWidgets();
-                    }
-                }
-
-                @Override
-                public void onMenuLearnMore() {
-                    TabUtils.openUrlInSameTab(PRESEARCH_LEARN_MORE);
-                }
-
-                @Override
-                public void onMenuRefreshData() {
-                    mBinanceNativeWorker.getAccountBalances();
-                }
-
-                @Override
-                public void onMenuDisconnect() {
-                    mBinanceNativeWorker.revokeToken();
-                    BinanceWidgetManager.getInstance().setBinanceAccountBalance("");
-                    BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(false);
-                    if (cryptoWidgetBottomSheetDialogFragment != null) {
-                        cryptoWidgetBottomSheetDialogFragment.dismiss();
-                    }
-                    // Reset binance widget to connect page
-                    showWidgets();
-                }
-            };
-
-    private BinanceObserver mBinanaceObserver = new BinanceObserver() {
-        @Override
-        public void OnGetAccessToken(boolean isSuccess) {
-            BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(isSuccess);
-            if (isSuccess) {
-                mBinanceNativeWorker.getAccountBalances();
-                if (bianceDisconnectLayout != null) {
-                    bianceDisconnectLayout.setVisibility(View.GONE);
-                }
-                if (binanceWidgetProgress != null) {
-                    binanceWidgetProgress.setVisibility(View.GONE);
-                }
-            }
-        };
-
-        @Override
-        public void OnGetAccountBalances(String jsonBalances, boolean isSuccess) {
-            if (InternetConnection.isNetworkAvailable(mActivity)) {
-                if (!isSuccess) {
-                    BinanceWidgetManager.getInstance().setUserAuthenticationForBinance(isSuccess);
-                    if (cryptoWidgetBottomSheetDialogFragment != null) {
-                        cryptoWidgetBottomSheetDialogFragment.dismiss();
-                    }
-                } else {
-                    if (jsonBalances != null && !TextUtils.isEmpty(jsonBalances)) {
-                        BinanceWidgetManager.getInstance().setBinanceAccountBalance(jsonBalances);
-                    }
-                    try {
-                        BinanceWidgetManager.binanceAccountBalance = new BinanceAccountBalance(
-                                BinanceWidgetManager.getInstance().getBinanceAccountBalance());
-                    } catch (JSONException e) {
-                        Log.e("NTP", e.getMessage());
-                    }
-                }
-            }
-            // Reset binance widget to connect page
-            showWidgets();
-        };
-    };
-
-    // start timer function
-    public void startTimer() {
-        if (countDownTimer == null) {
-            countDownTimer = new Timer();
-            final Handler handler = new Handler();
-            countDownTimer.scheduleAtFixedRate(new TimerTask() {
-                public void run() {
-                    handler.post(new Runnable() {
-                        public void run() {
-                            if (BinanceWidgetManager.getInstance()
-                                            .isUserAuthenticatedForBinance()) {
-                                mBinanceNativeWorker.getAccountBalances();
-                            }
-                        }
-                    });
-                }
-            }, 0, 30000);
-        }
-    }
-
     // cancel timer
     public void cancelTimer() {
         if (countDownTimer != null) {
@@ -936,26 +390,6 @@ public class PresearchNewTabPageLayout
             countDownTimer.purge();
             countDownTimer = null;
         }
-    }
-
-    public void openWidgetStack() {
-        final FragmentManager fm = ((PresearchActivity) mActivity).getSupportFragmentManager();
-        Fragment auxiliary = new Fragment() {
-            @Override
-            public void onActivityResult(int requestCode, int resultCode, Intent data) {
-                super.onActivityResult(requestCode, resultCode, data);
-                fm.beginTransaction().remove(this).commit();
-                if (requestCode == NTP_WIDGET_STACK_CODE) {
-                    showWidgets();
-                }
-            }
-        };
-        fm.beginTransaction().add(auxiliary, "FRAGMENT_TAG").commit();
-        fm.executePendingTransactions();
-
-        Intent ntpWidgetStackActivityIntent = new Intent(mActivity, NTPWidgetStackActivity.class);
-        ntpWidgetStackActivityIntent.putExtra(NTPWidgetStackActivity.FROM_SETTINGS, false);
-        auxiliary.startActivityForResult(ntpWidgetStackActivityIntent, NTP_WIDGET_STACK_CODE);
     }
 
     @Override
@@ -971,10 +405,5 @@ public class PresearchNewTabPageLayout
         } else {
             mTopsiteErrorMessage.setVisibility(View.VISIBLE);
         }
-    }
-
-    @Override
-    public void onCryptoWidgetBottomSheetDialogDismiss() {
-        startTimer();
     }
 }
