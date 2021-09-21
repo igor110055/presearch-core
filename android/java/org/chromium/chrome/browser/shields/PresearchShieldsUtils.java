@@ -97,7 +97,7 @@ public class PresearchShieldsUtils {
         }
 
         @Override
-        protected void doInBackground() {
+        protected Void doInBackground() {
             return null;
         }
 
