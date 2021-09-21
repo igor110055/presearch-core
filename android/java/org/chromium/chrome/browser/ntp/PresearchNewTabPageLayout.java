@@ -185,7 +185,7 @@ public class PresearchNewTabPageLayout
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig)
+        super.onConfigurationChanged(newConfig);
     }
 
     @Override
