@@ -58,10 +58,6 @@ import org.chromium.chrome.R;
 import org.chromium.chrome.browser.PresearchAdsNativeHelper;
 import org.chromium.chrome.browser.PresearchFeatureList;
 import org.chromium.chrome.browser.PresearchRelaunchUtils;
-import org.chromium.chrome.browser.PresearchRewardsHelper;
-import org.chromium.chrome.browser.PresearchRewardsNativeWorker;
-import org.chromium.chrome.browser.PresearchRewardsObserver;
-import org.chromium.chrome.browser.PresearchRewardsPanelPopup;
 import org.chromium.chrome.browser.app.PresearchActivity;
 import org.chromium.chrome.browser.presearch_stats.PresearchStatsUtil;
 import org.chromium.chrome.browser.custom_layout.popup_window_tooltip.PopupWindowTooltip;
@@ -123,8 +119,8 @@ import java.util.List;
 import java.util.Locale;
 
 public abstract class PresearchToolbarLayout extends ToolbarLayout
-        implements OnClickListener, View.OnLongClickListener, PresearchRewardsObserver,
-                   PresearchRewardsNativeWorker.PublisherObserver {
+        implements OnClickListener, View.OnLongClickListener{
+
     public static final String PREF_HIDE_PRESEARCH_REWARDS_ICON = "hide_presearch_rewards_icon";
     private static final String JAPAN_COUNTRY_CODE = "JP";
 
@@ -136,18 +132,13 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
     private DatabaseHelper mDatabaseHelper = DatabaseHelper.getInstance();
 
     private ImageButton mPresearchShieldsButton;
-    private ImageButton mPresearchRewardsButton;
     private HomeButton mHomeButton;
     private FrameLayout mShieldsLayout;
-    private FrameLayout mRewardsLayout;
     private PresearchShieldsHandler mPresearchShieldsHandler;
     private TabModelSelectorTabObserver mTabModelSelectorTabObserver;
     private TabModelSelectorTabModelObserver mTabModelSelectorTabModelObserver;
-    private PresearchRewardsPanelPopup mRewardsPopup;
     private PresearchShieldsContentSettings mPresearchShieldsContentSettings;
     private PresearchShieldsContentSettingsObserver mPresearchShieldsContentSettingsObserver;
-    private TextView mPresearchRewardsNotificationsCount;
-    private ImageView mPresearchRewardsOnboardingIcon;
     private boolean mShieldsLayoutIsColorBackground;
     private int mCurrentToolbarColor;
 
@@ -156,7 +147,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
     private boolean mIsInitialNotificationPosted; // initial red circle notification
 
     private PopupWindowTooltip mShieldsPopupWindowTooltip;
-    private PopupWindowTooltip mRewardsPopupWindowTooltip;
 
     private boolean mIsBottomToolbarVisible;
 
@@ -186,11 +176,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         }
 
         mShieldsLayout = (FrameLayout) findViewById(R.id.presearch_shields_button_layout);
-        mRewardsLayout = (FrameLayout) findViewById(R.id.presearch_rewards_button_layout);
-        mPresearchRewardsNotificationsCount = (TextView) findViewById(R.id.br_notifications_count);
-        mPresearchRewardsOnboardingIcon = findViewById(R.id.br_rewards_onboarding_icon);
         mPresearchShieldsButton = (ImageButton) findViewById(R.id.presearch_shields_button);
-        mPresearchRewardsButton = (ImageButton) findViewById(R.id.presearch_rewards_button);
         mHomeButton = (HomeButton) findViewById(R.id.home_button);
 
         if (mHomeButton != null) {
@@ -201,12 +187,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
             mPresearchShieldsButton.setClickable(true);
             mPresearchShieldsButton.setOnClickListener(this);
             mPresearchShieldsButton.setOnLongClickListener(this);
-        }
-
-        if (mPresearchRewardsButton != null) {
-            mPresearchRewardsButton.setClickable(true);
-            mPresearchRewardsButton.setOnClickListener(this);
-            mPresearchRewardsButton.setOnLongClickListener(this);
         }
 
         mPresearchShieldsHandler = new PresearchShieldsHandler(getContext());
@@ -285,10 +265,8 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         mPresearchShieldsContentSettings.addObserver(mPresearchShieldsContentSettingsObserver);
 
         SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
-        mRewardsLayout.setVisibility(View.GONE);
         if (mShieldsLayout != null) {
-            updateShieldsLayoutBackground(
-                    !(mRewardsLayout != null && mRewardsLayout.getVisibility() == View.VISIBLE));
+            updateShieldsLayoutBackground(false);
             mShieldsLayout.setVisibility(View.VISIBLE);
         }
     }
@@ -354,7 +332,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                     }
                     if (mPresearchShieldsButton != null && mPresearchShieldsButton.isShown()
                             && mPresearchShieldsHandler != null && !mPresearchShieldsHandler.isShowing()
-                            && !isRewardsTooltipShown() && !isRewardsPanelOpened()) {
+                            && !isRewardsPanelOpened()) {
                         checkForTooltip(tab);
                     }
                 }
@@ -579,50 +557,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         }
     }
 
-    public void showRewardsTooltip() {
-        ShieldsTooltipEnum shieldsTooltipEnum = ShieldsTooltipEnum.BAP_DEPRECATION_TOOLTIP;
-        mRewardsPopupWindowTooltip = new PopupWindowTooltip.Builder(getContext())
-                                             .anchorView(mPresearchRewardsButton)
-                                             .arrowColor(getContext().getResources().getColor(
-                                                     shieldsTooltipEnum.getArrowColor()))
-                                             .gravity(Gravity.BOTTOM)
-                                             .dismissOnOutsideTouch(true)
-                                             .dismissOnInsideTouch(false)
-                                             .modal(true)
-                                             .contentView(R.layout.presearch_shields_tooltip_layout)
-                                             .build();
-        mRewardsPopupWindowTooltip.findViewById(R.id.shields_tooltip_layout)
-                .setBackgroundDrawable(ContextCompat.getDrawable(
-                        getContext(), shieldsTooltipEnum.getTooltipBackground()));
-
-        Button btnTooltip = mRewardsPopupWindowTooltip.findViewById(R.id.btn_tooltip);
-        btnTooltip.setText(getContext().getResources().getString(R.string.menu_learn_more));
-        btnTooltip.setVisibility(View.VISIBLE);
-        btnTooltip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dismissRewardsTooltip();
-                if (PresearchActivity.getPresearchActivity() != null)
-                    PresearchActivity.getPresearchActivity().showDeprecateBAPDialog();
-            }
-        });
-
-        TextView tooltipTitle = mRewardsPopupWindowTooltip.findViewById(R.id.txt_tooltip_title);
-        SpannableStringBuilder ssb =
-                new SpannableStringBuilder(new StringBuilder("\t\t")
-                                                   .append(getContext().getResources().getString(
-                                                           shieldsTooltipEnum.getTitle()))
-                                                   .toString());
-        ssb.setSpan(new ImageSpan(
-                            getContext(), R.drawable.ic_warning_triangle, ImageSpan.ALIGN_BASELINE),
-                0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-        tooltipTitle.setText(ssb, TextView.BufferType.SPANNABLE);
-
-        TextView tooltipText = mRewardsPopupWindowTooltip.findViewById(R.id.txt_tooltip_text);
-        tooltipText.setText(getContext().getResources().getString(shieldsTooltipEnum.getText()));
-
-        mRewardsPopupWindowTooltip.show();
-    }
+    public void showRewardsTooltip() {}
 
     public void dismissShieldsTooltip() {
         if (mShieldsPopupWindowTooltip != null && mShieldsPopupWindowTooltip.isShowing()) {
@@ -638,19 +573,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         }
     }
 
-    public void dismissRewardsTooltip() {
-        if (mRewardsPopupWindowTooltip != null && mRewardsPopupWindowTooltip.isShowing()) {
-            mRewardsPopupWindowTooltip.dismiss();
-            mRewardsPopupWindowTooltip = null;
-        }
-    }
-
-    public boolean isRewardsTooltipShown() {
-        if (mRewardsPopupWindowTooltip != null) {
-            return mRewardsPopupWindowTooltip.isShowing();
-        }
-        return false;
-    }
+    public void dismissRewardsTooltip() {}
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -709,18 +632,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         }.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
-    public void hideRewardsOnboardingIcon() {
-        if (mPresearchRewardsOnboardingIcon != null) {
-            mPresearchRewardsOnboardingIcon.setVisibility(View.GONE);
-        }
-        if (mPresearchRewardsNotificationsCount != null) {
-            mPresearchRewardsNotificationsCount.setVisibility(View.GONE);
-        }
-        SharedPreferences sharedPref = ContextUtils.getAppSharedPreferences();
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean(PresearchRewardsPanelPopup.PREF_WAS_TOOLBAR_BAT_LOGO_BUTTON_PRESSED, true);
-        editor.apply();
-    }
+    public void hideRewardsOnboardingIcon() {}
 
     @Override
     public void onClick(View v) {
@@ -734,43 +646,8 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         }
         if (mPresearchShieldsButton == v && mPresearchShieldsButton != null) {
             showShieldsMenu(mPresearchShieldsButton);
-        } else if (mPresearchRewardsButton == v && mPresearchRewardsButton != null) {
-            // Context context = getContext();
-            // if (checkForRewardsOnboarding()) {
-            //   OnboardingPrefManager.getInstance().showOnboarding(context);
-            //   hideRewardsOnboardingIcon();
-            // } else {
-            //   if (null != mRewardsPopup) {
-            //     return;
-            //   }
-            //   mRewardsPopup = new PresearchRewardsPanelPopup(v);
-            //   mRewardsPopup.showLikePopDownMenu();
-            // }
-            if (null != mRewardsPopup) {
-                return;
-            }
-            hideRewardsOnboardingIcon();
-            OnboardingPrefManager.getInstance().setOnboardingShown(true);
-            mRewardsPopup = new PresearchRewardsPanelPopup(v);
-            mRewardsPopup.showLikePopDownMenu();
-            if (mPresearchRewardsNotificationsCount.isShown()) {
-                SharedPreferences sharedPref = ContextUtils.getAppSharedPreferences();
-                SharedPreferences.Editor editor = sharedPref.edit();
-                editor.putBoolean(
-                        PresearchRewardsPanelPopup.PREF_WAS_TOOLBAR_BAT_LOGO_BUTTON_PRESSED, true);
-                editor.apply();
-                mPresearchRewardsNotificationsCount.setVisibility(View.INVISIBLE);
-                mIsInitialNotificationPosted = false;
-            }
-        }
-    }
-
-    private boolean checkForRewardsOnboarding() {
-        return PackageUtils.isFirstInstall(getContext())
-                && !PresearchAdsNativeHelper.nativeIsPresearchAdsEnabled(
-                        Profile.getLastUsedRegularProfile())
-                && ChromeFeatureList.isEnabled(PresearchFeatureList.PRESEARCH_REWARDS)
-                && !OnboardingPrefManager.getInstance().isOnboardingShown();
+        } 
+        hideRewardsOnboardingIcon();
     }
 
     private void showShieldsMenu(View mPresearchShieldsButton) {
@@ -802,8 +679,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
 
         if (v == mPresearchShieldsButton) {
             description = resources.getString(R.string.accessibility_toolbar_btn_presearch_shields);
-        } else if (v == mPresearchRewardsButton) {
-            description = resources.getString(R.string.accessibility_toolbar_btn_presearch_rewards);
         } else if (v == mHomeButton) {
             description = resources.getString(R.string.accessibility_toolbar_btn_home);
         }
@@ -878,9 +753,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         if (mShieldsLayout != null) {
             mShieldsLayout.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
         }
-        if (mRewardsLayout != null) {
-            mRewardsLayout.getBackground().setColorFilter(color, PorterDuff.Mode.SRC_IN);
-        }
     }
 
     public int getBoundsAfterAccountingForRightButtons(ViewGroup toolbarButtonsContainer) {
@@ -891,11 +763,7 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         ViewGroup.MarginLayoutParams params =
                 (ViewGroup.MarginLayoutParams) toolbarButtonsContainer.getLayoutParams();
 
-        int rewardsLen = (mRewardsLayout == null || mRewardsLayout.getVisibility() == View.GONE)
-                ? 0
-                : mRewardsLayout.getWidth();
-        return toolbarButtonsContainer.getMeasuredWidth() - mShieldsLayout.getWidth() - rewardsLen
-                + params.getMarginEnd();
+        return toolbarButtonsContainer.getMeasuredWidth() - mShieldsLayout.getWidth() + params.getMarginEnd();
     }
 
     /**
@@ -918,7 +786,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
 
         SharedPreferences sharedPreferences = ContextUtils.getAppSharedPreferences();
 
-        if (mRewardsLayout == null) return;
         if (isIncognito()) {
             updateShieldsLayoutBackground(true);
         } else if (isNativeLibraryReady()
@@ -948,25 +815,14 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         return false;
     }
 
-    public void dismissRewardsPanel() {
-        if (mRewardsPopup != null) {
-            mRewardsPopup.dismiss();
-            mRewardsPopup = null;
-        }
-    }
+    public void dismissRewardsPanel() {}
 
     public void onRewardsPanelDismiss() {
-        mRewardsPopup = null;
     }
 
-    public void openRewardsPanel() {
-        onClick(mPresearchRewardsButton);
-    }
+    public void openRewardsPanel() {}
 
     public boolean isRewardsPanelOpened() {
-        if (mRewardsPopup != null) {
-            return mRewardsPopup.isShowing();
-        }
         return false;
     }
 
@@ -979,23 +835,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
 
     @Override
     public void OnNotificationAdded(String id, int type, long timestamp, String[] args) {
-    }
-
-    private boolean mayShowPresearchAdsOnboardingDialog() {
-        Context context = getContext();
-
-        if (PresearchAdsSignupDialog.shouldShowNewUserDialog(context)) {
-            PresearchAdsSignupDialog.showNewUserDialog(getContext());
-            return true;
-        } else if (PresearchAdsSignupDialog.shouldShowNewUserDialogIfRewardsIsSwitchedOff(context)) {
-            PresearchAdsSignupDialog.showNewUserDialog(getContext());
-            return true;
-        } else if (PresearchAdsSignupDialog.shouldShowExistingUserDialog(context)) {
-            PresearchAdsSignupDialog.showExistingUserDialog(getContext());
-            return true;
-        }
-
-        return false;
     }
 
     @Override
@@ -1012,22 +851,9 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         updateModernLocationBarColor(textBoxColor);
     }
 
-    /**
-     * PresearchRewardsNativeWorker.PublisherObserver:
-     *   Update a 'verified publisher' checkmark on url bar BAT icon only if
-     *   no notifications are posted.
-     */
     @Override
     public void onFrontTabPublisherChanged(boolean verified) {
         mIsPublisherVerified = verified;
-        updateVerifiedPublisherMark();
-    }
-
-    private void updateVerifiedPublisherMark() {
-        if (mPresearchRewardsNotificationsCount == null) {
-            // Most likely we are on a custom page
-            return;
-        }
     }
 
     public void onBottomToolbarVisibilityChanged(boolean isVisible) {
