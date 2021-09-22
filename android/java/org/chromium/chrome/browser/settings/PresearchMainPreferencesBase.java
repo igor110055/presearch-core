@@ -103,7 +103,6 @@ public class PresearchMainPreferencesBase extends PresearchPreferenceFragment {
         rearrangePreferenceOrders();
         removePreferenceIfPresent(PREF_PRESEARCH_REWARDS);
         removePreferenceIfPresent(PREF_BACKGROUND_IMAGES);
-
     }
 
     /**
