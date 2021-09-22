@@ -833,14 +833,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         return false;
     }
 
-    @Override
-    public void OnNotificationAdded(String id, int type, long timestamp, String[] args) {
-    }
-
-    @Override
-    public void OnNotificationsCount(int count) {
-    }
-
     private void updateNotificationBadgeForNewInstall() {
     }
 
@@ -849,11 +841,6 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
         final int textBoxColor = ThemeUtils.getTextBoxColorForToolbarBackgroundInNonNativePage(
                 getContext().getResources(), color, isIncognito());
         updateModernLocationBarColor(textBoxColor);
-    }
-
-    @Override
-    public void onFrontTabPublisherChanged(boolean verified) {
-        mIsPublisherVerified = verified;
     }
 
     public void onBottomToolbarVisibilityChanged(boolean isVisible) {
