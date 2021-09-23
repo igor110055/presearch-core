@@ -41,10 +41,6 @@ public class PresearchNotificationPlatformBridge extends NotificationPlatformBri
             @NotificationType
             int notificationType = intent.getIntExtra(
                     NotificationConstants.EXTRA_NOTIFICATION_TYPE, NotificationType.WEB_PERSISTENT);
-            if (notificationType == NotificationType.PRESEARCH_ADS
-                    && NotificationConstants.ACTION_CLICK_NOTIFICATION.equals(intent.getAction())) {
-                bringToForeground();
-            }
             return true;
         }
 
@@ -73,10 +69,6 @@ public class PresearchNotificationPlatformBridge extends NotificationPlatformBri
             boolean renotify, boolean silent, ActionInfo[] actions, String webApkPackage) {
         mNotificationType = notificationType;
 
-        if (notificationType == NotificationType.PRESEARCH_ADS) {
-            vibrationPattern = EMPTY_VIBRATION_PATTERN;
-        }
-
         return super.prepareNotificationBuilder(notificationId, notificationType, origin, scopeUrl,
                 profileId, incognito, vibrateEnabled, title, body, image, icon, badge,
                 vibrationPattern, timestamp, renotify, silent, actions, webApkPackage);
@@ -84,11 +76,6 @@ public class PresearchNotificationPlatformBridge extends NotificationPlatformBri
 
     @Override
     protected NotificationBuilderBase createNotificationBuilder(Context context, boolean hasImage) {
-        if (mNotificationType == NotificationType.PRESEARCH_ADS) {
-            // TODO(jocelyn): Remove setPriority here since we already set the
-            // importance of Ads notification channel to IMPORTANCE_HIGH?
-            return new PresearchAdsNotificationBuilder(context).setPriority(Notification.PRIORITY_HIGH);
-        }
         return super.createNotificationBuilder(context, hasImage);
     }
 }

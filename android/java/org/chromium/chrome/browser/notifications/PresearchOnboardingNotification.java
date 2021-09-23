@@ -18,9 +18,6 @@ import org.chromium.base.ContextUtils;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.PresearchActivity;
 import org.chromium.chrome.browser.dialogs.PresearchAdsNotificationDialog;
-import org.chromium.chrome.browser.notifications.PresearchAdsNotificationBuilder;
-import org.chromium.chrome.browser.notifications.NotificationBuilderBase;
-import org.chromium.chrome.browser.notifications.NotificationUmaTracker;
 import org.chromium.chrome.browser.notifications.retention.RetentionNotificationPublisher;
 import org.chromium.chrome.browser.notifications.retention.RetentionNotificationUtil;
 import org.chromium.components.browser_ui.notifications.NotificationManagerProxyImpl;
@@ -45,40 +42,9 @@ public class PresearchOnboardingNotification extends BroadcastReceiver {
     private static final String COUNTRY_CODE_DE = "de_DE";
     private static final String COUNTRY_CODE_FR = "fr_FR";
 
-    public static void showOnboardingDialog() {
-        PresearchActivity presearchActivity = PresearchActivity.getPresearchActivity();
-        if (presearchActivity != null) {
-            PresearchAdsNotificationDialog.displayAdsNotification(presearchActivity,
-                    PRESEARCH_ONBOARDING_NOTIFICATION_TAG, getNotificationUrl(),
-                    presearchActivity.getString(R.string.presearch_ui_presearch_rewards),
-                    presearchActivity.getString(R.string.this_is_your_first_ad));
-        }
-    }
+    public static void showOnboardingDialog() {}
 
-    public static void showOnboardingNotification() {
-        Context context = ContextUtils.getApplicationContext();
-        if (context == null) return;
-        NotificationManagerProxyImpl notificationManager =
-            new NotificationManagerProxyImpl(context);
-
-        NotificationBuilderBase notificationBuilder =
-            new PresearchAdsNotificationBuilder(context)
-        .setTitle(context.getString(R.string.presearch_ui_presearch_rewards))
-        .setBody(context.getString(R.string.this_is_your_first_ad))
-        .setSmallIconId(R.drawable.ic_chrome)
-        .setPriority(Notification.PRIORITY_HIGH)
-        .setDefaults(Notification.DEFAULT_ALL)
-        .setContentIntent(getDeepLinkIntent(context))
-        .setOrigin(getNotificationUrl());
-
-        NotificationWrapper notification = notificationBuilder.build(new NotificationMetadata(
-                                              NotificationUmaTracker.SystemNotificationType
-                                              .UNKNOWN /* Underlying code doesn't track UNKNOWN */,
-                                              PRESEARCH_ONBOARDING_NOTIFICATION_TAG /* notificationTag */,
-                                              PRESEARCH_ONBOARDING_NOTIFICATION_ID /* notificationId */
-                                          ));
-        notificationManager.notify(notification);
-    }
+    public static void showOnboardingNotification() {}
 
     public static PendingIntentProvider getDeepLinkIntent(Context context) {
         Intent intent = new Intent(context, PresearchOnboardingNotification.class);
@@ -104,11 +70,6 @@ public class PresearchOnboardingNotification extends BroadcastReceiver {
                 RetentionNotificationPublisher.backgroundNotificationAction(context, intent);
             }
         } else {
-            if (intent.getBooleanExtra(USE_CUSTOM_NOTIFICATION, false)) {
-                showOnboardingDialog();
-            } else {
-                showOnboardingNotification();
-            }
             if (presearchActivity != null) {
                 presearchActivity.hideRewardsOnboardingIcon();
             }
