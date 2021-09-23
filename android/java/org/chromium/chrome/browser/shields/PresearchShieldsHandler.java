@@ -135,6 +135,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
     private View mBottomDivider;
     private ImageView mToggleIcon;
 
+    private PresearchRewardsNativeWorker mPresearchRewardsNativeWorker;
     private PresearchRewardsHelper mIconFetcher;
 
     private String mHost;
@@ -206,6 +207,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         mTabId = tab.getId();
         mProfile = Profile.fromWebContents(tab.getWebContents());
 
+        mPresearchRewardsNativeWorker = PresearchRewardsNativeWorker.getInstance();
         mIconFetcher = new PresearchRewardsHelper(tab);
         mPopupWindow = showPopupMenu(anchorView);
 
@@ -397,9 +399,10 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
     }
 
     private void setUpMainLayout() {
+        String favIconURL = mPresearchRewardsNativeWorker.GetPublisherFavIconURL(mTabId);
         Tab currentActiveTab = mIconFetcher.getTab();
         String url = currentActiveTab.getUrlString();
-        final String favicon_url = url;
+        final String favicon_url = (favIconURL.isEmpty()) ? url : favIconURL;
         mIconFetcher.retrieveLargeIcon(favicon_url, this);
 
         TextView mSiteText = mMainLayout.findViewById(R.id.site_text);
@@ -409,7 +412,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
 
         ImageView helpImage = (ImageView) mMainLayout.findViewById(R.id.help);
         ImageView shareImage = (ImageView) mMainLayout.findViewById(R.id.share);
-        shareImage.setVisibility(View.GONE);
 
         helpImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -417,6 +419,16 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
                 mMainLayout.setVisibility(View.GONE);
                 mAboutLayout.setVisibility(View.VISIBLE);
                 setUpAboutLayout();
+            }
+        });
+
+        shareImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMainLayout.setVisibility(View.GONE);
+                if (PresearchStatsUtil.hasWritePermission(PresearchActivity.getPresearchActivity())) {
+                    PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
+                }
             }
         });
 
@@ -441,16 +453,20 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
                 hidePresearchShieldsMenu();
             }
         });
-        // if (OnboardingPrefManager.getInstance().isPresearchStatsEnabled()) {
-        //     mPrivacyReportLayout.setVisibility(View.VISIBLE);
-        // } else {
-        //     mPrivacyReportLayout.setVisibility(View.GONE);
-        // }
-        mPrivacyReportLayout.setVisibility(View.GONE);
+        if (OnboardingPrefManager.getInstance().isPresearchStatsEnabled()) {
+            mPrivacyReportLayout.setVisibility(View.VISIBLE);
+        } else {
+            mPrivacyReportLayout.setVisibility(View.GONE);
+        }
 
         setUpSecondaryLayout();
 
         setupMainSwitchClick(mShieldMainSwitch);
+    }
+
+    private void shareStats() {
+        View shareStatsLayout = PresearchStatsUtil.getLayout(R.layout.presearch_stats_share_layout);
+        PresearchStatsUtil.updatePresearchShareStatsLayoutAndShare(shareStatsLayout);
     }
 
     private void setToggleView(boolean shouldShow) {

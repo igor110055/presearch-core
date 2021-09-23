@@ -149,7 +149,7 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
     // Explicitly declare this variable to avoid build errors.
     // It will be removed in asm and parent variable will be used instead.
-    protected ObservableSupplier < Profile > mTabModelProfileSupplier;
+    protected ObservableSupplier <Profile> mTabModelProfileSupplier;
 
     public PresearchActivity() {
       // Disable key checker to avoid asserts on Presearch keys in debug

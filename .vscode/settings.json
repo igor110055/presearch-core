@@ -1,0 +1,6 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "json.schemaDownload.enable": false,
+    "npm.fetchOnlinePackageInfo": false,
+    "workbench.settings.enableNaturalLanguageSearch": false
+}
