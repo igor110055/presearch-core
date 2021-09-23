@@ -249,10 +249,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void finishNativeInitialization() {
       super.finishNativeInitialization();
 
-      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_BACKGROUND_IMAGE, false);
-      UserPrefs.get(Profile.getLastUsedRegularProfile()).setBoolean(PresearchPref.NEW_TAB_PAGE_SHOW_SPONSORED_IMAGES_BACKGROUND_IMAGE, false);
-      SharedPreferencesManager.getInstance().writeBoolean(
-                ChromePreferenceKeys.SETTINGS_DEVELOPER_ENABLED, false);
+      // SharedPreferencesManager.getInstance().writeBoolean(
+      //           ChromePreferenceKeys.SETTINGS_DEVELOPER_ENABLED, false);
 
       if (SharedPreferencesManager.getInstance().readBoolean(
           PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false)) {
@@ -317,7 +315,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     public void OnRewardsParameters(int errorCode) {}
 
     @Override
-    public void OnStartProcess() {}
+    public void OnStartProcess() {
+    }
 
     private void checkSetDefaultBrowserModal() {
       boolean shouldShowDefaultBrowserModal =
