@@ -172,13 +172,15 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         }
         BlockersInfo blockersInfo = mTabsStat.get(tabId);
         if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS)) {
-            blockersInfo.mAdsBlocked++;
+            // blockersInfo.mAdsBlocked++;
+            blockersInfo.mScriptsBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_TRACKERS)) {
             blockersInfo.mTrackersBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_HTTP_UPGRADABLE_RESOURCES)) {
             blockersInfo.mHTTPSUpgrades++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_JAVASCRIPTS)) {
-            blockersInfo.mScriptsBlocked++;
+            // blockersInfo.mScriptsBlocked++;
+            blockersInfo.mAdsBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_FINGERPRINTING)) {
             blockersInfo.mFingerprintsBlocked++;
         }
@@ -411,7 +413,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         Switch mShieldMainSwitch = mMainLayout.findViewById(R.id.site_switch);
 
         ImageView helpImage = (ImageView) mMainLayout.findViewById(R.id.help);
-        ImageView shareImage = (ImageView) mMainLayout.findViewById(R.id.share);
 
         helpImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -419,16 +420,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
                 mMainLayout.setVisibility(View.GONE);
                 mAboutLayout.setVisibility(View.VISIBLE);
                 setUpAboutLayout();
-            }
-        });
-
-        shareImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mMainLayout.setVisibility(View.GONE);
-                if (PresearchStatsUtil.hasWritePermission(PresearchActivity.getPresearchActivity())) {
-                    PresearchStatsUtil.shareStats(R.layout.presearch_stats_share_layout);
-                }
             }
         });
 
@@ -462,11 +453,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         setUpSecondaryLayout();
 
         setupMainSwitchClick(mShieldMainSwitch);
-    }
-
-    private void shareStats() {
-        View shareStatsLayout = PresearchStatsUtil.getLayout(R.layout.presearch_stats_share_layout);
-        PresearchStatsUtil.updatePresearchShareStatsLayoutAndShare(shareStatsLayout);
     }
 
     private void setToggleView(boolean shouldShow) {
@@ -671,41 +657,8 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         });
     }
 
-    private void setUpReportBrokenSiteLayout() {
-        TextView mReportSiteUrlText = mReportBrokenSiteLayout.findViewById(R.id.report_site_url);
-        mReportSiteUrlText.setText(mTitle);
-
-        Button mCancelButton = mReportBrokenSiteLayout.findViewById(R.id.btn_cancel);
-        mCancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hidePresearchShieldsMenu();
-            }
-        });
-
-        Button mSubmitButton = mReportBrokenSiteLayout.findViewById(R.id.btn_submit);
-        mSubmitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PresearchShieldsUtils.PresearchShieldsWorkerTask mWorkerTask = new PresearchShieldsUtils.PresearchShieldsWorkerTask(mTitle);
-                mWorkerTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                mReportBrokenSiteLayout.setVisibility(View.GONE);
-                mThankYouLayout.setVisibility(View.VISIBLE);
-            }
-        });
-    }
-
     private void setUpMainSwitchLayout(boolean isChecked) {
         TextView mShieldDownText = mMainLayout.findViewById(R.id.shield_down_text);
-        Button mReportBrokenSiteButton = mMainLayout.findViewById(R.id.btn_report_broken_site);
-        mReportBrokenSiteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mMainLayout.setVisibility(View.GONE);
-                mReportBrokenSiteLayout.setVisibility(View.VISIBLE);
-                setUpReportBrokenSiteLayout();
-            }
-        });
 
         LinearLayout mSiteBlockLayout = mMainLayout.findViewById(R.id.site_block_layout);
         TextView mSiteBrokenWarningText = mMainLayout.findViewById(R.id.site_broken_warning_text);
@@ -715,7 +668,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
 
         if (isChecked) {
             mShieldDownText.setVisibility(View.GONE);
-            mReportBrokenSiteButton.setVisibility(View.GONE);
 
             mSiteBlockLayout.setVisibility(View.VISIBLE);
             mSiteBrokenWarningText.setVisibility(View.VISIBLE);
@@ -727,7 +679,6 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
             mShieldsUpText.setText(mSpanString);
         } else {
             mShieldDownText.setVisibility(View.VISIBLE);
-            mReportBrokenSiteButton.setVisibility(View.VISIBLE);
 
             mSiteBlockLayout.setVisibility(View.GONE);
             mSiteBrokenWarningText.setVisibility(View.GONE);

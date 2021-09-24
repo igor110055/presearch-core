@@ -19,18 +19,66 @@ typedef struct C_Engine C_Engine;
 typedef void (*C_DomainResolverCallback)(const char*, uint32_t*, uint32_t*);
 
 /**
- * Passes a callback to the adblock library, allowing it to be used for domain resolution.
- *
- * This is required to be able to use any adblocking functionality.
- *
- * Returns true on success, false if a callback was already set previously.
+ * Destroy a `*c_char` once you are done with it.
  */
-bool set_domain_resolver(C_DomainResolverCallback resolver);
+void c_char_buffer_destroy(char *s);
+
+/**
+ * Adds a resource to the engine by name
+ */
+bool engine_add_resource(C_Engine *engine,
+                         const char *key,
+                         const char *content_type,
+                         const char *data);
+
+/**
+ * Adds a list of `Resource`s from JSON format
+ */
+void engine_add_resources(C_Engine *engine, const char *resources);
+
+/**
+ * Adds a tag to the engine for consideration
+ */
+void engine_add_tag(C_Engine *engine, const char *tag);
 
 /**
  * Create a new `Engine`.
  */
-struct C_Engine *engine_create(const char *rules);
+C_Engine *engine_create(const char *rules);
+
+/**
+ * Deserializes a previously serialized data file list.
+ */
+bool engine_deserialize(C_Engine *engine, const char *data, size_t data_size);
+
+/**
+ * Destroy a `Engine` once you are done with it.
+ */
+void engine_destroy(C_Engine *engine);
+
+/**
+ * Returns any CSP directives that should be added to a subdocument or document request's response
+ * headers.
+ */
+char *engine_get_csp_directives(C_Engine *engine,
+                                const char *url,
+                                const char *host,
+                                const char *tab_host,
+                                bool third_party,
+                                const char *resource_type);
+
+/**
+ * Returns a stylesheet containing all generic cosmetic rules that begin with any of the provided class and id selectors
+ *
+ * The leading '.' or '#' character should not be provided
+ */
+char *engine_hidden_class_id_selectors(C_Engine *engine,
+                                       const char *const *classes,
+                                       size_t classes_size,
+                                       const char *const *ids,
+                                       size_t ids_size,
+                                       const char *const *exceptions,
+                                       size_t exceptions_size);
 
 /**
  * Checks if a `url` matches for the specified `Engine` within the context.
@@ -39,7 +87,7 @@ struct C_Engine *engine_create(const char *rules);
  * outputs. They will be updated to reflect additional checking within this engine, rather than
  * being replaced with results just for this engine.
  */
-void engine_match(struct C_Engine *engine,
+void engine_match(C_Engine *engine,
                   const char *url,
                   const char *host,
                   const char *tab_host,
@@ -51,75 +99,27 @@ void engine_match(struct C_Engine *engine,
                   char **redirect);
 
 /**
- * Returns any CSP directives that should be added to a subdocument or document request's response
- * headers.
+ * Removes a tag to the engine for consideration
  */
-char *engine_get_csp_directives(struct C_Engine *engine,
-                                const char *url,
-                                const char *host,
-                                const char *tab_host,
-                                bool third_party,
-                                const char *resource_type);
-
-/**
- * Adds a tag to the engine for consideration
- */
-void engine_add_tag(struct C_Engine *engine, const char *tag);
+void engine_remove_tag(C_Engine *engine, const char *tag);
 
 /**
  * Checks if a tag exists in the engine
  */
-bool engine_tag_exists(struct C_Engine *engine, const char *tag);
-
-/**
- * Adds a resource to the engine by name
- */
-bool engine_add_resource(struct C_Engine *engine,
-                         const char *key,
-                         const char *content_type,
-                         const char *data);
-
-/**
- * Adds a list of `Resource`s from JSON format
- */
-void engine_add_resources(struct C_Engine *engine, const char *resources);
-
-/**
- * Removes a tag to the engine for consideration
- */
-void engine_remove_tag(struct C_Engine *engine, const char *tag);
-
-/**
- * Deserializes a previously serialized data file list.
- */
-bool engine_deserialize(struct C_Engine *engine, const char *data, size_t data_size);
-
-/**
- * Destroy a `Engine` once you are done with it.
- */
-void engine_destroy(struct C_Engine *engine);
-
-/**
- * Destroy a `*c_char` once you are done with it.
- */
-void c_char_buffer_destroy(char *s);
+bool engine_tag_exists(C_Engine *engine, const char *tag);
 
 /**
  * Returns a set of cosmetic filtering resources specific to the given url, in JSON format
  */
-char *engine_url_cosmetic_resources(struct C_Engine *engine, const char *url);
+char *engine_url_cosmetic_resources(C_Engine *engine, const char *url);
 
 /**
- * Returns a stylesheet containing all generic cosmetic rules that begin with any of the provided class and id selectors
+ * Passes a callback to the adblock library, allowing it to be used for domain resolution.
  *
- * The leading '.' or '#' character should not be provided
+ * This is required to be able to use any adblocking functionality.
+ *
+ * Returns true on success, false if a callback was already set previously.
  */
-char *engine_hidden_class_id_selectors(struct C_Engine *engine,
-                                       const char *const *classes,
-                                       size_t classes_size,
-                                       const char *const *ids,
-                                       size_t ids_size,
-                                       const char *const *exceptions,
-                                       size_t exceptions_size);
+bool set_domain_resolver(C_DomainResolverCallback resolver);
 
 #endif /* ADBLOCK_RUST_FFI_H */
