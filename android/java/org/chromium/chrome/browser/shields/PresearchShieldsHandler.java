@@ -172,15 +172,13 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         }
         BlockersInfo blockersInfo = mTabsStat.get(tabId);
         if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS)) {
-            // blockersInfo.mAdsBlocked++;
-            blockersInfo.mScriptsBlocked++;
+            blockersInfo.mAdsBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_TRACKERS)) {
             blockersInfo.mTrackersBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_HTTP_UPGRADABLE_RESOURCES)) {
             blockersInfo.mHTTPSUpgrades++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_JAVASCRIPTS)) {
-            // blockersInfo.mScriptsBlocked++;
-            blockersInfo.mAdsBlocked++;
+            blockersInfo.mScriptsBlocked++;
         } else if (block_type.equals(PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_FINGERPRINTING)) {
             blockersInfo.mFingerprintsBlocked++;
         }
