@@ -78,7 +78,6 @@ import org.chromium.chrome.browser.notifications.retention.RetentionNotification
 import org.chromium.chrome.browser.ntp.PresearchNewTabPageLayout;
 import org.chromium.chrome.browser.ntp.NewTabPage;
 import org.chromium.chrome.browser.onboarding.OnboardingPrefManager;
-import org.chromium.chrome.browser.onboarding.SearchActivity;
 import org.chromium.chrome.browser.preferences.PresearchPref;
 import org.chromium.chrome.browser.preferences.PresearchPrefServiceBridge;
 import org.chromium.chrome.browser.preferences.website.PresearchShieldsContentSettings;
@@ -897,6 +896,9 @@ public abstract class PresearchToolbarLayout extends ToolbarLayout
                 getContext().getResources(), color, isIncognito());
         updateModernLocationBarColor(textBoxColor);
     }
+
+    @Override
+    public void onFrontTabPublisherChanged(boolean verified) {}
 
     public void onBottomToolbarVisibilityChanged(boolean isVisible) {
         mIsBottomToolbarVisible = isVisible;
