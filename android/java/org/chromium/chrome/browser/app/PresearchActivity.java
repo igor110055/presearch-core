@@ -282,8 +282,8 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
 
       if (!PackageUtils.isFirstInstall(this) &&
         !OnboardingPrefManager.getInstance().isP3AEnabledForExistingUsers()) {
-          PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
-          OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(false);
+          PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
+          OnboardingPrefManager.getInstance().setP3AEnabledForExistingUsers(true);
       }
 
       if (PresearchConfig.P3A_ENABLED &&
