@@ -248,9 +248,6 @@ public abstract class PresearchActivity < C extends ChromeActivityComponent >
     @Override
     public void finishNativeInitialization() {
       super.finishNativeInitialization();
-      PresearchFeatureList.enableFeature(PresearchFeatureList.PRESEARCH_REWARDS, false, true);
-      // SharedPreferencesManager.getInstance().writeBoolean(
-      //           ChromePreferenceKeys.SETTINGS_DEVELOPER_ENABLED, false);
 
       if (SharedPreferencesManager.getInstance().readBoolean(
           PresearchPreferenceKeys.PRESEARCH_DOUBLE_RESTART, false)) {
