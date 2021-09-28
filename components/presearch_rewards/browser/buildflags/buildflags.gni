@@ -1,3 +1,4 @@
 declare_args() {
-  presearch_rewards_enabled = is_mac || is_linux || is_win || is_android
+  presearch_rewards_enabled = false
+  #is_mac || is_linux || is_win || is_android
 }
