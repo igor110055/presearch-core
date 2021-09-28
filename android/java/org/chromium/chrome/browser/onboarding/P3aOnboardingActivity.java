@@ -56,7 +56,7 @@ public class P3aOnboardingActivity extends AppCompatActivity {
         btnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PresearchPrefServiceBridge.getInstance().setP3AEnabled(false);
+                PresearchPrefServiceBridge.getInstance().setP3AEnabled(true);
                 PresearchPrefServiceBridge.getInstance().setP3ANoticeAcknowledged(true);
                 OnboardingPrefManager.getInstance().setP3aOnboardingShown(true);
                 finish();
