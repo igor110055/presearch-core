@@ -730,7 +730,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         }
         if (0 != mHost.length()) {
             if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_PRESEARCH_SHIELDS)) {
-                if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_JAVASCRIPTS)) {
+                if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS_TRACKERS)) {
                     presearchShieldsAdsTrackingSwitch.setChecked(true);
                 } else {
                     presearchShieldsAdsTrackingSwitch.setChecked(false);
@@ -826,7 +826,7 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
         }
         if (0 != mHost.length()) {
             if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_PRESEARCH_SHIELDS)) {
-                if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS_TRACKERS)) {
+                if (PresearchShieldsContentSettings.getShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_JAVASCRIPTS)) {
                     presearchShieldsBlockingScriptsSwitch.setChecked(true);
                 } else {
                     presearchShieldsBlockingScriptsSwitch.setChecked(false);
