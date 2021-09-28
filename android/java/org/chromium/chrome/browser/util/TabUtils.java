@@ -15,6 +15,9 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.PopupMenu;
 
+import org.chromium.chrome.browser.preferences.ChromePreferenceKeys;
+import org.chromium.chrome.browser.preferences.SharedPreferencesManager;
+
 import org.chromium.base.ApplicationStatus;
 import org.chromium.chrome.R;
 import org.chromium.chrome.browser.app.PresearchActivity;
@@ -64,7 +67,9 @@ public class TabUtils {
     private static void openNewTab(PresearchActivity presearchActivity, boolean isIncognito) {
         if (presearchActivity == null) return;
         presearchActivity.getTabModelSelector().getModel(isIncognito).commitAllTabClosures();
-        presearchActivity.getTabCreator(isIncognito).launchNTP();
+        // presearchActivity.getTabCreator(isIncognito).launchNTP();
+        String url =  SharedPreferencesManager.getInstance().readString(ChromePreferenceKeys.HOMEPAGE_CUSTOM_URI);
+        presearchActivity.getTabCreator(isIncognito).launchUrl(url, TabLaunchType.FROM_CHROME_UI);
     }
 
     public static void openUrlInNewTab(boolean isIncognito, String url) {
