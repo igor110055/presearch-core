@@ -709,7 +709,8 @@ public class PresearchShieldsHandler implements PresearchRewardsHelper.LargeIcon
             public void onCheckedChanged(CompoundButton buttonView,
                                          boolean isChecked) {
                 if (0 != mHost.length()) {
-                    PresearchShieldsContentSettings.setShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS_TRACKERS, isChecked, false);
+                    // PresearchShieldsContentSettings.setShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_ADS_TRACKERS, isChecked, false);
+                    PresearchShieldsContentSettings.setShields(mProfile, mHost, PresearchShieldsContentSettings.RESOURCE_IDENTIFIER_JAVASCRIPTS, isChecked, false);
                     if (null != mMenuObserver) {
                         mMenuObserver.onMenuTopShieldsChanged(isChecked, false);
                     }
